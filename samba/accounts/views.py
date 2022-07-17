@@ -29,7 +29,7 @@ def signup(request):
         if request.POST['password'] == request.POST['repeat']:
             print(request.POST)
             new_user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'])
-            auth.login(request, new_user)
+            auth.login(request, new_user, backend='django.contrib.auth.backends.ModelBackend',)
             return redirect('home')
     return render(request, 'register.html')
     

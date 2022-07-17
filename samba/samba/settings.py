@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 ]
 
-SITE_ID = 1
+SITE_ID = 1  # 사이트 아이디 기본값
 
 # 어떤 수단을 통해 로그인 진행할지 알려주는 것
 AUTHENTICATION_BACKENDS = [
@@ -64,6 +64,10 @@ AUTHENTICATION_BACKENDS = [
 
 # 로그인 성공했을 때 redirection 해주는 것
 LOGIN_REDIRECT_URL = '/'
+
+# 로그아웃 했을 때 redirection 해주는 것
+LOGOUT_REDIRECT_URL = '/'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -88,6 +92,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                # `allauth` needs this from django
+                'django.template.context_processors.request',
             ],
         },
     },
