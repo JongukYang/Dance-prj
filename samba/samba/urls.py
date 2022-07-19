@@ -20,11 +20,16 @@ from accounts import views as account_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', danceapp_views.home, name='home'),
+    path('', danceapp_views.index, name='index'),
 
     path('login/', account_views.login, name='login'),
     path('logout/', account_views.logout, name='logout'),
     path('signup/', account_views.signup, name='signup'),
 
+    path('kakaoLoginLogic/', account_views.kakaoLoginLogic),
+    path('kakaoLoginLogicRedirect/', account_views.kakaoLoginLogicRedirect),
+    path('kakaoLogout/', account_views.kakaoLogout),
+
     path('accounts/', include('allauth.urls')),
+    # path('google/', include('allauth.urls')),
 ]
