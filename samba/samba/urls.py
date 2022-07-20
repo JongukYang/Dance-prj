@@ -24,6 +24,7 @@ urlpatterns = [
     # path('', danceapp_views.index, name='index'),
     # path('', danceapp_views.index, name='index'),
     path('', account_views.tokenCheck, name='index'),
+    path('postform/', danceapp_views.postcreate, name='postcreate'),
 
     path('login/', account_views.login, name='login'),
     path('logout/', account_views.logout, name='logout'),

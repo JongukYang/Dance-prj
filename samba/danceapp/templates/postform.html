@@ -1,0 +1,9 @@
+<h1>postform Page</h1>
+<h3>form 띄우기 페이지</h3>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    </table>
+    <input type="submit" value="업로드">
+</form>
