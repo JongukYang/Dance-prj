@@ -19,8 +19,11 @@ from danceapp import views as danceapp_views
 from accounts import views as account_views
 
 urlpatterns = [
+    path('loginform/', danceapp_views.loginform, name='loginform'),
     path('admin/', admin.site.urls),
-    path('', danceapp_views.index, name='index'),
+    # path('', danceapp_views.index, name='index'),
+    # path('', danceapp_views.index, name='index'),
+    path('', account_views.tokenCheck, name='index'),
 
     path('login/', account_views.login, name='login'),
     path('logout/', account_views.logout, name='logout'),

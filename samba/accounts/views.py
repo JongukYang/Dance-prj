@@ -15,7 +15,7 @@ def login(request):
         user = auth.authenticate(request, username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('home')
+            return redirect('index')
         else:
             return render(request, 'bad_login.html')
     # request == GET : 로그아웃
@@ -24,7 +24,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('home')
+    return redirect('index')
 
 def signup(request):
     if request.method == "POST":
@@ -32,11 +32,18 @@ def signup(request):
             print(request.POST)
             new_user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'])
             auth.login(request, new_user, backend='django.contrib.auth.backends.ModelBackend',)
-            return redirect('home')
+            return redirect('index')
     return render(request, 'register.html')
 
 
 ## 여기부터 카카오 로그인 구현
+def tokenCheck(request):
+    _context = {'check': False}
+    if request.session.get('access_token'):
+        _context['check'] = True
+    return render(request, 'index.html', _context)
+
+
 def kakaoLoginLogic(request):
     _restApiKey = s_restApiKey
     _redirectUrl = 'http://127.0.0.1:8000/kakaoLoginLogicRedirect'
@@ -70,7 +77,7 @@ def kakaoLogout(request):
     _result = _res.json()
     if _result.get('id'):
         del request.session['access_token']
-        return render(request, 'loginoutSuccess.html')
+        return render(request, 'logoutSuccess.html')
     else:
         return render(request, 'logoutError.html')
 

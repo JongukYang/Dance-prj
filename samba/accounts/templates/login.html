@@ -72,6 +72,11 @@
                                     <div class="text-center">
                                         <a class="small" href="{% url 'signup' %}">Create an Account!</a></br>
                                         <a class="small" href="{% provider_login_url 'google' %}">구글 계정으로 로그인!</a>
+                                        <div>   
+                                            <form action="/kakaoLoginLogic" method="GET">
+                                                <input type="submit" value="카카오 로그인">
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

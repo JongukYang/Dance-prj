@@ -11,6 +11,11 @@ def index(request):
         _context['check'] = True
     return render(request, 'index.html', _context)
     
+def home(request):
+    return render(request, 'index.html')
+
+def loginform(request):
+    return render(request, 'loginform.html')
 
 
 

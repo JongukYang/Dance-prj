@@ -21,9 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# 암호화를 위해 해시를 생성해주는 문자열, 패스워드 암호화, 배포시에 노출하면 안됨
 SECRET_KEY = s_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# 중요! 어떻게 서버를 킬것인지 정함, 개발자모드 또는 배포용으로 서버를 킬지 말지 정하는것
+# DEBUT = True : 개발자모드, 많은 정보를 보여줌
+# DEBUG = False : 사용자모드(배포시에), 정보가 적게 노출됨, 꼭 False로 배포할것
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -105,7 +109,7 @@ WSGI_APPLICATION = 'samba.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
+# 어떤 데이터베이스를 사용할것인지, 데이터베이스의 위치는 어디인지 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -135,7 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
-
+# 디폴트 세팅 언어
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -148,9 +152,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+import os
+# 미디어 파일에 접근 가능한 URL
 STATIC_URL = '/static/'
+# 사용자가 업로드한 미디어 파일이 저장되는 경로
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
+    ## 다른 방식의 경로 작성 방법
+    # os.path.join(BASE_DIR, 'staticapp', 'static'),
 ]
 
 # Default primary key field type
