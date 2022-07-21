@@ -35,7 +35,7 @@ def signup(request):
             return redirect('index')
     return render(request, 'register.html')
 
-def signup(request):
+def signup2(request):
     if request.method == "POST":
         if request.POST['pass'] == request.POST['repeat']:
             print(request.POST)
