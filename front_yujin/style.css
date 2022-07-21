@@ -1,0 +1,107 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    text-decoration: none;
+    color: black;
+    background-color: black;
+}
+.mainbox {
+    width: 1000px;
+    height: 1500px;
+    padding: 30px;
+    margin: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid white;
+    box-shadow: 0 1px 50px 0 rgb(255, 255, 255);
+    background-color: black;
+}
+.header{
+    height: 145px;
+    text-align: center;
+    backgroing-color: thistle;
+    box-sizing: border-box;
+    border-bottom: 1px solid #999;
+}
+
+.header__logo h1{
+    front: bold 40px 'arial';
+    padding-top: 14px;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.header__logo p{
+    font: bold 12px 'arial';
+    letter-spacing: 2px;
+    color: white;
+}
+
+.header__gnb ul{
+    margin-top: 40px;
+}
+
+.header__gnb ul li{
+    display: inline-block;
+}
+.header__gnb ul li a{
+    display: block;
+    font: bold 14px 'arial';
+    color: #999;
+    margin: 0px 16px;
+    letter-spacial: 1px;
+}
+
+.header__main1 ul{
+    margin-top: 100px;
+}
+
+.header__main1 ul li{
+    display: inline-block;
+}
+.header__main1 ul li a{
+    display: block;
+    font: bold 50px 'arial';
+    color: white;
+    margin: 0px 16px;
+    letter-spacial: 1px;
+
+}
+
+.header__main2 ul{
+    margin-top: 100px;
+}
+
+.header__main2 ul li{
+    display: inline-block;
+}
+.header__main2 ul li a{
+    display: block;
+    font: bold 50px 'arial';
+    color: white;
+    margin: 0px 16px;
+    letter-spacial: 1px;
+
+}
+
+.box1{
+    margin: 10px;
+    padding: 10px;
+    display: inline-block ;
+    border: 1px solid white;
+    background-color: black;
+    width: 700px; 
+    height: 100px;
+    box-shadow: 0 1px 20px 0 rgb(255, 255, 255);
+}
+.box2{
+    margin: 10px;
+    padding: 10px;
+    display: inline-block ;
+    border: 1px solid white;
+    background-color: black;
+    width: 700px ; 
+    height: 100px;
+    box-shadow: 0 1px 20px 0 rgb(255, 255, 255);
+}
