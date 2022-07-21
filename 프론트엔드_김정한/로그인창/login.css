@@ -5,7 +5,9 @@
 }
 
 body {
-    background-color: #eee;
+    background-image: url('login_image.jpg');
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .container {
@@ -21,7 +23,8 @@ body {
 
 header {
     font-size: 2rem;
-    color: rebeccapurple;
+    font-weight: bold;
+    color: white;
 }
 
 section {
@@ -32,6 +35,7 @@ section {
 section p {
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    color:white;
 }
 
 section input[placeholder] {
@@ -68,17 +72,18 @@ section label {
     font-size: .7rem;
     transform: translateY(-20%);
     margin-left: -5px;
+    color: white;
 }
 
 section input[type="submit"] {
     display: block;
     width: 100%;
-    border: 1px solid skyblue;
+    border: 1px solid black;
     margin-top: 1.5rem;
     padding: .3rem;
     border-radius: 5px;
     font-size: .8rem;
-    background-color: skyblue;
+    background-color: #FB646B;
     color: white;
     outline: none;
     transition: all .5s;
@@ -96,5 +101,5 @@ section input:nth-of-type(-n+3):focus {
 
 footer {
     font-size: .6rem;
-    color: #666;
+    color: white;
 }
