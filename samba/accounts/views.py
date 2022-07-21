@@ -9,10 +9,10 @@ from secret_data import s_restApiKey
 def login(request):
     # request == POST : 로그인
     if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
+        id = request.POST['id']
+        passwd = request.POST['passwd']
         # authenticate 메소드는 username,password가 일치하는 객체를 반환함(만약 없으면 NONE반환)
-        user = auth.authenticate(request, username=username, password=password)
+        user = auth.authenticate(request, username=id, password=passwd)
         if user is not None:
             auth.login(request, user)
             return redirect('index')
@@ -28,21 +28,13 @@ def logout(request):
 
 def signup(request):
     if request.method == "POST":
-        if request.POST['password'] == request.POST['repeat']:
+        if request.POST['passwd'] == request.POST['repeat']:
+            # nickName = request.POST['nick']
             print(request.POST)
-            new_user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'])
+            new_user = User.objects.create_user(username=request.POST['user'], password=request.POST['passwd'])
             auth.login(request, new_user, backend='django.contrib.auth.backends.ModelBackend',)
             return redirect('index')
     return render(request, 'register.html')
-
-def signup2(request):
-    if request.method == "POST":
-        if request.POST['pass'] == request.POST['repeat']:
-            print(request.POST)
-            new_user = User.objects.create_user(username=request.POST['id'], password=request.POST['pass'])
-            auth.login(request, new_user, backend='django.contrib.auth.backends.ModelBackend',)
-            return redirect('index')
-    return render(request, 'register2.html')
 
 
 ## 여기부터 카카오 로그인 구현

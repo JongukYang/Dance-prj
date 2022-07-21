@@ -19,7 +19,6 @@ from danceapp import views as danceapp_views
 from accounts import views as account_views
 
 urlpatterns = [
-    path('loginform/', danceapp_views.loginform, name='loginform'),
     path('admin/', admin.site.urls),
     # path('', danceapp_views.index, name='index'),
     # path('', danceapp_views.index, name='index'),
@@ -29,7 +28,6 @@ urlpatterns = [
     path('login/', account_views.login, name='login'),
     path('logout/', account_views.logout, name='logout'),
     path('signup/', account_views.signup, name='signup'),
-    path('signup2/', account_views.signup2, name='signup2'),
 
     path('kakaoLoginLogic/', account_views.kakaoLoginLogic),
     path('kakaoLoginLogicRedirect/', account_views.kakaoLoginLogicRedirect),
