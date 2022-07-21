@@ -35,6 +35,15 @@ def signup(request):
             return redirect('index')
     return render(request, 'register.html')
 
+def signup(request):
+    if request.method == "POST":
+        if request.POST['pass'] == request.POST['repeat']:
+            print(request.POST)
+            new_user = User.objects.create_user(username=request.POST['id'], password=request.POST['pass'])
+            auth.login(request, new_user, backend='django.contrib.auth.backends.ModelBackend',)
+            return redirect('index')
+    return render(request, 'register2.html')
+
 
 ## 여기부터 카카오 로그인 구현
 def tokenCheck(request):

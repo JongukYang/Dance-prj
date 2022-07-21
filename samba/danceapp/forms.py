@@ -4,7 +4,8 @@ from .models import Post, Comment
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = '__all__'
+        # fields = '__all__'
+        fields = ['title', 'body', 'photo']
 
     # 장고의 Form 태그를 이용하여 부트스트랩을 적용하기 위해선 init 생성자를 만들어야함
     def __init__(self, *args, **kwargs):
