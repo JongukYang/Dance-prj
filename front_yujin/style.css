@@ -3,10 +3,10 @@
     padding: 0px;
     list-style: none;
     text-decoration: none;
-    color: black;
     background-color: black;
 }
 .mainbox {
+    background-image: url('wallpaper.png');
     width: 1000px;
     height: 1500px;
     padding: 30px;
@@ -15,14 +15,15 @@
     margin-left: auto;
     border: 1px solid white;
     box-shadow: 0 1px 50px 0 rgb(255, 255, 255);
-    background-color: black;
+    background-color: none;
 }
 .header{
-    height: 145px;
+    height: 160px;
     text-align: center;
     backgroing-color: thistle;
     box-sizing: border-box;
     border-bottom: 1px solid #999;
+    background-color: none;
 }
 
 .header__logo h1{
@@ -36,10 +37,43 @@
     font: bold 12px 'arial';
     letter-spacing: 2px;
     color: white;
+    
+}
+.header__search{
+    float: right;
+}
+.header__login {
+    
+    font: bold 12px 'arial';
+    letter-spacing: 2px;
+    color: white;
+    float: right;
+}
+.header__login button{
+    
+    font: bold 12px 'arial';
+    letter-spacing: 2px;
+    color: white;
+    float: right;
+}
+.header__login input{
+  
+    font: bold 12px 'arial';
+    letter-spacing: 2px;
+    color: white;
+    float: right;
+}
+.header__login p{
+    margin: 10px;
+    font: bold 12px 'arial';
+    letter-spacing: 2px;
+    color: white;
+    float: right;
 }
 
+
 .header__gnb ul{
-    margin-top: 40px;
+    margin-top: 60px;
 }
 
 .header__gnb ul li{
@@ -59,6 +93,7 @@
 
 .header__main1 ul li{
     display: inline-block;
+    float: left;
 }
 .header__main1 ul li a{
     display: block;
@@ -66,15 +101,17 @@
     color: white;
     margin: 0px 16px;
     letter-spacial: 1px;
-
+    
 }
 
 .header__main2 ul{
     margin-top: 100px;
+    
 }
 
 .header__main2 ul li{
     display: inline-block;
+   
 }
 .header__main2 ul li a{
     display: block;
@@ -82,26 +119,26 @@
     color: white;
     margin: 0px 16px;
     letter-spacial: 1px;
-
+    background-color: none;
 }
 
 .box1{
-    margin: 10px;
+    margin: 30px;
     padding: 10px;
     display: inline-block ;
     border: 1px solid white;
     background-color: black;
-    width: 700px; 
+    width: 900px; 
     height: 100px;
     box-shadow: 0 1px 20px 0 rgb(255, 255, 255);
 }
-.box2{
-    margin: 10px;
+.box2, .box3, .box4, .box5{
+    margin: 50px;
     padding: 10px;
     display: inline-block ;
     border: 1px solid white;
     background-color: black;
-    width: 700px ; 
+    width: 90px ; 
     height: 100px;
     box-shadow: 0 1px 20px 0 rgb(255, 255, 255);
 }
