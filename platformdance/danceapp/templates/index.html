@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Index.html Page</h1>
+    {% if request.user.is_authenticated %}
+    {{request.user}}
+    <h4><a href="{% url 'logout' %}">Logout</a></h4>
+    {% else %}
+    <h4><a href="{% url 'login' %}">Login</a></h4>
+    {% endif %}
+
+    <h4><a href="{% url 'signup' %}">SignUp</a></h4>
+
+    <h1>파일 업로드</h1>
+    <h4><a href="{% url 'postcreate' %}">PostCreate</a></h4>
+
+    <div>
+        <table border="1">
+            <tr>
+                <th>userid</th>
+                <th>title</th>
+                <th>body</th>
+                <th>uploadDate</th>
+                <th>updateDate</th>
+                <th>img</th>
+                <th>video</th>
+            </tr>
+            {% for post in posts %}
+            <tr>
+                <td>{{ post.userId }}</td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.body }}</td>
+                <td>{{ post.uploadDate }}</td>
+                <td>{{ post.updateDate }}</td>
+                <td>
+                    {% if post.photo %}
+                    {{ post.photo }} <br>
+                    <img style="width: 30%;" src="{{ post.photo.url }}" alt="">
+                    {% endif %}
+                </td>
+                <td>
+                    {% if post.video %}
+                    {{ post.video }} <br>
+                    <video width="30%" src="{{ post.video.url }}" controls></video>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+
+</body>
+
+</html>
