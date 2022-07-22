@@ -43,6 +43,13 @@ def delete_post(request, post_id):
     del_post.delete()
     return redirect('index')
 
+# def delete_post(request, post_id, user_id):
+#     if request.user.is_authenticated:
+#         del_post = get_object_or_404(Post, pk=post_id)
+#         if request.user == del_post.userId:
+#             del_post.delete()
+#     return redirect('index')    
+
 # 댓글 저장
 def new_comment(request, post_id):
     filled_form = CommentForm(request.POST)

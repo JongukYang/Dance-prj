@@ -49,11 +49,11 @@
                 <td>
                     {% if post.video %}
                     {{ post.video }} <br>
-                    <video width="30%" src="{{ post.video.url }}" controls></video>
+                    <!-- <video width="30%" src="{{ post.video.url }}" controls></video> -->
                     {% endif %}
                 </td>
                 <td>
-                    <form action="{% url 'delete_post' post.id%}" method="POST">
+                    <form action="{% url 'delete_post' post.id %}" method="POST">
                         {% csrf_token %}
                         <input type="submit" name="delete_post" value="삭제">
                     </form>
@@ -64,11 +64,18 @@
                         {{ comment_form.as_p }}
                         <input type="submit" value="댓글 입력">
                     </form>
+                    {% for comment in post.comment_set.all %}
+                        {{ comment.userId }} - {{ comment }}
+                            {% if request.user == comment.userId %}
+                                <input type="submit" , value="삭제"> <br>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
                 </td>
             </tr>
             {% endfor %}
         </table>
-
     </div>
     <h1>깃허브다날라갔따어써ㅜㅎ브</h1>
 </body>
