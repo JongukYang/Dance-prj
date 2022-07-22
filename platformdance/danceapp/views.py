@@ -9,8 +9,10 @@ from .models import Post, Comment
 def index(request):
     posts = Post.objects.filter().order_by('-updateDate')
     # posts = Post.objects.order_by('-date')
+    comment_form = CommentForm()
     context = {
-        'posts':posts
+        'posts':posts,
+        'comment_form':comment_form
     }
     return render(request, 'index.html', context)
 
@@ -46,6 +48,10 @@ def new_comment(request, post_id):
     filled_form = CommentForm(request.POST)
     if filled_form.is_valid():
         finished_form = filled_form.save(commit=False)
+        finished_form.userId = request.user
         finished_form.post = get_object_or_404(Post, pk=post_id)
+        
+        print("comment:", request.body)
+        print("post_id :", post_id)
         finished_form.save()
-    return redirect('index', post_id)
+    return redirect('index')

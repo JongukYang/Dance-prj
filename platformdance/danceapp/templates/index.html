@@ -53,21 +53,16 @@
                     {% endif %}
                 </td>
                 <td>
-                    <p>
-                        <form action="{% url 'delete_post' post.id%}" method="POST">
-                            {% csrf_token %}
-                            <input type="submit" name="delete_post" value="삭제">
-                        </form>
-                    </p>
+                    <form action="{% url 'delete_post' post.id%}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" name="delete_post" value="삭제">
+                    </form>
                 </td>
                 <td>
                     <form method="POST" action="{% url 'new_comment' post.id %}">
                         {% csrf_token %}
-                        <div class="form-group">
-                            {{ comment_form }}
-                        </div>
-                        <input type="text" placeholder="comment input">
-                        <input type="submit" class="btn btn-primary btn-icon-split btn-sm" value="댓글 입력">
+                        {{ comment_form.as_p }}
+                        <input type="submit" value="댓글 입력">
                     </form>
                 </td>
             </tr>
@@ -75,7 +70,7 @@
         </table>
 
     </div>
-<h1>깃허브다날라갔따어써ㅜㅎ브</h1>
+    <h1>깃허브다날라갔따어써ㅜㅎ브</h1>
 </body>
 
 </html>
