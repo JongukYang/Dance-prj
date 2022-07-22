@@ -1,0 +1,135 @@
+* {
+    padding: 0;
+    margin: 0;
+    color: white;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('../img/signup.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+}
+
+.left_container{
+    width:25%;
+    float: left;
+    /* background-color: aqua; */
+ }
+
+ header {
+    margin-top: 88px;
+    margin-left:60px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.level {
+    display: inline-block;
+    margin-top: 45px;
+    margin-left:80px;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+label { 
+    display: block; 
+    margin-top: 48px;
+}
+
+input[type="radio"]{
+    margin-left:40px;
+}
+
+
+.right_container{
+    width:75%;
+    float: right;
+    /* background-color: red; */
+    padding-top:140px;
+}
+
+section {
+    width: 500px;
+    margin-left:120px;
+    /* margin: 10px auto 40px; */
+}
+
+section p {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+    color:white;
+}
+
+section input[placeholder] {
+    font-size: .8rem;
+    padding: 8px;
+    width: 100%;
+    border: .5px solid #ddd;
+    outline: none;
+    transition: box-shadow.5s;
+}
+
+section input[placeholder]::placeholder {
+    font-size: .8rem;
+}
+
+section input {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height:50px;
+    margin-bottom: 30px;
+    color: black;
+}
+
+/* section input:nth-of-type(2) {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+} */
+
+section input[type="checkbox"] {
+    margin-top: .5rem;
+    transform: scale(.7);
+    transform-origin: center center;
+}
+
+section label {
+    display: inline-block;
+    font-size: .7rem;
+    transform: translateY(-20%);
+    margin-left: -5px;
+    color: white;
+}
+
+section input[type="submit"] {
+    display: block;
+    width: 100%;
+    border: 1px solid black;
+    margin-top: 1.5rem;
+    padding: .3rem;
+    border-radius: 10px;
+    font-size: .8rem;
+    background-color: #FB646B;
+    color: white;
+    outline: none;
+    transition: all .5s;
+}
+
+section input[type="submit"]:hover {
+    background-color: deepskyblue;
+    border: 1px solid deepskyblue;
+}
+
+section input:nth-of-type(-n+3):focus {
+    box-shadow: 0 0 0 2px rgba(0,0,255,.3);
+    position: relative;
+} 
+
+footer {
+    font-size: .6rem;
+    color: white;
+}
