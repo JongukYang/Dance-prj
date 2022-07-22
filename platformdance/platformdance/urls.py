@@ -28,8 +28,9 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     
     # 
-    path('postcreate/', views.postcreate, name='postcreate')
+    path('postcreate/', views.postcreate, name='postcreate'),
     # danceapp 파일 업로드
 
+    path('delete_post/<int:post_id>', views.delete_post, name='delete_post'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

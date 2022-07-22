@@ -52,6 +52,14 @@
                     <video width="30%" src="{{ post.video.url }}" controls></video>
                     {% endif %}
                 </td>
+                <td>
+                    <p>
+                        <form action="{% url 'delete_post' post.id%}" method="POST">
+                            {% csrf_token %}
+                            <input type="submit" name="delete_post" value="삭제">
+                        </form>
+                    </p>
+                </td>
             </tr>
             {% endfor %}
         </table>

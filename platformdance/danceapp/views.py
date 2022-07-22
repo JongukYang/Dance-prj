@@ -34,3 +34,8 @@ def postcreate(request):
         'form':form
     }
     return render(request, 'postcreate.html', context)
+
+def delete_post(request, post_id):
+    del_post = get_object_or_404(Post, pk=post_id)
+    del_post.delete()
+    return redirect('index')
