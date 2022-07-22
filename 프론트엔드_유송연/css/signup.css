@@ -1,3 +1,4 @@
+/* Basic Style*/
 * {
     padding: 0;
     margin: 0;
@@ -5,6 +6,7 @@
     box-sizing: border-box;
 }
 
+/* Background Setting */
 body {
     background-image: url('../img/signup.jpg');
     background-size: cover;
@@ -12,12 +14,13 @@ body {
     width: 100%;
 }
 
+ /* Left Container Style: includes logo & Dance level input UI */
 .left_container{
     width:25%;
     float: left;
-    /* background-color: aqua; */
  }
 
+/* style: logo */
  header {
     margin-top: 88px;
     margin-left:60px;
@@ -26,8 +29,8 @@ body {
     color: white;
 }
 
+/* style: Dance level input */
 .level {
-    display: inline-block;
     margin-top: 45px;
     margin-left:80px;
     font-size: 1.2rem;
@@ -42,28 +45,29 @@ label {
 input[type="radio"]{
     margin-left:40px;
 }
+/* /// End of Left Container Style .. /// */
 
 
+/* Right Container Style: includes section (SignUp form) UI */
 .right_container{
     width:75%;
     float: right;
-    /* background-color: red; */
     padding-top:140px;
 }
 
-section {
+/* style : SignUp form */
+.right_container section {
     width: 500px;
     margin-left:120px;
-    /* margin: 10px auto 40px; */
 }
 
-section p {
+.right_container section p {
     font-size: 1.2rem;
     margin-bottom: 1.2rem;
     color:white;
 }
 
-section input[placeholder] {
+.right_container section input[placeholder] {
     font-size: .8rem;
     padding: 8px;
     width: 100%;
@@ -72,11 +76,11 @@ section input[placeholder] {
     transition: box-shadow.5s;
 }
 
-section input[placeholder]::placeholder {
+.right_container section input[placeholder]::placeholder {
     font-size: .8rem;
 }
 
-section input {
+.right_container section input {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -86,18 +90,13 @@ section input {
     color: black;
 }
 
-/* section input:nth-of-type(2) {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-} */
-
-section input[type="checkbox"] {
+.right_container section input[type="checkbox"] {
     margin-top: .5rem;
     transform: scale(.7);
     transform-origin: center center;
 }
 
-section label {
+.right_container section label {
     display: inline-block;
     font-size: .7rem;
     transform: translateY(-20%);
@@ -105,7 +104,7 @@ section label {
     color: white;
 }
 
-section input[type="submit"] {
+.right_container section input[type="submit"] {
     display: block;
     width: 100%;
     border: 1px solid black;
@@ -119,15 +118,16 @@ section input[type="submit"] {
     transition: all .5s;
 }
 
-section input[type="submit"]:hover {
+.right_container section input[type="submit"]:hover {
     background-color: deepskyblue;
     border: 1px solid deepskyblue;
 }
 
-section input:nth-of-type(-n+3):focus {
+.right_container ection input:nth-of-type(-n+3):focus {
     box-shadow: 0 0 0 2px rgba(0,0,255,.3);
     position: relative;
 } 
+/* /// End of Right Container Style.. /// */
 
 footer {
     font-size: .6rem;
