@@ -1,2 +1,3 @@
 samba/secret_data.py
 /myvenv
+touch my_settings.py
