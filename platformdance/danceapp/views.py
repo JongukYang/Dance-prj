@@ -35,7 +35,17 @@ def postcreate(request):
     }
     return render(request, 'postcreate.html', context)
 
+# 게시글 삭제
 def delete_post(request, post_id):
     del_post = get_object_or_404(Post, pk=post_id)
     del_post.delete()
     return redirect('index')
+
+# 댓글 저장
+def new_comment(request, post_id):
+    filled_form = CommentForm(request.POST)
+    if filled_form.is_valid():
+        finished_form = filled_form.save(commit=False)
+        finished_form.post = get_object_or_404(Post, pk=post_id)
+        finished_form.save()
+    return redirect('index', post_id)

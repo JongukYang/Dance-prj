@@ -31,6 +31,10 @@ urlpatterns = [
     path('postcreate/', views.postcreate, name='postcreate'),
     # danceapp 파일 업로드
 
+    # 게시글 삭제
     path('delete_post/<int:post_id>', views.delete_post, name='delete_post'),
+
+    # 댓글
+    path('new_comment/<int:post_id>', views.new_comment, name='new_comment'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

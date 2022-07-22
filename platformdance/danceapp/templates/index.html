@@ -60,6 +60,16 @@
                         </form>
                     </p>
                 </td>
+                <td>
+                    <form method="POST" action="{% url 'new_comment' post.id %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ comment_form }}
+                        </div>
+                        <input type="text" placeholder="comment input">
+                        <input type="submit" class="btn btn-primary btn-icon-split btn-sm" value="댓글 입력">
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </table>
