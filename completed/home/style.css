@@ -27,6 +27,7 @@
 
 .top{
     display:inline-block;
+    
 }
 
 .header__logo {
@@ -39,6 +40,7 @@
     letter-spacing: 2px;
     color: white;
     background-color: transparent;
+    
 }
 
 .top div, p {
@@ -105,10 +107,10 @@
 .header__main2 ul{ /*실시간 top 10 클래스*/
     margin-top: 100px;
     background-color: transparent;
+    float: left;
 }
 
 .header__main2 ul li{
-    
     background-color: transparent;
 }
 .header__main2 ul li a{
@@ -117,7 +119,7 @@
     height: 90px;
     left: 400px;
     top: 1123px;
-
+    
     font-weight: 700;
     font-size: 70px;
     line-height: 90px;
