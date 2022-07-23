@@ -69,7 +69,7 @@ input[type="radio"]{
 
 .right_container section input[placeholder] {
     font-size: .8rem;
-    padding: 8px;
+    padding-left: 30px;
     width: 100%;
     border: .5px solid #ddd;
     outline: none;
@@ -81,10 +81,10 @@ input[type="radio"]{
 }
 
 .right_container section input {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
     height:50px;
     margin-bottom: 30px;
     color: black;
@@ -111,7 +111,7 @@ input[type="radio"]{
     margin-top: 1.5rem;
     margin-bottom: 0.8rem;
     padding: .3rem;
-    border-radius: 10px;
+    border-radius: 25px;
     font-size: .8rem;
     background-color: #FB646B;
     color: white;
@@ -120,8 +120,8 @@ input[type="radio"]{
 }
 
 .right_container section input[type="submit"]:hover {
-    background-color: deepskyblue;
-    border: 1px solid deepskyblue;
+    background-color: pink;
+    border: 1px solid pink;
 }
 
 .right_container section input:nth-of-type(-n+3):focus {
