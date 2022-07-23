@@ -1,0 +1,193 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    text-decoration: none;
+}
+.mainbox {
+    background-color: #11ffee00;
+    background-image: url('wallpaper.png');
+    width: 1184px;
+    height: 1876px;
+    padding: 30px;
+    margin: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid white;
+    box-shadow: 0 1px 50px 0 rgb(255, 255, 255);
+    
+}
+.header{
+    height: 160px;
+    text-align: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid #999;
+    background-color: transparent;
+}
+
+.header__logo h1{
+    front: bold 40px 'arial';
+    padding-top: 14px;
+    letter-spacing: 2px;
+    color: white;
+    background-color: transparent;
+}
+
+.header__logo p{
+    font: bold 12px 'arial';
+    letter-spacing: 2px;
+    color: white;
+    
+}
+.header__search{
+    float: right;
+}
+.header__login {
+    
+    font: bold 12px 'arial';
+    letter-spacing: 2px;
+    color: white;
+    float: right;
+}
+.header__login button{
+
+    font: bold 12px 'arial';
+    letter-spacing: 2px;
+    color: white;
+    float: right;
+}
+.header__login input{
+  
+    font: bold 12px 'arial';
+    letter-spacing: 2px;
+    color: white;
+    float: right;
+}
+.header__login p{
+    margin: 10px;
+    font: bold 12px 'arial';
+    letter-spacing: 2px;
+    color: white;
+    float: right;
+}
+
+
+.header__gnb ul{
+    margin-top: 60px;
+}
+
+.header__gnb ul li{
+    display: inline-block;
+}
+.header__gnb ul li a{
+    display: block;
+    font: bold 14px 'arial';
+    color: #999;
+    margin: 0px 16px;
+    letter-spacial: 1px;
+}
+
+.header__main1 ul{
+    margin-top: 100px;
+}
+
+.header__main1 ul li{
+    
+    float: left;
+}
+.header__main1 ul li a{
+    display: block;
+    font: bold 50px 'arial';
+    color: white;
+    margin: 0px 16px;
+    font-size: 70px;
+    background-color: transparent;
+}
+
+.header__main2 ul{
+    margin-top: 100px;
+    background-color: transparent;
+}
+
+.header__main2 ul li{
+    
+    background-color: transparent;
+}
+.header__main2 ul li a{
+    display: block;
+    width: 750px;
+    height: 90px;
+    left: 400px;
+    top: 1123px;
+
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 90px;
+    background-color: transparent;
+    color: white;
+}
+
+.box1{
+    margin: 30px;
+    padding: 10px;
+    display: inline-block ;
+    background-color: #11ffee00;
+    border: 1px solid white;
+    background-color: black;
+    width: 1100px;
+    height: 381px;
+    box-shadow: 0 1px 20px 0 rgb(255, 255, 255);
+}
+
+.box2{
+    margin: 30px;
+    padding: 10px;
+    display: inline-block ;
+    border: 1px solid white;
+    background-color: rgb(0, 0, 0);
+    width: 200px ; 
+    height: 200px;
+    box-shadow: 0 1px 20px 0 rgb(255, 255, 255);
+}
+.box3{
+    margin: 30px;
+    padding: 10px;
+    display: inline-block ;
+    border: 1px solid white;
+    background-color: rgb(0, 0, 0);
+    width: 200px ; 
+    height: 200px;
+    box-shadow: 0 1px 20px 0 rgb(255, 255, 255);
+}
+.box4{
+    margin: 30px;
+    padding: 10px;
+    display: inline-block ;
+    border: 1px solid white;
+    background-color: rgb(0, 0, 0);
+    width: 200px ; 
+    height: 200px;
+    box-shadow: 0 1px 20px 0 rgb(255, 255, 255);
+}
+.box5{
+    margin: 30px;
+    padding: 10px;
+    display: inline-block ;
+    border: 1px solid white;
+    background-color: rgb(0, 0, 0);
+    width: 200px ; 
+    height: 200px;
+    box-shadow: 0 1px 20px 0 rgb(255, 255, 255);
+}
+.box6, .box7, .box8, .box9{
+    margin: 30px;
+    margin-bottom: 10;
+    padding: 10px;
+    display: inline-block ;
+    color: white;
+    background-color: transparent;
+    width: 200px ; 
+    height: 200px;
+    /*border: 1px solid white;
+    box-shadow: 0 1px 20px 0 rgb(255, 255, 255);*/
+}
