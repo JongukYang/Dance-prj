@@ -40,6 +40,10 @@
     background-color: transparent;
 }
 
+.top div, p {
+    display: inline-block;
+}
+
 .header__login { /*로그인*/
     font: bold 10px 'arial';
     letter-spacing: 2px;
