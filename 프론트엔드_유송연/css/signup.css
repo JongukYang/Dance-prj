@@ -133,7 +133,7 @@ input[type="radio"]{
 footer {
     font-size: .6rem;
     color: white;
-    text-align: center;
+    margin-left:250px;
     width:100%;
     float: left;
 }
