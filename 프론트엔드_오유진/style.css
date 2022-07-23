@@ -17,17 +17,17 @@
     box-shadow: 0 1px 50px 0 rgb(255, 255, 255);
     
 }
-.header{
-    height: 160px;
+.header{ /*헤더 */
+    height: 210px;
     text-align: center;
     box-sizing: border-box;
     border-bottom: 1px solid #999;
     background-color: transparent;
 }
 
-.header__logo h1{
-    front: bold 40px 'arial';
-    padding-top: 14px;
+.header__logo h1{ /*CHOO:OOM*/
+    font: bold 50px 'arial';
+    padding-top: 20px;
     letter-spacing: 2px;
     color: white;
     background-color: transparent;
@@ -42,38 +42,36 @@
 .header__search{
     float: right;
 }
-.header__login {
-    
-    font: bold 12px 'arial';
+.header__login { /*로그인*/
+    font: bold 10px 'arial';
     letter-spacing: 2px;
     color: white;
     float: right;
 }
-.header__login button{
-
-    font: bold 12px 'arial';
+.header__login button{ /*검색 버튼*/
+    font: bold 15px 'arial';
     letter-spacing: 2px;
-    color: white;
+    color: black;
     float: right;
+    border-radius: 25px; 
+    margin-right: 5px;
 }
-.header__login input{
-  
-    font: bold 12px 'arial';
+.header__login input{ /*검색창*/
+    font: bold 17px 'arial';
     letter-spacing: 2px;
     color: white;
     float: right;
+    border-radius: 25px;
 }
 .header__login p{
     margin: 10px;
-    font: bold 12px 'arial';
+    font: bold 18px 'arial';
     letter-spacing: 2px;
     color: white;
     float: right;
 }
-
-
 .header__gnb ul{
-    margin-top: 60px;
+    margin-top: 90px;
 }
 
 .header__gnb ul li{
@@ -81,13 +79,13 @@
 }
 .header__gnb ul li a{
     display: block;
-    font: bold 14px 'arial';
+    font: bold 20px 'arial';
     color: #999;
-    margin: 0px 16px;
-    letter-spacial: 1px;
+    margin: 0px 70px;
+    letter-spacing: 1px;
 }
 
-.header__main1 ul{
+.header__main1 ul{ /*인기 동영상 top 10*/
     margin-top: 100px;
 }
 
@@ -104,7 +102,7 @@
     background-color: transparent;
 }
 
-.header__main2 ul{
+.header__main2 ul{ /*실시간 top 10 클래스*/
     margin-top: 100px;
     background-color: transparent;
 }
