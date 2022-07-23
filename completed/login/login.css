@@ -27,6 +27,10 @@ header {
     color: white;
 }
 
+header a {
+    text-decoration: none;
+}
+
 section {
     width: 100%;
     margin: 10px auto 40px;
@@ -36,6 +40,10 @@ section {
     font-size: 1.2rem;
     margin-bottom: 1rem;
     color:white;
+}
+
+section a {
+    text-decoration: none;
 }
 
 section input[placeholder] {
