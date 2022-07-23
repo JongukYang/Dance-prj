@@ -29,6 +29,10 @@ body {
     color: white;
 }
 
+header a {
+    text-decoration: none;
+}
+
 /* style: Dance level input */
 .level {
     margin-top: 45px;
