@@ -19,10 +19,17 @@
 }
 .header{ /*헤더 */
     height: 210px;
-    text-align: center;
     box-sizing: border-box;
     border-bottom: 1px solid #999;
     background-color: transparent;
+}
+
+.top{
+    display:inline-block;
+}
+
+.header__logo {
+    margin-right: 100px;
 }
 
 .header__logo h1{ /*CHOO:OOM*/
@@ -33,26 +40,15 @@
     background-color: transparent;
 }
 
-.header__logo p{
-    font: bold 12px 'arial';
-    letter-spacing: 2px;
-    color: white;
-    
-}
-.header__search{
-    float: right;
-}
 .header__login { /*로그인*/
     font: bold 10px 'arial';
     letter-spacing: 2px;
     color: white;
-    float: right;
 }
 .header__login button{ /*검색 버튼*/
     font: bold 15px 'arial';
     letter-spacing: 2px;
     color: black;
-    float: right;
     border-radius: 25px; 
     margin-right: 5px;
 }
@@ -60,7 +56,6 @@
     font: bold 17px 'arial';
     letter-spacing: 2px;
     color: white;
-    float: right;
     border-radius: 25px;
 }
 .header__login p{
@@ -68,7 +63,6 @@
     font: bold 18px 'arial';
     letter-spacing: 2px;
     color: white;
-    float: right;
 }
 .header__gnb ul{
     margin-top: 90px;
