@@ -23,6 +23,7 @@
     box-sizing: border-box;
     border-bottom: 1px solid #999;
     background-color: transparent;
+   
 }
 
 .top{
@@ -32,6 +33,7 @@
 
 .header__logo {
     margin-right: 100px;
+    
 }
 
 .header__logo h1{ /*CHOO:OOM*/
@@ -45,6 +47,7 @@
 
 .top div, p {
     display: inline-block;
+    color: white;
 }
 
 .header__login { /*로그인*/
@@ -58,6 +61,8 @@
     color: black;
     border-radius: 25px; 
     margin-right: 5px;
+    padding-inline: 5px;
+    text-align: center;
 }
 .header__login input{ /*검색창*/
     font: bold 17px 'arial';
