@@ -58,7 +58,6 @@ def new_comment(request, post_id):
         finished_form = filled_form.save(commit=False)
         finished_form.userId = request.user
         finished_form.post = get_object_or_404(Post, pk=post_id)
-        
         print("comment:", request.body)
         print("post_id :", post_id)
         finished_form.save()
@@ -74,7 +73,7 @@ def showpostall(request):
     return render(request, 'show_post_all.html', context)
 
 def post_detail(request, userId_id):
-    posts = Post.objects.filter(userId=userId_id).order_by('-updateDate')
+    posts = Post.objects.filter(userId=userId_id).order_by('-uploadDate')
     user = get_object_or_404(User, pk=userId_id)
     # username = Post.objects.
     comment_form = CommentForm()
@@ -84,3 +83,22 @@ def post_detail(request, userId_id):
         'user':user,
     }
     return render(request, 'post_detail.html', context)
+
+def likes(request, post_id):
+    if request.user.is_authenticated:    
+        post = get_object_or_404(Post, pk=post_id)
+        # user = request.user
+        # check_like_post = 
+        if request.user in post.likes_user.all():
+        # if post.likes_user.filter(pk=request.user.pk).exists():
+            post.likes_user.remove(request.user)
+            post.likes_count -= 1
+            post.save()    
+            # return redirect('index')
+        else:
+            post.likes_user.add(request.user)
+            post.likes_count += 1
+            post.save()
+        # return redirect('index')
+    # 현재 내가 있는 페이지로 redirect
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))     

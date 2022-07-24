@@ -1,6 +1,7 @@
 from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 # Create your models here.
 class Genre(models.Model):
@@ -21,7 +22,9 @@ class Post(models.Model):
     photo = models.ImageField(blank=True, null=True, upload_to='thumbnail') # 썸네일 # upload_to : static/blog_photo 로 저장해줘
     video = models.FileField(blank=True, null=True, upload_to='video') # 배포시에는 models.FilePathField()사용
     genreName = models.ForeignKey(Genre, null=True, on_delete=models.CASCADE) # 장르
-    
+    likes_user = models.ManyToManyField(User, related_name='likes', blank=True)
+    likes_count = models.PositiveIntegerField(default=0)
+
     def __str__(self):
         return self.title
 
@@ -42,4 +45,5 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
+
 

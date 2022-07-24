@@ -36,6 +36,7 @@
                 <th>updateDate</th>
                 <th>img</th>
                 <th>video</th>
+                <th>likes</th>
             </tr>
             {% for post in posts %}
             <tr>
@@ -78,6 +79,17 @@
                     {% endfor %}
                 </td>
                 <td>
+                    <form action="{% url 'likes' post.id %}" method="POST">
+                        {% csrf_token %}
+                        <p>
+                            좋아요 수 : {{ post.likes_count }}
+                        </p>
+                        {% if request.user in post.likes_user.all %}
+                        <input type="submit" value="dislike">
+                        {% else %}
+                        <input type="submit" value="like">
+                        {% endif %}
+                    </form>
                 </td>
             </tr>
             {% endfor %}

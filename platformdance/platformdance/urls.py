@@ -36,5 +36,7 @@ urlpatterns = [
     path('delete_post/<int:post_id>', views.delete_post, name='delete_post'),
     # 댓글
     path('new_comment/<int:post_id>', views.new_comment, name='new_comment'),
+    # 좋아요
+    path('likes/<int:post_id>', views.likes, name='likes'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
