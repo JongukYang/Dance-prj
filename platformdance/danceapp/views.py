@@ -62,3 +62,22 @@ def new_comment(request, post_id):
         print("post_id :", post_id)
         finished_form.save()
     return redirect('index')
+
+def showpostall(request):
+    posts = Post.objects.filter().order_by('-updateDate')
+    comment_form = CommentForm()
+    context = {
+        'posts':posts,
+        'comment_form':comment_form
+    }
+    return render(request, 'show_post_all.html', context)
+
+def post_detail(request, userId_id):
+    posts = Post.objects.filter(userId=userId_id).order_by('-updateDate')
+    # username = Post.objects.
+    comment_form = CommentForm()
+    context = {
+        'posts':posts,
+        'comment_form':comment_form
+    }
+    return render(request, 'post_detail.html', context)

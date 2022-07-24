@@ -26,14 +26,14 @@ urlpatterns = [
     path('', views.index, name='index'),
     # 계정 관련 url은 accounts/urls.py 에서 처리
     path('accounts/', include('accounts.urls')),
-    
-    # 
-    path('postcreate/', views.postcreate, name='postcreate'),
     # danceapp 파일 업로드
-
+    path('postcreate/', views.postcreate, name='postcreate'),
+    # 포스트 전체 보기
+    path('showpostall/', views.showpostall, name='showpostall'),
+    # user 에 따른 개인 포스트 보기
+    path('post_detail/<int:userId_id>', views.post_detail, name='post_detail'),
     # 게시글 삭제
     path('delete_post/<int:post_id>', views.delete_post, name='delete_post'),
-
     # 댓글
     path('new_comment/<int:post_id>', views.new_comment, name='new_comment'),
 

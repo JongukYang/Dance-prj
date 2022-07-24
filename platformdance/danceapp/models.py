@@ -12,7 +12,7 @@ class Post(models.Model):
     body = models.TextField() # 게시물 설명
     # date = models.DateTimeField(auto_now_add=True) # 업로드 시간
     uploadDate = models.DateTimeField(auto_now_add=True) # 업로드 시간
-    updateDate = models.DateTimeField(auto_now_add=True) # 수정 시간
+    updateDate = models.DateTimeField(auto_now=True) # 수정 시간
     photo = models.ImageField(blank=True, null=True, upload_to='thumbnail') # 썸네일 # upload_to : static/blog_photo 로 저장해줘
     video = models.FileField(blank=True, null=True, upload_to='video') # 배포시에는 models.FilePathField()사용
 
