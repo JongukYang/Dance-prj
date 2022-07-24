@@ -3,6 +3,7 @@
 
 <div class="form-group">
     <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+    {{field}}
     <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" 
     id="{{ field.id_for_label }}" placeholder="{{ field.label }}">
 </div>

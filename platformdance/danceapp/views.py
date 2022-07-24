@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PostForm, CommentForm
 from .models import Post, Comment
+from django.contrib.auth.models import User
 
 # 페이지네이션, 객체들 목록을 끊어서 보여주는 것
 # from django.core.paginator import Paginator
@@ -74,10 +75,12 @@ def showpostall(request):
 
 def post_detail(request, userId_id):
     posts = Post.objects.filter(userId=userId_id).order_by('-updateDate')
+    user = get_object_or_404(User, pk=userId_id)
     # username = Post.objects.
     comment_form = CommentForm()
     context = {
         'posts':posts,
-        'comment_form':comment_form
+        'comment_form':comment_form,
+        'user':user,
     }
     return render(request, 'post_detail.html', context)

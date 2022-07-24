@@ -1,6 +1,7 @@
 <h1>Post_detail Page</h1>
 <h1>User 에 따른 Post 따로 보기</h1>
-user이름 찾아뽑아야함 : {{ posts.query }}
+<!-- user이름 찾아뽑아야함 : {{ posts.query }} -->
+{{ user.username }}
 <hr>
 
 <table border="1">
@@ -24,7 +25,7 @@ user이름 찾아뽑아야함 : {{ posts.query }}
                 <label for=""></label>
                 {{ comment.userId }} - {{ comment }}
                 {% if request.user == comment.userId %}
-                <input type="submit" , value="삭제">
+                <input type="submit" value="삭제">
                 {% endif %}
                 <br>
                 {% endfor %}

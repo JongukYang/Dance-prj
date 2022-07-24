@@ -72,7 +72,7 @@
                     {% for comment in post.comment_set.all %}
                         {{ comment.userId }} - {{ comment }}
                             {% if request.user == comment.userId %}
-                                <input type="submit" , value="삭제">
+                                <input type="submit" value="삭제">
                         {% endif %}
                         <br>
                     {% endfor %}
