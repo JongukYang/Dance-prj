@@ -59,3 +59,8 @@ def signup(request):
             auth.login(request, new_user)
             return redirect('index')      
     return render(request, 'signup.html')
+
+# 장고 폼 사용하지 않기 위한 user 회원가입 주석
+# radio 타입을 가져오기 위해 name 으로 설정된 user_level 을 사용할거임
+# user = get_object_or_404(User, pk=user_id)
+# selected_user_level = user.user_level_set.get(pk=request.POST['user_level'])

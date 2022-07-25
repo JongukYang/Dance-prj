@@ -5,7 +5,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         # fields = '__all__'
-        fields = ['title', 'body', 'photo', 'video', 'genreName']
+        fields = ['title', 'body', 'photo', 'video', 'genreName', 'test_birth']
 
     def __init__(self, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
@@ -22,6 +22,7 @@ class PostForm(forms.ModelForm):
             'rows':20,
             'cols':100
         }
+        
 
 
 class CommentForm(forms.ModelForm):
