@@ -37,6 +37,7 @@
 }
 
 .header__logo h1{ /*CHOO:OOM*/
+    display: inline-block;
     font: bold 50px 'arial';
     padding-top: 20px;
     letter-spacing: 2px;
@@ -51,16 +52,18 @@
 }
 
 .header__login { /*로그인*/
+    display: inline-block;
     font: bold 10px 'arial';
     letter-spacing: 2px;
     color: white;
 }
 .header__login button{ /*검색 버튼*/
+    display: inline-block;
     font: bold 15px 'arial';
     letter-spacing: 2px;
     color: black;
     border-radius: 25px; 
-    margin-right: 5px;
+    margin: 5px 5px;
     padding-inline: 5px;
     text-align: center;
 }
@@ -92,15 +95,15 @@
     letter-spacing: 1px;
 }
 
-.header__main1 ul{ /*인기 동영상 top 10*/
+.main1 ul{ /*인기 동영상 top 10*/
     margin-top: 100px;
 }
 
-.header__main1 ul li{
+.main1 ul li{
     
     float: left;
 }
-.header__main1 ul li a{
+.main1 ul li a{
     display: block;
     font: bold 50px 'arial';
     color: white;
@@ -109,16 +112,16 @@
     background-color: transparent;
 }
 
-.header__main2 ul{ /*실시간 top 10 클래스*/
-    margin-top: 70px;
+.main2 ul{ /*실시간 top 10 클래스*/
+    margin-top: 150px;
     background-color: transparent;
     float: left;
 }
 
-.header__main2 ul li{
+.main2 ul li{
     background-color: transparent;
 }
-.header__main2 ul li a{
+.main2 ul li a{
     display: block;
     width: 750px;
     height: 90px;
@@ -144,6 +147,21 @@
     box-shadow: 0 1px 20px 0 rgb(255, 255, 255);
     /*임시로 사진 넣어둔 것*/
     background-image: url('dance.png');
+}
+.next__button{
+    
+    float: right;
+}
+.next__button button{
+    text-align: center;
+    font: bold 50px 'arial';
+    font-size: 30px;
+    margin: 10px;
+    height: 50px;
+    width: 30px;
+    border-radius: 30px; 
+    padding-inline: 20px;
+    
 }
 
 .box2{
@@ -204,4 +222,21 @@
     text-align: center;
     /*border: 1px solid white;
     box-shadow: 0 1px 20px 0 rgb(255, 255, 255);*/
+}
+
+
+.next__button2{
+    
+    float: right;
+}
+.next__button2 button{
+    text-align: center;
+    font: bold 50px 'arial';
+    font-size: 30px;
+    margin: 10px;
+    height: 50px;
+    width: 30px;
+    border-radius: 30px; 
+    padding-inline: 20px;
+    
 }
