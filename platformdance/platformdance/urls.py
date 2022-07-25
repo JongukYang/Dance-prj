@@ -38,5 +38,7 @@ urlpatterns = [
     path('new_comment/<int:post_id>', views.new_comment, name='new_comment'),
     # 좋아요
     path('likes/<int:post_id>', views.likes, name='likes'),
+    # 클래스
+    path('class/', include('class.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

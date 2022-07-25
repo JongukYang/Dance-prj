@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'danceapp',
     'accounts',
+    'class',
 ]
 
 MIDDLEWARE = [
