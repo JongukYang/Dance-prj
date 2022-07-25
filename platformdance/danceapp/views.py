@@ -42,7 +42,7 @@ def postcreate(request):
 def delete_post(request, post_id):
     del_post = get_object_or_404(Post, pk=post_id)
     del_post.delete()
-    return redirect('index')
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 # def delete_post(request, post_id, user_id):
 #     if request.user.is_authenticated:
@@ -61,7 +61,7 @@ def new_comment(request, post_id):
         print("comment:", request.body)
         print("post_id :", post_id)
         finished_form.save()
-    return redirect('index')
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 def showpostall(request):
     posts = Post.objects.filter().order_by('-updateDate')
@@ -100,5 +100,5 @@ def likes(request, post_id):
             post.likes_count += 1
             post.save()
         # return redirect('index')
-    # 현재 내가 있는 페이지로 redirect
+    # 현재 내가 있는 페이지로 redirect 
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))     

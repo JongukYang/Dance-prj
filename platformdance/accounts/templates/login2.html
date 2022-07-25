@@ -1,6 +1,8 @@
-<h1>SignUp Page</h1>
-<form action="" method="POST" enctype="multipart/form-data">
+<h1>Login Page</h1>
+
+<form action="{% url 'login' %}" method="POST">
     {% csrf_token %}
+    {% include './login_error.html' %}
     {% for field in form %}
     <div class="form-group">
         <label for="{{ field.id_for_label }}">{{ field.label }}</label>

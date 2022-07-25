@@ -1,29 +1,30 @@
 from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import User
-from django.conf import settings
 
 # Create your models here.
+# 장르 모델
 class Genre(models.Model):
     id = models.AutoField(primary_key=True, null=False) # pk 
     name = models.CharField(max_length=20) # 장르 이름
 
     def __str__(self):
         return self.name
-        
+
+# user가 작성한 게시글 모델        
 class Post(models.Model):
     # 게시글ID, 회원ID, 장르ID, 제목, 내용, 작성시간, 수정시간, 썸네일, 비디오
     # 게시글ID는 primarykey로서 이미 있음
     userId = models.ForeignKey(User, on_delete=models.CASCADE) # 회원ID # User 모델의 pk를 가져옴
     title = models.CharField(max_length=200) # 제목
     body = models.TextField() # 게시물 설명
-    uploadDate = models.DateTimeField(auto_now_add=True) # 업로드 시간
+    uploadDate = models.DateTimeField(auto_now_add=True) # 처음 업로드 시간
     updateDate = models.DateTimeField(auto_now=True) # 수정 시간
     photo = models.ImageField(blank=True, null=True, upload_to='thumbnail') # 썸네일 # upload_to : static/blog_photo 로 저장해줘
     video = models.FileField(blank=True, null=True, upload_to='video') # 배포시에는 models.FilePathField()사용
     genreName = models.ForeignKey(Genre, null=True, on_delete=models.CASCADE) # 장르
-    likes_user = models.ManyToManyField(User, related_name='likes', blank=True)
-    likes_count = models.PositiveIntegerField(default=0)
+    likes_user = models.ManyToManyField(User, related_name='likes', blank=True) # 좋아요 누른 사람
+    likes_count = models.PositiveIntegerField(default=0) # 좋아요 개수
 
     def __str__(self):
         return self.title
