@@ -1,6 +1,8 @@
+from xml.dom import UserDataHandler
 from django.shortcuts import redirect, render
 from django.contrib import auth
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 # def login(request):
@@ -22,6 +24,7 @@ def login(request):
         _id = request.POST["username"]
         _pass = request.POST["password"]
         user = auth.authenticate(request, username=_id, password=_pass)
+        print(_id, _pass, user)
 
         if user is not None:
             auth.login(request, user)
@@ -51,15 +54,8 @@ def logout(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            auth.login(request, user)
-            return redirect('index')
-    else:
-        form = UserCreationForm()
-    
-    context = {
-        'form':form,
-    }
-    return render(request, 'signup.html', context)
+        if request.POST['password'] == request.POST['repeat']:
+            new_user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'] )
+            auth.login(request, new_user)
+            return redirect('index')      
+    return render(request, 'signup.html')

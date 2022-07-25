@@ -1,3 +1,4 @@
+<!-- 다른 오류 메세지 출력 방법 : 인터넷 검색 -->
 {% if form.errors %}
     {% for field in form %}
         {% for error in field.errors %}
@@ -16,7 +17,7 @@
     {% endfor %}
 {% endif %}
 
-<!-- 다른 오류 메세지 출력 방법 : 장고 공식 -->
+<!-- 다른 오류 메세지 출력 방법 : 장고 공식 문서 -->
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}

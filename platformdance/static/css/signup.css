@@ -1,0 +1,143 @@
+/* Basic Style*/
+* {
+    padding: 0;
+    margin: 0;
+    color: white;
+    box-sizing: border-box;
+}
+
+/* Background Setting */
+body {
+    background-image: url('../img/login_image.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+}
+
+ /* Left Container Style: includes logo & Dance level input UI */
+.left_container{
+    width:25%;
+    float: left;
+ }
+
+/* style: logo */
+ header {
+    margin-top: 88px;
+    margin-left:60px;
+    font-size: 45px;
+    font-weight: bold;
+    color: white;
+}
+
+header a {
+    text-decoration: none;
+}
+
+/* style: Dance level input */
+.level {
+    margin-top: 45px;
+    margin-left:80px;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+label { 
+    display: block; 
+    margin-top: 48px;
+}
+
+input[type="radio"]{
+    margin-left:40px;
+}
+/* /// End of Left Container Style .. /// */
+
+
+/* Right Container Style: includes section (SignUp form) UI */
+.right_container{
+    width:75%;
+    float: right;
+    padding-top:140px;
+}
+
+/* style : SignUp form */
+.right_container section {
+    width: 500px;
+    margin-left:120px;
+}
+
+.right_container section p {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+    color:white;
+}
+
+.right_container section input[placeholder] {
+    font-size: .8rem;
+    padding-left: 30px;
+    width: 100%;
+    border: .5px solid #ddd;
+    outline: none;
+    transition: box-shadow.5s;
+}
+
+.right_container section input[placeholder]::placeholder {
+    font-size: .8rem;
+}
+
+.right_container section input {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    height:50px;
+    margin-bottom: 30px;
+    color: black;
+}
+
+.right_container section input[type="checkbox"] {
+    margin-top: .5rem;
+    transform: scale(.7);
+    transform-origin: center center;
+}
+
+.right_container section label {
+    display: inline-block;
+    font-size: .7rem;
+    transform: translateY(-20%);
+    margin-left: -5px;
+    color: white;
+}
+
+.right_container section input[type="submit"] {
+    display: block;
+    width: 100%;
+    border: 1px solid black;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    padding: .3rem;
+    border-radius: 25px;
+    font-size: .8rem;
+    background-color: #FB646B;
+    color: white;
+    outline: none;
+    transition: all .5s;
+}
+
+.right_container section input[type="submit"]:hover {
+    background-color: pink;
+    border: 1px solid pink;
+}
+
+.right_container section input:nth-of-type(-n+3):focus {
+    box-shadow: 0 0 0 2px rgba(0,0,255,.3);
+    position: relative;
+} 
+/* /// End of Right Container Style.. /// */
+
+footer {
+    font-size: .6rem;
+    color: white;
+    margin-left:250px;
+    width:100%;
+    float: left;
+}

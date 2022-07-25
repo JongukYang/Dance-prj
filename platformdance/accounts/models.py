@@ -7,3 +7,6 @@ class userProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # 생년월일, 춤 실력, 전화번호, 등
     # birth = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return self.user

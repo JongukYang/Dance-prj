@@ -1,101 +1,73 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/index_style.css' %}">
+        <title>CHOO:OOM</title>
+        <style>
+            body{background-color: black;}
+            div{background-attachment: white;}
+        </style>
+    </head>
+    <body>
+        <div class ="mainbox">
+        <header class="header">
+            <div class="top">
+                <div class="header__logo">
+                    <a href="#">
+                        <p style="font-size:40px; font-weight: bold; color:white;">CHOO:OOM</p>
+                    </a>
+                </div>
+    
+                <div class="header__login">
+                    <input type="text" name="query" value="">
+                    <button type="submit">검색</button>
+                </div>
+                <p><a href="{% url 'login' %}">로그인</a> &ensp; <a href="{% url 'signup' %}">회원가입</p></a>
+            </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+            <div class="header__gnb">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">CLASS</a></li>
+                    <li><a href="#">VIDEO</a></li>
+                    <li><a href="#">MENTO</a></li>
+                    <li><a href="#">ETC</a></li>
+                </ul>
+            </div>
 
-<body>
-    <h1>Index.html Page</h1>
-    {% if request.user.is_authenticated %}
-    {{request.user}}
-    <h4><a href="{% url 'logout' %}">Logout</a></h4>
-    {% else %}
-    <h4><a href="{% url 'login' %}">Login</a></h4>
-    {% endif %}
-    <h4><a href="{% url 'login' %}">Login</a></h4>
-    <h4><a href="{% url 'signup' %}">SignUp</a></h4>
+            <div class="header__main1">
+                <ul>
+                    <li><a href="#"> 인기 동영상 TOP 10 </a></li>
+                </ul>
+            </div>
 
-    <h1>파일 업로드</h1>
-    <h4><a href="{% url 'postcreate' %}">PostCreate</a></h4>
+            <div class = "box1"></div>
 
-    <h1>포스트만 전체 보기</h1>
-    <h4><a href="{% url 'showpostall' %}">전체 포스트 보기</a></h4>
+            <div class="header__main2">
+                <ul>
+                    <li><a href="#" style="float: left";> 실시간 TOP 10 클래스 </a></li>
+                    
+                </ul>
+            </div>
 
-    <div>
-        <table border="1">
-            <tr>
-                <th>userId</th>
-                <th>userId_id</th>
-                <th>title</th>
-                <th>body</th>
-                <th>uploadDate</th>
-                <th>updateDate</th>
-                <th>img</th>
-                <th>video</th>
-                <th>likes</th>
-            </tr>
-            {% for post in posts %}
-            <tr>
-                <td><a href="{% url 'post_detail' post.userId_id %}">{{ post.userId }}</a></td>
-                <td>{{ post.userId_id }}</td>
-                <td>{{ post.title }}</td>
-                <td>{{ post.body }}</td>
-                <td>{{ post.uploadDate }}</td>
-                <td>{{ post.updateDate }}</td>
-                <td>
-                    {% if post.photo %}
-                    {{ post.photo }} <br>
-                    <img style="width: 30%;" src="{{ post.photo.url }}" alt="">
-                    {% endif %}
-                </td>
-                <td>
-                    {% if post.video %}
-                    {{ post.video }} <br>
-                    <!-- <video width="30%" src="{{ post.video.url }}" controls></video> -->
-                    {% endif %}
-                </td>
-                <td>
-                    <form action="{% url 'delete_post' post.id %}" method="POST">
-                        {% csrf_token %}
-                        <input type="submit" name="delete_post" value="삭제">
-                    </form>
-                </td>
-                <td>
-                    <form method="POST" action="{% url 'new_comment' post.id %}">
-                        {% csrf_token %}
-                        {{ comment_form.as_p }}
-                        <input type="submit" value="댓글 입력">
-                    </form>
-                    {% for comment in post.comment_set.all %}
-                        {{ comment.userId }} - {{ comment }}
-                            {% if request.user == comment.userId %}
-                                <input type="submit" value="삭제">
-                        {% endif %}
-                        <br>
-                    {% endfor %}
-                </td>
-                <td>
-                    <form action="{% url 'likes' post.id %}" method="POST">
-                        {% csrf_token %}
-                        <p>
-                            좋아요 수 : {{ post.likes_count }}
-                        </p>
-                        {% if request.user in post.likes_user.all %}
-                        <input type="submit" value="dislike">
-                        {% else %}
-                        <input type="submit" value="like">
-                        {% endif %}
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
-    <h1>깃허브다날라갔따어써ㅜㅎ브</h1>
-</body>
+            <div style="clear:both";> &nbsp;</div>
+            <div class = "box2"></div> 
+            <div class = "box3"></div>
+            <div class = "box4"></div>
+            <div class = "box5"></div>
+           
+            
 
+            <div class = "box6">허니제이 & 홀리뱅<br><br>힙합 코레오 완곡 배워보기<br><br>챕터별로 힙합 코레오의 완곡을 배워볼 거예요.</div>
+            <div class = "box7">아이키 & 훅<br><br>힙합 코레오 완곡 배워보기<br><br>챕터별로 힙합 코레오의 완곡을 배워볼 거예요.</div>
+            <div class = "box8">모니카 & 프라우드먼<br><br>힙합 코레오 완곡 배워보기<br><br>챕터별로 힙합 코레오의 완곡을 배워볼 거예요.</div>
+            <div class = "box9">가비 & 라치카<br><br>힙합 코레오 완곡 배워보기<br><br>챕터별로 힙합 코레오의 완곡을 배워볼 거예요.</div>
+        </header>
+
+        
+
+        </div>
+    </body>
 </html>
