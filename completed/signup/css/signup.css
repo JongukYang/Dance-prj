@@ -22,7 +22,7 @@ body {
 
 /* style: logo */
  header {
-    margin-top: 88px;
+    margin-top: 50px;
     margin-left:60px;
     font-size: 45px;
     font-weight: bold;
@@ -56,19 +56,26 @@ input[type="radio"]{
 .right_container{
     width:75%;
     float: right;
-    padding-top:140px;
+    padding-top:75px;
+    /* background-color: red; */
 }
 
 /* style : SignUp form */
 .right_container section {
     width: 500px;
-    margin-left:120px;
+    margin-left:140px;
 }
 
 .right_container section p {
-    font-size: 1.2rem;
-    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+    margin-bottom: 30px;
     color:white;
+}
+
+.right_container section h4 {
+    margin-bottom: 7px;
+    margin-left:9px;
+    font-weight:350;
 }
 
 .right_container section input[placeholder] {
@@ -90,7 +97,30 @@ input[type="radio"]{
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     height:50px;
-    margin-bottom: 30px;
+    margin-bottom: 28px;
+    color: black;
+}
+
+.right_container section input:nth-of-type(5) {
+
+    width:180px;
+    color: black;
+    margin-right:15px;
+    margin-bottom:10px;
+}
+
+.right_container section input:nth-of-type(6){
+
+    width:140px;
+    color: black;
+    margin-right:15px;
+    margin-bottom:10px;
+}
+
+.right_container section input:nth-of-type(7){
+
+    width:140px;
+    margin-bottom:10px;
     color: black;
 }
 
