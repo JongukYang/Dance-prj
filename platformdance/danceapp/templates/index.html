@@ -59,6 +59,12 @@
                     {% endif %}
                 </td>
                 <td>
+                    <form action="{% url 'modify_post' post.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" name="modify_post" value="수정">
+                    </form>
+                </td>
+                <td>
                     <form action="{% url 'delete_post' post.id %}" method="POST">
                         {% csrf_token %}
                         <input type="submit" name="delete_post" value="삭제">

@@ -103,3 +103,25 @@ def likes(request, post_id):
         # return redirect('index')
     # 현재 내가 있는 페이지로 redirect 
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))     
+
+
+# 게시글 수정
+def modify_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    if request.method == "POST" or request.method == 'FILES':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            form = PostForm(instance=Post)    
+            post.title = request.POST['title']
+            post.body = request.POST['body']
+            post.save()
+            print("danceapp/views/modify_post :")
+            return redirect('index')
+    else:
+        form = PostForm()
+        context = {
+            'form':form,
+            'writing':True,
+            'now':'edit',
+        }
+        return render(request, 'modify_post.html', context)
