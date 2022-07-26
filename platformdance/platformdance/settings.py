@@ -75,6 +75,8 @@ WSGI_APPLICATION = 'platformdance.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+AUTH_USER_MODEL = 'accounts.userProfile'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

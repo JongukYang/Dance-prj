@@ -3,5 +3,5 @@ from .models import userProfile
 
 # Register your models here.
 class userProfileAdmin(admin.ModelAdmin):
-    list_display = ('user')
-admin.site.register(userProfile)
+    list_display = ('username', 'nickname')
+admin.site.register(userProfile, userProfileAdmin)

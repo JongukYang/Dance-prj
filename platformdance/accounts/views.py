@@ -2,7 +2,8 @@ from xml.dom import UserDataHandler
 from django.shortcuts import redirect, render
 from django.contrib import auth
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from .models import userProfile
 
 # Create your views here.
 # def login(request):
@@ -55,7 +56,16 @@ def logout(request):
 def signup(request):
     if request.method == 'POST':
         if request.POST['password'] == request.POST['repeat']:
-            new_user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'] )
+            new_user = userProfile.objects.create_user(
+                username=request.POST['username'], 
+                password=request.POST['password'],
+                nickname=request.POST['nickname'],
+                # danceSkill=request.POST['danceSkill'],
+                # phoneNum=request.POST['phoneNum'],
+                # gender=request.POST['gender'],
+                # createdAt=request.POST['createdAt'],
+                # birth=request.POST['birth'],
+                )
             auth.login(request, new_user)
             return redirect('index')      
     return render(request, 'signup.html')
