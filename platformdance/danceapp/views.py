@@ -45,6 +45,27 @@ def delete_post(request, post_id):
     del_post.delete()
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
+# 게시글 수정
+def modify_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    if request.method == "POST" or request.method == 'FILES':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            form = PostForm(instance=Post)    
+            post.title = request.POST['title']
+            post.body = request.POST['body']
+            post.save()
+            print("danceapp/views/modify_post :")
+            return redirect('index')
+    else:
+        form = PostForm()
+        context = {
+            'form':form,
+            'writing':True,
+            'now':'edit',
+        }
+        return render(request, 'modify_post.html', context)
+
 # def delete_post(request, post_id, user_id):
 #     if request.user.is_authenticated:
 #         del_post = get_object_or_404(Post, pk=post_id)
@@ -63,6 +84,22 @@ def new_comment(request, post_id):
         print("post_id :", post_id)
         finished_form.save()
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+# 댓글 삭제
+def delete_comment(request, comment_id):
+    del_comment = get_object_or_404(Comment, pk=comment_id)
+    del_comment.delete()
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+def showpostall(request):
+    posts = Post.objects.filter().order_by('-updateDate')
+    comment_form = CommentForm()
+    context = {
+        'posts':posts,
+        'comment_form':comment_form
+    }
+    return render(request, 'show_post_all.html', context)
+
 
 def showpostall(request):
     posts = Post.objects.filter().order_by('-updateDate')

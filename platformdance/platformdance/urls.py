@@ -36,6 +36,8 @@ urlpatterns = [
     path('delete_post/<int:post_id>', views.delete_post, name='delete_post'),
     # 댓글
     path('new_comment/<int:post_id>', views.new_comment, name='new_comment'),
+    # 댓글 삭제
+    path('delete_comment/<int:comment_id>', views.delete_comment, name='delete_comment'),
     # 좋아요
     path('likes/<int:post_id>', views.likes, name='likes'),
     # 게시글 수정

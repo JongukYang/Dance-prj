@@ -58,34 +58,47 @@
                     <!-- <video width="30%" src="{{ post.video.url }}" controls></video> -->
                     {% endif %}
                 </td>
+                {% if request.user.is_authenticated %}
+                {% if post.userId == request.user %}
                 <td>
                     <form action="{% url 'modify_post' post.id %}" method="POST">
                         {% csrf_token %}
                         <input type="submit" name="modify_post" value="수정">
                     </form>
                 </td>
+                {% endif %}
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                {% if post.userId == request.user %}
                 <td>
                     <form action="{% url 'delete_post' post.id %}" method="POST">
                         {% csrf_token %}
                         <input type="submit" name="delete_post" value="삭제">
                     </form>
                 </td>
+                {% endif %}
+                {% endif %}
                 <td>
+                    {% if request.user.is_authenticated %}
                     <form method="POST" action="{% url 'new_comment' post.id %}">
                         {% csrf_token %}
                         {{ comment_form.as_p }}
                         <input type="submit" value="댓글 입력">
                     </form>
+                    {% endif %}
                     {% for comment in post.comment_set.all %}
                         {{ comment.userId }} - {{ comment }}
                             {% if request.user == comment.userId %}
-                                <input type="submit" value="삭제">
+                                <form action="{% url 'delete_comment' comment.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="submit" name="delete_comment" value="삭제">
+                                </form>
                         {% endif %}
                         <br>
                     {% endfor %}
                 </td>
                 <td>
-                    <form action="{% url 'likes' post.id %}" method="POST">
+                    <form action="{% url 'likes' post.id %}" method="">
                         {% csrf_token %}
                         <p>
                             좋아요 수 : {{ post.likes_count }}
