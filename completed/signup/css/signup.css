@@ -12,6 +12,8 @@ body {
     background-size: cover;
     background-attachment: fixed;
     width: 100%;
+    overflow-x:hidden;
+    overflow-y: auto;
 }
 
  /* Left Container Style: includes logo & Dance level input UI */
