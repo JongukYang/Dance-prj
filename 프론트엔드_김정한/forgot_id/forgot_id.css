@@ -1,0 +1,117 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('./images/login_image.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container {
+    margin: auto;
+    width: 550px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+header {
+    font-size: 45px;
+    font-weight: bold;
+    color: white;
+}
+
+.find_password {
+    font-size: 15px;
+    color :#FB646B
+}
+
+.find_password2 {
+    margin-top: 25px;
+    font-style: initial;
+    font-weight: normal;
+    font-size: 13px;
+    padding: 5px;
+    color: white;
+}
+
+header a {
+    text-decoration: none;
+}
+
+section {
+    width: 100%;
+    margin: 10px auto 40px;
+}
+
+.sign_in {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color:white;
+}
+
+section a {
+    text-decoration: none;
+}
+
+section input[placeholder] {
+    font-size: 20px;
+    padding-left: 30px;
+    width: 550px;
+    height: 60px;
+    border: .5px solid #ddd;
+    outline: none;
+    transition: box-shadow.5s;
+}
+
+section input[placeholder]::placeholder {
+    font-size: 20px;
+}
+
+section input:nth-of-type(1) {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin-bottom: 15px;
+}
+
+section input[type="submit"] {
+    display: block;
+    width: 100%;
+    height: 45px;
+    border: 1px solid #FB646B;
+    margin-top: 1rem;
+    padding: .3rem;
+    border-radius: 20px;
+    font-size: 20px;
+    background-color: #FB646B;
+    color: white;
+    outline: none;
+    transition: all .5s;
+    cursor: pointer;
+}
+
+section input[type="submit"]:hover {
+    background-color: pink;
+    border: 1px solid pink;
+}
+
+.forgot_id {
+    font-size: 13px;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-decoration-color: white;
+}
+
+footer {
+    font-size: .6rem;
+    color: white;
+}
