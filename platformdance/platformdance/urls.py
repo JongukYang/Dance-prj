@@ -42,5 +42,6 @@ urlpatterns = [
     path('likes/<int:post_id>', views.likes, name='likes'),
     # 게시글 수정
     path('modify_post/<int:post_id>', views.modify_post, name='modify_post'),
+    
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

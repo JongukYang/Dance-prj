@@ -1,3 +1,4 @@
+from tkinter import getboolean
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PostForm, CommentForm
 from .models import Post, Comment
@@ -45,26 +46,30 @@ def delete_post(request, post_id):
     del_post.delete()
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
+def edit(request):
+    return render(request, 'edit.html')
 # 게시글 수정
 def modify_post(request, post_id):
-    post = Post.objects.get(id=post_id)
+    # post = Post.objects.get(id=post_id)
     if request.method == "POST" or request.method == 'FILES':
-        form = PostForm(request.POST, request.FILES)
+        post = get_object_or_404(Post, pk=post_id)
+        form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
-            form = PostForm(instance=Post)    
-            post.title = request.POST['title']
-            post.body = request.POST['body']
+            post = form.save(commit=False)
+            # form = PostForm(Post,instance=post)    
+            # post.title = request.POST['title']
+            # post.body = request.POST['body']
             post.save()
-            print("danceapp/views/modify_post :")
             return redirect('index')
     else:
-        form = PostForm()
-        context = {
-            'form':form,
-            'writing':True,
-            'now':'edit',
-        }
-        return render(request, 'modify_post.html', context)
+        form = PostForm(instance=post)
+    return render(request, 'modify_post.html', {'form':form})
+    # context = {
+    #     'form':form,
+    #     'writing':True,
+    #     'now':'edit',
+    # }
+    # return render(request, 'modify_post.html', context)
 
 # def delete_post(request, post_id, user_id):
 #     if request.user.is_authenticated:
@@ -92,7 +97,8 @@ def delete_comment(request, comment_id):
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 def showpostall(request):
-    posts = Post.objects.filter().order_by('-updateDate')
+    posts = Post.objects.filter(genreName=1)
+    # posts = Post.objects.filter().order_by('-uploadDate')
     comment_form = CommentForm()
     context = {
         'posts':posts,
@@ -100,15 +106,6 @@ def showpostall(request):
     }
     return render(request, 'show_post_all.html', context)
 
-
-def showpostall(request):
-    posts = Post.objects.filter().order_by('-updateDate')
-    comment_form = CommentForm()
-    context = {
-        'posts':posts,
-        'comment_form':comment_form
-    }
-    return render(request, 'show_post_all.html', context)
 
 def post_detail(request, userId_id):
     posts = Post.objects.filter(userId=userId_id).order_by('-uploadDate')
@@ -142,23 +139,3 @@ def likes(request, post_id):
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))     
 
 
-# 게시글 수정
-def modify_post(request, post_id):
-    post = Post.objects.get(id=post_id)
-    if request.method == "POST" or request.method == 'FILES':
-        form = PostForm(request.POST, request.FILES)
-        if form.is_valid():
-            form = PostForm(instance=Post)    
-            post.title = request.POST['title']
-            post.body = request.POST['body']
-            post.save()
-            print("danceapp/views/modify_post :")
-            return redirect('index')
-    else:
-        form = PostForm()
-        context = {
-            'form':form,
-            'writing':True,
-            'now':'edit',
-        }
-        return render(request, 'modify_post.html', context)

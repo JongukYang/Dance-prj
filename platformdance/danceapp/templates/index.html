@@ -22,7 +22,7 @@
     <h1>파일 업로드</h1>
     <h4><a href="{% url 'postcreate' %}">PostCreate</a></h4>
 
-    <h1>포스트만 전체 보기</h1>
+    <h1>포스트만 전체 보기 -> 필터링된 장르만 보기</h1>
     <h4><a href="{% url 'showpostall' %}">전체 포스트 보기</a></h4>
 
     <div>
@@ -36,7 +36,11 @@
                 <th>updateDate</th>
                 <th>img</th>
                 <th>video</th>
+                <th>수정</th>
+                <th>삭제</th>
+                <th>댓글</th>
                 <th>likes</th>
+                <th>장르</th>
             </tr>
             {% for post in posts %}
             <tr>
@@ -58,26 +62,27 @@
                     <!-- <video width="30%" src="{{ post.video.url }}" controls></video> -->
                     {% endif %}
                 </td>
-                {% if request.user.is_authenticated %}
-                {% if post.userId == request.user %}
                 <td>
+                    {% if request.user.is_authenticated %}
+                    {% if post.userId == request.user %}
                     <form action="{% url 'modify_post' post.id %}" method="POST">
                         {% csrf_token %}
                         <input type="submit" name="modify_post" value="수정">
                     </form>
+                    {% endif %}
+                    {% endif %}
                 </td>
-                {% endif %}
-                {% endif %}
-                {% if request.user.is_authenticated %}
-                {% if post.userId == request.user %}
                 <td>
+                    {% if request.user.is_authenticated %}
+                    {% if post.userId == request.user %}
                     <form action="{% url 'delete_post' post.id %}" method="POST">
                         {% csrf_token %}
                         <input type="submit" name="delete_post" value="삭제">
                     </form>
+                    {% endif %}
+                    {% endif %}
                 </td>
-                {% endif %}
-                {% endif %}
+
                 <td>
                     {% if request.user.is_authenticated %}
                     <form method="POST" action="{% url 'new_comment' post.id %}">
@@ -87,14 +92,14 @@
                     </form>
                     {% endif %}
                     {% for comment in post.comment_set.all %}
-                        {{ comment.userId }} - {{ comment }}
-                            {% if request.user == comment.userId %}
-                                <form action="{% url 'delete_comment' comment.id %}" method="POST">
-                                    {% csrf_token %}
-                                    <input type="submit" name="delete_comment" value="삭제">
-                                </form>
-                        {% endif %}
-                        <br>
+                    {{ comment.userId }} - {{ comment }}
+                    {% if request.user == comment.userId %}
+                    <form action="{% url 'delete_comment' comment.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" name="delete_comment" value="삭제">
+                    </form>
+                    {% endif %}
+                    <br>
                     {% endfor %}
                 </td>
                 <td>
@@ -109,6 +114,10 @@
                         <input type="submit" value="like">
                         {% endif %}
                     </form>
+                </td>
+                <td>
+                    <p>장르 : {{ post.genreName.id }}</p>
+                    <p>장르 ID : {{ post.genreName.name }}</p>
                 </td>
             </tr>
             {% endfor %}

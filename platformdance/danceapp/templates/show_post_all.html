@@ -42,11 +42,11 @@
                 <input type="submit" value="댓글 입력">
             </form>
             {% for comment in post.comment_set.all %}
-                {{ comment.userId }} - {{ comment }}
-                    {% if request.user == comment.userId %}
-                        <input type="submit" , value="삭제">
-                {% endif %}
-                <br>
+            {{ comment.userId }} - {{ comment }}
+            {% if request.user == comment.userId %}
+            <input type="submit" , value="삭제">
+            {% endif %}
+            <br>
             {% endfor %}
         </td>
         <td>
@@ -62,6 +62,29 @@
                 {% endif %}
             </form>
         </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr>
+<h1>비디오와 설명만 출력</h1>
+
+
+<table border="1">
+    <tr>
+        <th>비디오</th>
+        <th>설명</th>
+    </tr>
+    {% for post in posts %}
+
+    <tr>
+        <td>
+            {% if post.video %}
+            {{ post.video }} <br>
+            <!-- <video width="30%" src="{{ post.video.url }}" controls></video> -->
+            {% endif %}
+        </td>
+        <td>{{ post.body }}</td>
     </tr>
     {% endfor %}
 </table>
