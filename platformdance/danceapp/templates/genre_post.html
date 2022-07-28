@@ -48,7 +48,8 @@
                                 <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=5">House</a></li>
                                 <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=6">Crump</a></li>
                                 <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=7">Popping</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=8">Choreography</a></li>
+                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=8">Choreography</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -87,26 +88,110 @@
             </div>
         </nav>
         <!-- End Header Navbar -->
+
+        <!-- main -->
+        <h1>{{ genre.name }} Page</h1>
+        <h3>{{ genre.name }} 게시글</h3>
+        <table border="1">
+            <tr>
+                <th>userid</th>
+                <th>userId_id</th>
+                <th>title</th>
+                <th>body</th>
+                <th>uploadDate</th>
+                <th>updateDate</th>
+                <th>img</th>
+                <th>video</th>
+                <th>수정</th>
+                <th>삭제</th>
+                <th>댓글</th>
+                <th>좋아요</th>
+                <th>장르</th>
+            </tr>
+            {% for post in posts %}
+            {% if post.genreName.name == genre.name %}
+            <tr>
+                <td><a href="{% url 'post_detail' post.userId_id %}">{{ post.userId }}</a></td>
+                <td>{{ post.userId_id }}</td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.body }}</td>
+                <td>{{ post.uploadDate }}</td>
+                <td>{{ post.updateDate }}</td>
+                <td>
+                    {% if post.photo %}
+                    {{ post.photo }} <br>
+                    <img style="width: 30%;" src="{{ post.photo.url }}" alt="">
+                    {% endif %}
+                </td>
+                <td>
+                    {% if post.video %}
+                    {{ post.video }} <br>
+                    <!-- <video width="30%" src="{{ post.video.url }}" controls></video> -->
+                    {% endif %}
+                </td>
+
+                <td>
+                    {% if request.user.is_authenticated %}
+                    {% if post.userId == request.user %}
+                    <form action="{% url 'modify_post' post.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" name="modify_post" value="수정">
+                    </form>
+                    {% endif %}
+                    {% endif %}
+                </td>
+
+
+                <td>
+                    {% if request.user.is_authenticated %}
+                    {% if post.userId == request.user %}
+                    <form action="{% url 'delete_post' post.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" name="delete_post" value="삭제">
+                    </form>
+                    {% endif %}
+                    {% endif %}
+                </td>
+
+                <td>
+                    {% if request.user.is_authenticated %}
+                    <form method="POST" action="{% url 'new_comment' post.id %}">
+                        {% csrf_token %}
+                        {{ comment_form.as_p }}
+                        <input type="submit" value="댓글 입력">
+                    </form>
+                    {% endif %}
+                    {% for comment in post.comment_set.all %}
+                    {{ comment.userId }} - {{ comment }}
+                    {% if request.user == comment.userId %}
+                    <form action="{% url 'delete_comment' comment.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" name="delete_comment" value="삭제">
+                    </form>
+                    {% endif %}
+                    <br>
+                    {% endfor %}
+                </td>
+                <td>
+                    <form action="{% url 'likes' post.id %}" method="">
+                        {% csrf_token %}
+                        <p>
+                            좋아요 수 : {{ post.likes_count }}
+                        </p>
+                        {% if request.user in post.likes_user.all %}
+                        <input type="submit" value="dislike">
+                        {% else %}
+                        <input type="submit" value="like">
+                        {% endif %}
+                    </form>
+                </td>
+                <td>장르 : {{post.genreName}}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </table>
         
-        <!-- main Body 수정 -->
-        <div class="container-fulid" style="border: 1px solid black;">
-            <!-- Main 인기 동영상 -->
-            <div class="main-margin" style="border: 1px solid red;" >
-                <div class="main-title">
-                    <h1>인기 동영상</h1>
-                    <div class="d-flex flex-wrap">
-                    
-                    </div>
-                </div>
-                heoo
-            </div>
-            <!-- Main 실시간 클래스 -->
-            <div class="main-margin" style="border: 1px solid blue;" >
-                <div class="main-title">
-                    <h1>실시간 클래스</h1>    
-                </div>         
-            </div>
-        </div>
     </div>
 </body>
+
 </html>

@@ -1,7 +1,7 @@
 from tkinter import getboolean
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PostForm, CommentForm
-from .models import Post, Comment
+from .models import Post, Comment, Genre
 # from django.contrib.auth.models import User
 from accounts.models import userProfile
 
@@ -39,26 +39,6 @@ def postcreate(request):
         'form':form
     }
     return render(request, 'postcreate.html', context)
-
-# def postcreate(request):
-#     # request 메소드가 Post 일 경우
-#     # 입력값 저장
-#     if request.method == 'POST' or request.method == 'FILES':
-#         post = Post()
-#         post.title = request.POST['title'],
-#         post.body = request.POST['body'],
-#         post.photo = request.FILES.get('photo'),
-#         print(post.photo)
-#         # post.video = request.FILES.get['video'],
-#         # print(post.video)
-#         # post.gerneName = request.POST['gerneName']
-#         post.save()
-#         return redirect('index')
-#     # request method()가 Get일 경우
-#     # form 입력 html 띄우기
-#     else:
-#         post = Post.objects.all()
-#     return render(request, 'postcreate.html')
 
 # 게시글 삭제
 def delete_post(request, post_id):
@@ -116,16 +96,16 @@ def delete_comment(request, comment_id):
     del_comment.delete()
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
-# 장르를 클릭했을 때 genre.id 를 넘겨받아 각각의 장르마다 따른 필터 적용
-def showpostall(request):
-    posts = Post.objects.filter(genreName=1)
-    # posts = Post.objects.filter().order_by('-uploadDate')
-    comment_form = CommentForm()
-    context = {
-        'posts':posts,
-        'comment_form':comment_form
-    }
-    return render(request, 'show_post_all.html', context)
+# # 장르를 클릭했을 때 genre.id 를 넘겨받아 각각의 장르마다 따른 필터 적용
+# def showpostall(request):
+#     posts = Post.objects.filter(genreName=1)
+#     # posts = Post.objects.filter().order_by('-uploadDate')
+#     comment_form = CommentForm()
+#     context = {
+#         'posts':posts,
+#         'comment_form':comment_form
+#     }
+#     return render(request, 'show_post_all.html', context)
 
 
 def post_detail(request, userId_id):
@@ -159,4 +139,25 @@ def likes(request, post_id):
     # 현재 내가 있는 페이지로 redirect 
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))     
 
+# 게시글 세부 페이지로 이동
+def post(request, post_id):
+    post = Post.objects.get(id = post_id)
+    comment_form = CommentForm()
+    context = {
+        'post':post,
+        'comment_form':comment_form,
+    }
+    return render(request, 'post.html', context)
 
+# 장르 페이지
+def genre_post(request):
+    genre_id = request.GET.get('genre_id', None)
+    genre = Genre.objects.get(id=int(genre_id))
+    posts = Post.objects.filter().order_by('-updateDate')
+    comment_form = CommentForm()
+    context = {
+        'genre':genre,
+        'posts':posts,
+        'comment_form':comment_form,
+    }
+    return render(request, 'genre_post.html', context)

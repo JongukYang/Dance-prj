@@ -28,8 +28,8 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     # danceapp 파일 업로드
     path('postcreate/', views.postcreate, name='postcreate'),
-    # 포스트 전체 보기
-    path('showpostall/', views.showpostall, name='showpostall'),
+    # 게시글 세부 페이지 보기
+    path('post/<int:post_id>', views.post, name='post'),
     # user 에 따른 개인 포스트 보기
     path('post_detail/<int:userId_id>', views.post_detail, name='post_detail'),
     # 게시글 삭제
@@ -42,6 +42,9 @@ urlpatterns = [
     path('likes/<int:post_id>', views.likes, name='likes'),
     # 게시글 수정
     path('modify_post/<int:post_id>', views.modify_post, name='modify_post'),
+    # 장르별 포스트 보기
+    path('genre', views.genre_post, name='genre_post'),
+    
     
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
