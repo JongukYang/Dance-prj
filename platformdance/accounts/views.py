@@ -60,7 +60,7 @@ def signup(request):
                 username=request.POST['username'], 
                 password=request.POST['password'],
                 nickname=request.POST['nickname'],
-                # danceSkill=request.POST['danceSkill'],
+                danceSkill=request.POST['user_level'],
                 # phoneNum=request.POST['phoneNum'],
                 # gender=request.POST['gender'],
                 # createdAt=request.POST['createdAt'],

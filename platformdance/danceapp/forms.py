@@ -13,14 +13,28 @@ class PostForm(forms.ModelForm):
         self.fields['title'].widget.attrs = {
             'class': 'form-control', 
             'placeholder': "글 제목 입력",
-            'rows':20
+            'id':'title',
         }
-
         self.fields['body'].widget.attrs = {
             'class': 'form-control', 
-            'placeholder': "글 제목 입력",
-            'rows':20,
-            'cols':100
+            'placeholder': "글 내용 입력",
+            'id': 'content',
+        }
+        self.fields['photo'].widget.attrs = {
+            # 'class': 'form-control', 
+            'placeholder': "사진 선택",
+            'id': 'id_photo',
+        }
+        self.fields['video'].widget.attrs = {
+            # 'class': 'form-control', 
+            'placeholder': "비디오 선택",
+            'id': 'id_video',
+        }
+        self.fields['genreName'].widget.attrs = {
+            # 'class': 'form-control', 
+            'placeholder': "장르 선택",
+            'id': 'id_gerneName',
+            'style': 'color:gray;' # 알아서 색 맞춰 수정하기
         }
         
 

@@ -28,7 +28,7 @@ def postcreate(request):
             unfinished = form.save(commit=False)
             unfinished.userId = request.user
             unfinished.save()
-            print("danceapp/views/postcreate :", unfinished)
+            # print("danceapp/views/postcreate :", unfinished)
             return redirect('index')
     # request method()가 Get일 경우
     # form 입력 html 띄우기
@@ -40,14 +40,39 @@ def postcreate(request):
     }
     return render(request, 'postcreate.html', context)
 
+# def postcreate(request):
+#     # request 메소드가 Post 일 경우
+#     # 입력값 저장
+#     if request.method == 'POST' or request.method == 'FILES':
+#         post = Post()
+#         post.title = request.POST['title'],
+#         post.body = request.POST['body'],
+#         post.photo = request.FILES.get('photo'),
+#         print(post.photo)
+#         # post.video = request.FILES.get['video'],
+#         # print(post.video)
+#         # post.gerneName = request.POST['gerneName']
+#         post.save()
+#         return redirect('index')
+#     # request method()가 Get일 경우
+#     # form 입력 html 띄우기
+#     else:
+#         post = Post.objects.all()
+#     return render(request, 'postcreate.html')
+
 # 게시글 삭제
 def delete_post(request, post_id):
     del_post = get_object_or_404(Post, pk=post_id)
     del_post.delete()
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
-def edit(request):
-    return render(request, 'edit.html')
+# def delete_post(request, post_id, user_id):
+#     if request.user.is_authenticated:
+#         del_post = get_object_or_404(Post, pk=post_id)
+#         if request.user == del_post.userId:
+#             del_post.delete()
+#     return redirect('index')    
+
 # 게시글 수정
 def modify_post(request, post_id):
     # post = Post.objects.get(id=post_id)
@@ -64,19 +89,14 @@ def modify_post(request, post_id):
     else:
         form = PostForm(instance=post)
     return render(request, 'modify_post.html', {'form':form})
-    # context = {
-    #     'form':form,
-    #     'writing':True,
-    #     'now':'edit',
-    # }
-    # return render(request, 'modify_post.html', context)
+#     # context = {
+#     #     'form':form,
+#     #     'writing':True,
+#     #     'now':'edit',
+#     # }
+#     # return render(request, 'modify_post.html', context)
 
-# def delete_post(request, post_id, user_id):
-#     if request.user.is_authenticated:
-#         del_post = get_object_or_404(Post, pk=post_id)
-#         if request.user == del_post.userId:
-#             del_post.delete()
-#     return redirect('index')    
+
 
 # 댓글 저장
 def new_comment(request, post_id):
@@ -96,6 +116,7 @@ def delete_comment(request, comment_id):
     del_comment.delete()
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
+# 장르를 클릭했을 때 genre.id 를 넘겨받아 각각의 장르마다 따른 필터 적용
 def showpostall(request):
     posts = Post.objects.filter(genreName=1)
     # posts = Post.objects.filter().order_by('-uploadDate')
