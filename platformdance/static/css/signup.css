@@ -8,37 +8,55 @@
 
 /* Background Setting */
 body {
-    background-image: url('../img/login_image.jpg');
     background-size: cover;
     background-attachment: fixed;
+    background-image: url('../img/login_image.jpg');
     width: 100%;
+    overflow-x:hidden;
+    overflow-y: auto;
+    
 }
 
- /* Left Container Style: includes logo & Dance level input UI */
-.left_container{
-    width:25%;
-    float: left;
- }
-
-/* style: logo */
- header {
-    margin-top: 88px;
-    margin-left:60px;
+header {
+    margin-top: 0px;
+    margin-left:0px;
     font-size: 45px;
     font-weight: bold;
     color: white;
+    
+}
+  
+.mainbox {
+    width: 100%;
+    padding: 30px;
+    margin: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    display: table;
+    
+}
+
+.title-box {
+    text-align: left;
+    width: 30%;
+    display: table-cell;
+    vertical-align: top;
+    padding-right: 16px;
+}
+
+.table-row {
+    display: table-row;
 }
 
 header a {
-    text-decoration: none;
+text-decoration: none;
 }
 
-/* style: Dance level input */
 .level {
-    margin-top: 45px;
-    margin-left:80px;
-    font-size: 1.2rem;
-    font-weight: 400;
+margin-top: 40px;
+margin-left:20px;
+font-size: 1.5rem;
+font-weight: 400;
 }
 
 label { 
@@ -49,29 +67,15 @@ label {
 input[type="radio"]{
     margin-left:40px;
 }
-/* /// End of Left Container Style .. /// */
 
 
-/* Right Container Style: includes section (SignUp form) UI */
-.right_container{
-    width:75%;
-    float: right;
-    padding-top:140px;
+.section-box {
+    display: table-cell;
+    vertical-align: top;
+    width:70%;
 }
-
-/* style : SignUp form */
-.right_container section {
-    width: 500px;
-    margin-left:120px;
-}
-
-.right_container section p {
-    font-size: 1.2rem;
-    margin-bottom: 1.2rem;
-    color:white;
-}
-
-.right_container section input[placeholder] {
+  
+.section-box input[placeholder] {
     font-size: .8rem;
     padding-left: 30px;
     width: 100%;
@@ -80,27 +84,79 @@ input[type="radio"]{
     transition: box-shadow.5s;
 }
 
-.right_container section input[placeholder]::placeholder {
+.section-box section {
+    width: 550px;
+    margin-top:30px;
+    margin-left:140px;
+}
+
+/* style : SignUp form */
+
+.section-box section p {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    color:white;
+}
+
+.section-box section h4 {
+    margin-bottom: 7px;
+    margin-left:9px;
+    font-weight:350;
+}
+
+.section-box section input[placeholder] {
+    font-size: .8rem;
+    padding-left: 30px;
+    width: 100%;
+    border: .5px solid #ddd;
+    outline: none;
+    transition: box-shadow.5s;
+}
+
+.section-box section input[placeholder]::placeholder {
     font-size: .8rem;
 }
 
-.right_container section input {
+.section-box section input {
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     height:50px;
-    margin-bottom: 30px;
+    margin-bottom: 28px;
     color: black;
 }
 
-.right_container section input[type="checkbox"] {
+.section-box section input:nth-of-type(5) {
+
+    width:190px;
+    color: black;
+    margin-right:15px;
+    margin-bottom:10px;
+}
+
+.section-box section input:nth-of-type(6){
+
+    width:155px;
+    color: black;
+    margin-right:15px;
+    margin-bottom:10px;
+}
+
+.section-box section input:nth-of-type(7){
+
+    width:155px;
+    margin-bottom:10px;
+    color: black;
+}
+
+.section-box section input[type="checkbox"] {
     margin-top: .5rem;
     transform: scale(.7);
     transform-origin: center center;
 }
 
-.right_container section label {
+.section-box section label {
     display: inline-block;
     font-size: .7rem;
     transform: translateY(-20%);
@@ -108,7 +164,7 @@ input[type="radio"]{
     color: white;
 }
 
-.right_container section input[type="submit"] {
+.section-box section input[type="submit"] {
     display: block;
     width: 100%;
     border: 1px solid black;
@@ -123,16 +179,16 @@ input[type="radio"]{
     transition: all .5s;
 }
 
-.right_container section input[type="submit"]:hover {
+.section-box section input[type="submit"]:hover {
     background-color: pink;
     border: 1px solid pink;
 }
 
-.right_container section input:nth-of-type(-n+3):focus {
+.section-box section input:nth-of-type(-n+3):focus {
     box-shadow: 0 0 0 2px rgba(0,0,255,.3);
     position: relative;
 } 
-/* /// End of Right Container Style.. /// */
+/* /// End of Section-box Style.. /// */
 
 footer {
     font-size: .6rem;

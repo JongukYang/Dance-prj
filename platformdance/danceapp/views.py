@@ -1,4 +1,3 @@
-from tkinter import getboolean
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PostForm, CommentForm
 from .models import Post, Comment, Genre
@@ -11,13 +10,33 @@ from accounts.models import userProfile
 # Create your views here.
 def index(request):
     posts = Post.objects.filter().order_by('-updateDate')
+    like_one = Post.objects.all().order_by('-likes_count')[:1] # 모든 포스트 중 택5
+    likes_ten = Post.objects.all().order_by('-likes_count')[:5] # 모든 포스트 중 택5
+    # likes_ten = Post.objects.filter(genreName='1').order_by('-likes_count')[:5] # 장르 중 택5
     # posts = Post.objects.order_by('-date')
     comment_form = CommentForm()
     context = {
         'posts':posts,
-        'comment_form':comment_form
+        'comment_form':comment_form,
+        'like_one':like_one,
+        'likes_ten':likes_ten,
     }
     return render(request, 'index.html', context)
+
+def index2(request):
+    posts = Post.objects.filter().order_by('-updateDate')
+    like_one = Post.objects.all().order_by('-likes_count')[:1] # 모든 포스트 중 택5
+    likes_ten = Post.objects.all().order_by('-likes_count')[:5] # 모든 포스트 중 택5
+    # likes_ten = Post.objects.filter(genreName='1').order_by('-likes_count')[:5] # 장르 중 택5
+    # posts = Post.objects.order_by('-date')
+    comment_form = CommentForm()
+    context = {
+        'posts':posts,
+        'comment_form':comment_form,
+        'like_one':like_one,
+        'likes_ten':likes_ten,
+    }
+    return render(request, 'index2.html', context)
 
 def postcreate(request):
     # request 메소드가 Post 일 경우

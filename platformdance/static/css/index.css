@@ -2,6 +2,37 @@
 
 * {
     font-family: 'Montserrat';
+    /* color: white; */
+}
+#body {
+    background-color: black;
+}
+
+#main-container {
+    background-image: url('../img/home/wallpaper.png');
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    border: 1px solid green;
+    color: white;
+    
+}
+
+#nav-bar {
+    background-color: transparent;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+a:visited {
+    color: white;
+}
+
+#main-body-container {
+    border: 1px solid yellow;
 }
 
 .main-margin {
