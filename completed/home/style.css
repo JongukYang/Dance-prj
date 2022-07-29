@@ -62,11 +62,11 @@
     display: inline-block;
     font: bold 15px 'arial';
     letter-spacing: 2px;
-    color: black;
     border-radius: 25px; 
     margin: 5px 5px;
     padding-inline: 5px;
     text-align: center;
+    cursor : pointer;
 }
 
 .header__login input{ /*검색창*/
@@ -197,7 +197,7 @@
     float: right;
 }
 
-.next__button button{
+.next__button button{ /*< > 버튼*/
     text-align: center;
     font: bold 50px 'arial';
     font-size: 30px;
@@ -206,6 +206,7 @@
     width: 30px;
     border-radius: 30px; 
     padding-inline: 20px;
+    cursor : pointer;
     
 }
 .main2 ul{ /*실시간 top 10 클래스*/
@@ -243,6 +244,7 @@
     width: 30px;
     border-radius: 30px; 
     padding-inline: 20px;
+    cursor : pointer;
 }
 .box1{
     margin: 25px;
