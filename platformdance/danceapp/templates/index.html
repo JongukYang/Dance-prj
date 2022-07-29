@@ -11,7 +11,8 @@
 
 <body>
     <h1>Index.html Page</h1>
-    <h1><a href="{% url 'index2' %}">Main Page</a></h1>
+    <h1><a href="{% url 'index2' %}">프로젝트 Main Page</a></h1>
+    <h1><a href="{% url 'index3' %}">미니 Main Page</a></h1>
     
     {% if request.user.is_authenticated %}
     <h1>현재 userId : {{request.user}}</h1>

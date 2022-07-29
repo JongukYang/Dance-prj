@@ -8,6 +8,8 @@
 .mainbox {
     background-color: #11ffee00;
     background-image: url('../img/home/wallpaper.png');
+    background-size: cover;
+    background-attachment: fixed;
     width: 1004px;
     height: 1876px;
     padding: 30px;
@@ -18,16 +20,6 @@
     box-shadow: 0 1px 50px 0 rgb(255, 255, 255);*/
     
 }
-
-.nav-button {
-    background:transparent; 
-    border-color: transparent;
-}
-.nav-button2 {
-    background:white; 
-    border-color: transparent;
-}
-
 .header{ /*헤더 */
     height: 180px;
     box-sizing: border-box;
@@ -72,11 +64,11 @@
     display: inline-block;
     font: bold 15px 'arial';
     letter-spacing: 2px;
-    color: black;
     border-radius: 25px; 
     margin: 5px 5px;
     padding-inline: 5px;
     text-align: center;
+    cursor : pointer;
 }
 
 .header__login input{ /*검색창*/
@@ -113,12 +105,13 @@
     text-align: center;
     /*background: #666;*/
     color: black;
+    z-index: 999999;
 }
 
 .header__gnb li{
     display: inline-block;
 
-    z-index: 1;
+    z-index: 999999;
 }
 
 .header__gnb li a{ /*홈 클래스 비디오*/
@@ -130,35 +123,43 @@
     padding: 0px 25px;
     text-align : center;
     letter-spacing: 1px;
+    z-index: 999999
 }
-
-.header__gnb li a:hover, .header__gnb ul li:hover a{ /*마우스 올렸을때*/
+.header__gnb li a:hover, .header__gnb ul li:hover a{ /*홈 클래스 비디오 마우스 올렸을때*/
     background: rgb(31,31,31);
-    color:#FFFFFF;
-    height: 60px;
+    color:white;
+    height: 50px;
+    z-index: 999999;
 }
 
 .header__gnb li ul{ 
     display: none; 
-    height: auto;
-    border: 0px;
     position: absolute;
     /*top:1em;
-    /*left:0;*/
+    left:0;
+    height: auto;
+    border: 0px;*/
+    z-index: 999999;
 }
 
 .header__gnb li:hover ul{
     display: block;
+    z-index: 999999;
 }
 
 .header__gnb li li { /*힙합 코레오...*/
-    background: black;
+   background-color: black;
+    position: relative;
     width: 170px;
+    z-index: 999999;
+
 }
 
 .header__gnb li:hover li a{
     background:none;
-    
+    position: relative;
+    color: white;
+    z-index: 999999;
 }
 
 .header__gnb li ul a{
@@ -171,7 +172,6 @@
 }
 
 .header__gnb li ul a:hover, .header__gnb li ul li:hover a{
-  
     background: rgb(171,171,171);
     border:0px;
     color:black;
@@ -180,22 +180,28 @@
 
 .header__gnb p{
     clear:left;
-
+    z-index: 999999;
 }
 .header__gnb li:hover ul{
     display:block;
-   
+    z-index: 999999;
 }
 
 .main1 ul{ /*인기 동영상 top 10*/
     margin-top: 100px;
+   z-index: -3;
 }
 
 .main1 ul li{
     float: left;
+    position: relative;
+    z-index: -3;
 }
+
 .main1 ul li a{
     display: block;
+    position: relative;
+    z-index: -1;
     font: bold 30px 'arial';
     color: white;
     margin: 0px 16px;
@@ -207,7 +213,7 @@
     float: right;
 }
 
-.next__button button{
+.next__button button{ /*< > 버튼*/
     text-align: center;
     font: bold 50px 'arial';
     font-size: 30px;
@@ -216,6 +222,7 @@
     width: 30px;
     border-radius: 30px; 
     padding-inline: 20px;
+    cursor : pointer;
     
 }
 .main2 ul{ /*실시간 top 10 클래스*/
@@ -253,6 +260,7 @@
     width: 30px;
     border-radius: 30px; 
     padding-inline: 20px;
+    cursor : pointer;
 }
 .box1{
     margin: 25px;
@@ -266,6 +274,8 @@
     box-shadow: 0 1px 20px 0 rgb(255, 255, 255);
     /*임시로 사진 넣어둔 것*/
     background-image: url('dance.png');
+    background-size: cover;
+    z-index: -1;
   
 }
 .box2{

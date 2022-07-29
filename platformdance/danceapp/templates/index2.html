@@ -1,129 +1,121 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>CHOO:OOM</title>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-        crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        div {
+            background-attachment: white;
+        }
+    </style>
 </head>
 
-<body id="body">
-    <!-- main -->
-    <div class="container" id="main-container">
-        <!-- header 네비게이션바 -->
-        <nav class="navbar navbar-expand-lg " id="nav-bar">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'index' %}">CHOO:OOM</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">HOME</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                CLASS
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=1">Hip-Hop</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=2">Locking</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=3">Waacking</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=4">B-Boying</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=5">House</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=6">Crump</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=7">Popping</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=8">Choreography</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">VIDEO</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">MENTOR</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                ETC
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">도움말</a></li>
-                                <li><a class="dropdown-item" href="#">공지사항</a></li>
-                                <li><a class="dropdown-item" href="#">1:1 문의</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            {% if request.user.is_authenticated %}
-                            <a class="nav-link" href="{% url 'logout' %}">LogOut</a>
-                            {% else %}
-                            <a class="nav-link" href="{% url 'login' %}">Login</a>
-                            {% endif %}
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'signup' %}">SignUp</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-        <!-- End Header Navbar -->
-
-        <!-- main Body 수정 -->
-        <div class="container-fulid" id="main-body-container">
-            <!-- Main 인기 동영상 -->
-            <div class="main-margin" style="border: 1px solid red;">
-                <div class="main-title">
-                    <h1>인기 동영상</h1>
-                    <div>
-                        <p>
-                            <table>
-                                <tr>
-                                    <td>
-                                        {% if rank1.photo %}
-                                        <img style="width: 30%;" src="{{ rank1.photo.url }}" alt="안보여요">
-                                        {% endif %}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>{{ rank1.title }}</td>
-                                </tr>
-                                <tr>
-                                    <td>{{ rank1.body }}</td>
-                                </tr>
-                            </table>
-                        </p>
-                    </div>
+<body>
+    <div class="mainbox">
+        <header class="header">
+            <div class="top">
+                <div class="header__logo">
+                    <a href="#">
+                        <p style="font-size:40px; font-weight: bold; color:white;">CHOO:OOM</p>
+                    </a>
                 </div>
 
-            </div>
-            <!-- Main 실시간 클래스 -->
-            <div class="main-margin" style="border: 1px solid blue;">
-                <div class="main-title">
-                    <h1>실시간 클래스</h1>
+                <div class="header__login">
+                    <input type="text" name="query" value="">
+                    <button type="button" onclick="location.href='#'"><img
+                            src="{% static 'img/home/search.png' %}"></button>
+                    <a href="#" target="blank" class="google_icon"><img src="{% static 'img/home/person.png' %}"
+                            width="40" height="40"></a>
                 </div>
+                <a href="{% url 'login' %}">
+                    <p>로그인</p> &ensp;
+                    <a href="{% url 'signup' %}">
+                        <p>회원가입</p>
+                    </a>
             </div>
+
+            <div class="header__gnb">
+                <ul>
+                    <li><a href="{% url 'index' %}">HOME</a></li>
+                    <li><a href="#">CLASS</a>
+                        <ul>
+                            <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=1">Hip-Hop</a></li>
+                            <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=2">Locking</a></li>
+                            <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=3">Waacking</a></li>
+                            <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=4">B-Boying</a></li>
+                            <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=5">House</a></li>
+                            <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=6">Krump</a></li>
+                            <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=7">Popping</a></li>
+                            <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=8">Choreography</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">VIDEO</a></li>
+                    <li><a href="#">MENTO</a></li>
+                    <li><a href="#">ETC</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="main1">
+            <ul>
+                <li><a href="#"> 인기 동영상 TOP 10 </a></li>
+            </ul>
         </div>
+
+        <div class="next__button">
+            <button type="button" onclick="location.href='#'">
+                << /button>
+                    <button type="button" onclick="location.href='#'">></button>
+        </div>
+
+        <div class="box1"></div>
+
+        <div class="main2">
+            <ul>
+                <li><a href="#" style="float: left" ;> 실시간 TOP 10 클래스 </a></li>
+            </ul>
+        </div>
+
+
+        <div class="next__button2">
+            <button type="button" onclick="location.href='#'">
+                << /button>
+                    <button type="button" onclick="location.href='#'">></button>
+        </div>
+
+        <div style="clear:both" ;> &nbsp;</div>
+        <a href="#">
+            <div class="box2"></div>
+        </a>
+        <a href="#">
+            <div class="box3"></div>
+        </a>
+        <a href="#">
+            <div class="box4"></div>
+        </a>
+        <a href="#">
+            <div class="box5"></div>
+        </a>
+
+
+
+        <div class="box6">허니제이 & 홀리뱅<br><br>힙합 코레오 완곡 배워보기<br><br>챕터별로 힙합 코레오의 완곡을 배워볼 거예요.</div>
+        <div class="box7">아이키 & 훅<br><br>힙합 코레오 완곡 배워보기<br><br>챕터별로 힙합 코레오의 완곡을 배워볼 거예요.</div>
+        <div class="box8">모니카 & 프라우드먼<br><br>힙합 코레오 완곡 배워보기<br><br>챕터별로 힙합 코레오의 완곡을 배워볼 거예요.</div>
+        <div class="box9">가비 & 라치카<br><br>힙합 코레오 완곡 배워보기<br><br>챕터별로 힙합 코레오의 완곡을 배워볼 거예요.</div>
+
+
+
+
+
     </div>
 </body>
 

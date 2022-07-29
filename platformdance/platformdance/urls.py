@@ -25,6 +25,7 @@ urlpatterns = [
     # 메인 홈페이지
     path('', views.index, name='index'),
     path('index2/', views.index2, name='index2'),
+    path('index3/', views.index3, name='index3'),
     # 계정 관련 url은 accounts/urls.py 에서 처리
     path('accounts/', include('accounts.urls')),
     # danceapp 파일 업로드
