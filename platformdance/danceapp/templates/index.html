@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,10 +12,7 @@
 <body>
     <h1>Index.html Page</h1>
     <h1><a href="{% url 'index2' %}">Main Page</a></h1>
-    {% for like1 in like_one %}
-    가장 좋아요 많은 하나 : {{ like1.photo.url }} <br>
-    <img src="{{ like1.photo.url }}" alt="" width="30%">
-    {% endfor %}
+    
     {% if request.user.is_authenticated %}
     <h1>현재 userId : {{request.user}}</h1>
     <h4><a href="{% url 'logout' %}">Logout</a></h4>
@@ -40,19 +38,18 @@
     <hr>
     <h1>start</h1>
     <hr>
-    <h1>{{ likes_ten.all }}</h1>
+        순위 1 : {{ rank1.title }}
     <hr>
-    <table>
-        {% for like_ten in likes_ten %}
-        
+    <table border="1">
+        {% for like_top_ten in likes_top_ten %}
         <tr>
-            <td>{{ like_ten.userId }}출력 : {{ like_ten }}</td>
-            <td>{{ like_ten.body }}</td>
-            <td>{{ like_ten.genreName }}</td>
+            <td>{{ like_top_ten.userId }}출력 : {{ like_top_ten }}</td>
+            <td>{{ like_top_ten.body }}</td>
+            <td>{{ like_top_ten.genreName }}</td>
             <td>
-                {% if like_ten.photo %}
-                {{ like_ten.photo.url }}
-                <img src="{{ like_ten.photo.url }}" alt="" width="30%">
+                {% if like_top_ten.photo %}
+                {{ like_top_ten.photo.url }}
+                <img src="{{ like_top_ten.photo.url }}" alt="" width="30%">
                 {% endif %}
             </td>
         </tr>

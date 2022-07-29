@@ -94,15 +94,24 @@
             <!-- Main 인기 동영상 -->
             <div class="main-margin" style="border: 1px solid red;">
                 <div class="main-title">
-                    <h1>인기 동영상{{ liek_one.userId }}</h1>
+                    <h1>인기 동영상</h1>
                     <div>
                         <p>
-                            {% for like1 in like_one %}
-                            {% if like1.photo %}
-                            가장 좋아요 많은 하나 : {{ like1 }} - {{ like1.photo.url }} <br>
-                            <img src="{{ like1.photo.url }}" alt="" width="30%">
-                            {% endif %}
-                            {% endfor %}
+                            <table>
+                                <tr>
+                                    <td>
+                                        {% if rank1.photo %}
+                                        <img style="width: 30%;" src="{{ rank1.photo.url }}" alt="안보여요">
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{ rank1.title }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ rank1.body }}</td>
+                                </tr>
+                            </table>
                         </p>
                     </div>
                 </div>

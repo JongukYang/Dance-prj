@@ -10,33 +10,49 @@ from accounts.models import userProfile
 # Create your views here.
 def index(request):
     posts = Post.objects.filter().order_by('-updateDate')
-    like_one = Post.objects.all().order_by('-likes_count')[:1] # 모든 포스트 중 택5
-    likes_ten = Post.objects.all().order_by('-likes_count')[:5] # 모든 포스트 중 택5
+    # likes_ten = Post.objects.all().order_by('-likes_count')[:5] # 모든 포스트 중 택5 -> 쿼리셋
+    likes_top_ten = Post.objects.values().order_by('-likes_count')[:10] # 모든 포스트 중 택5 -> 딕셔너리 형태
     # likes_ten = Post.objects.filter(genreName='1').order_by('-likes_count')[:5] # 장르 중 택5
-    # posts = Post.objects.order_by('-date')
     comment_form = CommentForm()
     context = {
         'posts':posts,
         'comment_form':comment_form,
-        'like_one':like_one,
-        'likes_ten':likes_ten,
+        'likes_top_ten':likes_top_ten,
+        'rank1':likes_top_ten[0],
+        'rank2':likes_top_ten[1],
+        'rank3':likes_top_ten[2],
+        'rank4':likes_top_ten[3],
+        'rank5':likes_top_ten[4],
+        'rank6':likes_top_ten[5],
+        'rank7':likes_top_ten[6],
+        'rank8':likes_top_ten[7],
+        'rank9':likes_top_ten[8],
+        'rank10':likes_top_ten[9],
     }
     return render(request, 'index.html', context)
 
+# Create your views here.
 def index2(request):
     posts = Post.objects.filter().order_by('-updateDate')
-    like_one = Post.objects.all().order_by('-likes_count')[:1] # 모든 포스트 중 택5
-    likes_ten = Post.objects.all().order_by('-likes_count')[:5] # 모든 포스트 중 택5
-    # likes_ten = Post.objects.filter(genreName='1').order_by('-likes_count')[:5] # 장르 중 택5
-    # posts = Post.objects.order_by('-date')
+    likes_top_ten = Post.objects.all().order_by('-likes_count')[:10]
     comment_form = CommentForm()
     context = {
         'posts':posts,
         'comment_form':comment_form,
-        'like_one':like_one,
-        'likes_ten':likes_ten,
+        'likes_top_ten':likes_top_ten,
+        'rank1':likes_top_ten[0],
+        'rank2':likes_top_ten[1],
+        'rank3':likes_top_ten[2],
+        'rank4':likes_top_ten[3],
+        'rank5':likes_top_ten[4],
+        'rank6':likes_top_ten[5],
+        'rank7':likes_top_ten[6],
+        'rank8':likes_top_ten[7],
+        'rank9':likes_top_ten[8],
+        'rank10':likes_top_ten[9],
     }
     return render(request, 'index2.html', context)
+    
 
 def postcreate(request):
     # request 메소드가 Post 일 경우
@@ -47,7 +63,6 @@ def postcreate(request):
             unfinished = form.save(commit=False)
             unfinished.userId = request.user
             unfinished.save()
-            # print("danceapp/views/postcreate :", unfinished)
             return redirect('index')
     # request method()가 Get일 경우
     # form 입력 html 띄우기
@@ -149,12 +164,10 @@ def likes(request, post_id):
             post.likes_user.remove(request.user)
             post.likes_count -= 1
             post.save()    
-            # return redirect('index')
         else:
             post.likes_user.add(request.user)
             post.likes_count += 1
             post.save()
-        # return redirect('index')
     # 현재 내가 있는 페이지로 redirect 
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))     
 
@@ -180,3 +193,4 @@ def genre_post(request):
         'comment_form':comment_form,
     }
     return render(request, 'genre_post.html', context)
+
