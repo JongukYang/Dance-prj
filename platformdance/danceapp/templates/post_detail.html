@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 <h1>Post_detail Page</h1>
 <h1>User 에 따른 Post 따로 보기</h1>
 <!-- user이름 찾아뽑아야함 : {{ posts.query }} -->
@@ -52,3 +54,4 @@
     </tr>
     {% endfor %}
 </table>
+{% endblock %}

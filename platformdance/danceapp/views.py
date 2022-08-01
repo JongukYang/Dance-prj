@@ -7,11 +7,14 @@ from accounts.models import userProfile
 # 페이지네이션, 객체들 목록을 끊어서 보여주는 것
 # from django.core.paginator import Paginator
 
+def indexstyle(request):
+    return render(request, 'indexstyle.html')
+
 # Create your views here.
 def index(request):
     posts = Post.objects.filter().order_by('-updateDate')
     # likes_ten = Post.objects.all().order_by('-likes_count')[:5] # 모든 포스트 중 택5 -> 쿼리셋
-    likes_top_ten = Post.objects.values().order_by('-likes_count')[:10] # 모든 포스트 중 택5 -> 딕셔너리 형태
+    likes_top_ten = Post.objects.all().order_by('-likes_count')[:10] # 모든 포스트 중 택5 -> 딕셔너리 형태
     # likes_ten = Post.objects.filter(genreName='1').order_by('-likes_count')[:5] # 장르 중 택5
     comment_form = CommentForm()
     context = {
@@ -30,49 +33,6 @@ def index(request):
         'rank10':likes_top_ten[9],
     }
     return render(request, 'index.html', context)
-
-# Create your views here.
-def index2(request):
-    posts = Post.objects.filter().order_by('-updateDate')
-    likes_top_ten = Post.objects.all().order_by('-likes_count')[:10]
-    comment_form = CommentForm()
-    context = {
-        'posts':posts,
-        'comment_form':comment_form,
-        'likes_top_ten':likes_top_ten,
-        'rank1':likes_top_ten[0],
-        'rank2':likes_top_ten[1],
-        'rank3':likes_top_ten[2],
-        'rank4':likes_top_ten[3],
-        'rank5':likes_top_ten[4],
-        'rank6':likes_top_ten[5],
-        'rank7':likes_top_ten[6],
-        'rank8':likes_top_ten[7],
-        'rank9':likes_top_ten[8],
-        'rank10':likes_top_ten[9],
-    }
-    return render(request, 'index2.html', context)
-    
-def index3(request):
-    posts = Post.objects.filter().order_by('-updateDate')
-    likes_top_ten = Post.objects.all().order_by('-likes_count')[:10]
-    comment_form = CommentForm()
-    context = {
-        'posts':posts,
-        'comment_form':comment_form,
-        'likes_top_ten':likes_top_ten,
-        'rank1':likes_top_ten[0],
-        'rank2':likes_top_ten[1],
-        'rank3':likes_top_ten[2],
-        'rank4':likes_top_ten[3],
-        'rank5':likes_top_ten[4],
-        'rank6':likes_top_ten[5],
-        'rank7':likes_top_ten[6],
-        'rank8':likes_top_ten[7],
-        'rank9':likes_top_ten[8],
-        'rank10':likes_top_ten[9],
-    }
-    return render(request, 'index3.html', context)
 
 def postcreate(request):
     # request 메소드가 Post 일 경우

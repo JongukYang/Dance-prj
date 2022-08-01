@@ -1,197 +1,108 @@
+{% extends 'base.html' %}
+{% block content %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHOO:OOM</title>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-        crossorigin="anonymous"></script>
-</head>
-
-<body>
-    <!-- main -->
-    <div class="container" style="border: 1px solid black;">
-        <!-- header 네비게이션바 -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'index' %}">CHOO:OOM</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">HOME</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                CLASS
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=1">Hip-Hop</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=2">Locking</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=3">Waacking</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=4">B-Boying</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=5">House</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=6">Crump</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=7">Popping</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=8">Choreography</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">VIDEO</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">MENTOR</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                ETC
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">도움말</a></li>
-                                <li><a class="dropdown-item" href="#">공지사항</a></li>
-                                <li><a class="dropdown-item" href="#">1:1 문의</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            {% if request.user.is_authenticated %}
-                            <a class="nav-link" href="{% url 'logout' %}">LogOut</a>
-                            {% else %}
-                            <a class="nav-link" href="{% url 'login' %}">Login</a>
-                            {% endif %}
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'signup' %}">SignUp</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-        <!-- End Header Navbar -->
-
-        <!-- main -->
-        <h1>{{ genre.name }} Page</h1>
-        <h3>{{ genre.name }} 게시글</h3>
-        <table border="1">
-            <tr>
-                <th>userid</th>
-                <th>userId_id</th>
-                <th>title</th>
-                <th>body</th>
-                <th>uploadDate</th>
-                <th>updateDate</th>
-                <th>img</th>
-                <th>video</th>
-                <th>수정</th>
-                <th>삭제</th>
-                <th>댓글</th>
-                <th>좋아요</th>
-                <th>장르</th>
-            </tr>
-            {% for post in posts %}
-            {% if post.genreName.name == genre.name %}
-            <tr>
-                <td><a href="{% url 'post_detail' post.userId_id %}">{{ post.userId }}</a></td>
-                <td>{{ post.userId_id }}</td>
-                <td>{{ post.title }}</td>
-                <td>{{ post.body }}</td>
-                <td>{{ post.uploadDate }}</td>
-                <td>{{ post.updateDate }}</td>
-                <td>
-                    {% if post.photo %}
-                    {{ post.photo }} <br>
-                    <img style="width: 30%;" src="{{ post.photo.url }}" alt="">
-                    {% endif %}
-                </td>
-                <td>
-                    {% if post.video %}
-                    {{ post.video }} <br>
-                    <!-- <video width="30%" src="{{ post.video.url }}" controls></video> -->
-                    {% endif %}
-                </td>
-
-                <td>
-                    {% if request.user.is_authenticated %}
-                    {% if post.userId == request.user %}
-                    <form action="{% url 'modify_post' post.id %}" method="POST">
-                        {% csrf_token %}
-                        <input type="submit" name="modify_post" value="수정">
-                    </form>
-                    {% endif %}
-                    {% endif %}
-                </td>
 
 
-                <td>
-                    {% if request.user.is_authenticated %}
-                    {% if post.userId == request.user %}
-                    <form action="{% url 'delete_post' post.id %}" method="POST">
-                        {% csrf_token %}
-                        <input type="submit" name="delete_post" value="삭제">
-                    </form>
-                    {% endif %}
-                    {% endif %}
-                </td>
-
-                <td>
-                    {% if request.user.is_authenticated %}
-                    <form method="POST" action="{% url 'new_comment' post.id %}">
-                        {% csrf_token %}
-                        {{ comment_form.as_p }}
-                        <input type="submit" value="댓글 입력">
-                    </form>
-                    {% endif %}
-                    {% for comment in post.comment_set.all %}
-                    {{ comment.userId }} - {{ comment }}
-                    {% if request.user == comment.userId %}
-                    <form action="{% url 'delete_comment' comment.id %}" method="POST">
-                        {% csrf_token %}
-                        <input type="submit" name="delete_comment" value="삭제">
-                    </form>
-                    {% endif %}
-                    <br>
-                    {% endfor %}
-                </td>
-                <td>
-                    <form action="{% url 'likes' post.id %}" method="">
-                        {% csrf_token %}
-                        <p>
-                            좋아요 수 : {{ post.likes_count }}
-                        </p>
-                        {% if request.user in post.likes_user.all %}
-                        <input type="submit" value="dislike">
-                        {% else %}
-                        <input type="submit" value="like">
-                        {% endif %}
-                    </form>
-                </td>
-                <td>장르 : {{post.genreName}}</td>
-            </tr>
+<!-- main -->
+<h1>{{ genre.name }} Page</h1>
+<h3>{{ genre.name }} 게시글</h3>
+<table border="1">
+    <tr>
+        <th>userid</th>
+        <th>userId_id</th>
+        <th>title</th>
+        <th>body</th>
+        <th>uploadDate</th>
+        <th>updateDate</th>
+        <th>img</th>
+        <th>video</th>
+        <th>수정</th>
+        <th>삭제</th>
+        <th>댓글</th>
+        <th>좋아요</th>
+        <th>장르</th>
+    </tr>
+    {% for post in posts %}
+    {% if post.genreName.name == genre.name %}
+    <tr>
+        <td><a href="{% url 'post_detail' post.userId_id %}">{{ post.userId }}</a></td>
+        <td>{{ post.userId_id }}</td>
+        <td>{{ post.title }}</td>
+        <td>{{ post.body }}</td>
+        <td>{{ post.uploadDate }}</td>
+        <td>{{ post.updateDate }}</td>
+        <td>
+            {% if post.photo %}
+            {{ post.photo }} <br>
+            <img style="width: 30%;" src="{{ post.photo.url }}" alt="">
             {% endif %}
-            {% endfor %}
-        </table>
-        
-    </div>
-</body>
+        </td>
+        <td>
+            {% if post.video %}
+            {{ post.video }} <br>
+            <!-- <video width="30%" src="{{ post.video.url }}" controls></video> -->
+            {% endif %}
+        </td>
 
-</html>
+        <td>
+            {% if request.user.is_authenticated %}
+            {% if post.userId == request.user %}
+            <form action="{% url 'modify_post' post.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" name="modify_post" value="수정">
+            </form>
+            {% endif %}
+            {% endif %}
+        </td>
+
+
+        <td>
+            {% if request.user.is_authenticated %}
+            {% if post.userId == request.user %}
+            <form action="{% url 'delete_post' post.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" name="delete_post" value="삭제">
+            </form>
+            {% endif %}
+            {% endif %}
+        </td>
+
+        <td>
+            {% if request.user.is_authenticated %}
+            <form method="POST" action="{% url 'new_comment' post.id %}">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <input type="submit" value="댓글 입력">
+            </form>
+            {% endif %}
+            {% for comment in post.comment_set.all %}
+            {{ comment.userId }} - {{ comment }}
+            {% if request.user == comment.userId %}
+            <form action="{% url 'delete_comment' comment.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" name="delete_comment" value="삭제">
+            </form>
+            {% endif %}
+            <br>
+            {% endfor %}
+        </td>
+        <td>
+            <form action="{% url 'likes' post.id %}" method="">
+                {% csrf_token %}
+                <p>
+                    좋아요 수 : {{ post.likes_count }}
+                </p>
+                {% if request.user in post.likes_user.all %}
+                <input type="submit" value="dislike">
+                {% else %}
+                <input type="submit" value="like">
+                {% endif %}
+            </form>
+        </td>
+        <td>장르 : {{post.genreName}}</td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+</table>
+
+{% endblock %}

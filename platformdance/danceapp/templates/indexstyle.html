@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/indexstyle.css' %}">
+    <script src="https://kit.fontawesome.com/kit_code.js" crossorigin="anonymous"></script>
+    <title>Nav Bar</title>
+  </head>
+
+  <body>
+    <nav class="navbar">
+
+      <div class="navbar__logo">
+        <i class="fas fa-blog"></i>
+        <a href="">AXCE Coding</a>
+      </div>
+
+      <ul class="navbar__menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Weddings</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Bookings</a></li>
+      </ul>
+
+      <ul class="navbar__icons">
+        <li><i class="fab fa-google">google</i></li>
+        <li><i class="fab fa-slack">slack</i></li>
+      </ul>
+      
+      <a href="#" class="navbar__toggleBtn">
+        <i class="fas fa-hamburger"></i>
+      </a>
+    </nav>
+
+
+
+  </body>
+</html>

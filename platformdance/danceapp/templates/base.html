@@ -91,38 +91,12 @@
 
         <!-- main Body 수정 -->
         <div class="container-fulid" id="main-body-container">
-            <!-- Main 인기 동영상 -->
-            <div class="main-margin" style="border: 1px solid red;">
-                <div class="main-title">
-                    <h1>인기 동영상</h1>
-                    <div>
-                        <p>
-                            <table>
-                                <tr>
-                                    <td>
-                                        {% if rank1.photo %}
-                                        <img style="width: 30%;" src="{{ rank1.photo.url }}" alt="안보여요">
-                                        {% endif %}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>{{ rank1.title }}</td>
-                                </tr>
-                                <tr>
-                                    <td>{{ rank1.body }}</td>
-                                </tr>
-                            </table>
-                        </p>
-                    </div>
-                </div>
+            <!-- block content 사용 부분 -->
+            {% block content %}
 
-            </div>
-            <!-- Main 실시간 클래스 -->
-            <div class="main-margin" style="border: 1px solid blue;">
-                <div class="main-title">
-                    <h1>실시간 클래스</h1>
-                </div>
-            </div>
+
+            {% endblock %}
+            <!-- endblock 닫는 부분 -->
         </div>
     </div>
 </body>
