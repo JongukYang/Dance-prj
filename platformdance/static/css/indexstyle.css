@@ -31,10 +31,15 @@ a {
     padding: 8px 30px;
 }
 
+.navbar__menu li ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .navbar__menu li:hover {
     background-color: black;
-    border-radius: 3px;
-    
+    border-radius: 3px;    
 }
 
 .navbar__icons {
