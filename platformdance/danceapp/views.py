@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import PostForm, CommentForm
-from .models import Post, Comment, Genre
+from .forms import PostForm, CommentForm, CourseForm
+from .models import Post, Comment, Genre, Course
 # from django.contrib.auth.models import User
 from accounts.models import userProfile
 
@@ -53,6 +53,27 @@ def postcreate(request):
         'form':form
     }
     return render(request, 'postcreate.html', context)
+
+# 클래스 만들기
+def coursecreate(request):
+    # request 메소드가 Post 일 경우
+    # 입력값 저장
+    if request.method == 'POST' or request.method == 'FILES':
+        form = CourseForm(request.POST, request.FILES)
+        if form.is_valid():
+            unfinished = form.save(commit=False)
+            unfinished.userId = request.user
+            unfinished.save()
+            return redirect('index')
+    # request method()가 Get일 경우
+    # form 입력 html 띄우기
+    else:
+        form = CourseForm()
+    
+    context = {
+        'form':form
+    }
+    return render(request, 'date.html', context)
 
 # 게시글 삭제
 def delete_post(request, post_id):

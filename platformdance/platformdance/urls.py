@@ -27,8 +27,10 @@ urlpatterns = [
     path('indexstyle/', views.indexstyle, name='indexstyle'),
     # 계정 관련 url은 accounts/urls.py 에서 처리
     path('accounts/', include('accounts.urls')),
-    # danceapp 파일 업로드
+    # 게시글 생성 (영상 업로드)
     path('postcreate/', views.postcreate, name='postcreate'),
+    # 게시글 생성 (클래스 업로드)
+    path('coursecreate/', views.coursecreate, name='coursecreate'),
     # 게시글 세부 페이지 보기
     path('post/<int:post_id>', views.post, name='post'),
     # user 에 따른 개인 포스트 보기

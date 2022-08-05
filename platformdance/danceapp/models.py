@@ -40,13 +40,13 @@ class Course(models.Model):
     photo = models.ImageField(blank=True, null=True, upload_to='thumbnail') # 썸네일 # upload_to : static/blog_photo 로 저장해줘
     video = models.FileField(blank=True, null=True, upload_to='video') # 배포시에는 models.FilePathField()사용
     genreName = models.ForeignKey(Genre, null=True, on_delete=models.CASCADE) # 장르
-    likes_user = models.ManyToManyField(userProfile, related_name='likes', blank=True) # 좋아요 누른 사람
+    likes_user = models.ManyToManyField(userProfile, related_name='likes_course', blank=True) # 좋아요 누른 사람
     likes_count = models.PositiveIntegerField(default=0) 
     register_user = models.ManyToManyField(userProfile, related_name='register_user', blank=True)
     register_count = models.PositiveIntegerField(default=0) 
     # 최대 인원 수, 위치, 클래스 날짜 및 시간, 끝나는 시간
     maxRegCount = models.IntegerField(default=0, null=False) 
-    # startDate = 
+    startDate = models.DateField()
 
     def __str__(self):
         return self.title
