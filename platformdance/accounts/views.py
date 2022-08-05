@@ -24,7 +24,12 @@ def login(request):
     if request.method == 'POST':
         _id = request.POST["username"]
         _pass = request.POST["password"]
-        user = auth.authenticate(request, username=_id, password=_pass)
+        # _nickname=request.POST["nickname"]
+        user = auth.authenticate(request, 
+        username=_id, 
+        password=_pass, 
+        # nickname=_nickname
+        )
         print(_id, _pass, user)
 
         if user is not None:

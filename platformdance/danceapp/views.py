@@ -121,7 +121,7 @@ def delete_comment(request, comment_id):
 #     }
 #     return render(request, 'show_post_all.html', context)
 
-
+# user_detail 로 바꾸기
 def post_detail(request, userId_id):
     posts = Post.objects.filter(userId=userId_id).order_by('-uploadDate')
     user = get_object_or_404(userProfile, pk=userId_id)
@@ -152,6 +152,7 @@ def likes(request, post_id):
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))     
 
 # 게시글 세부 페이지로 이동
+# post_detail로 바꾸기
 def post(request, post_id):
     post = Post.objects.get(id = post_id)
     comment_form = CommentForm()
@@ -166,6 +167,7 @@ def genre_post(request):
     genre_id = request.GET.get('genre_id', None)
     genre = Genre.objects.get(id=int(genre_id))
     posts = Post.objects.filter().order_by('-updateDate')
+    genrepost = Post.objects.filter(genreName='1').order_by('-uploadDate')
     comment_form = CommentForm()
     context = {
         'genre':genre,
