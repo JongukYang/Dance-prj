@@ -34,7 +34,7 @@ urlpatterns = [
     # 게시글 세부 페이지 보기
     path('post/<int:post_id>', views.post, name='post'),
     # user 에 따른 개인 포스트 보기
-    path('post_detail/<int:userId_id>', views.post_detail, name='post_detail'),
+    path('user_post_detail/<int:userId_id>', views.user_post_detail, name='user_post_detail'),
     # 게시글 삭제
     path('delete_post/<int:post_id>', views.delete_post, name='delete_post'),
     # 댓글

@@ -25,7 +25,7 @@
     {% for post in posts %}
     {% if post.genreName.name == genre.name %}
     <tr>
-        <td><a href="{% url 'post_detail' post.userId_id %}">{{ post.userId }}</a></td>
+        <td><a href="{% url 'user_post_detail' post.userId_id %}">{{ post.userId }}</a></td>
         <td>{{ post.userId_id }}</td>
         <td>{{ post.title }}</td>
         <td>{{ post.body }}</td>

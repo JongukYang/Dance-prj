@@ -143,7 +143,7 @@ def delete_comment(request, comment_id):
 #     return render(request, 'show_post_all.html', context)
 
 # user_detail 로 바꾸기
-def post_detail(request, userId_id):
+def user_post_detail(request, userId_id):
     posts = Post.objects.filter(userId=userId_id).order_by('-uploadDate')
     user = get_object_or_404(userProfile, pk=userId_id)
     # username = Post.objects.
@@ -153,7 +153,7 @@ def post_detail(request, userId_id):
         'comment_form':comment_form,
         'user':user,
     }
-    return render(request, 'post_detail.html', context)
+    return render(request, 'user_post_detail.html', context)
 
 def likes(request, post_id):
     if request.user.is_authenticated:    
