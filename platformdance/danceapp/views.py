@@ -14,7 +14,8 @@ def indexstyle(request):
 def index(request):
     posts = Post.objects.filter().order_by('-updateDate')
     # likes_ten = Post.objects.all().order_by('-likes_count')[:5] # 모든 포스트 중 택5 -> 쿼리셋
-    likes_top_ten = Post.objects.all().order_by('-likes_count')[:10] # 모든 포스트 중 택5 -> 딕셔너리 형태
+    likes_top_ten = Post.objects.all().order_by('-likes_count') # 모든 포스트 중 택5 -> 딕셔너리 형태
+    print("likes_top_ten 출력 : ", likes_top_ten[0], likes_top_ten[2], likes_top_ten[3])
     # likes_ten = Post.objects.filter(genreName='1').order_by('-likes_count')[:5] # 장르 중 택5
     comment_form = CommentForm()
     context = {
@@ -142,7 +143,7 @@ def delete_comment(request, comment_id):
 #     }
 #     return render(request, 'show_post_all.html', context)
 
-# user_detail 로 바꾸기
+# 개인 유저 프로필 보기
 def user_post_detail(request, userId_id):
     posts = Post.objects.filter(userId=userId_id).order_by('-uploadDate')
     user = get_object_or_404(userProfile, pk=userId_id)
@@ -187,8 +188,9 @@ def post(request, post_id):
 def genre_post(request):
     genre_id = request.GET.get('genre_id', None)
     genre = Genre.objects.get(id=int(genre_id))
-    posts = Post.objects.filter().order_by('-updateDate')
-    genrepost = Post.objects.filter(genreName='1').order_by('-uploadDate')
+    posts = Post.objects.filter().order_by('-uploadDate')
+    likes_top = Post.objects.filter(genreName=int(genre_id)).order_by('-likes_count')
+    
     comment_form = CommentForm()
     context = {
         'genre':genre,

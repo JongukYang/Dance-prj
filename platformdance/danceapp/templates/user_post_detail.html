@@ -7,17 +7,24 @@
 <h3>'{{ user.username }}'님의 프로필입니다.</h3>
 <hr>
 <style>
+    table {
+        border: 1px solid black;
+    }
     td, th {
         border: 1px solid black;
     }
     th {
         text-align: center;
-        width: 200px;
+    }
+    .main1 {
+        display: grid; 
+        grid-template-columns: repeat(1, 1fr); 
+        grid-gap: 1rem; grid-auto-rows: minmax(10em, auto); 
+        justify-items: center;
     }
 </style>
 
-<div
-    style="display: grid; grid-template-columns: repeat(1, 1fr); grid-gap: 1rem; grid-auto-rows: minmax(10em, auto); justify-items: center;">
+<div class="main1">
     {% for post in posts %}
     <div>
         <table border="1px solid black">
