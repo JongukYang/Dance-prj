@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+<<<<<<< Updated upstream
+=======
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
+
+>>>>>>> Stashed changes
 
 # Application definition
 

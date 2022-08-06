@@ -4,9 +4,8 @@
 
 
 <!-- main -->
-<h1>{{ genre.name }} Page</h1>
-<h3>{{ genre.name }} 게시글</h3>
-<a href="{% url 'genre_course' %}?genre_id={{genre.id}}">{{ genre.name}} class</a>
+<h1>{{ genre.name }} Class</h1>
+<a href="{% url 'genre_post' %}?genre_id={{genre.id}}">{{ genre.name}} 게시글</a>
 <table border="1">
     <tr>
         <th>userid</th>
@@ -23,32 +22,31 @@
         <th>좋아요</th>
         <th>장르</th>
     </tr>
-    {% for post in posts %}
-    {% if post.genreName.name == genre.name %}
+    {% for course in courses %}
+    {% if course.genreName.name == genre.name %}
     <tr>
-        <td><a href="{% url 'post_detail' post.userId_id %}">{{ post.userId }}</a></td>
-        <td>{{ post.userId_id }}</td>
-        <td>{{ post.title }}</td>
-        <td>{{ post.body }}</td>
-        <td>{{ post.uploadDate }}</td>
-        <td>{{ post.updateDate }}</td>
+        <td>{{ course.userId_id }}</td>
+        <td>{{ course.title }}</td>
+        <td>{{ course.body }}</td>
+        <td>{{ course.uploadDate }}</td>
+        <td>{{ course.updateDate }}</td>
         <td>
-            {% if post.photo %}
-            {{ post.photo }} <br>
-            <img style="width: 30%;" src="{{ post.photo.url }}" alt="">
+            {% if course.photo %}
+            {{ course.photo }} <br>
+            <img style="width: 30%;" src="{{ course.photo.url }}" alt="">
             {% endif %}
         </td>
         <td>
-            {% if post.video %}
-            {{ post.video }} <br>
+            {% if course.video %}
+            {{ course.video }} <br>
             <!-- <video width="30%" src="{{ post.video.url }}" controls></video> -->
             {% endif %}
         </td>
 
         <td>
             {% if request.user.is_authenticated %}
-            {% if post.userId == request.user %}
-            <form action="{% url 'modify_post' post.id %}" method="POST">
+            {% if course.userId == request.user %}
+
                 {% csrf_token %}
                 <input type="submit" name="modify_post" value="수정">
             </form>
@@ -59,8 +57,8 @@
 
         <td>
             {% if request.user.is_authenticated %}
-            {% if post.userId == request.user %}
-            <form action="{% url 'delete_post' post.id %}" method="POST">
+            {% if course.userId == request.user %}
+
                 {% csrf_token %}
                 <input type="submit" name="delete_post" value="삭제">
             </form>
@@ -68,15 +66,15 @@
             {% endif %}
         </td>
 
-        <td>
+        <!-- <td>
             {% if request.user.is_authenticated %}
-            <form method="POST" action="{% url 'new_comment' post.id %}">
+
                 {% csrf_token %}
                 {{ comment_form.as_p }}
                 <input type="submit" value="댓글 입력">
             </form>
             {% endif %}
-            {% for comment in post.comment_set.all %}
+            {% for comment in course.comment_set.all %}
             {{ comment.userId }} - {{ comment }}
             {% if request.user == comment.userId %}
             <form action="{% url 'delete_comment' comment.id %}" method="POST">
@@ -86,21 +84,21 @@
             {% endif %}
             <br>
             {% endfor %}
-        </td>
+        </td> -->
         <td>
-            <form action="{% url 'likes' post.id %}" method="">
+            <form action="{% url 'course_likes' course.id %}" method="">
                 {% csrf_token %}
                 <p>
-                    좋아요 수 : {{ post.likes_count }}
+                    좋아요 수 : {{ course.likes_count }}
                 </p>
-                {% if request.user in post.likes_user.all %}
+                {% if request.user in course.likes_user.all %}
                 <input type="submit" value="dislike">
                 {% else %}
                 <input type="submit" value="like">
                 {% endif %}
             </form>
         </td>
-        <td>장르 : {{post.genreName}}</td>
+        <td>장르 : {{course.genreName}}</td>
     </tr>
     {% endif %}
     {% endfor %}
