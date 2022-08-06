@@ -1,9 +1,7 @@
 from django import forms
-<<<<<<< Updated upstream
-from .models import Post, Comment
-=======
 from .models import Post, Comment, Course
->>>>>>> Stashed changes
+from .models import Post, Comment, Course
+
 
 class PostForm(forms.ModelForm):
     class Meta:

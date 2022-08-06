@@ -46,11 +46,7 @@ class Course(models.Model):
     register_count = models.PositiveIntegerField(default=0) 
     # 최대 인원 수, 위치, 클래스 날짜 및 시간, 끝나는 시간
     maxRegCount = models.IntegerField(default=0, null=False) 
-<<<<<<< Updated upstream
-    # startDate = 
-=======
     startDate = models.DateField(auto_now=False, auto_now_add=False)
->>>>>>> Stashed changes
 
     def __str__(self):
         return self.title
