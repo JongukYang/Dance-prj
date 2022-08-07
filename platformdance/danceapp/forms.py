@@ -64,13 +64,12 @@ class CourseForm(forms.ModelForm):
         # fields = '__all__'
         fields = ['title', 'body', 'photo', 'video', 'genreName', 'startDate']
 
-
         widgets = {
             'startDate': forms.DateInput(format=('%Y/%m/%d'), 
             attrs={'class':'form-control', 'placeholder':'날짜 선택', 'type':'date'}
             ),
         }
-      def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super(CourseForm, self).__init__(*args, **kwargs)
 
         self.fields['startDate'].widget.attrs = {

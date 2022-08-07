@@ -212,6 +212,7 @@ def genre_course(request):
         'comment_form':comment_form,
     }
     return render(request, 'genre_course.html', context)
+    
 def course_likes(request, course_id):
    if request.user.is_authenticated:    
        course = get_object_or_404(Course, pk=course_id)

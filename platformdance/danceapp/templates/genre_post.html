@@ -4,51 +4,11 @@
 <!-- main -->
 <h1>{{ genre.name }} Page</h1>
 <h3>{{ genre.name }} 게시글</h3>
-<a href="{% url 'genre_course' %}?genre_id={{genre.id}}">{{ genre.name}} class</a>
-<table border="1">
-    <tr>
-        <th>userid</th>
-        <th>userId_id</th>
-        <th>title</th>
-        <th>body</th>
-        <th>uploadDate</th>
-        <th>updateDate</th>
-        <th>img</th>
-        <th>video</th>
-        <th>수정</th>
-        <th>삭제</th>
-        <th>댓글</th>
-        <th>좋아요</th>
-        <th>장르</th>
-    </tr>
-    {% for post in posts %}
-    {% if post.genreName.name == genre.name %}
-    <tr>
-        <td><a href="{% url 'post_detail' post.userId_id %}">{{ post.userId }}</a></td>
-        <td>{{ post.userId_id }}</td>
-        <td>{{ post.title }}</td>
-        <td>{{ post.body }}</td>
-        <td>{{ post.uploadDate }}</td>
-        <td>{{ post.updateDate }}</td>
-        <td>
-            {% if post.photo %}
-            {{ post.photo }} <br>
-            <img style="width: 30%;" src="{{ post.photo.url }}" alt="">
-            {% endif %}
-        </td>
-        <td>
-            {% if post.video %}
-            {{ post.video }} <br>
-            <!-- <video width="30%" src="{{ post.video.url }}" controls></video> -->
-            {% endif %}
-        </td>
+<a href="{% url 'genre_course' %}?genre_id={{genre.id}}">{{ genre.name}} 게시글</a>
+
 <hr>
-
-
 <!-- 실시간 top10 장르 영상 출력 -->
 <h2>실시간 Top10 {{ genre.name }} 영상</h2>
-
-
 
 <hr>
 
@@ -58,17 +18,21 @@
     table {
         border: 1px solid black;
     }
-    td, th {
+
+    td,
+    th {
         border: 1px solid black;
     }
+
     th {
         text-align: center;
     }
+
     .main1 {
-        display: grid; 
-        grid-template-columns: repeat(1, 1fr); 
-        grid-gap: 1rem; 
-        grid-auto-rows: minmax(10em, auto); 
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1rem;
+        grid-auto-rows: minmax(10em, auto);
         justify-items: start;
         width: 100%;
     }
@@ -110,7 +74,7 @@
                 <!-- 게시일 -->
                 <td colspan="3">{{ post.uploadDate }}</td>
             </tr>
-            
+
         </table>
     </div>
     {% endif %}
