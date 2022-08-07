@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template.defaulttags import comment
 from .forms import PostForm, CommentForm, CourseForm
 from .models import Post, Comment, Genre, Course
 # from django.contrib.auth.models import User
@@ -147,7 +148,7 @@ def user_post_detail(request, userId_id):
 def likes(request, post_id):
     if request.user.is_authenticated:    
         post = get_object_or_404(Post, pk=post_id)
-        # user = request.user
+        current_user = request.user
         # check_like_post = 
         if request.user in post.likes_user.all():
         # if post.likes_user.filter(pk=request.user.pk).exists():
