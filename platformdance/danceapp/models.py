@@ -29,6 +29,14 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+# class LikePost(models.Model):
+#     user = models.ForeignKey(userProfile, on_delete=models.CASCADE, related_name="liked_users")
+#     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="liked_posts")
+
+#     def __str__(self):
+#         return f"{self.user} liked {self.post}"
+
+
 # 강좌 클래스 모델 만들기
 class Course(models.Model):
     # pk=course_id 로 두기
