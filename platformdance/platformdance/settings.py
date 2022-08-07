@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+DATETIME_INPUT_FORMATS = ['%d-%m-%Y']
+
 
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 

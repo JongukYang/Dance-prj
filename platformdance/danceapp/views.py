@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import PostForm, CommentForm
-from .models import Post, Comment, Genre
+from .forms import PostForm, CommentForm, CourseForm
+from .models import Post, Comment, Genre, Course
 # from django.contrib.auth.models import User
 from accounts.models import userProfile
 
@@ -14,7 +14,8 @@ def indexstyle(request):
 def index(request):
     posts = Post.objects.filter().order_by('-updateDate')
     # likes_ten = Post.objects.all().order_by('-likes_count')[:5] # 모든 포스트 중 택5 -> 쿼리셋
-    likes_top_ten = Post.objects.all().order_by('-likes_count')[:10] # 모든 포스트 중 택5 -> 딕셔너리 형태
+    likes_top_ten = Post.objects.all().order_by('-likes_count') # 모든 포스트 중 택5 -> 딕셔너리 형태
+    print("likes_top_ten 출력 : ", likes_top_ten[0], likes_top_ten[2], likes_top_ten[3])
     # likes_ten = Post.objects.filter(genreName='1').order_by('-likes_count')[:5] # 장르 중 택5
     comment_form = CommentForm()
     context = {
@@ -54,8 +55,6 @@ def postcreate(request):
     }
     return render(request, 'postcreate.html', context)
 
-<<<<<<< Updated upstream
-=======
 # 클래스 만들기
 def coursecreate(request):
     # request 메소드가 Post 일 경우
@@ -77,7 +76,7 @@ def coursecreate(request):
     }
     return render(request, 'coursecreate.html', context)
 
->>>>>>> Stashed changes
+
 # 게시글 삭제
 def delete_post(request, post_id):
     del_post = get_object_or_404(Post, pk=post_id)
@@ -145,8 +144,8 @@ def delete_comment(request, comment_id):
 #     }
 #     return render(request, 'show_post_all.html', context)
 
-# user_detail 로 바꾸기
-def post_detail(request, userId_id):
+# 개인 유저 프로필 보기
+def user_post_detail(request, userId_id):
     posts = Post.objects.filter(userId=userId_id).order_by('-uploadDate')
     user = get_object_or_404(userProfile, pk=userId_id)
     # username = Post.objects.
@@ -156,7 +155,7 @@ def post_detail(request, userId_id):
         'comment_form':comment_form,
         'user':user,
     }
-    return render(request, 'post_detail.html', context)
+    return render(request, 'user_post_detail.html', context)
 
 def likes(request, post_id):
     if request.user.is_authenticated:    
@@ -190,8 +189,9 @@ def post(request, post_id):
 def genre_post(request):
     genre_id = request.GET.get('genre_id', None)
     genre = Genre.objects.get(id=int(genre_id))
-    posts = Post.objects.filter().order_by('-updateDate')
-    genrepost = Post.objects.filter(genreName='1').order_by('-uploadDate')
+    posts = Post.objects.filter().order_by('-uploadDate')
+    likes_top = Post.objects.filter(genreName=int(genre_id)).order_by('-likes_count')
+    
     comment_form = CommentForm()
     context = {
         'genre':genre,
