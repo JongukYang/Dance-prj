@@ -216,3 +216,29 @@ def course_likes(request, course_id):
            course.save()
    # 현재 내가 있는 페이지로 redirect 
    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+# 마이페이지 정보 전달
+def mypage(request, user_id):
+    if request.user.is_authenticated:
+        myposts = Post.objects.filter(userId=user_id).order_by('-updateDate')
+        likes_top_ten = Post.objects.all().order_by('-likes_count') # 모든 포스트 중 택5 -> 딕셔너리 형태
+        print("likes_top_ten 출력 : ", likes_top_ten[0], likes_top_ten[2], likes_top_ten[3])
+        # likes_ten = Post.objects.filter(genreName='1').order_by('-likes_count')[:5] # 장르 중 택5
+        comment_form = CommentForm()
+        context = {
+            'posts':myposts,
+            'comment_form':comment_form,
+            'likes_top_ten':likes_top_ten,
+            'rank1':likes_top_ten[0],
+            'rank2':likes_top_ten[1],
+            'rank3':likes_top_ten[2],
+            'rank4':likes_top_ten[3],
+            'rank5':likes_top_ten[4],
+            'rank6':likes_top_ten[5],
+            'rank7':likes_top_ten[6],
+            'rank8':likes_top_ten[7],
+            'rank9':likes_top_ten[8],
+            'rank10':likes_top_ten[9],
+        }
+        return render(request, 'mypage.html', context)
+

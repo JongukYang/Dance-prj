@@ -27,6 +27,9 @@
 </style>
 
 <h1>mypage.html</h1>
+<hr>
+<!-- 유저 모델 기본 프로필 -->
+<h2>유저 모델 기본 프로필</h2>
 <table>
     <tr>
         <th>프사</th>
@@ -34,9 +37,30 @@
         <th>춤실력</th>
         <th>메일주소</th>
     </tr>
+    <!-- 반복 시작 -->
     <tr>
-        <td>{{  }}</td>
+        <td>프사</td>
+        <td>프사</td>
+        <td>프사</td>
+        <td>프사</td>
     </tr>
+    <!-- 반복 끝 -->
+</table>
+
+<hr>
+<!-- 내가 올린 영상 출력 -->
+<h2>내가 올린 영상</h2>
+<table>
+    <!-- 게시글 반복 시작 -->
+    {% for post in posts %}
+    <tr>
+        <td>{{ post.userId }}</td>
+        <td>프사</td>
+        <td>프사</td>
+        <td>프사</td>
+    </tr>
+    {% endfor %}
+    <!-- 게시글 반복 끝 -->
 </table>
 
 {% endblock %}
