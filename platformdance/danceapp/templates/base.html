@@ -131,6 +131,7 @@
 
         <!-- main Body 수정 -->
         <div class="container-fulid" id="main-body-container">
+            <h2><a href="{% url 'mypage' request.user.id %}">마이페이지</a></h2>
             <!-- block content 사용 부분 -->
             {% block content %}
 

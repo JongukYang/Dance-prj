@@ -49,6 +49,8 @@ urlpatterns = [
     path('genre', views.genre_post, name='genre_post'),
     # 장르별 포스트 보기
     path('genre_course', views.genre_course, name='genre_course'),
+    # 마이페이지
+    path('mypage/<int:user_id>', views.mypage, name='mypage')
     
     
 
