@@ -40,7 +40,7 @@ class Course(models.Model):
     photo = models.ImageField(blank=True, null=True, upload_to='thumbnail') # 썸네일 # upload_to : static/blog_photo 로 저장해줘
     video = models.FileField(blank=True, null=True, upload_to='video') # 배포시에는 models.FilePathField()사용
     genreName = models.ForeignKey(Genre, null=True, on_delete=models.CASCADE) # 장르
-    likes_user = models.ManyToManyField(userProfile, related_name='likes', blank=True) # 좋아요 누른 사람
+    likes_user = models.ManyToManyField(userProfile, related_name='course_likes', blank=True) # 좋아요 누른 사람
     likes_count = models.PositiveIntegerField(default=0) 
     register_user = models.ManyToManyField(userProfile, related_name='register_user', blank=True)
     register_count = models.PositiveIntegerField(default=0) 

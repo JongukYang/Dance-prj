@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment, Genre
+from .models import Post, Comment, Genre, Course
 
 # Register your models here.
 
@@ -13,14 +13,11 @@ class PostAdmin(admin.ModelAdmin):
 
 admin.site.register(Post, PostAdmin)
 
-<<<<<<< Updated upstream
-=======
 class CourseAdmin(admin.ModelAdmin):
     list_display = ('userId', 'title', 'body', 'userId_id', 'genreName', 'uploadDate', 'updateDate', 'startDate')
 
 admin.site.register(Course, CourseAdmin)
 
->>>>>>> Stashed changes
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('userId', 'post', 'comment', 'date')
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import PostForm, CommentForm
-from .models import Post, Comment, Genre
-# from django.contrib.auth.models import User
+from .forms import PostForm, CommentForm, CourseForm
+from .models import Post, Comment, Genre, Course
+    # from django.contrib.auth.models import User
 from accounts.models import userProfile
 
 # 페이지네이션, 객체들 목록을 끊어서 보여주는 것
@@ -9,7 +9,15 @@ from accounts.models import userProfile
 
 def indexstyle(request):
     return render(request, 'indexstyle.html')
-
+def test(request):
+    posts = Post.objects.filter().order_by('-updateDate')
+    # likes_ten = Post.objects.all().order_by('-likes_count')[:5] # 모든 포스트 중 택5 -> 쿼리셋
+    likes_top_ten = Post.objects.all().order_by('-likes_count')[:10] # 모든 포스트 중 택5 -> 딕셔너리 형태
+    context = {
+        'posts':posts,
+        'likes_top_ten':likes_top_ten
+    }
+    return render(request, 'test.html', context)
 # Create your views here.
 def index(request):
     posts = Post.objects.filter().order_by('-updateDate')
@@ -54,8 +62,6 @@ def postcreate(request):
     }
     return render(request, 'postcreate.html', context)
 
-<<<<<<< Updated upstream
-=======
 # 클래스 만들기
 def coursecreate(request):
     # request 메소드가 Post 일 경우
@@ -77,7 +83,6 @@ def coursecreate(request):
     }
     return render(request, 'coursecreate.html', context)
 
->>>>>>> Stashed changes
 # 게시글 삭제
 def delete_post(request, post_id):
     del_post = get_object_or_404(Post, pk=post_id)

@@ -58,9 +58,6 @@ class CommentForm(forms.ModelForm):
             'rows':10
         }
 
-<<<<<<< Updated upstream
-
-=======
 class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
@@ -106,4 +103,3 @@ class CourseForm(forms.ModelForm):
             'style': 'color:black;' # 알아서 색 맞춰 수정하기
         }
         
->>>>>>> Stashed changes
