@@ -9,12 +9,12 @@ class GenreAdmin(admin.ModelAdmin):
 admin.site.register(Genre, GenreAdmin)
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('userId', 'title', 'body', 'userId_id', 'genreName', 'uploadDate', 'updateDate')
+    list_display = ('userId', 'userId_id', 'title', 'body', 'likes_count', 'genreName', 'uploadDate', 'updateDate')
 
 admin.site.register(Post, PostAdmin)
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('userId', 'title', 'body', 'userId_id', 'genreName', 'uploadDate', 'updateDate', 'startDate')
+    list_display = ('userId', 'userId_id', 'title', 'body', 'likes_count', 'genreName', 'startDate', 'uploadDate', 'updateDate')
 
 admin.site.register(Course, CourseAdmin)
 
