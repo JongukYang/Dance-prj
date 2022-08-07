@@ -38,12 +38,14 @@
         <th>메일주소</th>
     </tr>
     <!-- 반복 시작 -->
+    {% for my in myprofile %}
     <tr>
-        <td>프사</td>
-        <td>프사</td>
-        <td>프사</td>
-        <td>프사</td>
+        <td>{{ my.profilephoto }}</td>
+        <td>{{ my.nickname }}</td>
+        <td>{{ my.danceSkill }}</td>
+        <td>{{ my.email }}</td>
     </tr>
+    {% endfor %}
     <!-- 반복 끝 -->
 </table>
 
@@ -67,6 +69,34 @@
         <td>{{ post.likes_count }}</td>
         <td>
             {% for i in post.likes_user.all %}
+            {{ i.username }},
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+    <!-- 게시글 반복 끝 -->
+</table>
+<hr>
+
+<!-- 내가 좋아요한 영상 출력 -->
+<h2>내가 좋아요한 영상</h2>
+<table>
+    <!-- 게시글 반복 시작 -->
+    <tr>
+        <th>게시글 제목</th>
+        <th>사진</th>
+        <th>설명</th>
+        <th>좋아요 개수</th>
+        <th>좋아요 누를 사람</th>
+    </tr>
+    {% for likedvideo in mylikedvideo %}
+    <tr>
+        <td>{{ likedvideo.title }}</td>
+        <td>{{ likedvideo.body }}</td>
+        <td>{{ likedvideo.photo }}</td>
+        <td>{{ likedvideo.likes_count }}</td>
+        <td>
+            {% for i in likedvideo.likes_user.all %}
             {{ i.username }},
             {% endfor %}
         </td>
