@@ -52,12 +52,24 @@
 <h2>내가 올린 영상</h2>
 <table>
     <!-- 게시글 반복 시작 -->
+    <tr>
+        <th>게시글 제목</th>
+        <th>사진</th>
+        <th>설명</th>
+        <th>좋아요 개수</th>
+        <th>좋아요 누를 사람</th>
+    </tr>
     {% for post in posts %}
     <tr>
-        <td>{{ post.userId }}</td>
-        <td>프사</td>
-        <td>프사</td>
-        <td>프사</td>
+        <td>{{ post.title }}</td>
+        <td>{{ post.body }}</td>
+        <td>{{ post.photo }}</td>
+        <td>{{ post.likes_count }}</td>
+        <td>
+            {% for i in post.likes_user.all %}
+            {{ i.username }},
+            {% endfor %}
+        </td>
     </tr>
     {% endfor %}
     <!-- 게시글 반복 끝 -->
