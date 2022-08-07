@@ -24,7 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # 메인 홈페이지
     path('', views.index, name='index'),
-    path('indexstyle/', views.indexstyle, name='indexstyle'),
     # 계정 관련 url은 accounts/urls.py 에서 처리
     path('accounts/', include('accounts.urls')),
     # 게시글 생성 (영상 업로드)

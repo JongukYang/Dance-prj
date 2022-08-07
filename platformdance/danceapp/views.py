@@ -7,9 +7,6 @@ from accounts.models import userProfile
 # 페이지네이션, 객체들 목록을 끊어서 보여주는 것
 # from django.core.paginator import Paginator
 
-def indexstyle(request):
-    return render(request, 'indexstyle.html')
-
 # Create your views here.
 def index(request):
     posts = Post.objects.filter().order_by('-updateDate')
@@ -133,17 +130,6 @@ def delete_comment(request, comment_id):
     del_comment.delete()
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
-# # 장르를 클릭했을 때 genre.id 를 넘겨받아 각각의 장르마다 따른 필터 적용
-# def showpostall(request):
-#     posts = Post.objects.filter(genreName=1)
-#     # posts = Post.objects.filter().order_by('-uploadDate')
-#     comment_form = CommentForm()
-#     context = {
-#         'posts':posts,
-#         'comment_form':comment_form
-#     }
-#     return render(request, 'show_post_all.html', context)
-
 # 개인 유저 프로필 보기
 def user_post_detail(request, userId_id):
     posts = Post.objects.filter(userId=userId_id).order_by('-uploadDate')
@@ -157,6 +143,7 @@ def user_post_detail(request, userId_id):
     }
     return render(request, 'user_post_detail.html', context)
 
+# 좋아요
 def likes(request, post_id):
     if request.user.is_authenticated:    
         post = get_object_or_404(Post, pk=post_id)
@@ -212,7 +199,7 @@ def genre_course(request):
         'comment_form':comment_form,
     }
     return render(request, 'genre_course.html', context)
-    
+
 def course_likes(request, course_id):
    if request.user.is_authenticated:    
        course = get_object_or_404(Course, pk=course_id)
