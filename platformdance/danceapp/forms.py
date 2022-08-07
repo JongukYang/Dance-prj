@@ -1,5 +1,7 @@
 from django import forms
+
 from .models import Course, Post, Comment
+
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -57,13 +59,18 @@ class CommentForm(forms.ModelForm):
         }
 
 class CourseForm(forms.ModelForm):
-    Date = forms.DateField(input_formats=["%d/%m/%Y"])
     class Meta:
         model = Course
         # fields = '__all__'
         fields = ['title', 'body', 'photo', 'video', 'genreName', 'startDate']
 
-    def __init__(self, *args, **kwargs):
+
+        widgets = {
+            'startDate': forms.DateInput(format=('%Y/%m/%d'), 
+            attrs={'class':'form-control', 'placeholder':'날짜 선택', 'type':'date'}
+            ),
+        }
+      def __init__(self, *args, **kwargs):
         super(CourseForm, self).__init__(*args, **kwargs)
 
         self.fields['startDate'].widget.attrs = {

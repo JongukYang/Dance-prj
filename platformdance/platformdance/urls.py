@@ -43,10 +43,13 @@ urlpatterns = [
     path('delete_comment/<int:comment_id>', views.delete_comment, name='delete_comment'),
     # 좋아요
     path('likes/<int:post_id>', views.likes, name='likes'),
+    path('course_likes/<int:course_id>', views.course_likes, name='course_likes'),
     # 게시글 수정
     path('modify_post/<int:post_id>', views.modify_post, name='modify_post'),
     # 장르별 포스트 보기
     path('genre', views.genre_post, name='genre_post'),
+    # 장르별 포스트 보기
+    path('genre_course', views.genre_course, name='genre_course'),
     
     
 

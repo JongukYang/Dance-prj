@@ -14,9 +14,10 @@ class PostAdmin(admin.ModelAdmin):
 admin.site.register(Post, PostAdmin)
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('userId', 'title', 'body', 'userId_id', 'genreName', 'uploadDate', 'updateDate')
+    list_display = ('userId', 'title', 'body', 'userId_id', 'genreName', 'uploadDate', 'updateDate', 'startDate')
 
 admin.site.register(Course, CourseAdmin)
+
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('userId', 'post', 'comment', 'date')

@@ -74,7 +74,8 @@ def coursecreate(request):
     context = {
         'form':form
     }
-    return render(request, 'date.html', context)
+    return render(request, 'coursecreate.html', context)
+
 
 # 게시글 삭제
 def delete_post(request, post_id):
@@ -199,3 +200,31 @@ def genre_post(request):
     }
     return render(request, 'genre_post.html', context)
 
+# 장르에 맞는 클레스 출력
+def genre_course(request):
+    genre_id = request.GET.get('genre_id', None)
+    genre = Genre.objects.get(id=int(genre_id))
+    courses = Course.objects.filter().order_by('-updateDate')
+    comment_form = CommentForm()
+    context = {
+        'genre':genre,
+        'courses':courses,
+        'comment_form':comment_form,
+    }
+    return render(request, 'genre_course.html', context)
+def course_likes(request, course_id):
+   if request.user.is_authenticated:    
+       course = get_object_or_404(Course, pk=course_id)
+       # user = request.user
+       # check_like_post = 
+       if request.user in course.likes_user.all():
+       # if post.likes_user.filter(pk=request.user.pk).exists():
+           course.likes_user.remove(request.user)
+           course.likes_count -= 1
+           course.save()    
+       else:
+           course.likes_user.add(request.user)
+           course.likes_count += 1
+           course.save()
+   # 현재 내가 있는 페이지로 redirect 
+   return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
