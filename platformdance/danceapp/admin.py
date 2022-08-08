@@ -13,7 +13,6 @@ class PostAdmin(admin.ModelAdmin):
 
 admin.site.register(Post, PostAdmin)
 
-
 # 강의
 class CourseAdmin(admin.ModelAdmin):
     list_display = ('userId', 'title', 'body', 'userId_id', 'genreName', 'uploadDate', 'updateDate', 'startDate')

@@ -1,6 +1,6 @@
 from django import forms
-from .models import Post, Comment, Course
-from .models import Post, Comment, Course
+
+from .models import Course, Post, Comment
 
 
 class PostForm(forms.ModelForm):
@@ -55,8 +55,9 @@ class CommentForm(forms.ModelForm):
         self.fields['comment'].widget.attrs = {
             'class': 'form-control', 
             'placeholder': "댓글 입력",
-            'rows':10
+            'rows':2
         }
+
 
 # 강의
 class CourseForm(forms.ModelForm):
@@ -65,15 +66,19 @@ class CourseForm(forms.ModelForm):
         # fields = '__all__'
         fields = ['title', 'body', 'photo', 'video', 'genreName', 'startDate', 'maxRegCount', 'location']
 
+
         widgets = {
             'startDate': forms.DateInput(format=('%Y/%m/%d'), 
             attrs={'class':'form-control', 'placeholder':'날짜 선택', 'type':'date'}
             ),
         }
-
     def __init__(self, *args, **kwargs):
         super(CourseForm, self).__init__(*args, **kwargs)
 
+        self.fields['startDate'].widget.attrs = {
+            'class': 'form-control', 
+            'Date' : forms.DateInput(format=("%d/%m/%Y"))
+        }
         self.fields['title'].widget.attrs = {
             'class': 'form-control', 
             'placeholder': "제목 입력(4-100)",
