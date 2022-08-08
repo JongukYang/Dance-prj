@@ -58,11 +58,13 @@ class CommentForm(forms.ModelForm):
             'rows':2
         }
 
+
+# 강의
 class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
         # fields = '__all__'
-        fields = ['title', 'body', 'photo', 'video', 'genreName', 'startDate']
+        fields = ['title', 'body', 'photo', 'video', 'genreName', 'startDate', 'maxRegCount', 'location']
 
         widgets = {
             'startDate': forms.DateInput(format=('%Y/%m/%d'), 
@@ -103,6 +105,18 @@ class CourseForm(forms.ModelForm):
             # 'class': 'form-control', 
             'placeholder': "장르 선택",
             'id': 'id_gerneName',
+            'style': 'color:black;' # 알아서 색 맞춰 수정하기
+        }
+        self.fields['location'].widget.attrs = {
+            # 'class': 'form-control', 
+            'placeholder': "위치",
+            'id': 'id_location',
+            'style': 'color:black;' # 알아서 색 맞춰 수정하기
+        }
+        self.fields['maxRegCount'].widget.attrs = {
+            # 'class': 'form-control', 
+            'placeholder': "최대 수강 인원",
+            'id': 'id_maxRegCount',
             'style': 'color:black;' # 알아서 색 맞춰 수정하기
         }
         

@@ -74,7 +74,6 @@ def coursecreate(request):
     }
     return render(request, 'coursecreate.html', context)
 
-
 # 게시글 삭제
 def delete_post(request, post_id):
     del_post = get_object_or_404(Post, pk=post_id)
@@ -216,6 +215,15 @@ def course_likes(request, course_id):
            course.save()
    # 현재 내가 있는 페이지로 redirect 
    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+
+def course_detail(request, course_id):
+    course = get_object_or_404(Course, pk=course_id)
+    context = {
+        'course': course,
+    }
+    return render(request, 'course_detail.html', context)
+
 
 # 마이페이지 정보 전달
 def mypage(request, user_id):
