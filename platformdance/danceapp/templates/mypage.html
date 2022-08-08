@@ -96,8 +96,11 @@
         <td>{{ likedvideo.photo }}</td>
         <td>{{ likedvideo.likes_count }}</td>
         <td>
+            <!-- 좋아요 누른 사람 출력 -->
             {% for i in likedvideo.likes_user.all %}
-            {{ i.username }},
+            {{ forloop.counter }}-{{ i.username }}
+            <!-- forloop 마지막이 아니라면 , 찍기 -->
+            {% if not forloop.last %},{% endif %}
             {% endfor %}
         </td>
     </tr>
