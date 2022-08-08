@@ -233,3 +233,26 @@ def course_likes(request, course_id):
            course.save()
    # 현재 내가 있는 페이지로 redirect 
    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+def course_detail(request, course_id):
+    course = get_object_or_404(Course, pk=course_id)
+    context = {
+        'course': course,
+    }
+    return render(request, 'course_detail.html', context)
+
+
+# 마이페이지 정보 전달
+def mypage(request, user_id):
+    if request.user.is_authenticated:
+        myposts = Post.objects.filter(userId=user_id).order_by('-uploadDate')
+        myprofile = userProfile.objects.filter(id=user_id)
+        mylikedvideo = Post.objects.filter(likes_user=user_id).order_by('-uploadDate')
+        # likes_ten = Post.objects.filter(genreName='1').order_by('-likes_count')[:5] # 장르 중 택5
+        context = {
+            'posts':myposts,
+            'myprofile':myprofile,
+            'mylikedvideo':mylikedvideo,
+        }
+        return render(request, 'mypage.html', context)
+

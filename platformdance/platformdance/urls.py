@@ -46,8 +46,12 @@ urlpatterns = [
     path('modify_post/<int:post_id>', views.modify_post, name='modify_post'),
     # 장르별 포스트 보기
     path('genre', views.genre_post, name='genre_post'),
-    # 장르별 포스트 보기
+    # 장르별 클래스 보기
     path('genre_course', views.genre_course, name='genre_course'),
+    # 클래스 세부 페이지
+    path('course_detail/<int:course_id>', views.course_detail, name='course_detail'),
+    # 마이페이지
+    path('mypage/<int:user_id>', views.mypage, name='mypage')
     
     
 
