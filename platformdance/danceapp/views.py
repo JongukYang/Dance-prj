@@ -8,6 +8,10 @@ from accounts.models import userProfile
 # 페이지네이션, 객체들 목록을 끊어서 보여주는 것
 # from django.core.paginator import Paginator
 
+# views.py commit 테스트 하기
+# 해봅시다
+
+
 # Create your views here.
 def index(request):
     posts = Post.objects.filter().order_by('-updateDate')
