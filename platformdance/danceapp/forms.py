@@ -66,7 +66,6 @@ class CourseForm(forms.ModelForm):
         # fields = '__all__'
         fields = ['title', 'body', 'photo', 'video', 'genreName', 'startDate', 'maxRegCount', 'location']
 
-
         widgets = {
             'startDate': forms.DateInput(format=('%Y/%m/%d'), 
             attrs={'class':'form-control', 'placeholder':'날짜 선택', 'type':'date'}

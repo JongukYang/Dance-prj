@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-
-
 <!-- main -->
 <h1>{{ genre.name }} Class</h1>
 <a href="{% url 'genre_post' %}?genre_id={{genre.id}}">{{ genre.name}} 게시글</a>
