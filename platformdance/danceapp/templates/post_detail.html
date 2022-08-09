@@ -1,17 +1,28 @@
-<h1>post Page</h1>
+<h1>post_detail Page</h1>
 <h3>게시글 개별 보기</h3>
+<h4>장르: {{ post.genreName }}</h4>
 <br>
-<hr><br>
-<h1>제목: {{ post.title }}</h1>
-<h2>작성자: {{ post.userId }}</h2>
-<br>
-<h3>내용</h3>
-{{ post.body }}
-
 {% if post.video %}
 {{ post.video }} <br>
 <!-- <video width="30%" src="{{ post.video.url }}" controls></video> -->
 {% endif %}
+<br>
+
+<form action="{% url 'likes' post.id %}" method="">
+    {% csrf_token %}
+    <h5>
+        좋아요 수 : {{ post.likes_count }}
+        | uploadDate : {{ post.uploadDate }}
+        | updateDate : {{ post.updateDate }}
+    <h5>
+    {% if request.user in post.likes_user.all %}
+    <input type="submit" value="dislike">
+    {% else %}
+    <input type="submit" value="like">
+    {% endif %}
+</form>
+
+<br>
 
 {% if request.user.is_authenticated %}
 {% if post.userId == request.user %}
@@ -22,7 +33,14 @@
 {% endif %}
 {% endif %}
 
+<h5>내용</h5>
+{{ post.body }}
 
+<hr>
+<h3>제목: {{ post.title }}</h3>
+<h4>작성자: {{ post.userId }}</h4>
+<hr>
+<br>
 {% if request.user.is_authenticated %}
 <form method="POST" action="{% url 'new_comment' post.id %}">
     {% csrf_token %}
@@ -41,15 +59,3 @@
 {% endif %}
 <br>
 {% endfor %}
-
-<form action="{% url 'likes' post.id %}" method="">
-    {% csrf_token %}
-    <p>
-        좋아요 수 : {{ post.likes_count }}
-    </p>
-    {% if request.user in post.likes_user.all %}
-    <input type="submit" value="dislike">
-    {% else %}
-    <input type="submit" value="like">
-    {% endif %}
-</form>
