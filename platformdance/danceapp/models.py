@@ -67,7 +67,7 @@ class Course(models.Model):
 class Comment(models.Model):
     # comment_id 는 pk로서 존재함
     userId = models.ForeignKey(userProfile, on_delete=models.CASCADE)
-    comment = models.TextField(max_length=100)
+    comment = models.TextField('', max_length=100)
     date = models.DateTimeField(auto_now_add=True)
     post = models.ForeignKey(Post, null=True, blank=True, on_delete=models.CASCADE)
     
