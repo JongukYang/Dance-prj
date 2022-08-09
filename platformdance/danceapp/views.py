@@ -8,6 +8,10 @@ from accounts.models import userProfile
 # 페이지네이션, 객체들 목록을 끊어서 보여주는 것
 # from django.core.paginator import Paginator
 
+# views.py commit 테스트 하기
+# 해봅시다
+
+
 # Create your views here.
 def index(request):
     posts = Post.objects.filter().order_by('-updateDate')
@@ -37,7 +41,8 @@ def postcreate(request):
     # request 메소드가 Post 일 경우
     # 입력값 저장
     if request.method == 'POST' or request.method == 'FILES':
-        form = PostForm(request.POST, request.FILES)
+        form = PostForm(request.POST)
+        form = PostForm()
         if form.is_valid():
             unfinished = form.save(commit=False)
             unfinished.userId = request.user
@@ -52,6 +57,26 @@ def postcreate(request):
         'form':form
     }
     return render(request, 'postcreate.html', context)
+
+def postcreate3(request):
+    # request 메소드가 Post 일 경우
+    # 입력값 저장
+    if request.method == 'POST' or request.method == 'FILES':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            unfinished = form.save(commit=False)
+            unfinished.userId = request.user
+            unfinished.save()
+            return redirect('index')
+    # request method()가 Get일 경우
+    # form 입력 html 띄우기
+    else:
+        form = PostForm()
+    
+    context = {
+        'form':form
+    }
+    return render(request, 'postcreate3.html', context)
 
 # 클래스 만들기
 def coursecreate(request):
