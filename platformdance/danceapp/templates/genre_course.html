@@ -16,9 +16,9 @@
         <th>video</th>
         <th>수정</th>
         <th>삭제</th>
-        <th>댓글</th>
         <th>좋아요</th>
         <th>장르</th>
+        <th>수강생</th>
     </tr>
     {% for course in courses %}
     {% if course.genreName.name == genre.name %}
@@ -98,6 +98,11 @@
             </form>
         </td>
         <td>장르 : {{course.genreName}}</td>
+        <td>
+           {% for regUser in course.register_user.all %}
+                {{ regUser.nickname}}<br>
+           {% endfor %}
+        </td>
     </tr>
     {% endif %}
     {% endfor %}
