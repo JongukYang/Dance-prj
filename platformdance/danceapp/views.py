@@ -41,7 +41,8 @@ def postcreate(request):
     # request 메소드가 Post 일 경우
     # 입력값 저장
     if request.method == 'POST' or request.method == 'FILES':
-        form = PostForm(request.POST, request.FILES)
+        form = PostForm(request.POST)
+        form = PostForm()
         if form.is_valid():
             unfinished = form.save(commit=False)
             unfinished.userId = request.user
