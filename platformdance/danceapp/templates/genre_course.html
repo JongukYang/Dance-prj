@@ -16,10 +16,10 @@
         <th>video</th>
         <th>수정</th>
         <th>삭제</th>
-        <th>댓글</th>
         <th>좋아요</th>
         <th>장르</th>
         <th>신청하기</th>
+        <th>수강생</th>
     </tr>
     {% for course in courses %}
     {% if course.genreName.name == genre.name %}
@@ -108,6 +108,11 @@
                 <input type="submit" value="신청하기">
                 {% endif %}
             </form>
+        </td>
+        <td>
+            {% for regUser in course.register_user.all %}
+                {{ regUser.nickname}}<br>
+           {% endfor %}
         </td>
     </tr>
     {% endif %}
