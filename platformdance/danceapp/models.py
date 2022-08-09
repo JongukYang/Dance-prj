@@ -25,6 +25,7 @@ class Post(models.Model):
     genreName = models.ForeignKey(Genre, null=True, on_delete=models.CASCADE) # 장르
     likes_user = models.ManyToManyField(userProfile, related_name='likes', blank=True) # 좋아요 누른 사람
     likes_count = models.PositiveIntegerField(default=0) # 좋아요 개수
+    hits = models.PositiveIntegerField(default=0) # 조회수
 
     def __str__(self):
         return self.title

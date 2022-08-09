@@ -170,6 +170,8 @@ def likes(request, post_id):
 # 게시글 세부 페이지로 이동
 def post_datail(request, post_id):
     post = Post.objects.get(id = post_id)
+    post.hits += 1
+    post.save()
     comment_form = CommentForm()
     context = {
         'post':post,

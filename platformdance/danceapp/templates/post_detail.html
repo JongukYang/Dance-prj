@@ -11,7 +11,8 @@
 <form action="{% url 'likes' post.id %}" method="">
     {% csrf_token %}
     <h5>
-        좋아요 수 : {{ post.likes_count }}
+        조회수 : {{ post.hits }}
+        | 좋아요 수 : {{ post.likes_count }}
         | uploadDate : {{ post.uploadDate }}
         | updateDate : {{ post.updateDate }}
     <h5>
