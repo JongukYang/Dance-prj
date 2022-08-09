@@ -42,7 +42,6 @@
             <!-- <video width="30%" src="{{ post.video.url }}" controls></video> -->
             {% endif %}
         </td>
-
         <td>
             {% if request.user.is_authenticated %}
             {% if course.userId == request.user %}
@@ -53,8 +52,6 @@
             {% endif %}
             {% endif %}
         </td>
-
-
         <td>
             {% if request.user.is_authenticated %}
             {% if course.userId == request.user %}
@@ -65,7 +62,6 @@
             {% endif %}
             {% endif %}
         </td>
-        
         <!-- <td>
             {% if request.user.is_authenticated %}
 
@@ -111,7 +107,8 @@
         </td>
         <td>
             {% for regUser in course.register_user.all %}
-                {{ regUser.nickname}}<br>
+                {{ regUser.nickname}}
+                {% if not forloop.last %},{% endif %}
            {% endfor %}
         </td>
     </tr>
