@@ -58,7 +58,7 @@ def postcreate(request):
     }
     return render(request, 'postcreate.html', context)
 
-def postcreate2(request):
+def postcreate3(request):
     # request 메소드가 Post 일 경우
     # 입력값 저장
     if request.method == 'POST' or request.method == 'FILES':
@@ -76,7 +76,7 @@ def postcreate2(request):
     context = {
         'form':form
     }
-    return render(request, 'postcreate2.html', context)
+    return render(request, 'postcreate3.html', context)
 
 # 클래스 만들기
 def coursecreate(request):
