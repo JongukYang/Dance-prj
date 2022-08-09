@@ -19,7 +19,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>{{ rank.title }}</td>
+                        <td><a href="{% url 'post_detail' rank.id %}">{{ rank.title }}</a></td>
                     </tr>
                     <tr>
                         <td>{{ rank.body }}</td>
