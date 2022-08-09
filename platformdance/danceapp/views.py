@@ -135,7 +135,15 @@ def modify_post(request, post_id):
 #     # }
 #     # return render(request, 'modify_post.html', context)
 
-
+# 수정 2 테스트 해보기
+# def update(request, article_pk):
+#     edit_title = request.POST.get('edit_title')
+#     edit_content = request.POST.get('edit_content')
+#     article = Article.objects.get(pk=article_pk)
+#     article.title = edit_title
+#     article.content = edit_content
+#     article.save()
+#     return redirect('articles:detail', article_pk)
 
 # 댓글 저장
 def new_comment(request, post_id):
