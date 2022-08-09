@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+
+<body>
+    <div class="mainbox">
+        <div class="table-row">
+            <div class="title-box">
+                <header>
+                    <a href="{% url 'index' %}">CHOO:OOM</a>
+                </header>
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <div class="level">
+                        <p>당신의 춤 실력은?</p>
+                        <label>상<input type="radio" name="user_level" value="upper"></label>
+                        <label>중<input type="radio" name="user_level" value="middle"></label>
+                        <label>하<input type="radio" name="user_level" value="lower"></label>
+                    </div>
+            </div>
+            <div class="section-box">
+                {% csrf_token %}
+                <section>
+                    <p>회원 가입</p>
+                    <h4>아이디</h4>
+                    <input type="text" name="username" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" required>
+                    <h4>비밀번호</h4>
+                    <input type="password" name="password" placeholder="6자 이상의 영문 혹은 영문과 숫자를 조합" required>
+                    <h4>비밀번호 확인</h4>
+                    <input type="password" name="repeat" placeholder="비밀번호를 한번 더 입력해주세요." required>
+                    <h4>이름</h4>
+                    <input type="text" name="nickname" placeholder="이름을 입력해주세요." required>
+                    <h4>생년월일</h4>
+                    <input type="text" placeholder="YYYY">
+                    <input type="text" placeholder="MM">
+                    <input type="text" placeholder="DD">
+                    <input type="submit" value="가입 하기">
+                    </form>
+                </section>
+                <footer>
+                    2022 Key. All Rights Reserved | Design By 서연이는 19살
+                </footer>
+            </div>
+            </form>
+        </div>
+</body>
+
+</html>

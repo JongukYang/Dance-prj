@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>CHOO:OOM</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        div {
+            background-attachment: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainbox">
+        <header class="header">
+            <div class="top">
+                <div class="header__logo">
+                    <a href="#">
+                        <p style="font-size:40px; font-weight: bold; color:white;">CHOO:OOM</p>
+                    </a>
+                </div>
+
+                <div class="header__login">
+                    <input type="text" name="query" value="">
+                    <button type="button" onclick="location.href='#'"><img
+                            src="{% static 'img/home/search.png' %}"></button>
+                    <a href="#" target="blank" class="google_icon"><img src="{% static 'img/home/person.png' %}"
+                            width="40" height="40"></a>
+                </div>
+                <a href="{% url 'login' %}">
+                    <p>로그인</p> &ensp;
+                    <a href="{% url 'signup' %}">
+                        <p>회원가입</p>
+                    </a>
+            </div>
+
+            <div class="header__gnb">
+                <ul>
+                    <li><a href="{% url 'index' %}">HOME</a></li>
+                    <li><a href="#">CLASS</a>
+                        <ul>
+                            <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=1">Hip-Hop</a></li>
+                            <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=2">Locking</a></li>
+                            <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=3">Waacking</a></li>
+                            <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=4">B-Boying</a></li>
+                            <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=5">House</a></li>
+                            <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=6">Krump</a></li>
+                            <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=7">Popping</a></li>
+                            <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=8">Choreography</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">VIDEO</a></li>
+                    <li><a href="#">MENTO</a></li>
+                    <li><a href="#">ETC</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="main1">
+            <ul>
+                <li><a href="#"> 인기 동영상 TOP 10 </a></li>
+            </ul>
+        </div>
+
+        <div class="next__button">
+            <button type="button" onclick="location.href='#'">
+                << /button>
+                    <button type="button" onclick="location.href='#'">></button>
+        </div>
+
+        <div class="box1"></div>
+
+        <div class="main2">
+            <ul>
+                <li><a href="#" style="float: left" ;> 실시간 TOP 10 클래스 </a></li>
+            </ul>
+        </div>
+
+
+        <div class="next__button2">
+            <button type="button" onclick="location.href='#'">
+                < </button>
+                    <button type="button" onclick="location.href='#'">></button>
+        </div>
+
+        <div style="clear:both" ;> &nbsp;</div>
+        <a href="#">
+            <div class="box2"></div>
+        </a>
+        <a href="#">
+            <div class="box3"></div>
+        </a>
+        <a href="#">
+            <div class="box4"></div>
+        </a>
+        <a href="#">
+            <div class="box5"></div>
+        </a>
+
+
+
+        <div class="box6">허니제이 & 홀리뱅<br><br>힙합 코레오 완곡 배워보기<br><br>챕터별로 힙합 코레오의 완곡을 배워볼 거예요.</div>
+        <div class="box7">아이키 & 훅<br><br>힙합 코레오 완곡 배워보기<br><br>챕터별로 힙합 코레오의 완곡을 배워볼 거예요.</div>
+        <div class="box8">모니카 & 프라우드먼<br><br>힙합 코레오 완곡 배워보기<br><br>챕터별로 힙합 코레오의 완곡을 배워볼 거예요.</div>
+        <div class="box9">가비 & 라치카<br><br>힙합 코레오 완곡 배워보기<br><br>챕터별로 힙합 코레오의 완곡을 배워볼 거예요.</div>
+
+
+
+
+
+    </div>
+</body>
+
+</html>

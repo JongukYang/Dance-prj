@@ -1,0 +1,96 @@
+/* Basic Style*/
+* {
+  padding: 0;
+  margin: 0;
+  color: black;
+  box-sizing: border-box;
+}
+
+/* Background Setting */
+body {
+  background-image: url('../img/background.jpeg');
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  overflow-x:hidden;
+  overflow-y: auto;
+}
+
+main{
+  
+}
+
+header {
+  margin-top: 0px;
+  margin-left:0px;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+
+.mainbox {
+  width: 100%;
+  padding: 30px;
+  margin: 5px;
+  margin-right: auto;
+  margin-left: auto;
+  display: table;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.title-box {
+  text-align: left;
+  width: 20%;
+  display: table-cell;
+  vertical-align: top;
+  /* border-right:1px solid #ebebeb; */
+  padding-right: 16px;
+  /* background-color: red; */
+}
+
+.section-box {
+  display: table-cell;
+  vertical-align: top;
+  padding: 30px;
+  color: black;
+  /* background-color: aqua; */
+}
+
+.section-box p label {
+  /* color:red; */
+  font-size: 20px;
+  margin-bottom: 7px;
+  margin-left:9px;
+  font-weight:bold;
+  color: black;
+}
+
+input[type="text"]{
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  height:30px;
+  margin-bottom: 28px;
+  color: black;
+}
+
+#table-main{
+    width:80%;
+    height: 470px;
+    margin-bottom: 10px;
+}
+
+ #table-right{
+    width:20%;
+    height: 470px;
+    margin-bottom: 10px;
+  }

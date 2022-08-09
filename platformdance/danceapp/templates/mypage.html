@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- main -->
+<style>
+    table {
+        border: 1px solid black;
+    }
+
+    td,
+    th {
+        border: 1px solid black;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    .main1 {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1rem;
+        grid-auto-rows: minmax(10em, auto);
+        justify-items: start;
+        width: 100%;
+    }
+</style>
+
+<h1>mypage.html</h1>
+<hr>
+<!-- 유저 모델 기본 프로필 -->
+<h2>유저 모델 기본 프로필</h2>
+<table>
+    <tr>
+        <th>프사</th>
+        <th>이름</th>
+        <th>춤실력</th>
+        <th>메일주소</th>
+    </tr>
+    <!-- 반복 시작 -->
+    {% for my in myprofile %}
+    <tr>
+        <td>{{ my.profilephoto }}</td>
+        <td>{{ my.nickname }}</td>
+        <td>{{ my.danceSkill }}</td>
+        <td>{{ my.email }}</td>
+    </tr>
+    {% endfor %}
+    <!-- 반복 끝 -->
+</table>
+
+<hr>
+<!-- 내가 올린 영상 출력 -->
+<h2>내가 올린 영상</h2>
+<table>
+    <!-- 게시글 반복 시작 -->
+    <tr>
+        <th>게시글 제목</th>
+        <th>사진</th>
+        <th>설명</th>
+        <th>좋아요 개수</th>
+        <th>좋아요 누를 사람</th>
+    </tr>
+    {% for post in posts %}
+    <tr>
+        <td>{{ post.title }}</td>
+        <td>{{ post.body }}</td>
+        <td>{{ post.photo }}</td>
+        <td>{{ post.likes_count }}</td>
+        <td>
+            {% for i in post.likes_user.all %}
+            {{ i.username }},
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+    <!-- 게시글 반복 끝 -->
+</table>
+<hr>
+
+<!-- 내가 좋아요한 영상 출력 -->
+<h2>내가 좋아요한 영상</h2>
+<table>
+    <!-- 게시글 반복 시작 -->
+    <tr>
+        <th>게시글 제목</th>
+        <th>사진</th>
+        <th>설명</th>
+        <th>좋아요 개수</th>
+        <th>좋아요 누를 사람</th>
+    </tr>
+    {% for likedvideo in mylikedvideo %}
+    <tr>
+        <td>{{ likedvideo.title }}</td>
+        <td>{{ likedvideo.body }}</td>
+        <td>{{ likedvideo.photo }}</td>
+        <td>{{ likedvideo.likes_count }}</td>
+        <td>
+            <!-- 좋아요 누른 사람 출력 -->
+            {% for i in likedvideo.likes_user.all %}
+            {{ forloop.counter }}-{{ i.username }}
+            <!-- forloop 마지막이 아니라면 , 찍기 -->
+            {% if not forloop.last %},{% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+    <!-- 게시글 반복 끝 -->
+</table>
+
+{% endblock %}
