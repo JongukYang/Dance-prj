@@ -31,7 +31,7 @@ urlpatterns = [
     # 게시글 생성 (클래스 업로드)
     path('coursecreate/', views.coursecreate, name='coursecreate'),
     # 게시글 세부 페이지 보기
-    path('post/<int:post_id>', views.post, name='post'),
+    path('post_detail/<int:post_id>', views.post_datail, name='post_detail'),
     # user 에 따른 개인 포스트 보기
     path('user_post_detail/<int:userId_id>', views.user_post_detail, name='user_post_detail'),
     # 게시글 삭제

@@ -1,0 +1,66 @@
+<h1>post_detail Page</h1>
+<h3>게시글 개별 보기</h3>
+<h4>장르: {{ post.genreName }}</h4>
+<br>
+{% if post.video %}
+{{ post.video }} <br>
+<!-- <video width="30%" src="{{ post.video.url }}" controls></video> -->
+{% endif %}
+<br>
+
+<form action="{% url 'likes' post.id %}" method="">
+    {% csrf_token %}
+    <h5>
+        조회수 : {{ post.hits }}
+        | 좋아요 수 : {{ post.likes_count }}
+        | uploadDate : {{ post.uploadDate }}
+        | updateDate : {{ post.updateDate }}
+    <h5>
+    {% if request.user in post.likes_user.all %}
+    <input type="submit" value="dislike">
+    {% else %}
+    <input type="submit" value="like">
+    {% endif %}
+</form>
+
+<br>
+
+{% if request.user.is_authenticated %}
+{% if post.userId == request.user %}
+<form action="{% url 'delete_post' post.id %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" name="delete_post" value="삭제">
+</form>
+{% endif %}
+{% endif %}
+
+<h5>내용</h5>
+{{ post.body }}
+
+<hr>
+<h3>제목: {{ post.title }}</h3>
+<h4>작성자: {{ post.userId }}</h4>
+<hr>
+
+<br>
+댓글 {{ post.comment_set.count }}개
+<br>
+
+{% if request.user.is_authenticated %}
+<form method="POST" action="{% url 'new_comment' post.id %}">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <input type="submit" value="댓글 입력">
+</form>
+{% endif %}
+
+{% for comment in post.comment_set.all %}
+    {{ comment.userId }} - {{ comment }}
+        {% if request.user == comment.userId %}
+        <form action="{% url 'delete_comment' comment.id %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" name="delete_comment" value="삭제">
+        </form>
+        {% endif %}
+    <br>
+{% endfor %}

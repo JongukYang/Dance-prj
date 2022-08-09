@@ -19,14 +19,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>{{ rank.title }}</td>
+                        <td><a href="{% url 'post_detail' rank.id %}">제목: {{ rank.title }}</a></td>
                     </tr>
                     <tr>
-                        <td>{{ rank.body }}</td>
+                        <td>내용: {{ rank.body }}</td>
                     </tr>
                     {% endfor %}
                 </table>
-
                 </p>
             </div>
         </div>

@@ -77,7 +77,7 @@
     </tr>
     {% for post in posts %}
     <tr>
-        <td>{{ post.title }}</td>
+        <td><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></td>
         <td>{{ post.body }}</td>
         <td>{{ post.photo }}</td>
         <td>{{ post.likes_count }}</td>
@@ -105,7 +105,7 @@
     </tr>
     {% for likedvideo in mylikedvideo %}
     <tr>
-        <td>{{ likedvideo.title }}</td>
+        <td><a href="{% url 'post_detail' likedvideo.id %}">{{ likedvideo.title }}</a></td>
         <td>{{ likedvideo.body }}</td>
         <td>{{ likedvideo.photo }}</td>
         <td>{{ likedvideo.likes_count }}</td>

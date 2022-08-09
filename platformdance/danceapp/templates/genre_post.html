@@ -12,6 +12,7 @@
 <table border="1">
     {% for like_top in likes_top %}
     <tr>
+        <td>{{ like_top.userId }}출력 : <a href="{% url 'post_detail' like_top.id %}">{{ like_top.title }}</a></td>
         <td>{{ like_top.userId }}출력 : {{ like_top }}</td>
         <td>{{ like_top.body }}</td>
         <td>{{ like_top.genreName }}</td>
@@ -61,7 +62,7 @@
                 <!-- 섬네일 -->
                 <td rowspan="4">{{ post.photo }}</td>
                 <!-- 제목 -->
-                <td colspan="3">{{ post.title }}</td>
+                <td colspan="3"><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></td>
             </tr>
             <tr>
                 <!-- 내용 -->

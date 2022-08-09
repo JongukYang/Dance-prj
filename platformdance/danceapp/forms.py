@@ -55,7 +55,7 @@ class CommentForm(forms.ModelForm):
         self.fields['comment'].widget.attrs = {
             'class': 'form-control', 
             'placeholder': "댓글 입력",
-            'rows':2
+            'rows':1
         }
 
 

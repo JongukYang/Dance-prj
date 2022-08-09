@@ -168,15 +168,16 @@ def likes(request, post_id):
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))     
 
 # 게시글 세부 페이지로 이동
-# post_detail로 바꾸기
-def post(request, post_id):
+def post_datail(request, post_id):
     post = Post.objects.get(id = post_id)
+    post.hits += 1
+    post.save()
     comment_form = CommentForm()
     context = {
         'post':post,
         'comment_form':comment_form,
     }
-    return render(request, 'post.html', context)
+    return render(request, 'post_detail.html', context)
 
 # 장르 페이지
 def genre_post(request):
@@ -256,6 +257,13 @@ def regCourse(request, course_id):
            course.save()
    # 현재 내가 있는 페이지로 redirect 
    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+
+def register(request, course_id):
+    course = get_object_or_404(Course, pk=course_id)
+    course.register_user.add(request.user)
+    course.save()
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 # 마이페이지 정보 전달
 def mypage(request, user_id):
