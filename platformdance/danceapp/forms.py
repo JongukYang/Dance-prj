@@ -120,3 +120,7 @@ class CourseForm(forms.ModelForm):
             'style': 'color:black;' # 알아서 색 맞춰 수정하기
         }
         
+class PostModifyForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'body', 'photo', 'video', 'genreName']
