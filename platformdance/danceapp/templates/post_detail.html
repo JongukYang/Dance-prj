@@ -41,7 +41,11 @@
 <h3>제목: {{ post.title }}</h3>
 <h4>작성자: {{ post.userId }}</h4>
 <hr>
+
 <br>
+댓글 {{ post.comment_set.count }}개
+<br>
+
 {% if request.user.is_authenticated %}
 <form method="POST" action="{% url 'new_comment' post.id %}">
     {% csrf_token %}
@@ -51,12 +55,12 @@
 {% endif %}
 
 {% for comment in post.comment_set.all %}
-{{ comment.userId }} - {{ comment }}
-{% if request.user == comment.userId %}
-<form action="{% url 'delete_comment' comment.id %}" method="POST">
-    {% csrf_token %}
-    <input type="submit" name="delete_comment" value="삭제">
-</form>
-{% endif %}
-<br>
+    {{ comment.userId }} - {{ comment }}
+        {% if request.user == comment.userId %}
+        <form action="{% url 'delete_comment' comment.id %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" name="delete_comment" value="삭제">
+        </form>
+        {% endif %}
+    <br>
 {% endfor %}
