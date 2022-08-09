@@ -57,6 +57,26 @@ def postcreate(request):
     }
     return render(request, 'postcreate.html', context)
 
+def postcreate2(request):
+    # request 메소드가 Post 일 경우
+    # 입력값 저장
+    if request.method == 'POST' or request.method == 'FILES':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            unfinished = form.save(commit=False)
+            unfinished.userId = request.user
+            unfinished.save()
+            return redirect('index')
+    # request method()가 Get일 경우
+    # form 입력 html 띄우기
+    else:
+        form = PostForm()
+    
+    context = {
+        'form':form
+    }
+    return render(request, 'postcreate2.html', context)
+
 # 클래스 만들기
 def coursecreate(request):
     # request 메소드가 Post 일 경우
