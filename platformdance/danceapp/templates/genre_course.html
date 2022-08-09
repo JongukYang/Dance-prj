@@ -19,11 +19,12 @@
         <th>댓글</th>
         <th>좋아요</th>
         <th>장르</th>
+        <th>신청하기</th>
     </tr>
     {% for course in courses %}
     {% if course.genreName.name == genre.name %}
     <tr>
-        <td>몰라</td>
+        <td>{{ course.userId }}</td>
         <td>{{ course.userId_id }}</td>
         <td><a href="{% url 'course_detail' course.id %}">{{ course.title }}</a></td>
         <td>{{ course.body }}</td>
@@ -64,7 +65,7 @@
             {% endif %}
             {% endif %}
         </td>
-
+        
         <!-- <td>
             {% if request.user.is_authenticated %}
 
@@ -98,6 +99,16 @@
             </form>
         </td>
         <td>장르 : {{course.genreName}}</td>
+        <td>
+            <form action="{% url 'regCourse' course.id %}" method="POST">
+                {% csrf_token %}
+                {% if request.user in course.register_user.all %}
+                <input type="submit" value="신청취소">
+                {% else %}
+                <input type="submit" value="신청하기">
+                {% endif %}
+            </form>
+        </td>
     </tr>
     {% endif %}
     {% endfor %}

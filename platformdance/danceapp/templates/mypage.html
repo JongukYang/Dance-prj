@@ -26,7 +26,7 @@
     }
 </style>
 
-<h1>mypage.html</h1>
+<h1>{% for my in myprofile %}{{ my.nickname }}{% endfor %} - mypage.html</h1>
 <hr>
 <!-- 유저 모델 기본 프로필 -->
 <h2>유저 모델 기본 프로필</h2>
@@ -47,6 +47,20 @@
     </tr>
     {% endfor %}
     <!-- 반복 끝 -->
+</table>
+
+<!-- 현재 수강중인 클래스 -->
+<hr>
+<h2>현재 수강중인 클래스</h2>
+<table>
+    <tr>
+        <td>class Name</td>
+    </tr>
+    {% for regcourse in myregcourse %}
+    <tr>
+        <td>{{ regcourse.title }}</td>
+    </tr>
+    {% endfor %}
 </table>
 
 <hr>

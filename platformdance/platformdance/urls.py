@@ -51,6 +51,7 @@ urlpatterns = [
     path('genre_course', views.genre_course, name='genre_course'),
     # 클래스 세부 페이지
     path('course_detail/<int:course_id>', views.course_detail, name='course_detail'),
+    path('regCourse/<int:course_id>', views.regCourse, name='regCourse'),
     # 마이페이지
     path('mypage/<int:user_id>', views.mypage, name='mypage')
     
