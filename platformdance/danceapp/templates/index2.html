@@ -11,8 +11,6 @@
 
 <body>
     <h1>Index.html Page</h1>
-
-    
     {% if request.user.is_authenticated %}
     <h1>현재 userId : {{request.user}}</h1>
     <h4><a href="{% url 'logout' %}">Logout</a></h4>

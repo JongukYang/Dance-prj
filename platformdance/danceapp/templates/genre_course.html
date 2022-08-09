@@ -111,7 +111,6 @@
         </td>
         <td>
             {% for regUser in course.register_user.all %}
-                {{ regUser.nickname}}<br>
                 {{ regUser.nickname}}
                 {% if not forloop.last %},{% endif %}
            {% endfor %}
