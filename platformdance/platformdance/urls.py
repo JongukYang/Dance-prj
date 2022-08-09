@@ -36,13 +36,15 @@ urlpatterns = [
     path('user_post_detail/<int:userId_id>', views.user_post_detail, name='user_post_detail'),
     # 게시글 삭제
     path('delete_post/<int:post_id>', views.delete_post, name='delete_post'),
+    # 클래스 삭제
+    
     # 댓글
     path('new_comment/<int:post_id>', views.new_comment, name='new_comment'),
     # 댓글 삭제
     path('delete_comment/<int:comment_id>', views.delete_comment, name='delete_comment'),
     # 좋아요
-    path('likes/<int:post_id>', views.likes, name='likes'),
-    path('course_likes/<int:course_id>', views.course_likes, name='course_likes'),
+    path('likes/<int:post_id>', views.likes, name='likes'), # 게시글(영상)
+    path('course_likes/<int:course_id>', views.course_likes, name='course_likes'), # 클래스
     # 게시글 수정
     path('modify_post/<int:post_id>', views.modify_post, name='modify_post'),
     # 장르별 포스트 보기
@@ -51,9 +53,8 @@ urlpatterns = [
     path('genre_course', views.genre_course, name='genre_course'),
     # 클래스 세부 페이지
     path('course_detail/<int:course_id>', views.course_detail, name='course_detail'),
-    path('regCourse/<int:course_id>', views.regCourse, name='regCourse'),
     # 클래스 신청
-    path('register/<int:course_id>', views.register, name='register'),
+    path('regCourse/<int:course_id>', views.regCourse, name='regCourse'),
     # 마이페이지
     path('mypage/<int:user_id>', views.mypage, name='mypage')
     

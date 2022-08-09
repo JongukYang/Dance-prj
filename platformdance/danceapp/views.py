@@ -117,7 +117,7 @@ def delete_post(request, post_id):
 #         del_post = get_object_or_404(Post, pk=post_id)
 #         if request.user == del_post.userId:
 #             del_post.delete()
-#     return redirect('index')    
+#     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 # 댓글 저장
 def new_comment(request, post_id):
@@ -185,7 +185,6 @@ def genre_post(request):
     genre = Genre.objects.get(id=int(genre_id))
     posts = Post.objects.filter().order_by('-uploadDate')
     likes_top = Post.objects.filter(genreName=int(genre_id)).order_by('-likes_count')
-    
     comment_form = CommentForm()
     context = {
         'genre':genre,
