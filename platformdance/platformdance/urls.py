@@ -45,7 +45,11 @@ urlpatterns = [
     path('modify_post/<int:post_id>', views.modify_post, name='modify_post'),
     # 장르별 포스트 보기
     path('genre', views.genre_post, name='genre_post'),
-    
+
+    # 뉴스
+    path('news/', views.news_list, name='news_list'),
+    path('news/<int:news_id>', views.news_detail, name='news_detail'),
+    path('newscreate/', views.news_create, name='newscreate')
     
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

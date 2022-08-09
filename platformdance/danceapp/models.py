@@ -57,3 +57,15 @@ class Comment(models.Model):
     
 #     def __str__(self):
 #         return self.comment
+
+#뉴스 모델
+class News(models.Model):
+    # news_id 는 pk로서 존재
+    # 관리자가 관리하는 거라면 작성자 정보 불필요
+    date = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=200) # 제목
+    body = models.TextField() # 게시물 내용
+    uploadDate = models.DateTimeField(auto_now_add=True) # 처음 업로드 시간
+    updateDate = models.DateTimeField(auto_now=True) # 수정 시간
+    photo = models.ImageField(blank=True, null=True, upload_to='news') # upload_to : static/blog_photo 로 저장해줘
+    video = models.FileField(blank=True, null=True, upload_to='news')

@@ -1,0 +1,22 @@
+뉴스 리스트
+<ul>
+    <!--{% if news.has_previous %}-->
+    <li><a href="?page=1"><<</a></li>
+    <li><a href="?page={{ news.previous_page_number }}"><</a></li>
+    <!--{% else %}
+    <li class="page-item disabled"><a href="#"><<</a></li>
+    <li class="page-item disabled"><a href="#"><</a></li>
+    {% endif %}-->
+
+    {% for page_number in news.paginator.page_range %}
+    <li><a href="?page={{ page_number }}">{{ page_number }}</a></li>
+    {% endfor %}
+
+    <!--{% if news.has_previous %}-->
+    <li><a href="?page={{ news.next_page_number }}">></a></li>
+    <li><a href="?page={{ last_page_num }}">>></a></li>
+    <!--{% else %}
+    <li class="page-item disabled"><a href="#">></a></li>
+    <li class="page-item disabled"><a href="#">>></a></li>
+    {% endif %}-->
+</ul>

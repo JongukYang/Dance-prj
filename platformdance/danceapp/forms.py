@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Comment
+from .models import Post, Comment, News
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -56,4 +56,34 @@ class CommentForm(forms.ModelForm):
             'rows':10
         }
 
+class NewsForm(forms.ModelForm):
+    class Meta:
+        model = News
+        fields = ['title', 'body','photo', 'video']
+    
+    def __init__(self, *args, **kwargs):
+        super(NewsForm, self).__init__(*args, **kwargs)
 
+        self.fields['title'].widget.attrs = {
+            'class': 'form-control', 
+            'placeholder': "제목 입력(4-100)",
+            'id':'title',
+        }
+        self.fields['body'].widget.attrs = {
+            'class': 'form-control', 
+            'placeholder': "내용 작성",
+            'id': 'content',
+            'rows':15,
+        }
+        self.fields['photo'].widget.attrs = {
+            # 'class': 'form-control', 
+            'placeholder': "사진 선택",
+            'id': 'id_photo',
+            'style': 'color:black;' # 알아서 색 맞춰 수정하기
+        }
+        self.fields['video'].widget.attrs = {
+            # 'class': 'form-control', 
+            'placeholder': "비디오 선택",
+            'id': 'id_video',
+            'style':"color:black;"
+        }

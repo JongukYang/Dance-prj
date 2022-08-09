@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import PostForm, CommentForm
-from .models import Post, Comment, Genre
+from .forms import PostForm, CommentForm, NewsForm
+from .models import Post, Comment, Genre, News
 # from django.contrib.auth.models import User
 from accounts.models import userProfile
+from django.core.paginator import Paginator
+
+MAX_LIST_CNT = 15
+MAX_PAGE_CNT = 5
 
 # 페이지네이션, 객체들 목록을 끊어서 보여주는 것
 # from django.core.paginator import Paginator
@@ -174,3 +178,57 @@ def genre_post(request):
     }
     return render(request, 'genre_post.html', context)
 
+# 뉴스 리스트
+def news_list(request):
+    page = request.GET.get('page', 1)
+    news = News.objects.filter().order_by('-updateDate')
+    
+    paginator = Paginator(news, MAX_LIST_CNT)
+    page_obj = paginator.get_page(page)
+    last_page_num = 0
+    for last_page in paginator.page_range:
+        last_page_num = last_page_num +1
+
+    # 현재 페이지가 몇번째 블럭인지
+    current_block = ((int(page)-1)/MAX_PAGE_CNT)+1
+    current_block = int(current_block)
+
+    # 페이지 시작 번호
+    page_start_number = ((current_block -1)*MAX_PAGE_CNT)+1
+
+    # 페이지 끝 번호
+    page_end_number = page_start_number + MAX_PAGE_CNT-1
+
+    context = {
+        'news': page_obj,
+        'last_page_num': last_page_num,
+        'page_start_number': page_start_number,
+        'page_end_number' : page_end_number,
+    }
+    
+    return render(request, 'news.html', context)
+
+
+# 뉴스 상세 페이지
+def news_detail(request):
+    return render(request, 'news_detail.html')
+
+# 뉴스 작성
+def news_create(request):
+    # request 메소드가 Post 일 경우
+    # 입력값 저장
+    if request.method == 'POST' or request.method == 'FILES':
+        form = NewsForm(request.POST, request.FILES)
+        if form.is_valid():
+            unfinished = form.save(commit=False)
+            unfinished.save()
+            return redirect('news_list')
+    # request method()가 Get일 경우
+    # form 입력 html 띄우기
+    else:
+        form = NewsForm()
+    
+    context = {
+        'form':form
+    }
+    return render(request, 'newscreate.html', context)
