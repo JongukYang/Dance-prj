@@ -9,6 +9,21 @@
 <hr>
 <!-- 실시간 top10 장르 영상 출력 -->
 <h2>실시간 Top10 {{ genre.name }} 영상</h2>
+<table border="1">
+    {% for like_top in likes_top %}
+    <tr>
+        <td>{{ like_top.userId }}출력 : {{ like_top }}</td>
+        <td>{{ like_top.body }}</td>
+        <td>{{ like_top.genreName }}</td>
+        <td>
+            {% if like_top.photo %}
+            {{ like_top.photo.url }}
+            <img src="{{ like_top.photo.url }}" alt="" width="30%">
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
 
 <hr>
 
