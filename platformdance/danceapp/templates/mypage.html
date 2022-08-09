@@ -53,12 +53,11 @@
 <hr>
 <h2>현재 수강중인 클래스</h2>
 <table>
-    <tr>
-        <td>class Name</td>
-    </tr>
     {% for regcourse in myregcourse %}
     <tr>
-        <td>{{ regcourse.title }}</td>
+        <td>Class Title : {{ regcourse.title }}</td>
+        <td>Class Photo : {{ regcourse.photo }}</td>
+        <td>Class Body : {{ regcourse.body }}</td>
     </tr>
     {% endfor %}
 </table>

@@ -12,11 +12,12 @@
 <table border="1">
     {% for like_top in likes_top %}
     <tr>
-        <td>{{ like_top.userId }}출력 : <a href="{% url 'post_detail' like_top.id %}">{{ like_top.title }}</a></td>
-        <td>{{ like_top.userId }}출력 : {{ like_top }}</td>
-        <td>{{ like_top.body }}</td>
-        <td>{{ like_top.genreName }}</td>
+        <td>USER : {{ like_top.userId }}<a href="{% url 'post_detail' like_top.id %}"><br>
+            TITLE : {{ like_top.title }}</a></td>
+        <td>BODY : {{ like_top.body }}</td>
+        <td>GENRE : {{ like_top.genreName }}</td>
         <td>
+            <!-- 썸네일 받아오기 -->
             {% if like_top.photo %}
             {{ like_top.photo.url }}
             <img src="{{ like_top.photo.url }}" alt="" width="30%">

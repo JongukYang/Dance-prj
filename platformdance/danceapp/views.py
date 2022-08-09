@@ -219,6 +219,7 @@ def genre_course(request):
     }
     return render(request, 'genre_course.html', context)
 
+# 클래스 좋아요
 def course_likes(request, course_id):
    if request.user.is_authenticated:    
        course = get_object_or_404(Course, pk=course_id)
@@ -234,7 +235,7 @@ def course_likes(request, course_id):
    # 현재 내가 있는 페이지로 redirect 
    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
-
+# 클래스 상세보기
 def course_detail(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
     context = {
@@ -257,13 +258,6 @@ def regCourse(request, course_id):
            course.save()
    # 현재 내가 있는 페이지로 redirect 
    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
-
-
-def register(request, course_id):
-    course = get_object_or_404(Course, pk=course_id)
-    course.register_user.add(request.user)
-    course.save()
-    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 # 마이페이지 정보 전달
 def mypage(request, user_id):
