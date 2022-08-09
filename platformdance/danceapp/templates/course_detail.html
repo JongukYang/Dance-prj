@@ -1,6 +1,6 @@
 <h1>클래스 세부 정보</h1>
 
-genreName: {{ course.genreName.name }}
+<h2>genreName: {{ course.genreName.name }}</h2>
 
 <div>
     <h2>클래스 소개</h2>
@@ -8,6 +8,7 @@ genreName: {{ course.genreName.name }}
     <a> title: {{ course.title }}</a><br>
     <a> body: {{ course.body }}</a><br>
 </div>
+
 <div>
     <h2>댄서 소개</h2>
     <img style="width: 30%;" src="{{ course.userId.profilephoto }}" alt=""><br>
@@ -21,7 +22,7 @@ genreName: {{ course.genreName.name }}
     <a>위치: {{ course.location }}</a>
 </div>
 
-<form action="{% url 'register' course.id%}" method="POST">
+<form action="{% url 'regCourse' course.id%}" method="POST">
     {% csrf_token %}
     <input type="submit" value="신청하기">
 </form>
