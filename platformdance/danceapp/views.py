@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.defaulttags import comment
-from .forms import PostForm, CommentForm, CourseForm
+from .forms import PostForm, CommentForm, CourseForm, PostModifyForm
 from .models import Post, Comment, Genre, Course
 # from django.contrib.auth.models import User
 from accounts.models import userProfile
@@ -12,7 +12,6 @@ from accounts.models import userProfile
 # 해봅시다
 
 
-# Create your views here.
 def index(request):
     posts = Post.objects.filter().order_by('-updateDate')
     # likes_ten = Post.objects.all().order_by('-likes_count')[:5] # 모든 포스트 중 택5 -> 쿼리셋
@@ -37,47 +36,6 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
-def postcreate(request):
-    # request 메소드가 Post 일 경우
-    # 입력값 저장
-    if request.method == 'POST' or request.method == 'FILES':
-        form = PostForm(request.POST)
-        form = PostForm()
-        if form.is_valid():
-            unfinished = form.save(commit=False)
-            unfinished.userId = request.user
-            unfinished.save()
-            return redirect('index')
-    # request method()가 Get일 경우
-    # form 입력 html 띄우기
-    else:
-        form = PostForm()
-    
-    context = {
-        'form':form
-    }
-    return render(request, 'postcreate.html', context)
-
-def postcreate3(request):
-    # request 메소드가 Post 일 경우
-    # 입력값 저장
-    if request.method == 'POST' or request.method == 'FILES':
-        form = PostForm(request.POST, request.FILES)
-        if form.is_valid():
-            unfinished = form.save(commit=False)
-            unfinished.userId = request.user
-            unfinished.save()
-            return redirect('index')
-    # request method()가 Get일 경우
-    # form 입력 html 띄우기
-    else:
-        form = PostForm()
-    
-    context = {
-        'form':form
-    }
-    return render(request, 'postcreate3.html', context)
-
 # 클래스 만들기
 def coursecreate(request):
     # request 메소드가 Post 일 경우
@@ -99,34 +57,48 @@ def coursecreate(request):
     }
     return render(request, 'coursecreate.html', context)
 
-# 게시글 삭제
-def delete_post(request, post_id):
-    del_post = get_object_or_404(Post, pk=post_id)
-    del_post.delete()
-    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+# 게시글 작성
+def postcreate(request):
+    # request 메소드가 Post 일 경우
+    # 입력값 저장
+    if request.method == 'POST' or request.method == 'FILES':
+        form = PostForm(request.POST)
+        form = PostForm()
+        if form.is_valid():
+            unfinished = form.save(commit=False)
+            unfinished.userId = request.user
+            unfinished.save()
+            return redirect('index')
+    # request method()가 Get일 경우
+    # form 입력 html 띄우기
+    else:
+        form = PostForm()
+    
+    context = {
+        'form':form
+    }
+    return render(request, 'postcreate.html', context)
 
-# def delete_post(request, post_id, user_id):
-#     if request.user.is_authenticated:
-#         del_post = get_object_or_404(Post, pk=post_id)
-#         if request.user == del_post.userId:
-#             del_post.delete()
-#     return redirect('index')    
+
 
 # 게시글 수정
 def modify_post(request, post_id):
-    # post = Post.objects.get(id=post_id)
-    if request.method == "POST" or request.method == 'FILES':
+    post = Post.objects.get(id=post_id)
+
+    if request.method =='POST' or request.method == 'FILES':
         post = get_object_or_404(Post, pk=post_id)
-        form = PostForm(request.POST, request.FILES, instance=post)
+        form = PostModifyForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
-            post = form.save(commit=False)
-            # form = PostForm(Post,instance=post)    
+            # post = form.save(commit=False)
+            # form = PostForm(Post,instance=post)
             # post.title = request.POST['title']
             # post.body = request.POST['body']
+            post.title = form.cleaned_data['title'] # +
+            post.body = form.cleaned_data['body'] # +
             post.save()
             return redirect('index')
     else:
-        form = PostForm(instance=post)
+        form = PostModifyForm(instance = post)
     return render(request, 'modify_post.html', {'form':form})
 #     # context = {
 #     #     'form':form,
@@ -144,6 +116,19 @@ def modify_post(request, post_id):
 #     article.content = edit_content
 #     article.save()
 #     return redirect('articles:detail', article_pk)
+
+# 게시글 삭제
+def delete_post(request, post_id):
+    del_post = get_object_or_404(Post, pk=post_id)
+    del_post.delete()
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+# def delete_post(request, post_id, user_id):
+#     if request.user.is_authenticated:
+#         del_post = get_object_or_404(Post, pk=post_id)
+#         if request.user == del_post.userId:
+#             del_post.delete()
+#     return redirect('index')    
 
 # 댓글 저장
 def new_comment(request, post_id):
@@ -216,6 +201,18 @@ def genre_post(request):
         'genre':genre,
         'posts':posts,
         'comment_form':comment_form,
+        'likes_top':likes_top,
+        # 장르별 게시글이 10개가 안 넘어서 오류 뜸
+        'rank1':likes_top[0],
+        'rank2':likes_top[1],
+        'rank3':likes_top[2],
+        'rank4':likes_top[3],
+        'rank5':likes_top[4],
+        # 'rank6':likes_top[5],
+        # 'rank7':likes_top[6],
+        # 'rank8':likes_top[7],
+        # 'rank9':likes_top[8],
+        # 'rank10':likes_top[9],
     }
     return render(request, 'genre_post.html', context)
 
@@ -257,7 +254,6 @@ def course_detail(request, course_id):
     }
     return render(request, 'course_detail.html', context)
 
-
 # 마이페이지 정보 전달
 def mypage(request, user_id):
     if request.user.is_authenticated:
@@ -271,4 +267,3 @@ def mypage(request, user_id):
             'mylikedvideo':mylikedvideo,
         }
         return render(request, 'mypage.html', context)
-
