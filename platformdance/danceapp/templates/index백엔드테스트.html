@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- main Body 수정 -->
+<div class="container-fulid" id="main-body-container">
+    <!-- Main 인기 동영상 -->
+    <div class="main-margin" style="border: 1px solid red;">
+        <div class="main-title">
+            <h1>인기 동영상</h1>
+            <div style="display: inline-block;">
+                <p>
+                <table>
+                    {% for rank in likes_top_ten %}
+                    <tr>
+                        <td>
+                            {% if rank.photo %}
+                            <img style="width: 30%;" src="{{ rank.photo.url }}" alt="안보여요">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="{% url 'post_detail' rank.id %}">제목: {{ rank.title }}</a></td>
+                    </tr>
+                    <tr>
+                        <td>내용: {{ rank.body }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <!-- Main 실시간 클래스 -->
+    <div class="main-margin" style="border: 1px solid blue;">
+        <div class="main-title">
+            <h1>실시간 클래스</h1>
+            <h2><a href="{% url 'postcreate' %}">postcreate.html</a></h2>
+            <h2><a href="{% url 'coursecreate' %}">coursecreate.html</a></h2>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

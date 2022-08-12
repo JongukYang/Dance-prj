@@ -1,199 +1,97 @@
-/* Basic Style*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gothic+A1&display=swap');
+
 * {
+    font-family: 'Gothic A1';
     padding: 0;
     margin: 0;
-    color: white;
     box-sizing: border-box;
 }
 
-/* Background Setting */
 body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.7)
+        ), url("../img/login_image.png");
     background-size: cover;
     background-attachment: fixed;
-    background-image: url('../img/login_image.jpg');
-    width: 100%;
-    overflow-x:hidden;
-    overflow-y: auto;
-    
+}
+
+.container {
+    margin: auto;
+    width: 579;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 header {
-    margin-top: 0px;
-    margin-left:0px;
+    margin-top: 30px;
     font-size: 45px;
-    font-weight: bold;
     color: white;
-    
 }
-  
-.mainbox {
-    width: 100%;
-    padding: 30px;
-    margin: 5px;
-    margin-right: auto;
-    margin-left: auto;
-    display: table;
-    
-}
-
-.title-box {
-    text-align: left;
-    width: 30%;
-    display: table-cell;
-    vertical-align: top;
-    padding-right: 16px;
-}
-
-.table-row {
-    display: table-row;
-}
-
+   
 header a {
-text-decoration: none;
-}
-
-.level {
-margin-top: 40px;
-margin-left:20px;
-font-size: 1.5rem;
-font-weight: 400;
-}
-
-label { 
-    display: block; 
-    margin-top: 48px;
-}
-
-input[type="radio"]{
-    margin-left:40px;
-}
-
-
-.section-box {
-    display: table-cell;
-    vertical-align: top;
-    width:70%;
-}
-  
-.section-box input[placeholder] {
-    font-size: .8rem;
-    padding-left: 30px;
-    width: 100%;
-    border: .5px solid #ddd;
-    outline: none;
-    transition: box-shadow.5s;
-}
-
-.section-box section {
-    width: 550px;
-    margin-top:30px;
-    margin-left:140px;
-}
-
-/* style : SignUp form */
-
-.section-box section p {
-    font-size: 1.4rem;
-    margin-bottom: 30px;
-    color:white;
-}
-
-.section-box section h4 {
-    margin-bottom: 7px;
-    margin-left:9px;
-    font-weight:350;
-}
-
-.section-box section input[placeholder] {
-    font-size: .8rem;
-    padding-left: 30px;
-    width: 100%;
-    border: .5px solid #ddd;
-    outline: none;
-    transition: box-shadow.5s;
-}
-
-.section-box section input[placeholder]::placeholder {
-    font-size: .8rem;
-}
-
-.section-box section input {
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    height:50px;
-    margin-bottom: 28px;
-    color: black;
-}
-
-.section-box section input:nth-of-type(5) {
-
-    width:190px;
-    color: black;
-    margin-right:15px;
-    margin-bottom:10px;
-}
-
-.section-box section input:nth-of-type(6){
-
-    width:155px;
-    color: black;
-    margin-right:15px;
-    margin-bottom:10px;
-}
-
-.section-box section input:nth-of-type(7){
-
-    width:155px;
-    margin-bottom:10px;
-    color: black;
-}
-
-.section-box section input[type="checkbox"] {
-    margin-top: .5rem;
-    transform: scale(.7);
-    transform-origin: center center;
-}
-
-.section-box section label {
-    display: inline-block;
-    font-size: .7rem;
-    transform: translateY(-20%);
-    margin-left: -5px;
+    text-decoration: none;
     color: white;
 }
 
-.section-box section input[type="submit"] {
-    display: block;
+.inform {
+    text-align: left;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+section {
+    width: 579px;
+    margin: 10px auto 40px;
+}
+
+section input[placeholder] {
+    font-size: 20px;
+    padding-left: 30px;
     width: 100%;
-    border: 1px solid black;
-    margin-top: 1.5rem;
-    margin-bottom: 0.8rem;
+    height: 70px;
+    border: 1px rgba(255, 255, 255, 0.6); 
+    background-color: rgba(255, 255, 255, 0.6);
+    outline: none;
+    transition: box-shadow.5s;
+}
+
+section input {
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+section input[type="submit"] {
+    width: 100%;
+    height: 80px;
+    border: 1px solid #FF5656;
+    margin-top: 1rem;
     padding: .3rem;
-    border-radius: 25px;
-    font-size: .8rem;
-    background-color: #FB646B;
+    font-size: 30px;
+    background-color: #FF5656;
     color: white;
     outline: none;
     transition: all .5s;
+    cursor: pointer;
 }
 
-.section-box section input[type="submit"]:hover {
-    background-color: pink;
-    border: 1px solid pink;
+.Date {
+    display: flex;
+    flex-direction: row;
+    width: 579px;
 }
 
-.section-box section input:nth-of-type(-n+3):focus {
-    box-shadow: 0 0 0 2px rgba(0,0,255,.3);
-    position: relative;
-} 
-/* /// End of Section-box Style.. /// */
+section input[type="submit"]:hover {
+    background-color: lightcoral;
+    border: 1px solid lightcoral;
+}
 
 footer {
     font-size: .6rem;
     color: white;
-    margin-left:250px;
-    width:100%;
-    float: left;
 }
