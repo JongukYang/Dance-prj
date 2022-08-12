@@ -65,7 +65,8 @@ def signup(request):
                 username=request.POST['username'], 
                 password=request.POST['password'],
                 nickname=request.POST['nickname'],
-                danceSkill=request.POST['user_level'],)
+                # danceSkill=request.POST['user_level'],
+                )
             auth.login(request, new_user)
             return redirect('index')      
     return render(request, 'signup.html')

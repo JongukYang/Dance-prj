@@ -1,44 +1,125 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<!-- main Body 수정 -->
-<div class="container-fulid" id="main-body-container">
-    <!-- Main 인기 동영상 -->
-    <div class="main-margin" style="border: 1px solid red;">
-        <div class="main-title">
-            <h1>인기 동영상</h1>
-            <div style="display: inline-block;">
-                <p>
-                <table>
-                    {% for rank in likes_top_ten %}
-                    <tr>
-                        <td>
-                            {% if rank.photo %}
-                            <img style="width: 30%;" src="{{ rank.photo.url }}" alt="안보여요">
-                            {% endif %}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="{% url 'post_detail' rank.id %}">제목: {{ rank.title }}</a></td>
-                    </tr>
-                    <tr>
-                        <td>내용: {{ rank.body }}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-                </p>
-            </div>
-        </div>
 
-    </div>
-    <!-- Main 실시간 클래스 -->
-    <div class="main-margin" style="border: 1px solid blue;">
-        <div class="main-title">
-            <h1>실시간 클래스</h1>
-            <h2><a href="{% url 'postcreate' %}">postcreate.html</a></h2>
-            <h2><a href="{% url 'coursecreate' %}">coursecreate.html</a></h2>
-            
-        </div>
-    </div>
+<div id="class-section">
+    <span style="color:white;font-size:24px;margin-left:360px">Class</span>
+    <ul>
+        <li style="margin-left:250px">
+            <a href="/">Hip Hop</a>
+        </li>
+        <li>
+            <a href="/">Locking</a>
+        </li>
+        <li>
+            <a href="/">House</a>
+        </li>
+        <li>
+            <a href="/">B-Boying</a>
+        </li>
+        <li>
+            <a href="/">Waacking</a>
+        </li>
+        <li>
+            <a href="/">Krump</a>
+        </li>
+
+        <li>
+            <a href="/">Popping</a>
+        </li>
+        <li>
+            <a href="/">Choreography</a>
+        </li>
+    </ul>
 </div>
+<p style="margin-left:360px; font-size: 24px; color:white;margin-top: 40px; margin-bottom:4px;">
+    We live discover
+</p>
+<p style="margin-left:360px;font-size:40px;color:#FF7A00;font-weight: 600;margin-bottom: 60px;">
+    Untold Originals
+</p>
+<div id="banner-section">
+
+</div>
+<div style="display:flex; align-items: cneter;">
+    <span style="font-size:30px;font-weight:500;color:white;margin-left:360px;">Who we are</span>
+    <pre style="font-size:20px;display:inline-block;margin-left:209px; color:white;">
+        낯선 것에서 찾아낸 공감대를 사랑하고 그 과정에서 기쁨을 느끼는 CHOO:OOM은
+        우리만의 독창적인 것, Untold Originals를찾아 오늘도 끝없는 여정을 이어갑니다.
+    </pre>
+</div>
+
+<div id="detail-section">
+    Featured Contents
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+</div>
+<div id="slider-section">
+    <img src="{% static 'img/white_arrow_left.png' %}" />
+    <span style="color:white;font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
+    <img src="{% static 'img/white_arrow_right.png' %}" />
+</div>
+
+<div id="detail-class-section">
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+</div>
+<div id="news-event-section">
+    <div style="margin-bottom:24px;font-size:32px;margin-left:360px">
+        NEWS & EVENT
+        &nbsp;&nbsp;
+        <img src="{% static 'img/orange_arrow.png' %}" />
+    </div>
+    <div style="font-size:20px;color:#717171;margin-left:360px">
+        CHOO:OOM의 새로운 소식, 지금 바로 확인해보세요
+        <span style="float:right;margin-right:360px;">
+            <img src="{% static 'img/black_arrow_left.png' %}" />
+            <span style="font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
+            <img src="{% static 'img/black_arrow_right.png' %}" />
+        </span>
+    </div>
+    <table>
+        <tbody>
+            <tr>
+                <td rowspan="4">
+                    <img style="width:784px; height:650px" src="{% static 'img/sample_chungha.png' %}" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="{% static 'img/sample_chungha.png' %}" />
+                </td>
+                <td>
+                    <img src="{% static 'img/sample_chungha.png' %}" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <img src="{% static 'img/sample_chungha.png' %}" />
+
+                </td>
+                <td>
+                    <img src="{% static 'img/sample_chungha.png' %}" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="{% static 'img/sample_chungha.png' %}" />
+
+                </td>
+                <td>
+                    <img src="{% static 'img/sample_chungha.png' %}" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 {% endblock %}

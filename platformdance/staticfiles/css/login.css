@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gothic+A1&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('../img/login_image.png');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container {
+    margin: auto;
+    width: 579px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+header {
+    font-family: 'DM Serif Display', serif;
+    font-size: 45px;
+    color: white;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+}
+
+section {
+    width: 100%;
+    margin: 10px auto 40px;
+}
+
+.sign_in {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color:white;
+}
+
+section a {
+    text-decoration: none;
+}
+
+section input[placeholder] {
+    background-color: white;
+    font-size: 23px;
+    padding-left: 30px;
+    width: 100%;
+    height: 70px;
+    border: .5px solid white;
+    outline: none;
+    transition: box-shadow.5s;
+}
+
+section input[placeholder]::placeholder {
+    font-size: 23px;
+}
+
+section input:nth-of-type(1) {
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+section input:nth-of-type(2) {
+    border-radius: 15px;
+}
+
+section input[type="checkbox"] {
+    margin-top: 1rem;
+    transform: scale(.7);
+    transform-origin: center center;
+    width: 15px;
+    height: 15px;
+}
+
+section label[for="rem"] {
+    position: relative;
+    font-size: 15px;
+    transform: translateY(-20%);
+    margin-left: -5px;
+    color: white;
+    top: -2px;
+    left: 1px;
+}
+
+section input[type="submit"] {
+    display: block;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #ff5656;
+    margin-top: 1rem;
+    padding: .3rem;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: #FF5656;
+    color: white;
+    outline: none;
+    transition: all .5s;
+    cursor: pointer;
+}
+
+section input[type="submit"]:hover {
+    background-color: lightcoral;
+    border: 1px solid lightcoral;
+}
+
+.login_with {
+    font-size: 13px;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+section input:nth-of-type(-n+3):focus {
+    box-shadow: 0 0 0 2px rgba(0,0,255,.3);
+    position: relative;
+}
+
+.kakao_icon {
+    padding: 12px;
+}
+
+.google_icon {
+    padding: 12px;
+}
+
+.facebook_icon {
+    padding: 12px;
+}
+
+.forgot_password {
+    display: inline-block;
+    margin-top : 20px;
+    font-size: 15px;
+    color: white;
+}
+
+.sign_up {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 15px;
+    color: white;
+}
+
+footer {
+    font-size: .6rem;
+    color: white;
+}
