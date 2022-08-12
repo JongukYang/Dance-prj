@@ -20,7 +20,7 @@
 
 <body id="body">
     <div id="header-section">
-        <img class="logo" src="{% static 'img/logo.png' %}" />
+        <a href="{% url 'index' %}"><img class="logo" src="{% static 'img/logo.png' %}" /></a>
         <input type="text" id="searchBar" placeholder="Search artist, classes" />
         {% if request.user.is_authenticated %}
         <span>
