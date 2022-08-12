@@ -13,34 +13,66 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
         crossorigin="anonymous"></script>
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
         crossorigin="anonymous"></script>
 </head>
 
 <body id="body">
-    
-    <!-- <h1>{{request.user}}</h1>
-    <h1>{{request.user.nickname}}</h1> -->
-    <!-- main -->
-    {% block content %}
-    
-    {% endblock %}
-   
+    <div id="header-section">
+        <img class="logo" src="{% static 'img/logo.png' %}" />
+        <input type="text" id="searchBar" placeholder="Search artist, classes" />
+        {% if request.user.is_authenticated %}
+        <span>
+            <a id="sign" href="{% url 'logout' %}">LOG OUT</a>
+            {% else %}
+            <a id="sign" href="{% url 'login' %}">LOG IN</a>
+            {% endif %}
+        </span>
+        {% if request.user.is_authenticated %}
+        <span>
+            <span></span>
+            {% else %}
+            <a style="margin-left:44px;
+            font-size: 19px;
+            font-weight: 600;
+            color:white;
+            text-decoration: none;" href="{% url 'signup' %}">
+                Sign Up
+            </a>
+            {% endif %}
+        </span>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'mypage' request.user.id %}">
+            <input id="my-page" type="button" value="MY PAGE">
+        </a>
+        {% endif %}
+    </div>
+    <script type="text/javascript">
+        var a = "{{request.user.is_authenticated}}"
+        const myPageBtn = document.getElementById('my-page');
+
+        myPageBtn.addEventListener('click', () => {
+            if (a === 'True') {
+                document.location.href = "{% url 'signup' %}"
+            }
+        })
+    </script>
+
+    <!-- 메인 컨테이너는 남겨놔야 css 충돌이 없을려나? -->
     <div class="container" id="main-container">
-       
+
         <!-- header 네비게이션바 -->
         <nav class="navbar navbar-expand-lg " id="nav-bar">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="navLink"  aria-current="page" href="{% url 'index' %}">HOME</a>
+                            <a class="navLink" aria-current="page" href="{% url 'index' %}">HOME</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="navLink dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown"  aria-expanded="false">
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 VIDEO
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -56,7 +88,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="navLink"  href="#">CLASS</a>
+                            <a class="navLink" href="#">CLASS</a>
                         </li>
                         <li class="nav-item">
                             <a class="navLink" href="#">MENTOR</a>
@@ -79,136 +111,24 @@
                 </div>
             </div>
         </nav>
-       
-    </div>
-    <div id="class-section">
-        <span style="color:white;font-size:24px;margin-left:360px">Class</span>
-        <ul>
-            <li style="margin-left:250px">
-                <a href="/">Hip Hop</a>
-            </li>
-            <li>
-                <a href="/">Locking</a>
-            </li>
-            <li>
-                <a href="/">House</a>
-            </li>
-            <li>
-                <a href="/">B-Boying</a>
-            </li>
-            <li>
-                <a href="/">Waacking</a>
-            </li>
-            <li>
-                <a href="/">Krump</a>
-            </li>
-            
-            <li>
-                <a href="/">Popping</a>
-            </li>
-            <li>
-                <a href="/">Choreography</a>
-            </li>
-        </ul>
-    </div>
-    <p style="margin-left:360px; font-size: 24px; color:white;margin-top: 40px; margin-bottom:4px;">
-        We live discover
-    </p>
-    <p style="margin-left:360px;font-size:40px;color:#FF7A00;font-weight: 600;margin-bottom: 60px;">
-        Untold Originals
-    </p>
-    <div id="banner-section">
 
     </div>
-    <div style="display:flex; align-items: cneter;">
-        <span style="font-size:30px;font-weight:500;color:white;margin-left:360px;">Who we are</span>
-        <pre style="font-size:20px;display:inline-block;margin-left:209px; color:white;">
-            낯선 것에서 찾아낸 공감대를 사랑하고 그 과정에서 기쁨을 느끼는 CHOO:OOM은
-            우리만의 독창적인 것, Untold Originals를찾아 오늘도 끝없는 여정을 이어갑니다.
-        </pre>
-    </div>
 
-    <div id="detail-section">
-        Featured Contents
-        &nbsp;&nbsp;
-        <img src="{% static 'img/orange_arrow.png' %}" />
-    </div>
-    <div id="slider-section">
-        <img src="{% static 'img/white_arrow_left.png' %}" />
-        <span style="color:white;font-size: 20px;">&nbsp; 3 / 6  &nbsp;</span>
-        <img src="{% static 'img/white_arrow_right.png' %}" />
-    </div>
+    <!-- 여기부터 Index.html 에 들어갈 내용 및 변하는 내용 -->
+    {% block content %}
+    
+    {% endblock %}
+    <!-- index.html 끝 -->
 
-    <div id="detail-class-section">
-            <img src="{% static 'img/sample_jpark.png' %}" />
-            <img src="{% static 'img/sample_jpark.png' %}" />
-            <img src="{% static 'img/sample_jpark.png' %}" />
-            <img src="{% static 'img/sample_jpark.png' %}" />
-            <img src="{% static 'img/sample_jpark.png' %}" />
-            <img src="{% static 'img/sample_jpark.png' %}" />
-            <img src="{% static 'img/sample_jpark.png' %}" />
-            <img src="{% static 'img/sample_jpark.png' %}" />
-    </div>
-    <div id="news-event-section">
-        <div style="margin-bottom:24px;font-size:32px;margin-left:360px">
-            NEWS & EVENT
-            &nbsp;&nbsp;
-            <img src="{% static 'img/orange_arrow.png' %}" />
-        </div>
-        <div style="font-size:20px;color:#717171;margin-left:360px">
-            CHOO:OOM의 새로운 소식, 지금 바로 확인해보세요
-            <span style="float:right;margin-right:360px;">
-                <img src="{% static 'img/black_arrow_left.png' %}" />
-                <span style="font-size: 20px;">&nbsp; 3 / 6  &nbsp;</span>
-                <img src="{% static 'img/black_arrow_right.png' %}" />
-            </span>
-        </div>
-        <table>
-            <tbody>
-                <tr>
-                    <td rowspan="4">
-                        <img style="width:784px; height:650px"src="{% static 'img/sample_chungha.png' %}" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="{% static 'img/sample_chungha.png' %}" />
-                    </td>
-                    <td>
-                        <img src="{% static 'img/sample_chungha.png' %}" />
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td>
-                        <img src="{% static 'img/sample_chungha.png' %}" />
-
-                    </td>
-                    <td>
-                        <img src="{% static 'img/sample_chungha.png' %}" /> 
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                    <img src="{% static 'img/sample_chungha.png' %}" />
-
-                </td>
-                <td>
-                    <img src="{% static 'img/sample_chungha.png' %}" /> 
-                </td>
-            </tr>
-        </tbody>
-        </table>
-    </div>
+    <!-- footer 영역이 될 것 같음 -->
     <div id="comment-section">
-
         <p> We love to find the familiar </p>
-        <p style="display:inline-block">within the unfamiliar</p> 
+        <p style="display:inline-block">within the unfamiliar</p>
         <span> and the thrill</span>
         <div> that comes with it. </div>
-        </div>
     </div>
-</div>
-<script src="{% static 'js/base.js' %}"></script>
+    
+    <script src="{% static 'js/base.js' %}"></script>
 </body>
+
 </html>
