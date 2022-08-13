@@ -87,8 +87,22 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="navLink" href="#">CLASS</a>
+                        <li class="nav-item dropdown">
+                            <a class="navLink dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Class
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=1">Hip-Hop</a></li>
+                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=2">Locking</a></li>
+                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=3">Waacking</a></li>
+                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=4">B-Boying</a></li>
+                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=5">House</a></li>
+                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=6">Crump</a></li>
+                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=7">Popping</a></li>
+                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=8">Choreography</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="navLink" href="#">MENTOR</a>
@@ -115,9 +129,11 @@
     </div>
 
     <!-- 여기부터 Index.html 에 들어갈 내용 및 변하는 내용 -->
+
     {% block content %}
-    
+
     {% endblock %}
+
     <!-- index.html 끝 -->
 
     <!-- footer 영역이 될 것 같음 -->
@@ -127,7 +143,7 @@
         <span> and the thrill</span>
         <div> that comes with it. </div>
     </div>
-    
+
     <script src="{% static 'js/base.js' %}"></script>
 </body>
 

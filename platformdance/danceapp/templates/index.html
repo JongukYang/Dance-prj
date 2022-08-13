@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-
 <div id="class-section">
     <span style="color:white;font-size:24px;margin-left:360px">Class</span>
     <ul>
@@ -61,6 +60,13 @@
 </div>
 
 <div id="detail-class-section">
+    {% for post in posts %}
+    {% if post.photo %}
+    <img src="{{ post.photo.url }}" alt="">
+    {% else %}
+    <img src="#" alt="NO_Img">
+    {% endif %}
+    {% endfor %}
     <img src="{% static 'img/sample_jpark.png' %}" />
     <img src="{% static 'img/sample_jpark.png' %}" />
     <img src="{% static 'img/sample_jpark.png' %}" />
