@@ -2,6 +2,7 @@
 {% block content %}
 {% load static %}
 <!-- main -->
+<div class="container" id="main-container">
 <h1>{{ genre.name }} Page</h1>
 <h3>{{ genre.name }} 게시글</h3>
 <a href="{% url 'genre_course' %}?genre_id={{genre.id}}">{{ genre.name}} 클래스</a>
@@ -53,6 +54,9 @@
         justify-items: start;
         width: 100%;
     }
+    *{
+        color: #ebebeb;
+    }
 </style>
 <div class="main1">
     {% for post in posts %}
@@ -96,5 +100,6 @@
     </div>
     {% endif %}
     {% endfor %}
+</div>
 </div>
 {% endblock %}
