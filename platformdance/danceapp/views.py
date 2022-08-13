@@ -13,13 +13,15 @@ def index(request):
     posts = Post.objects.filter().order_by('-uploadDate')
     # likes_ten = Post.objects.all().order_by('-likes_count')[:5] # 모든 포스트 중 택5 -> 쿼리셋
     likes_top_ten = Post.objects.all().order_by('-likes_count') # 모든 포스트 중 택5 -> 딕셔너리 형태
-    print("likes_top_ten 출력 : ", likes_top_ten[0], likes_top_ten[2], likes_top_ten[3])
+    likes_top_ten_val = Post.objects.all().order_by('-likes_count').values() # 모든 포스트 중 택5 -> 딕셔너리 형태
+    likes_top_ten_val = list(likes_top_ten_val)
     # likes_ten = Post.objects.filter(genreName='1').order_by('-likes_count')[:5] # 장르 중 택5
     comment_form = CommentForm()
     context = {
         'posts':posts,
         'comment_form':comment_form,
         'likes_top_ten':likes_top_ten,
+        'likes_top_ten_val':likes_top_ten_val,
         # 'rank1':likes_top_ten[0],
         # 'rank2':likes_top_ten[1],
         # 'rank3':likes_top_ten[2],

@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+
+<h6 style="color: #ebebeb;">{{ likes_top_ten_val }}</h6>
+<hr>
+<h6 style="color: #ebebeb;">
+    {% for l in likes_top_ten_val %}
+    {% if forloop.counter == 8 %}
+    [{{ forloop.counter }}] : {{ l }} <br><br>
+    {% endif %}
+    {% endfor %}
+</h6>
+<hr>
+
 <div id="class-section">
     <span style="color:white;font-size:24px;margin-left:360px">Class</span>
     <ul>
@@ -48,6 +60,7 @@
     </pre>
 </div>
 
+
 <div id="detail-section">
     Featured Contents
     &nbsp;&nbsp;
@@ -63,8 +76,12 @@
     {% for post in posts %}
     {% if post.photo %}
     <img src="{{ post.photo.url }}" alt="">
+    <!-- 장고 주석 처리 -->
+    {% comment %}
     {% else %}
     <img src="#" alt="NO_Img">
+    {% endcomment %}
+    <!-- 장고 주석 처리 끝 -->
     {% endif %}
     {% endfor %}
     <img src="{% static 'img/sample_jpark.png' %}" />
@@ -93,8 +110,9 @@
     <table>
         <tbody>
             <tr>
-                <td rowspan="4">
-                    <img style="width:784px; height:650px" src="{% static 'img/sample_chungha.png' %}" />
+                <td rowspan="4" style="width: 784px; height: 650px;">
+                    <!-- <img style="width:784px; height:650px" src="{% static 'img/sample_chungha.png' %}" /> -->
+                    <img style="width:fit-content; height: auto; object-fit: contain;" src="{% static 'img/sample_chungha.png' %}" />
                 </td>
             </tr>
             <tr>
