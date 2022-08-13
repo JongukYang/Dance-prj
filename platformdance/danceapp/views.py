@@ -10,7 +10,7 @@ from accounts.models import userProfile
 # from django.core.paginator import Paginator
 
 def index(request):
-    posts = Post.objects.filter().order_by('-updateDate')
+    posts = Post.objects.filter().order_by('-uploadDate')
     # likes_ten = Post.objects.all().order_by('-likes_count')[:5] # 모든 포스트 중 택5 -> 쿼리셋
     likes_top_ten = Post.objects.all().order_by('-likes_count') # 모든 포스트 중 택5 -> 딕셔너리 형태
     print("likes_top_ten 출력 : ", likes_top_ten[0], likes_top_ten[2], likes_top_ten[3])
@@ -20,16 +20,16 @@ def index(request):
         'posts':posts,
         'comment_form':comment_form,
         'likes_top_ten':likes_top_ten,
-        'rank1':likes_top_ten[0],
-        'rank2':likes_top_ten[1],
-        'rank3':likes_top_ten[2],
-        'rank4':likes_top_ten[3],
-        'rank5':likes_top_ten[4],
-        'rank6':likes_top_ten[5],
-        'rank7':likes_top_ten[6],
-        'rank8':likes_top_ten[7],
-        'rank9':likes_top_ten[8],
-        'rank10':likes_top_ten[9],
+        # 'rank1':likes_top_ten[0],
+        # 'rank2':likes_top_ten[1],
+        # 'rank3':likes_top_ten[2],
+        # 'rank4':likes_top_ten[3],
+        # 'rank5':likes_top_ten[4],
+        # 'rank6':likes_top_ten[5],
+        # 'rank7':likes_top_ten[6],
+        # 'rank8':likes_top_ten[7],
+        # 'rank9':likes_top_ten[8],
+        # 'rank10':likes_top_ten[9],
     }
     return render(request, 'index.html', context)
 

@@ -24,8 +24,11 @@
         justify-items: start;
         width: 100%;
     }
+    * {
+        color: #ebebeb;
+    }
 </style>
-
+<div class="container" id="main-container">
 <h1>{% for my in myprofile %}{{ my.nickname }}{% endfor %} - mypage.html</h1>
 <hr>
 <!-- 유저 모델 기본 프로필 -->
@@ -47,6 +50,10 @@
     </tr>
     {% endfor %}
     <!-- 반복 끝 -->
+    <tr>
+        <td><a href="{% url 'postcreate' %}">영상 업로드</a></td>
+        <td><a href="{% url 'coursecreate' %}">클래스 업로드</a></td>
+    </tr>
 </table>
 
 <!-- 현재 수강중인 클래스 -->
@@ -120,5 +127,5 @@
     {% endfor %}
     <!-- 게시글 반복 끝 -->
 </table>
-
+</div>
 {% endblock %}
