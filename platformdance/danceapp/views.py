@@ -61,8 +61,7 @@ def postcreate(request):
     # request 메소드가 Post 일 경우
     # 입력값 저장
     if request.method == 'POST' or request.method == 'FILES':
-        form = PostForm(request.POST)
-        form = PostForm()
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             unfinished = form.save(commit=False)
             unfinished.userId = request.user
@@ -81,7 +80,6 @@ def postcreate(request):
 # 게시글 수정
 def modify_post(request, post_id):
     post = Post.objects.get(id=post_id)
-
     if request.method =='POST' or request.method == 'FILES':
         post = get_object_or_404(Post, pk=post_id)
         form = PostModifyForm(request.POST, request.FILES, instance=post)
@@ -107,6 +105,38 @@ def modify_post(request, post_id):
 #     article.content = edit_content
 #     article.save()
 #     return redirect('articles:detail', article_pk)
+
+# def modifyprofileimg(request, user_id):
+#     if request.method == 'POST' or request.method == 'FILES':
+#         user = userProfile.objects.get(id=user_id)
+#         form = userProfileForm(request.POST, request.FILES, instance=user)
+#         if form.is_valid():
+#             unfinished = form.save(commit=False)
+#             unfinished.id = request.user.id
+#             unfinished.save()
+#             return redirect('index')
+#     # request method()가 Get일 경우
+#     # form 입력 html 띄우기
+#     else:
+#         form = userProfileForm()
+    
+#     context = {
+#         'form':form
+#     }
+#     return render(request, 'modify_post.html', context)
+
+def modifyprofileimg(request, user_id):
+    if request.method == 'POST' or request.method == 'FILES':
+        user = userProfile.objects.get(id=user_id)
+        # 유저 프로필 사진 지우고, 새로운거 저장
+        if user.profilephoto:
+            user.profilephoto.delete()
+        user.profilephoto = request.FILES['profileimg']
+        user.save()
+        return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+    else:
+        return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
 
 # 게시글 삭제
 def delete_post(request, post_id):

@@ -56,7 +56,9 @@ urlpatterns = [
     # 클래스 신청
     path('regCourse/<int:course_id>', views.regCourse, name='regCourse'),
     # 마이페이지
-    path('mypage/<int:user_id>', views.mypage, name='mypage')
+    path('mypage/<int:user_id>', views.mypage, name='mypage'),
+    # user 프로필 이미지 수정
+    path('modifyprofileimg/<int:user_id>', views.modifyprofileimg, name='modifyprofileimg')
     
     
 

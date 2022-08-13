@@ -1,7 +1,5 @@
 from django import forms
-
 from .models import Course, Post, Comment
-
 
 class PostForm(forms.ModelForm):
     class Meta:
