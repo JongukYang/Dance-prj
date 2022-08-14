@@ -31,6 +31,15 @@
 {% endif %}
 {% endif %}
 
+{% if request.user.is_authenticated %}
+{% if post.userId == request.user %}
+<form action="{% url 'modify_post' post.id %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" name="modify_post" value="수정">
+</form>
+{% endif %}
+{% endif %}
+
 <h2>내용</h2>
 BODY : {{ post.body }}
 
