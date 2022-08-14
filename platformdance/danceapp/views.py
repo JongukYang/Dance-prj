@@ -3,14 +3,17 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.template.defaulttags import comment
 from .forms import PostForm, CommentForm, CourseForm, PostModifyForm
 from .models import Post, Comment, Genre, Course
-# from django.contrib.auth.models import User
 from accounts.models import userProfile
+from django.core.paginator import Paginator
 
 # 페이지네이션, 객체들 목록을 끊어서 보여주는 것
 # from django.core.paginator import Paginator
 
 def index(request):
     posts = Post.objects.filter().order_by('-uploadDate')
+    paginator = Paginator(posts, 8)
+    pagenum = request.GET.get('page') # url 부분 ex) @@@?page=1 -> {page:1}
+    posts = paginator.get_page(pagenum)
     # likes_ten = Post.objects.all().order_by('-likes_count')[:5] # 모든 포스트 중 택5 -> 쿼리셋
     likes_top_ten = Post.objects.all().order_by('-likes_count') # 모든 포스트 중 택5 -> 딕셔너리 형태
     likes_top_ten_val = Post.objects.all().order_by('-likes_count').values() # 모든 포스트 중 택5 -> 딕셔너리 형태
@@ -37,17 +40,23 @@ def index(request):
 
 # 클래스 만들기
 def coursecreate(request):
-    # request 메소드가 Post 일 경우
-    # 입력값 저장
+    print("클래스 만들기 시작")
+    # request 메소드가 Post 일 경우 입력값 저장
     if request.method == 'POST' or request.method == 'FILES':
+        print("if문 post 요청 받아옴")
         form = CourseForm(request.POST, request.FILES)
+        print("form 가져옴")
+        print(request.POST)
+        print(form)
         if form.is_valid():
+            print("valid 검사 시작")
             unfinished = form.save(commit=False)
+            print("commit false 수행")
+            print(unfinished)
             unfinished.userId = request.user
             unfinished.save()
             return redirect('index')
-    # request method()가 Get일 경우
-    # form 입력 html 띄우기
+    # request method()가 Get일 경우 form 입력 html 띄우기
     else:
         form = CourseForm()
     
@@ -62,6 +71,8 @@ def postcreate(request):
     # 입력값 저장
     if request.method == 'POST' or request.method == 'FILES':
         form = PostForm(request.POST, request.FILES)
+        print(request.POST)
+        print(form)
         if form.is_valid():
             unfinished = form.save(commit=False)
             unfinished.userId = request.user
@@ -79,21 +90,21 @@ def postcreate(request):
 
 # 게시글 수정
 def modify_post(request, post_id):
-    post = Post.objects.get(id=post_id)
     if request.method =='POST' or request.method == 'FILES':
         post = get_object_or_404(Post, pk=post_id)
-        form = PostModifyForm(request.POST, request.FILES, instance=post)
+        form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             # post = form.save(commit=False)
             # form = PostForm(Post,instance=post)
             # post.title = request.POST['title']
             # post.body = request.POST['body']
-            post.title = form.cleaned_data['title'] # +
-            post.body = form.cleaned_data['body'] # +
-            post.save()
+            # post.title = form.cleaned_data['title'] # +
+            # post.body = form.cleaned_data['body'] # +            
+            # post.save()
+            form.save()
             return redirect('index')
-    else:
-        form = PostModifyForm(instance = post)
+    # else:
+    #     form = PostModifyForm(instance = post)
     return render(request, 'modify_post.html', {'form':form})
 
 # 수정 2 테스트 해보기
@@ -105,38 +116,6 @@ def modify_post(request, post_id):
 #     article.content = edit_content
 #     article.save()
 #     return redirect('articles:detail', article_pk)
-
-# def modifyprofileimg(request, user_id):
-#     if request.method == 'POST' or request.method == 'FILES':
-#         user = userProfile.objects.get(id=user_id)
-#         form = userProfileForm(request.POST, request.FILES, instance=user)
-#         if form.is_valid():
-#             unfinished = form.save(commit=False)
-#             unfinished.id = request.user.id
-#             unfinished.save()
-#             return redirect('index')
-#     # request method()가 Get일 경우
-#     # form 입력 html 띄우기
-#     else:
-#         form = userProfileForm()
-    
-#     context = {
-#         'form':form
-#     }
-#     return render(request, 'modify_post.html', context)
-
-def modifyprofileimg(request, user_id):
-    if request.method == 'POST' or request.method == 'FILES':
-        user = userProfile.objects.get(id=user_id)
-        # 유저 프로필 사진 지우고, 새로운거 저장
-        if user.profilephoto:
-            user.profilephoto.delete()
-        user.profilephoto = request.FILES['profileimg']
-        user.save()
-        return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
-    else:
-        return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
-
 
 # 게시글 삭제
 def delete_post(request, post_id):
@@ -304,3 +283,16 @@ def mypage(request, user_id):
             'myregcourse':myregcourse,
         }
         return render(request, 'mypage.html', context)
+
+# 마이페이지 프로필 사진 추가
+def modifyprofileimg(request, user_id):
+    if request.method == 'POST' or request.method == 'FILES':
+        user = userProfile.objects.get(id=user_id)
+        # 유저 프로필 사진 지우고, 새로운거 저장
+        if user.profilephoto:
+            user.profilephoto.delete()
+            user.profilephoto = request.FILES['profileimg']
+        user.save()
+        return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+    else:
+        return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
