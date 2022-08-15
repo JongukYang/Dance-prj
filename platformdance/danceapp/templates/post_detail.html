@@ -14,11 +14,6 @@
     <hr style="border: 2px solid rgba(255, 255, 255, 0.3); 
     width: 980px;height: 0px; padding-left: 470px; margin-top: 1413px;">
     <div class="comment">댓글 30개</div>
-    <form method="POST" action="{% url 'new_comment' post.id %}">
-        {% csrf_token %}
-        {{ comment_form.as_p }}
-        <input type="submit" value="댓글 입력">
-    </form>
 
 
 </div>
