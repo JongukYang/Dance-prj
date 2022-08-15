@@ -1,4 +1,4 @@
-{% load static %}
+{{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,26 +11,28 @@
 </head>
 
 <body>
+
     <div class="logo">
         CHOO:OOM
     </div>
 
     <form action="{% url 'postcreate' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
+    <section>
         <div>
             <div class="title">Title</div>
             {{ form.title }}
-            <!-- <input class="input1" type="text"> -->
+            <!-- <input class="input-title" type="text"> -->
         </div>
 
         <div>
             <div class="intro">Introduction</div>
             {{ form.body }}
-            <!-- <textarea class="input2" cols="20" rows="5"></textarea> -->
+            <!-- <textarea class="input-intro" cols="20" rows="5"></textarea> -->
         </div>
 
         <div class="image">Main Image
-            <label class="upload1" for="imagefile">
+            <label class="upload-img" for="imagefile">
                 <div>파일 선택</div>
             </label>
             {{ form.photo }}
@@ -38,7 +40,7 @@
         </div>
 
         <div class="video">Video
-            <label class="upload2" for="videofile">
+            <label class="upload-video" for="videofile">
                 <div>파일 선택</div>
             </label>
             {{ form.video }}
@@ -46,12 +48,10 @@
         </div>
         <div class="genre">Genre
             <label for="id_genreName" style="color: black; font-size: large;">
-                <div>장르</div>
             </label>
             {{ form.genreName }}
         </div>
         <input type="submit" name="" id="" class="button" value="Upload">
+    </section>
     </form>
 </body>
-
-</html>

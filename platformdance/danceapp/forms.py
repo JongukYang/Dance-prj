@@ -13,12 +13,12 @@ class PostForm(forms.ModelForm):
         super(PostForm, self).__init__(*args, **kwargs)
 
         self.fields['title'].widget.attrs = {
-            'class': 'input1', 
+            'class': 'input-title', 
             'placeholder': "제목 입력(4-100)",
             # 'id':'title',
         }
         self.fields['body'].widget.attrs = {
-            'class': 'input2', 
+            'class': 'input-intro', 
             'placeholder': "내용 작성",
             # 'id': 'content',
             'rows':5,
