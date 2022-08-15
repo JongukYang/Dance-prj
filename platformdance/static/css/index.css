@@ -316,23 +316,17 @@ td:hover >img{
     color: #FFFFFF;
 }
 
-.vdeioinfo{
-    padding-top: 34px;
-}
-
 video{
     width: 980px;
     height: 572px;
 }
 
-.userinfo{
-    padding-top: 38px;
-}
-.comment-sy{
-    margin-top: 72px;
+.videoinfo{
+    margin-top: 34px;
 }
 
 .info-sy{
+    display: inline;
     font-family: 'Gothic A1';
     font-style: normal;
     font-weight: 700;
@@ -353,14 +347,10 @@ button{
     color: #FFFFFF;
 }
 
-.com{
-    width: 89px;
-    height: 25px;
-    font-family: 'Gothic A1';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 25px;
-    color: #FFFFFF;
+.userinfo{
+    margin-top: 38px;
 }
 
+.comment-sy{
+    margin-top: 80px;
+}
