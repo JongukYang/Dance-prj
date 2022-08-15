@@ -11,8 +11,7 @@
 
 <body>
     <h1>Index.html Page</h1>
-    <h1><a href="{% url 'index2' %}">프로젝트 Main Page</a></h1>
-    <h1><a href="{% url 'index3' %}">미니 Main Page</a></h1>
+    
     
     {% if request.user.is_authenticated %}
     <h1>현재 userId : {{request.user}}</h1>
@@ -79,7 +78,7 @@
             <tr>
                 <td><a href="{% url 'user_post_detail' post.userId_id %}">{{ post.userId }}</a></td>
                 <td>{{ post.userId_id }}</td>
-                <td><a href="{% url 'post' post.id %}">{{ post.title }}</a></td>
+                
                 <td>{{ post.body }}</td>
                 <td>{{ post.uploadDate }}</td>
                 <td>{{ post.updateDate }}</td>
@@ -120,11 +119,20 @@
                     {% if request.user.is_authenticated %}
                     <form method="POST" action="{% url 'new_comment' post.id %}">
                         {% csrf_token %}
+
                         {{ comment_form.as_p }}
+
                         <input type="submit" value="댓글 입력">
                     </form>
                     {% endif %}
+
                     {% for comment in post.comment_set.all %}
+                    <table style="border : 1px solid black;">
+                        <tr>
+                            <td>유저아이디</td>
+                            <td>뎃굴이 표시될거빈다</td>
+                        </tr>
+                    </table>
                     {{ comment.userId }} - {{ comment }}
                     {% if request.user == comment.userId %}
                     <form action="{% url 'delete_comment' comment.id %}" method="POST">
