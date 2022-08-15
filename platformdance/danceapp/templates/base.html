@@ -25,9 +25,9 @@
         <input type="text" id="searchBar" placeholder="Search artist, classes" />
         {% if request.user.is_authenticated %}
         <span>
-            <a id="sign" href="{% url 'logout' %}">LOG OUT</a>
+            <a id="sign" href="{% url 'logout' %}">Log Out</a>
             {% else %}
-            <a id="sign" href="{% url 'login' %}">LOG IN</a>
+            <a id="sign" href="{% url 'login' %}">Log In</a>
             {% endif %}
         </span>
         {% if request.user.is_authenticated %}
@@ -97,8 +97,10 @@
                                 <li><a class="dropdown-item" href="{% url 'course' %}">@@ 장르 소개</a></li>
                                 <li><a class="dropdown-item" href="{% url 'genre_course' %}?genre_id=1">Hip-Hop</a></li>
                                 <li><a class="dropdown-item" href="{% url 'genre_course' %}?genre_id=2">Locking</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_course' %}?genre_id=3">Waacking</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_course' %}?genre_id=4">B-Boying</a></li>
+                                <li><a class="dropdown-item" href="{% url 'genre_course' %}?genre_id=3">Waacking</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'genre_course' %}?genre_id=4">B-Boying</a>
+                                </li>
                                 <li><a class="dropdown-item" href="{% url 'genre_course' %}?genre_id=5">House</a></li>
                                 <li><a class="dropdown-item" href="{% url 'genre_course' %}?genre_id=6">Crump</a></li>
                                 <li><a class="dropdown-item" href="{% url 'genre_course' %}?genre_id=7">Popping</a></li>

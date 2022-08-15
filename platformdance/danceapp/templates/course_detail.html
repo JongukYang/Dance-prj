@@ -2,87 +2,108 @@
 {% block content %}
 {% load static %}
 <!-- <link rel="stylesheet" href="{% static 'css/classdetail.css' %}"> -->
-    <!-- 여기부터 클래스 디테일 -->
-    <p style="margin-left:360px;font-size:40px; color:white;font-weight: 600;margin-bottom: 60px;">
-        클래스 제목
-    </p>
+<!-- 여기부터 클래스 디테일 -->
+<p style="margin-left:360px;font-size:40px; color:white;font-weight: 600;margin-bottom: 60px;">
+    클래스 제목
+</p>
 
-    <div id="banner-section">
-        <img src="image/video/1.jpg" >
-    </div>
+<div id="banner-section">
+    <img src="{{ course.photo.url }}" alt="">
+</div>
 
-    <div id="table">
-        <table border="1">
-            <th>Date/Time</th>
-            <tr><td>날짜</td></tr>
-            <tr><td>2022.11.07</td></tr>
-            <tr><td>시간</td></tr>
-            <tr><td>오후 5시~오후 10시</td></tr>
-        </table>
-    </div>
-    
+<div id="table">
+    <table border="1">
+        <th>Date/Time</th>
+        <tr>
+            <td>날짜</td>
+        </tr>
+        <tr>
+            <td>2022.11.07</td>
+        </tr>
+        <tr>
+            <td>시간</td>
+        </tr>
+        <tr>
+            <td>오후 5시~오후 10시</td>
+        </tr>
+    </table>
+</div>
 
+<div id="detail-section">
+    <br><br><br><br>
+    The Dancer
 
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+    <br><br>
+</div>
 
-    <div id="detail-section">
-        <br><br><br><br>
-        The Dancer
-        
+<div id="slider-section">
+    <img src="{% static 'img/white_arrow_left.png' %}" />
+    <span style="color:white;font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
+    <img src="{% static 'img/white_arrow_right.png' %}" />
+</div>
+
+<div id="dancer-section">
+    <img src="image/clASS/효진초이(원트).jpeg">
+</div>
+
+<div id="dancer-table">
+    <table border="1">
+        <th>Yujin Choi</th>
+        <tr>
+            <td>댄서의 경력</td>
+        </tr>
+        <tr>
+            <td>등등</td>
+        </tr>
+        <tr>
+            <td>등등</td>
+        </tr>
+        <tr>
+            <td>등등</td>
+        </tr>
+    </table>
+</div>
+
+<div id="news-event-section">
+    <div style="margin-bottom: 10px; font-size:32px; ">
+        <br><br><br><br><br><br><br><br><br>Place
         &nbsp;&nbsp;
         <img src="{% static 'img/orange_arrow.png' %}" />
-        <br><br>
     </div>
 
-    <div id="slider-section">
-        <img src="{% static 'img/white_arrow_left.png' %}" />
-        <span style="color:white;font-size: 20px;">&nbsp; 3 / 6  &nbsp;</span>
-        <img src="{% static 'img/white_arrow_right.png' %}" />
+    <div style="font-size:20px; color:#717171;">
+        <!--CHOO:OOM의 새로운 소식, 지금 바로 확인해보세요-->
+        <span style="float:right; margin-right:360px;">
+            <img src="{% static 'img/black_arrow_left.png' %}" />
+            <span style="font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
+            <img src="{% static 'img/black_arrow_right.png' %}" />
+        </span>
     </div>
 
-    <div id="dancer-section">
-        <img src="image/clASS/효진초이(원트).jpeg" >
-    </div>
 
-    <div id="dancer-table">
-        <table border="1">
-            <th>Yujin Choi</th>
-            <tr><td>댄서의 경력</td></tr>
-            <tr><td>등등</td></tr>
-            <tr><td>등등</td></tr>
-            <tr><td>등등</td></tr>
-        </table>
-    </div>
+</div>
+<div id="place-section">
+    <img src="image/clASS/효진초이(원트).jpeg">
+</div>
 
-    <div id="news-event-section">
-        <div style="margin-bottom: 10px; font-size:32px; ">
-            <br><br><br><br><br><br><br><br><br>Place
-            &nbsp;&nbsp;
-            <img src="{% static 'img/orange_arrow.png' %}" />
-        </div>
+<div id="place-table">
+    <table border="1">
+        <th></th>
+        <tr>
+            <td>장소</td>
+        </tr>
+        <tr>
+            <td>연습실</td>
+        </tr>
+        <tr>
+            <td>위치</td>
+        </tr>
+        <tr>
+            <td>서울 마포구</td>
+        </tr>
+    </table>
 
-        <div style="font-size:20px; color:#717171;">
-            <!--CHOO:OOM의 새로운 소식, 지금 바로 확인해보세요-->
-            <span style="float:right; margin-right:360px;">
-                <img src="{% static 'img/black_arrow_left.png' %}" />
-                <span style="font-size: 20px;">&nbsp; 3 / 6  &nbsp;</span>
-                <img src="{% static 'img/black_arrow_right.png' %}" />
-            </span>
-        </div>
-
-        
-    </div>
-    <div id="place-section">
-        <img src="image/clASS/효진초이(원트).jpeg" >
-    </div>
-
-    <div id="place-table">
-        <table border="1">
-            <th></th>
-            <tr><td>장소</td></tr>
-            <tr><td>연습실</td></tr>
-            <tr><td>위치</td></tr>
-            <tr><td>서울 마포구</td></tr>
-        </table>
-        
-    </div>
-    {% endblock %}
+</div>
+{% endblock %}

@@ -1,31 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-    <!--이미지 슬라이더 -->
+<!--이미지 슬라이더 -->
 <div id="image-slider">
-    <img src="{% static 'img/white_arrow_left.png' %}" class="prev"/>
+    <img src="{% static 'img/white_arrow_left.png' %}" class="prev" />
     <div class="carousel-wrapper">
         <div class="carousel">
-        {% for post in likes_top_ten %}
-            {% if post.photo %}
-            <img src="{{ post.photo.url }}" alt="">
+            {% for course in courses %}
+            {% if course.photo %}
+            <a href="{% url 'course_detail' course.id %}" class="carousel-a"><img src="{{ course.photo.url }}"
+                    alt=""></a>
             {% endif %}
-        {% endfor %}
-        <!-- <img
-            src="https://images.unsplash.com/photo-1602808180309-2e0c62986635?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-            alt=""
-        /> -->
-        <!-- <img
-            src="https://images.unsplash.com/photo-1583434987437-1b9dcbe44c9e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-            alt=""
-        />
-        <img
-            src="https://images.unsplash.com/photo-1603052227529-e8ed43c7af99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-            alt=""
-        /> -->
+            {% endfor %}
+        </div>
     </div>
-  </div>
-  <img src="{% static 'img/white_arrow_right.png' %}" class="next"/>
+    <img src="{% static 'img/white_arrow_right.png' %}" class="next" />
 </div>
 
 <div style="margin-left:400px;margin-top:183px;">
@@ -33,7 +22,7 @@
     <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=2">Locking</a></div>
     <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=3">House</a></div>
     <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=4">B-Boying</a></div>
-    <br/>
+    <br />
     <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=5">Waacking</a></div>
     <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=6">krump</a></div>
     <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=7">Popping</a></div>
@@ -52,10 +41,13 @@
     </div>
 
     <div id="detail-class-section">
-        <a href="{% url 'course_detail' 1 %}"><img src="{% static 'img/sample_jpark.png' %}" /></a>
-        <img src="{% static 'img/sample_jpark.png' %}" />
-        <img src="{% static 'img/sample_jpark.png' %}" />
-        <img src="{% static 'img/sample_jpark.png' %}" />
+        {% for course in courses %}
+        {% if course.photo %}
+        <a href="{% url 'course_detail' course.id %}" id="detail-class-section-a"><img src="{{ course.photo.url }}"
+                alt=""></a>
+        {% endif %}
+        {% endfor %}
+
     </div>
 </div>
 
@@ -64,19 +56,96 @@
     const classNameText = document.getElementById("class-name")
     let name = new URL(location).searchParams.get("genre_id");
     const genreClass = document.querySelector("#genre-class");
-
-    if(name){
-        classNameText.innerText = name;
+    console.log(typeof (name));
+    if (name === "1") {
+        classNameText.innerText = "Hip-Hop";
         genreClass.style.display = "block"
-        document.querySelectorAll('#dance-class').forEach(item=>{
-            if(item.innerText === name){
+        document.querySelectorAll('#dance-class').forEach(item => {
+            if (item.innerText === "Hip-Hop") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
                 item.style.color = "white";
             }
         })
-    }else{
-        
+    } else if (name === "2") {
+        classNameText.innerText = "Locking";
+        genreClass.style.display = "block"
+        document.querySelectorAll('#dance-class').forEach(item => {
+            if (item.innerText === "Locking") {
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.style.color = "white";
+            }
+        })
+    }
+    else if (name === "3") {
+        classNameText.innerText = "Waacking";
+        genreClass.style.display = "block"
+        document.querySelectorAll('#dance-class').forEach(item => {
+            if (item.innerText === "Waacking") {
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.style.color = "white";
+            }
+        })
+    }
+    else if (name === "4") {
+        classNameText.innerText = "B-Boyibg";
+        genreClass.style.display = "block"
+        document.querySelectorAll('#dance-class').forEach(item => {
+            if (item.innerText === "B-Boyibg") {
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.style.color = "white";
+            }
+        })
+    }
+    else if (name === "5") {
+        classNameText.innerText = "House";
+        genreClass.style.display = "block"
+        document.querySelectorAll('#dance-class').forEach(item => {
+            if (item.innerText === "House") {
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.style.color = "white";
+            }
+        })
+    }
+    else if (name === "6") {
+        classNameText.innerText = "Crump";
+        genreClass.style.display = "block"
+        document.querySelectorAll('#dance-class').forEach(item => {
+            if (item.innerText === "Crump") {
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.style.color = "white";
+            }
+        })
+    }
+    else if (name === "7") {
+        classNameText.innerText = "Popping";
+        genreClass.style.display = "block"
+        document.querySelectorAll('#dance-class').forEach(item => {
+            if (item.innerText === "Popping") {
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.style.color = "white";
+            }
+        })
+    }
+    else if (name === "8") {
+        classNameText.innerText = "Choreography";
+        genreClass.style.display = "block"
+        document.querySelectorAll('#dance-class').forEach(item => {
+            if (item.innerText === "Choreography") {
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.style.color = "white";
+            }
+        })
+    }
+    else {
+
         genreClass.style.display = "none"
     }
     // 이미지 슬라이더 스크립트
@@ -86,9 +155,9 @@
     let index = 0;
 
     prevButton.addEventListener('click', () => {
-        if (index === 0){
-            index=2;
-        }else{
+        if (index === 0) {
+            index = 2;
+        } else {
             index -= 1;
         }
         carousel.style.transform = `translate3d(-${600 * index}px, 0, 0)`;
@@ -96,11 +165,11 @@
 
     nextButton.addEventListener('click', () => {
         if (index === 2) {
-            index=0;
-        }else{
+            index = 0;
+        } else {
             index += 1;
         }
-    carousel.style.transform = `translate3d(-${600 * index}px, 0, 0)`;   
+        carousel.style.transform = `translate3d(-${600 * index}px, 0, 0)`;
     });
 
     //클래스 선택 스크립트
@@ -109,6 +178,6 @@
     //         document.location.href= `/classes?name=${item.innerText}`
     //     })
     // })
-    
+
 </script>
 {% endblock %}

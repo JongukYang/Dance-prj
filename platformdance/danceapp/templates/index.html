@@ -82,6 +82,28 @@
     <img src="{% static 'img/sample_jpark.png' %}" />
     <img src="{% static 'img/sample_jpark.png' %}" /> -->
 </div>
+<hr style="border:3px solid white;">
+<div id="detail-class-section">
+    {% for course in courses %}
+    {% if course.photo %}
+    <img src="{{ course.photo.url }}" alt="">
+    <!-- 장고 주석 처리 -->
+    {% comment %}
+    {% else %}
+    <img src="#" alt="NO_Img">
+    {% endcomment %}
+    <!-- 장고 주석 처리 끝 -->
+    {% endif %}
+    {% endfor %}
+    <!-- <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" /> -->
+</div>
 <div id="news-event-section">
     <div style="margin-bottom:24px;font-size:32px;margin-left:360px">
         NEWS & EVENT

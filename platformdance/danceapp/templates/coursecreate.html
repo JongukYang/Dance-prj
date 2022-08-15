@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,10 +10,12 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gothic+A1:wght@900&display=swap');
-        html{
+
+        html {
             background-color: black;
         }
-        body{
+
+        body {
             margin: 0;
             padding: 0;
             background-image: url('../../static/img/background1.png');
@@ -20,53 +23,61 @@
             background-blend-mode: multiply;
             background-size: 100vw;
             background-repeat: no-repeat;
-            background-position:center bottom;
+            background-position: center bottom;
             display: flex;
         }
-        p, div{
+
+        p,
+        div {
             color: white;
             margin: 0;
             font-family: 'Gothic A1', serif;
         }
-        a{
-            text-decoration-line:none;
+
+        a {
+            text-decoration-line: none;
         }
 
-        #secLeft{
+        #secLeft {
             width: 140px;
             height: 100vh;
             display: flex;
             flex-direction: column;
         }
-        #back{
+
+        #back {
             width: 40px;
             height: 40px;
             margin-left: 100px;
             margin-top: 120px;
         }
 
-        #secCenter{
+        #secCenter {
             display: flex;
             flex-grow: 1;
             flex-wrap: nowrap;
             justify-content: center;
         }
-        #divLogo{
+
+        #divLogo {
             width: 100%;
             height: 96px;
             margin-top: 89px;
             margin-bottom: 67px;
             text-align: center;
         }
-        #logo{
+
+        #logo {
             color: white;
             font-family: 'DM Serif Display', serif;
             font-size: 70px;
         }
-        .uploadInfo{
+
+        .uploadInfo {
             font-size: 22px;
         }
-        .uploadInfo .form-control{
+
+        .uploadInfo .form-control {
             width: 511px;
             height: 70px;
             background-color: rgba(255, 255, 255, 0.6);
@@ -79,55 +90,67 @@
             padding-left: 34px;
             padding-right: 34px;
         }
-        .uploadInfo .form-control::placeholder{
+
+        .uploadInfo .form-control::placeholder {
             color: black;
         }
-        #content{
-            height: 210px; 
-            padding-top: 20px; 
+
+        #content {
+            height: 210px;
+            padding-top: 20px;
             padding-bottom: 20px;
         }
-        select::-ms-expand { 
+
+        select::-ms-expand {
             display: none;
         }
-        #id_genreName{
+
+        #id_genreName {
             width: 579px;
             height: 70px;
         }
+
         .uploadInfo select {
             background: url("../../static/img/black_arrow_down.png") no-repeat 95% 50%;
             background-size: 35px;
             text-align: center;
             -webkit-appearance: none;
             -moz-appearance: none;
-            appearance : none;
+            appearance: none;
         }
-        .uploadInfo select option{
+
+        .uploadInfo select option {
             background: rgba(0, 0, 0);
             color: #ffffff;
         }
-        #id_photo{
+
+        #id_photo {
             width: 0px;
             height: 0px;
             visibility: visible;
         }
-        .uploadInfo label{
+
+        .uploadInfo label {
             display: inline-flex;
             flex-direction: column;
             text-align: center;
             justify-content: center;
         }
-        .uploadInfo button{
+
+        .uploadInfo button {
             width: 580px;
         }
-        #fileSelected{
+
+        #fileSelected {
             margin-top: 10px;
         }
-        #fileName{
+
+        #fileName {
             font-size: 16px;
             font-family: 'Gothic A1', sans-serif;
         }
-        #upload{
+
+        #upload {
             width: 579px;
             height: 87px;
             background-color: #FF5656;
@@ -140,6 +163,7 @@
         }
     </style>
 </head>
+
 <body>
     <section id="secLeft">
         <a href="javascript:window.history.back();"><img id="back" src="{% static 'img/white_back.png' %}" alt="뒤로"></a>
@@ -148,10 +172,12 @@
     <section id="secCenter">
         <div id="wrapper">
             <div id="divLogo">
-                <a href="{% url 'index' %}"><p id="logo">CHOO:OOM</p></a>
+                <a href="{% url 'index' %}">
+                    <p id="logo">CHOO:OOM</p>
+                </a>
             </div>
             <!--클래스 업로드 폼-->
-            <form action="{% url 'coursecreate' %}" method="POST" m>
+            <form action="{% url 'coursecreate' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <!--제목-->
                 <div class="uploadInfo" style="margin-bottom:58px;">
@@ -203,7 +229,7 @@
         var file = input.files[0];
 
         var newImage = document.getElementById("fileImage");
-        newImage.src = URL.createObjectURL(file);   
+        newImage.src = URL.createObjectURL(file);
         newImage.style.maxWidth = "100px";
         newImage.style.maxHeight = "100px";
         newImage.style.visibility = "visible";
@@ -212,4 +238,5 @@
         name.textContent = file.name;
     }
 </script>
+
 </html>
