@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gothic+A1&display=swap');
+body{
+    background-image: url('../img/background1.png');
+    background-size: cover;
+}
+.logo{
+    position: absolute;
+    width: 355px;
+    height: 96px;
+    left: 879px;
+    top: 73px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 96px;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'DM Serif Display';
+
+}
+.title{
+    position: absolute;
+    width: 126px;
+    height: 28px;
+    left: 771px;
+    top: 237px;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 28px;
+    font-family: 'Gothic A1';
+    color: #FFFFFF;
+}
+.input1{
+    position: absolute;
+    width: 579px;
+    height: 70px;
+    left: 771px;
+    top: 284px;
+    
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    font-family: 'Gothic A1';
+    /* color: #FFFFFF; */
+    color: #333333;
+}
+.intro{
+    position: absolute;
+    width: 134px;
+    height: 28px;
+    left: 770px;
+    top: 412px;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 28px;
+    font-family: 'Gothic A1';
+    color: #FFFFFF;
+}
+.input2{
+    position: absolute;
+    width: 579px;
+    height: 250px;
+    left: 770px;
+    top: 459px;
+    
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    font-family: 'Gothic A1';
+    /* color: #FFFFFF; */
+    color: #333333;
+}
+.image{
+    position: absolute;
+    width: 126px;
+    height: 28px;
+    left: 771px;
+    top: 767px;
+
+    font-style: normal;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 28px;
+    font-family: 'Gothic A1';
+    color: #FFFFFF;
+}
+.video{
+    position: absolute;
+    width: 63px;
+    height: 28px;
+    left: 770px;
+    top: 942px;
+
+    font-style: normal;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 28px;
+    font-family: 'Gothic A1';
+    color: #FFFFFF;
+
+}
+
+input[type=file]{
+    display: none
+}
+.upload1,.upload2{
+    width: 579px;
+    height: 70px; /*버튼 크기 정하기*/
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 25px;
+}
+#imagefile{
+    left: 680px;
+    top: 814px;
+}
+label .upload2{
+    left: 687px;
+    top:  996px;
+}
+
+.genre {
+    position: absolute;
+    width: 63px;
+    height: 28px;
+    left: 770px;
+    top: 1092px;
+
+    font-style: normal;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 28px;
+    font-family: 'Gothic A1';
+    color: #FFFFFF;
+
+}
+
+.button{
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    padding-left: 34px;
+    padding-right: 34px;
+    margin-top: 17px;
+    
+    position: absolute;
+    width: 579px;
+    height: 87px;
+    left: 770px;
+    top: 1254px;
+    
+    background: #FF5656;
+    border-color: #FF5656;
+    border-radius: 30px;
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 38px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-family: 'Gothic A1';
+
+}

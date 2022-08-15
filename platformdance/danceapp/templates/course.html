@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHOO:OOM</title>
-    <!-- <link rel="stylesheet" href="classdetail.css"> -->
-    <link rel="stylesheet" href="{% static 'css/classdetail.css' %}">
+    <!-- <link rel="stylesheet" href="class.css"> -->
+    <link rel="stylesheet" href="{% static 'css/class.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
@@ -137,35 +137,24 @@
         We live discover
     </p>-->
     <br><br><br>
-    <!-- 여기부터 클래스 디테일 -->
     <p style="margin-left:360px;font-size:40px; color:white;font-weight: 600;margin-bottom: 60px;">
-        클래스 제목
+        Hip-hop
     </p>
-
     <div id="banner-section">
-        <img src="image/video/1.jpg" >
+        <img src="image/video/8.jpg" >
+    </div>
+    <div style="display:flex; align-items: cneter;">
+        <span style="font-size:30px;font-weight:500;color:white;margin-left:360px;">Definition</span>
+        <pre style="font-size:20px;display:inline-block;margin-left:209px; color:white;">
+            1970년대 후반 뉴욕 브롱스 남쪽 빈민가에 거주하는 미국 흑인과 남미 히스패닉계 청소년들에 의해 형성된 새로운 문화운동 전반을 가르키는 말이다. 
+            이에 힙합을 '미국에서 독자적으로 만들어진 유일한 문화'라고 말하기도 한다.
+        </pre>
     </div>
 
-    <div id="table">
-        <table border="1">
-            <th>Date/Time</th>
-            <tr><td>날짜</td></tr>
-            <tr><td>2022.11.07</td></tr>
-            <tr><td>시간</td></tr>
-            <tr><td>오후 5시~오후 10시</td></tr>
-        </table>
-    </div>
-    
-
-
-
-    <div id="detail-section">
-        <br><br><br><br>
-        The Dancer
-        
+    <div id="detail-section" style="margin-bottom:24px; font-size:32px; margin-left: 350px;">
+        Best 10 class
         &nbsp;&nbsp;
         <img src="{% static 'img/orange_arrow.png' %}" />
-        <br><br>
     </div>
 
     <div id="slider-section">
@@ -174,50 +163,79 @@
         <img src="{% static 'img/white_arrow_right.png' %}" />
     </div>
 
-    <div id="dancer-section">
-        <img src="image/clASS/효진초이(원트).jpeg" >
+    <div id="detail-class-section">
+        <img src="image/class/가비.jpeg">
+        <img src="image/class/우영.jpeg">
+        <img src="image/class/리정.jpg">
+        <img src="image/class/박진영.jpeg">
+        <img src="image/class/제니.jpeg">
+        <img src="image/class/전효성.jpeg">
     </div>
 
-    <div id="dancer-table">
-        <table border="1">
-            <th>Yujin Choi</th>
-            <tr><td>댄서의 경력</td></tr>
-            <tr><td>등등</td></tr>
-            <tr><td>등등</td></tr>
-            <tr><td>등등</td></tr>
+<div id="news-event-section">
+
+    <div style="margin-bottom:24px; font-size:32px; margin-left: 350px; ">
+        Class
+        &nbsp;&nbsp;
+        <img src="{% static 'img/orange_arrow.png' %}" />
+    </div>
+
+    <div style="font-size:20px;color:#717171;margin-left:360px">
+        <!--CHOO:OOM의 새로운 소식, 지금 바로 확인해보세요-->
+        <span style="float:right;margin-right:360px;">
+            <img src="{% static 'img/black_arrow_left.png' %}" />
+            <span style="font-size: 20px;">&nbsp; 3 / 6  &nbsp;</span>
+            <img src="{% static 'img/black_arrow_right.png' %}" />
+        </span>
+    </div>
+
+    <div id="detail-class-section">
+        <img src="image/class/백진(비보이).jpeg">
+        <img src="image/class/유준선.jpeg">
+        <img src="image/class/누군가.jpeg">
+        <img src="image/class/오천.png">
+        <img src="image/class/제이블랙.jpeg">
+        <img src="image/class/태연.jpeg">
+    </div>   
+</div>
+        <!--
+            <table>
+            <tbody>
+                <tr>
+                    <td rowspan="4">
+                        <img style="width:784px; height:650px"src="{% static 'img/sample_chungha.png' %}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="{% static 'img/sample_chungha.png' %}" />
+                    </td>
+                    <td>
+                        <img src="{% static 'img/sample_chungha.png' %}" />
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        <img src="{% static 'img/sample_chungha.png' %}" />
+
+                    </td>
+                    <td>
+                        <img src="{% static 'img/sample_chungha.png' %}" /> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <img src="{% static 'img/sample_chungha.png' %}" />
+
+                </td>
+                <td>
+                    <img src="{% static 'img/sample_chungha.png' %}" /> 
+                </td>
+            </tr>
+        </tbody>
         </table>
-    </div>
-
-    <div id="news-event-section">
-        <div style="margin-bottom: 10px; font-size:32px; ">
-            <br><br><br><br><br><br><br><br><br>Place
-            &nbsp;&nbsp;
-            <img src="{% static 'img/orange_arrow.png' %}" />
-        </div>
-
-        <div style="font-size:20px; color:#717171;">
-            <!--CHOO:OOM의 새로운 소식, 지금 바로 확인해보세요-->
-            <span style="float:right; margin-right:360px;">
-                <img src="{% static 'img/black_arrow_left.png' %}" />
-                <span style="font-size: 20px;">&nbsp; 3 / 6  &nbsp;</span>
-                <img src="{% static 'img/black_arrow_right.png' %}" />
-            </span>
-        </div>
-
-        
-    </div>
-    <div id="place-section">
-        <img src="image/clASS/효진초이(원트).jpeg" >
-    </div>
-
-    <div id="place-table">
-        <table border="1">
-            <th></th>
-            <tr><td>장소</td></tr>
-            <tr><td>연습실</td></tr>
-            <tr><td>위치</td></tr>
-            <tr><td>서울 마포구</td></tr>
-        </table>
+        -->
         
     </div>
     <div id="comment-section">
@@ -227,7 +245,7 @@
         <span> and the thrill</span>
         <div> that comes with it. </div>
         </div>-->
-        <br><br><br>
+        
     </div>
 </div>
 </body>
