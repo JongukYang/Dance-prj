@@ -37,7 +37,7 @@ class PostForm(forms.ModelForm):
             # 'style':"color:black;"
         }
         self.fields['genreName'].widget.attrs = {
-            # 'class': 'form-control', 
+            'class': 'form-control', 
             'placeholder': "장르 선택",
             'id': 'id_gerneName',
             'style': 'color:black;' # 알아서 색 맞춰 수정하기

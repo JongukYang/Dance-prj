@@ -9,30 +9,40 @@
             <video src="" controls></video>
             <div class="videoinfo">
                 <div class="info-sy">조회수 17만회 | 좋아요 7만개 | 2022.07.30</div>
-                <button style="background: #4366E3;margin-left: 497px;">좋아요</button>
-                <button style=" background: #FF5656;margin-left: 16px;">싫어요</button>
+                <button id="good">좋아요</button>
+                <button id="hate">싫어요</button>
             </div>
             <!-- 사용자 정보 -->
             <div class="userinfo">
-                계정이름
-                팔로워
-                사진
+                <div class="box-sy">
+                    <img src="" class="userimg-sy">
+                </div>
+                <div id="nf">
+                    <div class="nf-name">계정이름</div>
+                    <div>팔로워 : 1.9만명</div>
+                </div>
             <hr style="border: 1px solid rgba(255, 255, 255, 0.3); 
-                width: 980px;height: 0px; padding-top: 29px;">   
+                width: 980px;height: 0px; margin-bottom: 71px;">   
             </div>      
         </div>
         
     <!-- 댓글기능 -->
         <div class="comment-sy">
-            <table> 
+            <table style="color: #FFFFFF;"> 
                 <tr>
-                    <th><img src=""></th><th>id </th><th>comment </th>
+                    <th><div class="userinfo">
+                            <div class="box-sy">
+                                <img src="" class="userimg-sy">
+                        </div>
+                    </th>
+                    <th>계정이름 </th><th>댓글추가.... </th>
                 </tr>
             </table>
-            <hr style="border: 2px solid rgba(255, 255, 255, 0.3); 
-                width: 980px;height: 0px; padding-top: 10px;">
+            <hr style="border: 2px solid #FFFFFF;
+                width: 980px;height: 0px; margin-top: 10px;">
         </div>
-        <div class="com-sy">댓글 30개</div>
+        <div class="com-count">댓글 30개</div>
+        <div class="com-puls">더 읽기+</div>
     </section>
 </div>
 {% endblock %}

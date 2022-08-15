@@ -325,6 +325,32 @@ video{
     margin-top: 34px;
 }
 
+.box-sy {
+    width: 72px;
+    height: 72px; 
+    border-radius: 70%;
+    overflow: hidden;
+}
+
+#nf{
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+.nf-name{
+    margin-bottom: 16px;
+}
+
+.userimg-sy {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .info-sy{
     display: inline;
     font-family: 'Gothic A1';
@@ -335,7 +361,23 @@ video{
     color: #FFFFFF;
 }
 
-button{
+#good{
+    background: #4366E3;
+    margin-left: 497px;
+    width: 90px;
+    height: 35px;
+    border-radius: 6px;
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+#hate{
+    background: #FF5656;
+    margin-left: 16px;
     width: 90px;
     height: 35px;
     border-radius: 6px;
@@ -353,4 +395,32 @@ button{
 
 .comment-sy{
     margin-top: 80px;
+}
+
+#table-sy{
+    border-spacing: 30px;
+}
+
+.com-count{
+    width: 89px;
+    height: 25px;
+
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 25px;
+    color: #FFFFFF;
+}
+
+.com-puls{
+    width: 64px;
+    height: 20px;
+
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
 }
