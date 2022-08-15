@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gothic+A1&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -5,14 +7,14 @@
 }
 
 body {
-    background-image: url('./images/login_image.jpg');
+    background-image: url('./images/login_image.png');
     background-size: cover;
     background-attachment: fixed;
 }
 
 .container {
     margin: auto;
-    width: 550px;
+    width: 579px;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -22,13 +24,14 @@ body {
 }
 
 header {
+    font-family: 'DM Serif Display', serif;
     font-size: 45px;
-    font-weight: bold;
     color: white;
 }
 
 header a {
     text-decoration: none;
+    color: white;
 }
 
 section {
@@ -47,32 +50,27 @@ section a {
 }
 
 section input[placeholder] {
-    font-size: 20px;
+    background-color: white;
+    font-size: 23px;
     padding-left: 30px;
-    width: 550px;
-    height: 60px;
-    border: .5px solid #ddd;
+    width: 100%;
+    height: 70px;
+    border: .5px solid white;
     outline: none;
     transition: box-shadow.5s;
 }
 
 section input[placeholder]::placeholder {
-    font-size: 20px;
+    font-size: 23px;
 }
 
 section input:nth-of-type(1) {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+    border-radius: 15px;
     margin-bottom: 15px;
 }
 
 section input:nth-of-type(2) {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+    border-radius: 15px;
 }
 
 section input[type="checkbox"] {
@@ -96,13 +94,13 @@ section label[for="rem"] {
 section input[type="submit"] {
     display: block;
     width: 100%;
-    height: 45px;
-    border: 1px solid #FB646B;
+    height: 50px;
+    border: 1px solid #ff5656;
     margin-top: 1rem;
     padding: .3rem;
-    border-radius: 20px;
+    border-radius: 10px;
     font-size: 20px;
-    background-color: #FB646B;
+    background-color: #FF5656;
     color: white;
     outline: none;
     transition: all .5s;
@@ -110,15 +108,15 @@ section input[type="submit"] {
 }
 
 section input[type="submit"]:hover {
-    background-color: pink;
-    border: 1px solid pink;
+    background-color: lightcoral;
+    border: 1px solid lightcoral;
 }
 
 .login_with {
     font-size: 13px;
     color: white;
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 section input:nth-of-type(-n+3):focus {
@@ -127,15 +125,15 @@ section input:nth-of-type(-n+3):focus {
 }
 
 .kakao_icon {
-    padding: 2px;
+    padding: 12px;
 }
 
 .google_icon {
-    padding: 2px;
+    padding: 12px;
 }
 
 .facebook_icon {
-    padding: 2px;
+    padding: 12px;
 }
 
 .forgot_password {
