@@ -1,176 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHOO:OOM</title>
-    <!-- <link rel="stylesheet" href="class.css"> -->
-    <link rel="stylesheet" href="{% static 'css/class.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-        crossorigin="anonymous"></script>
-</head>
-
-<body id="body">
-    <!-- <h1>{{request.user}}</h1>
-    <h1>{{request.user.nickname}}</h1> -->
-    <!-- main -->
-    <div id="header-section">
-        <!--<img class="logo" src="{% static 'img/logo.png' %}" />-->
-        <P>CHOO:OOM</P>
-        <input type="text" id="searchBar" placeholder="Search artist, classes"/>
-        {% if request.user.is_authenticated %}
-        <span>
-            <a id="sign"  href="{% url 'logout' %}">SIGN OUT</a>
-            {% else %}
-            <a id="sign"  href="{% url 'login' %}">SIGN IN</a>
-            {% endif %}
-        </span>
-        {% if request.user.is_authenticated %}
-        <span>
-            <span></span>
-            {%else%}
-            <a style="margin-left:44px;
-            font-size: 19px;
-            font-weight: 600;
-            color:white;
-            text-decoration: none;"
-            href="{% url 'signup' %}">
-            Sign Up
-            </a>
-            {% endif %}
-        </span>
-        <input id="my-page" type="button" value="MY PAGE">
-    </div>
-    <div class="container" id="main-container">
-       
-        <!-- header 네비게이션바 -->
-        <nav class="navbar navbar-expand-lg " id="nav-bar">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="navLink"  aria-current="page" href="{% url 'index' %}">HOME</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="navLink dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown"  aria-expanded="false">
-                                CLASS
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=1">Hip-Hop</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=2">Locking</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=3">Waacking</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=4">B-Boying</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=5">House</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=6">Crump</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=7">Popping</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=8">Choreography</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navLink"  href="#">VIDEO</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navLink" href="#">MENTOR</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navLink" href="#">ABOUT US</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="navLink dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                ETC
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">도움말</a></li>
-                                <li><a class="dropdown-item" href="#">공지사항</a></li>
-                                <li><a class="dropdown-item" href="#">1:1 문의</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-       
-    </div>
-    <div id="class-section">
-        <span style="color:white;font-size:24px;margin-left:360px">Class</span>
-        <ul>
-            <li style="margin-left:250px">
-                <a href="/">Hip Hop</a>
-            </li>
-            <li>
-                <a href="/">Locking</a>
-            </li>
-            <li>
-                <a href="/">House</a>
-            </li>
-            <li>
-                <a href="/">B-Boying</a>
-            </li>
-            <li>
-                <a href="/">Waacking</a>
-            </li>
-            <li>
-                <a href="/">Krump</a>
-            </li>
-            
-            <li>
-                <a href="/">Popping</a>
-            </li>
-            <li>
-                <a href="/">Choreography</a>
-            </li>
-        </ul>
-    </div>
-    <!--<p style="margin-left:360px; font-size: 24px; color:white;margin-top: 40px; margin-bottom:4px;">
-        We live discover
-    </p>-->
-    <br><br><br>
-    <p style="margin-left:360px;font-size:40px; color:white;font-weight: 600;margin-bottom: 60px;">
-        Hip-hop
-    </p>
-    <div id="banner-section">
-        <img src="image/video/8.jpg" >
-    </div>
-    <div style="display:flex; align-items: cneter;">
-        <span style="font-size:30px;font-weight:500;color:white;margin-left:360px;">Definition</span>
-        <pre style="font-size:20px;display:inline-block;margin-left:209px; color:white;">
+<p style="margin-left:360px;font-size:40px; color:white;font-weight: 600;margin-bottom: 60px;">
+    Hip-hop
+</p>
+<div id="banner-section">
+    <img src="image/video/8.jpg">
+</div>
+<div style="display:flex; align-items: cneter;">
+    <span style="font-size:30px;font-weight:500;color:white;margin-left:360px;">Definition</span>
+    <pre style="font-size:20px;display:inline-block;margin-left:209px; color:white;">
             1970년대 후반 뉴욕 브롱스 남쪽 빈민가에 거주하는 미국 흑인과 남미 히스패닉계 청소년들에 의해 형성된 새로운 문화운동 전반을 가르키는 말이다. 
             이에 힙합을 '미국에서 독자적으로 만들어진 유일한 문화'라고 말하기도 한다.
         </pre>
-    </div>
+</div>
 
-    <div id="detail-section" style="margin-bottom:24px; font-size:32px; margin-left: 350px;">
-        Best 10 class
-        &nbsp;&nbsp;
-        <img src="{% static 'img/orange_arrow.png' %}" />
-    </div>
+<div id="detail-section" style="margin-bottom:24px; font-size:32px; margin-left: 350px;">
+    Best 10 class
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+</div>
 
-    <div id="slider-section">
-        <img src="{% static 'img/white_arrow_left.png' %}" />
-        <span style="color:white;font-size: 20px;">&nbsp; 3 / 6  &nbsp;</span>
-        <img src="{% static 'img/white_arrow_right.png' %}" />
-    </div>
+<div id="slider-section">
+    <img src="{% static 'img/white_arrow_left.png' %}" />
+    <span style="color:white;font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
+    <img src="{% static 'img/white_arrow_right.png' %}" />
+</div>
 
-    <div id="detail-class-section">
-        <img src="image/class/가비.jpeg">
-        <img src="image/class/우영.jpeg">
-        <img src="image/class/리정.jpg">
-        <img src="image/class/박진영.jpeg">
-        <img src="image/class/제니.jpeg">
-        <img src="image/class/전효성.jpeg">
-    </div>
+<div id="detail-class-section">
+    <img src="image/class/가비.jpeg">
+    <img src="image/class/우영.jpeg">
+    <img src="image/class/리정.jpg">
+    <img src="image/class/박진영.jpeg">
+    <img src="image/class/제니.jpeg">
+    <img src="image/class/전효성.jpeg">
+</div>
 
 <div id="news-event-section">
 
@@ -184,7 +49,7 @@
         <!--CHOO:OOM의 새로운 소식, 지금 바로 확인해보세요-->
         <span style="float:right;margin-right:360px;">
             <img src="{% static 'img/black_arrow_left.png' %}" />
-            <span style="font-size: 20px;">&nbsp; 3 / 6  &nbsp;</span>
+            <span style="font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
             <img src="{% static 'img/black_arrow_right.png' %}" />
         </span>
     </div>
@@ -196,9 +61,9 @@
         <img src="image/class/오천.png">
         <img src="image/class/제이블랙.jpeg">
         <img src="image/class/태연.jpeg">
-    </div>   
+    </div>
 </div>
-        <!--
+<!--
             <table>
             <tbody>
                 <tr>
@@ -236,17 +101,6 @@
         </tbody>
         </table>
         -->
-        
-    </div>
-    <div id="comment-section">
 
-        <!--<p> We love to find the familiar </p>
-        <p style="display:inline-block">within the unfamiliar</p> 
-        <span> and the thrill</span>
-        <div> that comes with it. </div>
-        </div>-->
-        
-    </div>
 </div>
-</body>
-</html>
+{% endblock %}
