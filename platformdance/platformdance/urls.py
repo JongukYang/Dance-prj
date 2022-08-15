@@ -22,13 +22,12 @@ from django.conf.urls.static import static
 urlpatterns = [
     # 관리자 페이지는 배포시에 삭제
     path('admin/', admin.site.urls),
+    # 계정 관련 url은 accounts/urls.py 에서 처리
+    path('accounts/', include('accounts.urls')),
     # 메인 홈페이지
     path('', views.index, name='index'),
     # about us
     path('aboutus/', views.aboutus, name='aboutus'),
-    
-    # 계정 관련 url은 accounts/urls.py 에서 처리
-    path('accounts/', include('accounts.urls')),
     # 게시글 생성 (영상 업로드)
     path('postcreate/', views.postcreate, name='postcreate'),
     # 게시글 생성 (클래스 업로드)
@@ -50,7 +49,8 @@ urlpatterns = [
     path('course_likes/<int:course_id>', views.course_likes, name='course_likes'), # 클래스
     # 게시글 수정
     path('modify_post/<int:post_id>', views.modify_post, name='modify_post'),
-    # 장르별 포스트 보기
+    
+    # 장르별 영상 포스트 보기
     path('genre', views.genre_post, name='genre_post'),
     # 클래스 전체 보기
     path('course/', views.course, name='course'),

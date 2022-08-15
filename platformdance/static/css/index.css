@@ -160,7 +160,7 @@ li a{
     margin-right:300px;
 }
 
-#detail-class-section > img{
+#detail-class-section-a > img{
     width:320px;
     height:444px;
     margin-right: 20px ;
@@ -168,7 +168,7 @@ li a{
    
 }
 
-#detail-class-section > img:hover{
+#detail-class-section-a > img:hover{
     background-color: black;
     opacity: 30%;
 }
@@ -240,7 +240,7 @@ td:hover >img{
     transform: translate3d(0, 0, 0);
     transition: transform 0.2s;
 }
-.carousel-wrapper > .carousel > img {
+.carousel-wrapper > .carousel > .carousel-a > img {
     width:600px;
     height: 454px;
     border-radius: 20px;

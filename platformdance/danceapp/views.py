@@ -10,18 +10,28 @@ from django.core.paginator import Paginator
 # from django.core.paginator import Paginator
 
 def index(request):
-    posts = Post.objects.filter().order_by('-uploadDate')
+    # 업로드된 영상 게시글
+    posts = Post.objects.all().order_by('-uploadDate')
     paginator = Paginator(posts, 8)
     pagenum = request.GET.get('page') # url 부분 ex) @@@?page=1 -> {page:1}
     posts = paginator.get_page(pagenum)
+    # 업로드된 클래스 게시글
+    courses = Course.objects.all().order_by('-uploadDate')
+    paginator = Paginator(courses, 8)
+    pagenum = request.GET.get('page') # url 부분 ex) @@@?page=1 -> {page:1}
+    courses = paginator.get_page(pagenum)
+
     # likes_ten = Post.objects.all().order_by('-likes_count')[:5] # 모든 포스트 중 택5 -> 쿼리셋
     likes_top_ten = Post.objects.all().order_by('-likes_count') # 모든 포스트 중 택5 -> 딕셔너리 형태
     likes_top_ten_val = Post.objects.all().order_by('-likes_count').values() # 모든 포스트 중 택5 -> 딕셔너리 형태
     likes_top_ten_val = list(likes_top_ten_val)
     # likes_ten = Post.objects.filter(genreName='1').order_by('-likes_count')[:5] # 장르 중 택5
+
     comment_form = CommentForm()
+
     context = {
         'posts':posts,
+        'courses':courses,
         'comment_form':comment_form,
         'likes_top_ten':likes_top_ten,
         'likes_top_ten_val':likes_top_ten_val,
@@ -220,8 +230,8 @@ def genre_post(request):
 def genre_course(request):
     genre_id = request.GET.get('genre_id', None)
     genre = Genre.objects.get(id=int(genre_id))
-    courses = Course.objects.filter().order_by('-updateDate')
-    likes_top_ten = Post.objects.all().order_by('-likes_count') # 모든 포스트 중 택5 -> 딕셔너리 형태
+    courses = Course.objects.filter(genreName=genre).order_by('-uploadDate')
+    likes_top_ten = Course.objects.all().order_by('-likes_count') # 모든 포스트 중 택5 -> 딕셔너리 형태
     comment_form = CommentForm()
     context = {
         'genre':genre,

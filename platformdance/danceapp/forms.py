@@ -94,6 +94,7 @@ class CourseForm(forms.ModelForm):
         self.fields['photo'].widget.attrs = {
             'class': 'form-control', 
             'placeholder': "사진 선택",
+            'id': 'id_photo',
             'onchange' : 'loadFile(this)',
             'style': 'color:white;' # 알아서 색 맞춰 수정하기
         }
