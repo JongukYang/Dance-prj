@@ -10,11 +10,13 @@ from django.core.paginator import Paginator
 # from django.core.paginator import Paginator
 
 def index(request):
+    # paginator는 삭제 예정
     # 업로드된 영상 게시글
     posts = Post.objects.all().order_by('-uploadDate')
     paginator = Paginator(posts, 8)
     pagenum = request.GET.get('page') # url 부분 ex) @@@?page=1 -> {page:1}
     posts = paginator.get_page(pagenum)
+    
     # 업로드된 클래스 게시글
     courses = Course.objects.all().order_by('-uploadDate')
     paginator = Paginator(courses, 8)
@@ -77,8 +79,7 @@ def coursecreate(request):
 
 # 게시글 작성
 def postcreate(request):
-    # request 메소드가 Post 일 경우
-    # 입력값 저장
+    # request 메소드가 Post 일 경우 입력값 저장
     if request.method == 'POST' or request.method == 'FILES':
         form = PostForm(request.POST, request.FILES)
         print(request.POST)
@@ -88,8 +89,7 @@ def postcreate(request):
             unfinished.userId = request.user
             unfinished.save()
             return redirect('index')
-    # request method()가 Get일 경우
-    # form 입력 html 띄우기
+    # request method()가 Get일 경우 form 입력 html 띄우기
     else:
         form = PostForm()
     
@@ -314,10 +314,3 @@ def course(request):
 
 def aboutus(request):
     return render(request, 'about_us.html')
-
-# def classes(request, genre_id):
-#     likes_top_ten = Post.objects.filter(genreName=genre_id).order_by('-likes_count') # 모든 포스트 중 택5 -> 딕셔너리 형태
-#     context = {     
-#         'likes_top_ten':likes_top_ten,
-#     }
-#     return render(request, 'genre_course.html', context)

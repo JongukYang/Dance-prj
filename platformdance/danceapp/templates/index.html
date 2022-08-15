@@ -64,7 +64,8 @@
 <div id="detail-class-section">
     {% for post in posts %}
     {% if post.photo %}
-    <img src="{{ post.photo.url }}" alt="">
+    <a href="{% url 'post_detail' post.id %}" id="detail-class-section-a"><img src="{{ post.photo.url }}"
+        alt=""></a>
     <!-- 장고 주석 처리 -->
     {% comment %}
     {% else %}
@@ -86,7 +87,8 @@
 <div id="detail-class-section">
     {% for course in courses %}
     {% if course.photo %}
-    <img src="{{ course.photo.url }}" alt="">
+    <a href="{% url 'course_detail' course.id %}" id="detail-class-section-a"><img src="{{ course.photo.url }}"
+        alt=""></a>
     <!-- 장고 주석 처리 -->
     {% comment %}
     {% else %}
