@@ -24,6 +24,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # 메인 홈페이지
     path('', views.index, name='index'),
+    # about us
+    path('aboutus/', views.aboutus, name='aboutus'),
+    
     # 계정 관련 url은 accounts/urls.py 에서 처리
     path('accounts/', include('accounts.urls')),
     # 게시글 생성 (영상 업로드)
@@ -49,10 +52,14 @@ urlpatterns = [
     path('modify_post/<int:post_id>', views.modify_post, name='modify_post'),
     # 장르별 포스트 보기
     path('genre', views.genre_post, name='genre_post'),
+    # 클래스 전체 보기
+    path('course/', views.course, name='course'),
     # 장르별 클래스 보기
     path('genre_course', views.genre_course, name='genre_course'),
     # 클래스 세부 페이지
     path('course_detail/<int:course_id>', views.course_detail, name='course_detail'),
+    # #클래스 종류 창
+    # path('classes/<int:genre_id>',views.classes,name='classes'),
     # 클래스 신청
     path('regCourse/<int:course_id>', views.regCourse, name='regCourse'),
     # 마이페이지

@@ -226,9 +226,9 @@ td:hover >img{
     margin-top: 20px;
     margin-bottom: 20px;
 }
-
+/* 이미지 슬라이더 css */
 .carousel-wrapper {
-    width: 700px;
+    width: 600px;
     height: 500px;
     overflow: hidden;
     display:inline-block;
@@ -241,18 +241,52 @@ td:hover >img{
     transition: transform 0.2s;
 }
 .carousel-wrapper > .carousel > img {
-    width: 700px;
-    height: 500px;
+    width:600px;
+    height: 454px;
+    border-radius: 20px;
 }
 
 #image-slider{
-    margin-top:100px;
-    text-align: center;
-    vertical-align: super;
+    margin-top: 100px;
+    display:flex;
+    margin-right: 100px;
+    justify-content: center;
+    align-items: center;
 }
-#slider_arrow{
-    width:35px;
-    height:35px;
+
+.next{
+    width:23px;
+    height:43px;
     cursor:pointer;
-    padding-bottom:200px;
+}
+
+.prev{
+    width:23px;
+    height:43px;
+    cursor: pointer;
+}
+
+#dance-class{
+    background-color: white;
+    font-size: 28px;
+    width:242px;
+    height:76px;
+    display: inline-block;
+    padding-top: 15px;
+    text-align: center;
+    color:black;
+    border-radius: 21px;
+    margin-right: 71px;
+    font-weight: 600;
+    margin-bottom: 57px;
+    cursor: pointer;
+}
+
+#class-name{
+    margin-left:370px;
+    margin-top:272px;
+    font-weight: 500;
+    color:white;
+    font-size: 32px;
+    display:inline-block;
 }

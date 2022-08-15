@@ -47,7 +47,7 @@ def coursecreate(request):
         form = CourseForm(request.POST, request.FILES)
         print("form 가져옴")
         print(request.POST)
-        print(form)
+        # print(form)
         if form.is_valid():
             print("valid 검사 시작")
             unfinished = form.save(commit=False)
@@ -221,11 +221,13 @@ def genre_course(request):
     genre_id = request.GET.get('genre_id', None)
     genre = Genre.objects.get(id=int(genre_id))
     courses = Course.objects.filter().order_by('-updateDate')
+    likes_top_ten = Post.objects.all().order_by('-likes_count') # 모든 포스트 중 택5 -> 딕셔너리 형태
     comment_form = CommentForm()
     context = {
         'genre':genre,
         'courses':courses,
         'comment_form':comment_form,
+        'likes_top_ten':likes_top_ten,
     }
     return render(request, 'genre_course.html', context)
 
@@ -296,3 +298,16 @@ def modifyprofileimg(request, user_id):
         return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
     else:
         return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+def course(request):
+    return render(request, 'course.html')
+
+def aboutus(request):
+    return render(request, 'about_us.html')
+
+# def classes(request, genre_id):
+#     likes_top_ten = Post.objects.filter(genreName=genre_id).order_by('-likes_count') # 모든 포스트 중 택5 -> 딕셔너리 형태
+#     context = {     
+#         'likes_top_ten':likes_top_ten,
+#     }
+#     return render(request, 'genre_course.html', context)
