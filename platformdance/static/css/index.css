@@ -160,6 +160,19 @@ li a{
     margin-right:300px;
 }
 
+#detail-class-section > img{
+    width:320px;
+    height:444px;
+    margin-right: 20px ;
+    margin-bottom: 26px;
+   
+}
+
+#detail-class-section > img:hover{
+    background-color: black;
+    opacity: 30%;
+}
+
 #detail-class-section-a > img{
     width:320px;
     height:444px;
