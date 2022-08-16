@@ -85,10 +85,12 @@
         classNameText.innerText = "Hip-Hop";
         genreClass.style.display = "block"
         document.querySelectorAll('#dance-class').forEach(item => {
+            console.log(item.children[0].style)
             if (item.innerText === "Hip-Hop") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
-                item.style.color = "white";
+                item.children[0].style.color = "white";
+                item.children[0].style.textDecoration = "none";
             }
         })
     } else if (name === "2") {
@@ -98,7 +100,8 @@
             if (item.innerText === "Locking") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
-                item.style.color = "white";
+                item.children[0].style.color = "white";
+                item.children[0].style.textDecoration = "none";
             }
         })
     }
@@ -108,8 +111,8 @@
         document.querySelectorAll('#dance-class').forEach(item => {
             if (item.innerText === "Waacking") {
                 item.style.border = "1px solid white";
-                item.style.backgroundColor = "black";
-                item.style.color = "white";
+                item.children[0].style.color = "white";
+                item.children[0].style.textDecoration = "none";
             }
         })
     }
@@ -117,10 +120,12 @@
         classNameText.innerText = "B-Boyibg";
         genreClass.style.display = "block"
         document.querySelectorAll('#dance-class').forEach(item => {
+            
             if (item.innerText === "B-Boyibg") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
-                item.style.color = "white";
+                item.children[0].style.color = "white";
+                item.children[0].style.textDecoration = "none";
             }
         })
     }
@@ -131,7 +136,8 @@
             if (item.innerText === "House") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
-                item.style.color = "white";
+                item.children[0].style.color = "white";
+                item.children[0].style.textDecoration = "none";
             }
         })
     }
@@ -142,7 +148,8 @@
             if (item.innerText === "Crump") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
-                item.style.color = "white";
+                item.children[0].style.color = "white";
+                item.children[0].style.textDecoration = "none";
             }
         })
     }
@@ -153,7 +160,8 @@
             if (item.innerText === "Popping") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
-                item.style.color = "white";
+                item.children[0].style.color = "white";
+                item.children[0].style.textDecoration = "none";
             }
         })
     }
@@ -164,7 +172,8 @@
             if (item.innerText === "Choreography") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
-                item.style.color = "white";
+                item.children[0].style.color = "white";
+                item.children[0].style.textDecoration = "none";
             }
         })
     }

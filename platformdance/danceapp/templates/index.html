@@ -24,7 +24,6 @@
     Untold Originals
 </p>
 <div id="banner-section">
-    <img src="{% static 'img/image/video/2.jpeg' %}" alt="">
 </div>
 <div style="display:flex; align-items: cneter;">
     <span style="font-size:30px;font-weight:500;color:white;margin-left:360px;">Who we are</span>
@@ -64,8 +63,9 @@
 <div id="detail-class-section">
     {% for post in posts %}
     {% if post.photo %}
-    <a href="{% url 'post_detail' post.id %}" id="detail-class-section-a"><img src="{{ post.photo.url }}"
-        alt=""></a>
+    <a href="{% url 'post_detail' post.id %}" id="detail-class-section-a">
+        <img src="{{ post.photo.url }}"alt="ㅁㄴㅇㅁㄴㅇ">
+    </a>
     <!-- 장고 주석 처리 -->
     {% comment %}
     {% else %}
@@ -84,28 +84,7 @@
     <img src="{% static 'img/sample_jpark.png' %}" /> -->
 </div>
 <hr style="border:3px solid white;">
-<div id="detail-class-section">
-    {% for course in courses %}
-    {% if course.photo %}
-    <a href="{% url 'course_detail' course.id %}" id="detail-class-section-a"><img src="{{ course.photo.url }}"
-        alt=""></a>
-    <!-- 장고 주석 처리 -->
-    {% comment %}
-    {% else %}
-    <img src="#" alt="NO_Img">
-    {% endcomment %}
-    <!-- 장고 주석 처리 끝 -->
-    {% endif %}
-    {% endfor %}
-    <!-- <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" /> -->
-</div>
+
 <div id="news-event-section">
     <div style="margin-bottom:24px;font-size:32px;margin-left:360px">
         NEWS & EVENT
@@ -123,37 +102,56 @@
     <table>
         <tbody>
             <tr>
-                <td rowspan="4" style="width: 784px; height: 650px;">
+                <td rowspan="4" style="width: 600px; height: 650px;">
                     <!-- <img style="width:784px; height:650px" src="{% static 'img/sample_chungha.png' %}" /> -->
-                    <img style="width:fit-content; height: auto; object-fit: contain;"
-                        src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <img src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
                 </td>
                 <td>
-                    <img src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
                 </td>
 
             </tr>
             <tr>
                 <td>
-                    <img src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
 
                 </td>
                 <td>
-                    <img src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <img src="{% static 'img/sample_chungha.png' %}" />
-
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
                 </td>
                 <td>
-                    <img src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
                 </td>
             </tr>
         </tbody>

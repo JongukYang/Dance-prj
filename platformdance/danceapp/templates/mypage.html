@@ -28,7 +28,7 @@
         {% if my.profilephoto %}
         <img src="{{ my.profilephoto.url }}" alt="">
         {% else %}
-        <img src="{% static 'img/default_profile_img.png' %}" alt="">
+        <img src="{% static 'img/default_profile_img.png' %}" alt="dasdsa">
         {% endif %}
         <div id="usernameAndEmail">
             <div id="username">
@@ -67,12 +67,13 @@
         <tr>
             <td style="width:200px"><span>사진</span></td>
             <td style="width:600px">
+                <div>
                 {% if my.profilephoto %}
-                <img src="{{ my.profilephoto.url }}" alt="">
+                <img src="{{ my.profilephoto.url }}" alt="" id="profile-image" style="border-radius:50%;width:200px;height:200px">
                 {% else %}
-                <img src="{% static 'img/default_profile_img.png' %}" alt="">
+                <img src="{% static 'img/default_profile_img.png' %}" id="profile-image" alt="">
                 {% endif %}
-
+                </div>
             </td>
             <td>
                 <!-- <form action="{% url 'modifyprofileimg' request.user.id %}" method="POST" enctype="multipart/form-data">
@@ -189,9 +190,13 @@
 <script>
     const chooseProfilePicture = document.querySelector("#choose-profile-picture")
     const profileSaveBtn = document.querySelector('#profile-save-btn');
+    const profileImage= document.querySelector('#profile-image');
     profileSaveBtn.style.display = "none";
-    chooseProfilePicture.addEventListener('click', () => {
+    console.log(profileImage.src);
+    chooseProfilePicture.addEventListener('change', () => {
         profileSaveBtn.style.display = "block";
+        
+        profileImage.src = `http://localhost:8000/media/tumbnail/${chooseProfilePicture.files[0].name}`
     })
 
     const prevButton = document.querySelector('.prev');

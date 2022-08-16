@@ -129,8 +129,11 @@ li a{
 
 #banner-section{
     height:606px;
-    background-color: #646262;
+    width:100%;
     margin-bottom: 33px;
+    background-image: url("../img/image/video/1.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
 }
 
 #detail-section{
@@ -156,25 +159,21 @@ li a{
 
 #detail-class-section{
     display:inline-block;
-    margin-left:360px;
+    margin-left:300px;
     margin-right:300px;
 }
 
 #detail-class-section > img{
-    width:320px;
+    width:100px;
     height:444px;
     margin-right: 20px ;
     margin-bottom: 26px;
    
 }
 
-#detail-class-section > img:hover{
-    background-color: black;
-    opacity: 30%;
-}
 
 #detail-class-section-a > img{
-    width:320px;
+    width:300px;
     height:444px;
     margin-right: 20px ;
     margin-bottom: 26px;
@@ -201,11 +200,15 @@ table{
 
 table{
     border-collapse: collapse;
-    background-color: black;
 }
 
 td{
+    cursor: pointer;
     margin:0px 10px 20px 10px;
+}
+
+td:hover{
+    opacity: 30%;
 }
 
 td:hover >img{
@@ -287,12 +290,17 @@ td:hover >img{
     display: inline-block;
     padding-top: 15px;
     text-align: center;
-    color:black;
     border-radius: 21px;
     margin-right: 71px;
     font-weight: 600;
     margin-bottom: 57px;
     cursor: pointer;
+    text-decoration: none;
+}
+
+#dance-class > a{
+    color:black;
+    text-decoration: none;
 }
 
 #class-name{
