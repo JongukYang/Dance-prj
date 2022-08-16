@@ -77,7 +77,14 @@
 </div>
 
 <div id="apply">
-    <input type="submit" value="수강신청하기">
+    <form action="{% url 'regCourse' course.id %}" method="POST">
+        {% csrf_token %}
+        {% if request.user in course.register_user.all %}
+        <input type="submit" value="신청취소">
+        {% else %}
+        <input type="submit" value="신청하기">
+        {% endif %}
+    </form>
     <style>
         #apply input[type="submit"] {
             width: 700px;
