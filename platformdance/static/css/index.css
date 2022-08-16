@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gothic+A1&display=swap');
 
-* {
-    font-family : 'Montserrat';
-    /* color: white; */
+*{
+    font-family: 'Gothic A1', sans-serif;
 }
 #body {
      background-color: black; 
@@ -13,6 +12,8 @@
     height:40px;
     display:inline-block;
 }
+
+
 
 #login{
     display:inline-block;
@@ -131,13 +132,7 @@ li a{
     height:606px;
     width:100%;
     margin-bottom: 33px;
-<<<<<<< HEAD
-    background-image: url("../img/image/video/1.jpg");
-    background-repeat: no-repeat;
-    background-size:cover;
-=======
     background-image: url("../img/mainbackground.png");
->>>>>>> b9d60ecb062fa4f41498ca3d3c6dc430f9935917
 }
 
 #detail-section{
@@ -168,10 +163,17 @@ li a{
 }
 
 #detail-class-section > img{
-    width:100px;
+    width:300px;
     height:444px;
     margin-right: 20px ;
     margin-bottom: 26px;
+   
+}
+
+#detail-class-section > img:hover{
+    background-color: black;
+    opacity: 30%;
+    cursor: pointer;
    
 }
 
@@ -435,4 +437,19 @@ video{
     font-size: 16px;
     line-height: 20px;
     color: #FFFFFF;
+}
+
+#course-detail-banner-section{
+    width:978px;
+    height:601px;
+    margin: auto auto;
+    background-image: url("../img/image/video/1.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+
+#table{
+    color:white;
+    cursor:default;
 }

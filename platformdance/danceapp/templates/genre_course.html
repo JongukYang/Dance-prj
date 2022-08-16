@@ -60,7 +60,7 @@
     </div>
     <div id="slider-section">
         <img src="{% static 'img/white_arrow_left.png' %}" />
-        <span style="color:white;font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
+        <span style="color:white;font-size: 20px;">&nbsp; 1 / 6 &nbsp;</span>
         <img src="{% static 'img/white_arrow_right.png' %}" />
     </div>
 
@@ -205,12 +205,6 @@
         carousel.style.transform = `translate3d(-${600 * index}px, 0, 0)`;
     });
 
-    //클래스 선택 스크립트
-    // const className = document.querySelectorAll('#dance-class').forEach((item)=>{
-    //     item.addEventListener('click',()=>{
-    //         document.location.href= `/classes?name=${item.innerText}`
-    //     })
-    // })
 
 </script>
 {% endblock %}

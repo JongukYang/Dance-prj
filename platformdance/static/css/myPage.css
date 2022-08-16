@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gothic+A1&display=swap');
+
+*{
+    font-family: 'Gothic A1', sans-serif;
+}
+
 #show-profile{
     background-color: white;
     width:100%;

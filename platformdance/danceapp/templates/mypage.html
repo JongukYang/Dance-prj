@@ -26,9 +26,11 @@
     <p>MY PAGE</p>
     <div>
         {% if my.profilephoto %}
-        <img src="{{ my.profilephoto.url }}" alt="">
+        <span>{{myprofilephoto.url}}</span>
+        <img src="{{ my.profilephoto.url }}" alt="asdasdadas"  >
         {% else %}
-        <img src="{% static 'img/default_profile_img.png' %}" alt="dasdsa">
+        <span>{{myprofilephoto.url}}</span>
+        <img src="{% static 'img/default_profile_img.png' %}" >
         {% endif %}
         <div id="usernameAndEmail">
             <div id="username">
@@ -48,10 +50,10 @@
         </div>
         <div id="button-group">
             <button id="video-upload-btn">
-                <a href="{% url 'postcreate' %}">영상 업로드</a>
+                <a href="{% url 'postcreate' %}" style="color:white;text-decoration:none">영상 업로드</a>
             </button>
             <button id="enroll-class">
-                <a href="{% url 'coursecreate' %}">클래스 업로드</a>
+                <a href="{% url 'coursecreate' %}" style="color:black;text-decoration:none">클래스 업로드</a>
             </button>
         </div>
     </div>
@@ -71,7 +73,7 @@
                 {% if my.profilephoto %}
                 <img src="{{ my.profilephoto.url }}" alt="" id="profile-image" style="border-radius:50%;width:200px;height:200px">
                 {% else %}
-                <img src="{% static 'img/default_profile_img.png' %}" id="profile-image" alt="">
+                <img src="{% static 'img/default_profile_img.png' %}" id="profile-image" alt="" style="width:200px;height:200px">
                 {% endif %}
                 </div>
             </td>
@@ -194,9 +196,18 @@
     profileSaveBtn.style.display = "none";
     console.log(profileImage.src);
     chooseProfilePicture.addEventListener('change', () => {
-        profileSaveBtn.style.display = "block";
-        
-        profileImage.src = `http://localhost:8000/media/tumbnail/${chooseProfilePicture.files[0].name}`
+        if(chooseProfilePicture.files && chooseProfilePicture.files[0]){
+            let reader = new FileReader();
+            reader.onload = function(e){
+                profileImage.setAttribute("src",e.target.result);
+                profileImage.style.width="200px";
+                profileImage.style.height="200px";
+                profileImage.style.borderRadius="50%";
+                profileSaveBtn.style.display = "block";
+            }
+            reader.readAsDataURL(event.target.files[0]);
+            
+        }
     })
 
     const prevButton = document.querySelector('.prev');
