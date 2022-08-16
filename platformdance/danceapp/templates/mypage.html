@@ -19,10 +19,6 @@
 </style>
 <!-- <div class="container" id="main-container"> -->
 
-<h1 style="color: white;">{% for my in myprofile %}{{ my.nickname }}{% endfor %} - mypage.html</h1>
-<hr>
-<!-- 유저 모델 기본 프로필 -->
-<h2>유저 모델 기본 프로필</h2>
 
 <!-- 반복 시작 -->
 {% for my in myprofile %}
@@ -125,103 +121,55 @@
         <td><input type="button" value="수정" /></td>
     </tr>
     </form>
-    <div id="class-name-section">
-        <span>Current Class</span>
-        &nbsp;&nbsp;
-        <img src="{% static 'img/orange_arrow.png' %}" />
-    </div>
-    <div id="detail-class-section">
-        <img src="{% static 'img/sample_jpark.png' %}" />
-        <img src="{% static 'img/sample_jpark.png' %}" />
-        <img src="{% static 'img/sample_jpark.png' %}" />
-        <img src="{% static 'img/sample_jpark.png' %}" />
-    </div>
     <!-- 반복 끝 -->
 </table>
-
 <!-- 현재 수강중인 클래스 -->
-<hr>
-<h2>현재 수강중인 클래스</h2>
+<div id="current-class">
+    <span>Current Class</span>
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+</div>
 <table>
-    {% for regcourse in myregcourse %}
-    <tr>
-        <td>Class Title : {{ regcourse.title }}</td>
-        <td>Class Photo : {{ regcourse.photo }}</td>
-        <td>Class Body : {{ regcourse.body }}</td>
+    <tr id="show-current-classes">
+        {% for regcourse in myregcourse %}
+        <!-- <td>Class Title : {{ regcourse.title }}</td> -->
+        <td><img src="/media/{{regcourse.photo}}" /> </td>
+        {% endfor %}
+        <!-- <td>Class Body : {{ regcourse.body }}</td> -->
     </tr>
-    {% endfor %}
 </table>
-
-<hr>
+<div id="current-class">
+    <span>Liked Video</span>
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+</div>
 <!-- 내가 올린 영상 출력 -->
-<h2>내가 올린 영상</h2>
 
-<table>
-    <!-- 게시글 반복 시작 -->
-    <tr>
-        <th>게시글 제목</th>
-        <th>사진</th>
-        <th>설명</th>
-        <th>좋아요 개수</th>
-        <th>좋아요 누를 사람</th>
-    </tr>
-    {% for post in posts %}
-    <tr>
-        <td><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></td>
-        <td>{{ post.body }}</td>
-        <td>{{ post.photo }}</td>
-        <td>{{ post.likes_count }}</td>
-        <td>
-            {% for i in post.likes_user.all %}
-            {{ i.username }},
-            {% endfor %}
-        </td>
-    </tr>
+
+<div style="margin-left:370px;display:inline-block">
+    {% for post in myposts %}    
+    {% if forloop.counter < 4 %} 
+    <a href="{% url 'post_detail' post.id %}"><img src="{{post.photo.url}}" style="width:300px; height:284px;margin-right: 20px;" /></a>
+    {% endif %}
     {% endfor %}
-    <!-- 게시글 반복 끝 -->
-</table>
-<hr>
+</div>
 
-<!-- 내가 좋아요한 영상 출력 -->
-<h2>내가 좋아요한 영상</h2>
-<table>
-    <!-- 게시글 반복 시작 -->
-    <tr>
-        <th>게시글 제목</th>
-        <th>사진</th>
-        <th>설명</th>
-        <th>좋아요 개수</th>
-        <th>좋아요 누를 사람</th>
-    </tr>
-    {% for likedvideo in mylikedvideo %}
-    <tr>
-        <td><a href="{% url 'post_detail' likedvideo.id %}">{{ likedvideo.title }}</a></td>
-        <td>{{ likedvideo.body }}</td>
-        <td>{{ likedvideo.photo }}</td>
-        <td>{{ likedvideo.likes_count }}</td>
-        <td>
-            <!-- 좋아요 누른 사람 출력 -->
-            {% for i in likedvideo.likes_user.all %}
-            {{ forloop.counter }}-{{ i.username }}
-            <!-- forloop 마지막이 아니라면 , 찍기 -->
-            {% if not forloop.last %},{% endif %}
-            {% endfor %}
-        </td>
-    </tr>
-    {% endfor %}
-    <!-- 게시글 반복 끝 -->
-</table>
 
+
+<div id="current-class">
+    <span>My Class</span>
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+</div>
 <div id="image-slider">
     <img src="{% static 'img/white_arrow_left.png' %}" class="prev" />
     <div class="carousel-wrapper">
         <div class="carousel">
-            <img src="https://images.unsplash.com/photo-1602808180309-2e0c62986635?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                alt="" />
-            <img src="https://images.unsplash.com/photo-1583434987437-1b9dcbe44c9e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                alt="" />
-            <img src="https://images.unsplash.com/photo-1603052227529-e8ed43c7af99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                alt="" />
+            {% for course in mycourses %}
+            {% if forloop.counter < 4 %}
+            a<a class="carousel-a" href="{% url 'course_detail' course.id %}"><img src="{{course.photo.url}}" alt=""></a>
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
     <img src="{% static 'img/white_arrow_right.png' %}" class="next" />
@@ -233,6 +181,30 @@
     chooseProfilePicture.addEventListener('click', () => {
         profileSaveBtn.style.display = "block";
     })
+
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    const carousel = document.querySelector('.carousel');
+    let index = 0;
+
+    prevButton.addEventListener('click', () => {
+        if (index === 0) {
+            index = 2;
+        } else {
+            index -= 1;
+        }
+        carousel.style.transform = `translate3d(-${600 * index}px, 0, 0)`;
+    });
+
+    nextButton.addEventListener('click', () => {
+        if (index === 2) {
+            index = 0;
+        } else {
+            index += 1;
+        }
+        carousel.style.transform = `translate3d(-${600 * index}px, 0, 0)`;
+    });
+
 </script>
 {% endfor %}
 {% endblock %}

@@ -285,14 +285,16 @@ def regCourse(request, course_id):
 def mypage(request, user_id):
     if request.user.is_authenticated:
         myposts = Post.objects.filter(userId=user_id).order_by('-uploadDate')
+        mycourses = Post.objects.filter(userId=user_id).order_by('-uploadDate')
         myprofile = userProfile.objects.filter(id=user_id)
-        mylikedvideo = Post.objects.filter(likes_user=user_id).order_by('-uploadDate')
-        myregcourse = Course.objects.filter(register_user=user_id)
+        mylikedvideos = Post.objects.filter(likes_user=user_id).order_by('-uploadDate')
+        myregcourses = Course.objects.filter(register_user=user_id)
         context = {
             'posts':myposts,
+            'mycourse':mycourses,
             'myprofile':myprofile,
-            'mylikedvideo':mylikedvideo,
-            'myregcourse':myregcourse,
+            'mylikedvideos':mylikedvideos,
+            'myregcourses':myregcourses,
         }
         return render(request, 'mypage.html', context)
 
