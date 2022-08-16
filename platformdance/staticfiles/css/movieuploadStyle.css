@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gothic+A1&display=swap');
+body{
+    background-image: url('../img/background1.png');
+    background-size: cover;
+}
+.logo{
+    margin-left: 692px;
+    margin-top: 89px;
+    
+    width: 355px;
+    height: 96px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 96px;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'DM Serif Display';
+
+}
+section{
+    margin-left: 580px;
+    margin-top: 58px;
+}
+.title{
+    margin-bottom: 14px;
+
+    width: 126px;
+    height: 28px;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 28px;
+    font-family: 'Gothic A1';
+    color: #FFFFFF;
+}
+.input-title{
+    margin-bottom: 64px;
+
+    width: 579px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    font-family: 'Gothic A1';
+    color: #333333;
+}
+.intro{
+    margin-bottom: 14px;
+
+    width: 134px;
+    height: 28px;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 28px;
+    font-family: 'Gothic A1';
+    color: #FFFFFF;
+}
+.input-intro{
+    padding-bottom: 64px;
+
+    width: 579px;
+    height: 250px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    font-family: 'Gothic A1';
+    /* color: #FFFFFF; */
+    color: #333333;
+}
+.image{
+    margin-bottom: 64px;
+
+    width: 126px;
+    height: 28px;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 28px;
+    font-family: 'Gothic A1';
+    color: #FFFFFF;
+}
+.video{
+    margin-bottom: 64px;
+
+    width: 63px;
+    height: 28px;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 28px;
+    font-family: 'Gothic A1';
+    color: #FFFFFF;
+
+}
+
+input[type=file]{
+    display: none
+}
+.upload-img,.upload-video{
+    width: 579px;
+    height: 70px; /*버튼 크기 정하기*/
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 25px;
+}
+#imagefile{
+    margin-bottom: 64px;
+}
+#videofile{
+    margin-bottom: 64px;
+}
+
+.genre {
+    padding-bottom: 64px;
+
+    width: 63px;
+    height: 28px;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 28px;
+    font-family: 'Gothic A1';
+    color: #FFFFFF;
+
+}
+
+.form-control{
+    margin-bottom: 64px;
+
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    width: 579px;
+    height: 70px;
+}
+
+.button{
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    padding-left: 34px;
+    padding-right: 34px;
+    margin-top: 17px;
+    
+    width: 579px;
+    height: 87px;
+    
+    background: #FF5656;
+    border-color: #FF5656;
+    border-radius: 30px;
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 38px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-family: 'Gothic A1';
+
+}

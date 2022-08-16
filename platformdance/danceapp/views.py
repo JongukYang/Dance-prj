@@ -300,11 +300,16 @@ def mypage(request, user_id):
 def modifyprofileimg(request, user_id):
     if request.method == 'POST' or request.method == 'FILES':
         user = userProfile.objects.get(id=user_id)
+        print(user)
+        print(request.POST)
+        print(request.FILES)
         # 유저 프로필 사진 지우고, 새로운거 저장
         if user.profilephoto:
+            print("if 조건 실행")
             user.profilephoto.delete()
-            user.profilephoto = request.FILES['profileimg']
+        user.profilephoto = request.FILES['profileimg']    
         user.save()
+        print("저장 완료")
         return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
     else:
         return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))

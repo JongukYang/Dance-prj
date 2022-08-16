@@ -173,6 +173,19 @@ li a{
     opacity: 30%;
 }
 
+#detail-class-section-a > img{
+    width:320px;
+    height:444px;
+    margin-right: 20px ;
+    margin-bottom: 26px;
+   
+}
+
+#detail-class-section-a > img:hover{
+    background-color: black;
+    opacity: 30%;
+}
+
 #news-event-section{
     background-color: white;
     padding-top:68px;
@@ -226,9 +239,9 @@ td:hover >img{
     margin-top: 20px;
     margin-bottom: 20px;
 }
-
+/* 이미지 슬라이더 css */
 .carousel-wrapper {
-    width: 700px;
+    width: 600px;
     height: 500px;
     overflow: hidden;
     display:inline-block;
@@ -240,19 +253,174 @@ td:hover >img{
     transform: translate3d(0, 0, 0);
     transition: transform 0.2s;
 }
-.carousel-wrapper > .carousel > img {
-    width: 700px;
-    height: 500px;
+.carousel-wrapper > .carousel > .carousel-a > img {
+    width:600px;
+    height: 454px;
+    border-radius: 20px;
 }
 
 #image-slider{
-    margin-top:100px;
-    text-align: center;
-    vertical-align: super;
+    margin-top: 100px;
+    display:flex;
+    margin-right: 100px;
+    justify-content: center;
+    align-items: center;
 }
-#slider_arrow{
-    width:35px;
-    height:35px;
+
+.next{
+    width:23px;
+    height:43px;
     cursor:pointer;
-    padding-bottom:200px;
+}
+
+.prev{
+    width:23px;
+    height:43px;
+    cursor: pointer;
+}
+
+#dance-class{
+    background-color: white;
+    font-size: 28px;
+    width:242px;
+    height:76px;
+    display: inline-block;
+    padding-top: 15px;
+    text-align: center;
+    color:black;
+    border-radius: 21px;
+    margin-right: 71px;
+    font-weight: 600;
+    margin-bottom: 57px;
+    cursor: pointer;
+}
+
+#class-name{
+    margin-left:370px;
+    margin-top:272px;
+    font-weight: 500;
+    color:white;
+    font-size: 32px;
+    display:inline-block;
+}
+
+/* post_detail css */
+.title-sy{
+    margin-bottom: 75px;
+
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    color: #FFFFFF;
+}
+
+video{
+    width: 980px;
+    height: 572px;
+}
+
+.videoinfo{
+    margin-top: 34px;
+}
+
+.box-sy {
+    width: 72px;
+    height: 72px; 
+    border-radius: 70%;
+    overflow: hidden;
+}
+
+#nf{
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+.nf-name{
+    margin-bottom: 16px;
+}
+
+.userimg-sy {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-sy{
+    display: inline;
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: #FFFFFF;
+}
+
+#good{
+    background: #4366E3;
+    margin-left: 497px;
+    width: 90px;
+    height: 35px;
+    border-radius: 6px;
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+#hate{
+    background: #FF5656;
+    margin-left: 16px;
+    width: 90px;
+    height: 35px;
+    border-radius: 6px;
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+.userinfo{
+    margin-top: 38px;
+}
+
+.comment-sy{
+    margin-top: 80px;
+}
+
+#table-sy{
+    border-spacing: 30px;
+}
+
+.com-count{
+    width: 89px;
+    height: 25px;
+
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 25px;
+    color: #FFFFFF;
+}
+
+.com-puls{
+    width: 64px;
+    height: 20px;
+
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
 }

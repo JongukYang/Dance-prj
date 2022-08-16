@@ -26,48 +26,48 @@
 
 <!-- 반복 시작 -->
 {% for my in myprofile %}
-<form action="{% url 'modifyprofileimg' request.user.id %}" method="POST" enctype="multipart/form-data">
-    <div id="show-profile">
-        <p>MY PAGE</p>
-        <div>
-            {% if my.profilephoto %}
-            <img src="{{ my.profilephoto.url }}" alt="">
-            {% else %}
-            <img src="{% static 'img/default_profile_img.png' %}" alt="">
-            {% endif %}
-            <div id="usernameAndEmail">
-                <div id="username">
-                    {{my.username}}
-                </div>
-                <div id="user-role">
-                    {{my.danceSkill}}
-                </div>
-                <div id="user-email">
-                    {% if my.email %}
-                    {{my.eamil}}
-                    {% else %}
-                    sample@sample.com
-                    {% endif%}
-                </div>
+<div id="show-profile">
+    <p>MY PAGE</p>
+    <div>
+        {% if my.profilephoto %}
+        <img src="{{ my.profilephoto.url }}" alt="">
+        {% else %}
+        <img src="{% static 'img/default_profile_img.png' %}" alt="">
+        {% endif %}
+        <div id="usernameAndEmail">
+            <div id="username">
+                {{my.username}}
+            </div>
+            <div id="user-role">
+                {{my.danceSkill}}
+            </div>
+            <div id="user-email">
+                {% if my.email %}
+                {{my.eamil}}
+                {% else %}
+                sample@sample.com
+                {% endif%}
+            </div>
 
-            </div>
-            <div id="button-group">
-                <button id="video-upload-btn">
-                    비디오 업로드
-                </button>
-                <button id="enroll-class">
-                    클래스 등록
-                </button>
-            </div>
+        </div>
+        <div id="button-group">
+            <button id="video-upload-btn">
+                <a href="{% url 'postcreate' %}">영상 업로드</a>
+            </button>
+            <button id="enroll-class">
+                <a href="{% url 'coursecreate' %}">클래스 업로드</a>
+            </button>
         </div>
     </div>
-    <div id="section-head" style="margin-top:116px;">
-        기본 정보
-    </div>
-    <hr>
-    <table>
+</div>
+<div id="section-head" style="margin-top:116px;">
+    기본 정보
+</div>
+<hr>
+<table>
+    <form action="{% url 'modifyprofileimg' request.user.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
         <tr>
-            {% csrf_token %}
             <td style="width:200px"><span>사진</span></td>
             <td style="width:600px">
                 {% if my.profilephoto %}
@@ -78,7 +78,13 @@
 
             </td>
             <td>
-                <input type="file" value="사진 변경" />
+                <!-- <form action="{% url 'modifyprofileimg' request.user.id %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="profileimg" id="" value="modify">
+                    <input type="submit" name="" id="">
+                </form> -->
+                <input id="choose-profile-picture" style="display:block" type="file" name="profileimg" value="사진 변경" />
+                <input type="submit" id="profile-save-btn" value="저장" stlye="display:none" />
             </td>
             <!-- <td>{{ my.nickname }}</td>
             <td>{{ my.danceSkill }}</td>
@@ -86,21 +92,21 @@
         </tr>
         <tr>
             <td><span>아이디</span></td>
-            <td>{{my.nickname}}</td>
+            <td>{{my.username}}</td>
         </tr>
         <tr>
             <td><span>비밀번호</span></td>
             <td>********</td>
-            <td><input type="button" value="비밀번호 변경" /></td>
+            <td><input type="button" id="change-password" value="비밀번호 변경" /></td>
         </tr>
         <tr>
             <td><span>이름</span></td>
-            <td>{{my.name}}</td>
-            <td><input type="button" value="이름 수정" /></td>
+            <td>{{my.nickname}}</td>
+            <td><input type="button" id="change-name" value="이름 수정" /></td>
         </tr>
-</form>
+    </form>
 
-<!-- 반복 끝 -->
+    <!-- 반복 끝 -->
 </table>
 
 <div id="section-head" style="margin-top:116px">
@@ -111,7 +117,7 @@
     <tr>
         <td style="width:200px"><span>인스타그램</span></td>
         <td style="width:600px"><span>sik29401</span></td>
-        <td><input type="button" value="수정" /></td>
+        <td><input type="button" id="change-instargram" value="수정" /></td>
     </tr>
     <tr>
         <td><span>경력</span></td>
@@ -220,6 +226,13 @@
     </div>
     <img src="{% static 'img/white_arrow_right.png' %}" class="next" />
 </div>
-
+<script>
+    const chooseProfilePicture = document.querySelector("#choose-profile-picture")
+    const profileSaveBtn = document.querySelector('#profile-save-btn');
+    profileSaveBtn.style.display = "none";
+    chooseProfilePicture.addEventListener('click', () => {
+        profileSaveBtn.style.display = "block";
+    })
+</script>
 {% endfor %}
 {% endblock %}
