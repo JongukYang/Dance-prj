@@ -13,9 +13,9 @@ def index(request):
     # paginator는 삭제 예정
     # 업로드된 영상 게시글
     posts = Post.objects.all().order_by('-uploadDate')
-    paginator = Paginator(posts, 8)
-    pagenum = request.GET.get('page') # url 부분 ex) @@@?page=1 -> {page:1}
-    posts = paginator.get_page(pagenum)
+    # paginator = Paginator(posts, 8)
+    # pagenum = request.GET.get('page') # url 부분 ex) @@@?page=1 -> {page:1}
+    # posts = paginator.get_page(pagenum)
     # 업로드된 클래스 게시글
     courses = Course.objects.all().order_by('-uploadDate')
     # 좋아요 많은 순서대로 만들기

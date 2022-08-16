@@ -25,6 +25,7 @@
     <img src="{% static 'img/orange_arrow.png' %}" />
 </div>
 <div id="slider-section">
+    {% comment %} 
     <!-- Pagination -->
     {% if posts.has_previous %}
     <!-- <a href="?page=1">첫 페이지</a> -->
@@ -39,10 +40,12 @@
     <a href="?page={{posts.next_page_number}}"><img src="{% static 'img/white_arrow_right.png' %}" /></a>
     <!-- <a href="?page={{posts.paginator.num_pages}}">마지막 페이지</a> -->
     {% endif %}
-<!-- 
+    {% endcomment %} 
+
+
     <img src="{% static 'img/white_arrow_left.png' %}" />
     <span style="color:white;font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
-    <img src="{% static 'img/white_arrow_right.png' %}" /> -->
+    <img src="{% static 'img/white_arrow_right.png' %}" />
 </div>
 
 <div id="detail-class-section">
@@ -68,7 +71,7 @@
     <img src="{% static 'img/sample_jpark.png' %}" />
     <img src="{% static 'img/sample_jpark.png' %}" /> -->
 </div>
-<hr style="border:3px solid white;">
+
 
 <div id="news-event-section">
     <div style="margin-bottom:24px;font-size:32px;margin-left:360px">
