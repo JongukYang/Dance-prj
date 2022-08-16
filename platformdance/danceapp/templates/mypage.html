@@ -1,21 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+<link rel="stylesheet" href="{% static 'css/myPage.css' %}">
 <!-- main -->
 <style>
-    table {
-        border: 1px solid black;
-    }
-
-    td,
-    th {
-        border: 1px solid white;
-    }
-
-    th {
-        text-align: center;
-    }
-
     .main1 {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -25,52 +13,124 @@
         width: 100%;
     }
 
-    * {
+    /* * {
         color: #ebebeb;
-    }
+    } */
 </style>
 <!-- <div class="container" id="main-container"> -->
 
-<h1>{% for my in myprofile %}{{ my.nickname }}{% endfor %} - mypage.html</h1>
+<h1 style="color: white;">{% for my in myprofile %}{{ my.nickname }}{% endfor %} - mypage.html</h1>
 <hr>
 <!-- 유저 모델 기본 프로필 -->
 <h2>유저 모델 기본 프로필</h2>
-<table>
-    <tr>
-        <th>프사</th>
-        <th>이름</th>
-        <th>춤실력</th>
-        <th>메일주소</th>
-    </tr>
-    <!-- 반복 시작 -->
-    {% for my in myprofile %}
-    <form action="{% url 'modifyprofileimg' request.user.id %}" method="POST" enctype="multipart/form-data">
+
+<!-- 반복 시작 -->
+{% for my in myprofile %}
+<form action="{% url 'modifyprofileimg' request.user.id %}" method="POST" enctype="multipart/form-data">
+    <div id="show-profile">
+        <p>MY PAGE</p>
+        <div>
+            {% if my.profilephoto %}
+            <img src="{{ my.profilephoto.url }}" alt="">
+            {% else %}
+            <img src="{% static 'img/default_profile_img.png' %}" alt="">
+            {% endif %}
+            <div id="usernameAndEmail">
+                <div id="username">
+                    {{my.username}}
+                </div>
+                <div id="user-role">
+                    {{my.danceSkill}}
+                </div>
+                <div id="user-email">
+                    {% if my.email %}
+                    {{my.eamil}}
+                    {% else %}
+                    sample@sample.com
+                    {% endif%}
+                </div>
+
+            </div>
+            <div id="button-group">
+                <button id="video-upload-btn">
+                    비디오 업로드
+                </button>
+                <button id="enroll-class">
+                    클래스 등록
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="section-head" style="margin-top:116px;">
+        기본 정보
+    </div>
+    <hr>
+    <table>
         <tr>
             {% csrf_token %}
-            <td>
+            <td style="width:200px"><span>사진</span></td>
+            <td style="width:600px">
                 {% if my.profilephoto %}
-                <img src="{{ my.profilephoto.url }}" alt="" style="width: 30%;">
+                <img src="{{ my.profilephoto.url }}" alt="">
                 {% else %}
-                <h4>프로필 사진이 없습니다</h4>
+                <img src="{% static 'img/default_profile_img.png' %}" alt="">
                 {% endif %}
-                <input type="file" name="profileimg" id="" value="modify" style="color: black;">
+
             </td>
-            <td>{{ my.nickname }}</td>
+            <td>
+                <input type="file" value="사진 변경" />
+            </td>
+            <!-- <td>{{ my.nickname }}</td>
             <td>{{ my.danceSkill }}</td>
-            <td>{{ my.email }}</td>
+            <td>{{ my.email }}</td> -->
         </tr>
         <tr>
-            <td colspan="4">
-                <input type="submit" name="" id="" value="저장하기" style="color: black;">
-            </td>
+            <td><span>아이디</span></td>
+            <td>{{my.nickname}}</td>
         </tr>
-    </form>
-    {% endfor %}
-    <!-- 반복 끝 -->
+        <tr>
+            <td><span>비밀번호</span></td>
+            <td>********</td>
+            <td><input type="button" value="비밀번호 변경" /></td>
+        </tr>
+        <tr>
+            <td><span>이름</span></td>
+            <td>{{my.name}}</td>
+            <td><input type="button" value="이름 수정" /></td>
+        </tr>
+</form>
+
+<!-- 반복 끝 -->
+</table>
+
+<div id="section-head" style="margin-top:116px">
+    선택 정보
+</div>
+<hr>
+<table>
     <tr>
-        <td colspan="2"><a href="{% url 'postcreate' %}">영상 업로드</a></td>
-        <td colspan="2"><a href="{% url 'coursecreate' %}">클래스 업로드</a></td>
+        <td style="width:200px"><span>인스타그램</span></td>
+        <td style="width:600px"><span>sik29401</span></td>
+        <td><input type="button" value="수정" /></td>
     </tr>
+    <tr>
+        <td><span>경력</span></td>
+        <td><textarea rows="5" cols="40"></textarea> </td>
+        <td><input type="button" value="수정" /></td>
+    </tr>
+    </form>
+    <div id="class-name-section">
+        <span>Current Class</span>
+        &nbsp;&nbsp;
+        <img src="{% static 'img/orange_arrow.png' %}" />
+    </div>
+    <div id="detail-class-section">
+        <img src="{% static 'img/sample_jpark.png' %}" />
+        <img src="{% static 'img/sample_jpark.png' %}" />
+        <img src="{% static 'img/sample_jpark.png' %}" />
+        <img src="{% static 'img/sample_jpark.png' %}" />
+    </div>
+    <!-- 반복 끝 -->
 </table>
 
 <!-- 현재 수강중인 클래스 -->
@@ -89,6 +149,7 @@
 <hr>
 <!-- 내가 올린 영상 출력 -->
 <h2>내가 올린 영상</h2>
+
 <table>
     <!-- 게시글 반복 시작 -->
     <tr>
@@ -145,4 +206,20 @@
     <!-- 게시글 반복 끝 -->
 </table>
 
+<div id="image-slider">
+    <img src="{% static 'img/white_arrow_left.png' %}" class="prev" />
+    <div class="carousel-wrapper">
+        <div class="carousel">
+            <img src="https://images.unsplash.com/photo-1602808180309-2e0c62986635?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                alt="" />
+            <img src="https://images.unsplash.com/photo-1583434987437-1b9dcbe44c9e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                alt="" />
+            <img src="https://images.unsplash.com/photo-1603052227529-e8ed43c7af99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                alt="" />
+        </div>
+    </div>
+    <img src="{% static 'img/white_arrow_right.png' %}" class="next" />
+</div>
+
+{% endfor %}
 {% endblock %}
