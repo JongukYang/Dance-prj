@@ -2,21 +2,6 @@
 {% block content %}
 {% load static %}
 
-<!-- 주석입니다  -->
-{% comment %}
-<h6 style="color: #ebebeb;">{{ likes_top_ten_val }}</h6>
-<hr>
-<h6 style="color: #ebebeb;">
-    {% for l in likes_top_ten_val %}
-    {% if forloop.counter == 8 %}
-    [{{ forloop.counter }}] : {{ l }} <br><br>
-    {% endif %}
-    {% endfor %}
-</h6>
-<hr>
-{% endcomment %}
-
-
 <p style="margin-left:360px; font-size: 24px; color:white;margin-top: 40px; margin-bottom:4px;">
     We live discover
 </p>
@@ -24,6 +9,10 @@
     Untold Originals
 </p>
 <div id="banner-section">
+<<<<<<< HEAD
+=======
+    <!-- <img src="{% static 'img/mainbackground.png' %}" alt=""> -->
+>>>>>>> b9d60ecb062fa4f41498ca3d3c6dc430f9935917
 </div>
 <div style="display:flex; align-items: cneter;">
     <span style="font-size:30px;font-weight:500;color:white;margin-left:360px;">Who we are</span>

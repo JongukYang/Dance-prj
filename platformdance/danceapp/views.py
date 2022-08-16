@@ -16,37 +16,18 @@ def index(request):
     paginator = Paginator(posts, 8)
     pagenum = request.GET.get('page') # url 부분 ex) @@@?page=1 -> {page:1}
     posts = paginator.get_page(pagenum)
-    
     # 업로드된 클래스 게시글
     courses = Course.objects.all().order_by('-uploadDate')
-    paginator = Paginator(courses, 8)
-    pagenum = request.GET.get('page') # url 부분 ex) @@@?page=1 -> {page:1}
-    courses = paginator.get_page(pagenum)
-
+    # 좋아요 많은 순서대로 만들기
     # likes_ten = Post.objects.all().order_by('-likes_count')[:5] # 모든 포스트 중 택5 -> 쿼리셋
     likes_top_ten = Post.objects.all().order_by('-likes_count') # 모든 포스트 중 택5 -> 딕셔너리 형태
-    likes_top_ten_val = Post.objects.all().order_by('-likes_count').values() # 모든 포스트 중 택5 -> 딕셔너리 형태
-    likes_top_ten_val = list(likes_top_ten_val)
-    # likes_ten = Post.objects.filter(genreName='1').order_by('-likes_count')[:5] # 장르 중 택5
-
+    # 댓글 작성 폼
     comment_form = CommentForm()
-
     context = {
         'posts':posts,
         'courses':courses,
         'comment_form':comment_form,
         'likes_top_ten':likes_top_ten,
-        'likes_top_ten_val':likes_top_ten_val,
-        # 'rank1':likes_top_ten[0],
-        # 'rank2':likes_top_ten[1],
-        # 'rank3':likes_top_ten[2],
-        # 'rank4':likes_top_ten[3],
-        # 'rank5':likes_top_ten[4],
-        # 'rank6':likes_top_ten[5],
-        # 'rank7':likes_top_ten[6],
-        # 'rank8':likes_top_ten[7],
-        # 'rank9':likes_top_ten[8],
-        # 'rank10':likes_top_ten[9],
     }
     return render(request, 'index.html', context)
 
@@ -132,11 +113,11 @@ def delete_post(request, post_id):
     del_post = get_object_or_404(Post, pk=post_id)
     del_post.delete()
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
-
+# 유저 인증 포함 삭제 함수
 # def delete_post(request, post_id, user_id):
 #     if request.user.is_authenticated:
 #         del_post = get_object_or_404(Post, pk=post_id)
-#         if request.user == del_post.userId:
+#         if request.user.id == del_post.userId:
 #             del_post.delete()
 #     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
@@ -162,7 +143,6 @@ def delete_comment(request, comment_id):
 def user_post_detail(request, userId_id):
     posts = Post.objects.filter(userId=userId_id).order_by('-uploadDate')
     user = get_object_or_404(userProfile, pk=userId_id)
-    # username = Post.objects.
     comment_form = CommentForm()
     context = {
         'posts':posts,
@@ -174,8 +154,7 @@ def user_post_detail(request, userId_id):
 # 게시글 좋아요
 def likes(request, post_id):
     if request.user.is_authenticated:    
-        post = get_object_or_404(Post, pk=post_id)
-        # check_like_post = 
+        post = get_object_or_404(Post, pk=post_id) 
         if request.user in post.likes_user.all():
         # if post.likes_user.filter(pk=request.user.pk).exists():
             post.likes_user.remove(request.user)
@@ -191,7 +170,7 @@ def likes(request, post_id):
 # 게시글 세부 페이지로 이동
 def post_datail(request, post_id):
     post = Post.objects.get(id = post_id)
-    post.hits += 1
+    post.hits += 1 # 조회수
     post.save()
     comment_form = CommentForm()
     context = {
@@ -204,25 +183,18 @@ def post_datail(request, post_id):
 def genre_post(request):
     genre_id = request.GET.get('genre_id', None)
     genre = Genre.objects.get(id=int(genre_id))
-    posts = Post.objects.filter().order_by('-uploadDate')
+    # posts = Post.objects.filter().order_by('-uploadDate')
+    posts = Post.objects.filter(genreName=int(genre_id)).order_by('-likes_count')
     likes_top = Post.objects.filter(genreName=int(genre_id)).order_by('-likes_count')
+    # likes_ten = Post.objects.filter(genreName='1').order_by('-likes_count')[:5] # 장르 중 택5
+    hits_toplists = Post.objects.all().order_by('-hits')
     comment_form = CommentForm()
     context = {
         'genre':genre,
         'posts':posts,
         'comment_form':comment_form,
         'likes_top':likes_top,
-        # 장르별 게시글이 10개가 안 넘어서 오류 뜸
-        # 'rank1':likes_top[0],
-        # 'rank2':likes_top[1],
-        # 'rank3':likes_top[2],
-        # 'rank4':likes_top[3],
-        # 'rank5':likes_top[4],
-        # 'rank6':likes_top[5],
-        # 'rank7':likes_top[6],
-        # 'rank8':likes_top[7],
-        # 'rank9':likes_top[8],
-        # 'rank10':likes_top[9],
+        'hits_toplists':hits_toplists,
     }
     return render(request, 'genre_post.html', context)
 
@@ -232,12 +204,14 @@ def genre_course(request):
     genre = Genre.objects.get(id=int(genre_id))
     courses = Course.objects.filter(genreName=genre).order_by('-uploadDate')
     likes_top_ten = Course.objects.all().order_by('-likes_count') # 모든 포스트 중 택5 -> 딕셔너리 형태
+    hits_toplists = Course.objects.all().order_by('-hits')
     comment_form = CommentForm()
     context = {
         'genre':genre,
         'courses':courses,
         'comment_form':comment_form,
         'likes_top_ten':likes_top_ten,
+        'hits_toplists':hits_toplists,
     }
     return render(request, 'genre_course.html', context)
 
@@ -260,6 +234,7 @@ def course_likes(request, course_id):
 # 클래스 상세보기
 def course_detail(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
+    course.hits += 1 # 조회수
     context = {
         'course': course,
     }

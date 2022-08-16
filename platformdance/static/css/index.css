@@ -131,9 +131,13 @@ li a{
     height:606px;
     width:100%;
     margin-bottom: 33px;
+<<<<<<< HEAD
     background-image: url("../img/image/video/1.jpg");
     background-repeat: no-repeat;
     background-size:cover;
+=======
+    background-image: url("../img/mainbackground.png");
+>>>>>>> b9d60ecb062fa4f41498ca3d3c6dc430f9935917
 }
 
 #detail-section{
