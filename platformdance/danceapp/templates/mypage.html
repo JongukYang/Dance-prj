@@ -56,6 +56,7 @@
         </div>
     </div>
 </div>
+
 <div id="section-head" style="margin-top:116px;">
     기본 정보
 </div>
@@ -131,9 +132,11 @@
 </div>
 <table>
     <tr id="show-current-classes">
-        {% for regcourse in myregcourse %}
-        <!-- <td>Class Title : {{ regcourse.title }}</td> -->
-        <td><img src="/media/{{regcourse.photo}}" /> </td>
+        {% for regcourse in myregcourses %}
+        <td>Class Title : {{ regcourse.title }}</td>
+        {% if regcourse.photo %}
+        <td><img src="{{regcourse.photo.url}}" /></td>
+        {% endif %}
         {% endfor %}
         <!-- <td>Class Body : {{ regcourse.body }}</td> -->
     </tr>
@@ -144,12 +147,12 @@
     <img src="{% static 'img/orange_arrow.png' %}" />
 </div>
 <!-- 내가 올린 영상 출력 -->
-
-
 <div style="margin-left:370px;display:inline-block">
     {% for post in myposts %}    
+    {% if post.photo %}
     {% if forloop.counter < 4 %} 
     <a href="{% url 'post_detail' post.id %}"><img src="{{post.photo.url}}" style="width:300px; height:284px;margin-right: 20px;" /></a>
+    {% endif %}
     {% endif %}
     {% endfor %}
 </div>
@@ -167,13 +170,20 @@
         <div class="carousel">
             {% for course in mycourses %}
             {% if forloop.counter < 4 %}
-            a<a class="carousel-a" href="{% url 'course_detail' course.id %}"><img src="{{course.photo.url}}" alt=""></a>
+            <a class="carousel-a" href="{% url 'course_detail' course.id %}">
+                {% if course.photo %}
+                <img src="{{course.photo.url}}" alt="">
+                {% else %}
+                <img src="{% static 'img/default_profile_img.png' %}" alt="">
+                {% endif %}
+            </a>
             {% endif %}
             {% endfor %}
         </div>
     </div>
     <img src="{% static 'img/white_arrow_right.png' %}" class="next" />
 </div>
+
 <script>
     const chooseProfilePicture = document.querySelector("#choose-profile-picture")
     const profileSaveBtn = document.querySelector('#profile-save-btn');

@@ -127,12 +127,6 @@
                     {% endif %}
 
                     {% for comment in post.comment_set.all %}
-                    <table style="border : 1px solid black;">
-                        <tr>
-                            <td>유저아이디</td>
-                            <td>뎃굴이 표시될거빈다</td>
-                        </tr>
-                    </table>
                     {{ comment.userId }} - {{ comment }}
                     {% if request.user == comment.userId %}
                     <form action="{% url 'delete_comment' comment.id %}" method="POST">

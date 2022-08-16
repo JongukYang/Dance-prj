@@ -290,8 +290,8 @@ def mypage(request, user_id):
         mylikedvideos = Post.objects.filter(likes_user=user_id).order_by('-uploadDate')
         myregcourses = Course.objects.filter(register_user=user_id)
         context = {
-            'posts':myposts,
-            'mycourse':mycourses,
+            'myposts':myposts,
+            'mycourses':mycourses,
             'myprofile':myprofile,
             'mylikedvideos':mylikedvideos,
             'myregcourses':myregcourses,
