@@ -4,11 +4,11 @@ body{
     background-size: cover;
 }
 .logo{
-    position: absolute;
+    margin-left: 692px;
+    margin-top: 89px;
+    
     width: 355px;
     height: 96px;
-    left: 879px;
-    top: 73px;
     font-style: normal;
     font-weight: 400;
     font-size: 70px;
@@ -18,12 +18,15 @@ body{
     font-family: 'DM Serif Display';
 
 }
+section{
+    margin-left: 580px;
+    margin-top: 58px;
+}
 .title{
-    position: absolute;
+    margin-bottom: 14px;
+
     width: 126px;
     height: 28px;
-    left: 771px;
-    top: 237px;
     font-style: normal;
     font-weight: 900;
     font-size: 22px;
@@ -31,25 +34,21 @@ body{
     font-family: 'Gothic A1';
     color: #FFFFFF;
 }
-.input1{
-    position: absolute;
+.input-title{
+    margin-bottom: 64px;
+
     width: 579px;
     height: 70px;
-    left: 771px;
-    top: 284px;
-    
     background: rgba(255, 255, 255, 0.6);
     border-radius: 15px;
     font-family: 'Gothic A1';
-    /* color: #FFFFFF; */
     color: #333333;
 }
 .intro{
-    position: absolute;
+    margin-bottom: 14px;
+
     width: 134px;
     height: 28px;
-    left: 770px;
-    top: 412px;
     font-style: normal;
     font-weight: 900;
     font-size: 22px;
@@ -57,13 +56,11 @@ body{
     font-family: 'Gothic A1';
     color: #FFFFFF;
 }
-.input2{
-    position: absolute;
+.input-intro{
+    padding-bottom: 64px;
+
     width: 579px;
     height: 250px;
-    left: 770px;
-    top: 459px;
-    
     background: rgba(255, 255, 255, 0.6);
     border-radius: 15px;
     font-family: 'Gothic A1';
@@ -71,12 +68,10 @@ body{
     color: #333333;
 }
 .image{
-    position: absolute;
+    margin-bottom: 64px;
+
     width: 126px;
     height: 28px;
-    left: 771px;
-    top: 767px;
-
     font-style: normal;
     font-weight: 900;
     font-size: 22px;
@@ -85,12 +80,10 @@ body{
     color: #FFFFFF;
 }
 .video{
-    position: absolute;
+    margin-bottom: 64px;
+
     width: 63px;
     height: 28px;
-    left: 770px;
-    top: 942px;
-
     font-style: normal;
     font-weight: 900;
     font-size: 22px;
@@ -103,7 +96,7 @@ body{
 input[type=file]{
     display: none
 }
-.upload1,.upload2{
+.upload-img,.upload-video{
     width: 579px;
     height: 70px; /*버튼 크기 정하기*/
     background: rgba(255, 255, 255, 0.6);
@@ -120,21 +113,17 @@ input[type=file]{
     line-height: 25px;
 }
 #imagefile{
-    left: 680px;
-    top: 814px;
+    margin-bottom: 64px;
 }
-label .upload2{
-    left: 687px;
-    top:  996px;
+#videofile{
+    margin-bottom: 64px;
 }
 
 .genre {
-    position: absolute;
+    padding-bottom: 64px;
+
     width: 63px;
     height: 28px;
-    left: 770px;
-    top: 1092px;
-
     font-style: normal;
     font-weight: 900;
     font-size: 22px;
@@ -142,6 +131,20 @@ label .upload2{
     font-family: 'Gothic A1';
     color: #FFFFFF;
 
+}
+
+.form-control{
+    margin-bottom: 64px;
+
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    width: 579px;
+    height: 70px;
 }
 
 .button{
@@ -152,11 +155,8 @@ label .upload2{
     padding-right: 34px;
     margin-top: 17px;
     
-    position: absolute;
     width: 579px;
     height: 87px;
-    left: 770px;
-    top: 1254px;
     
     background: #FF5656;
     border-color: #FF5656;

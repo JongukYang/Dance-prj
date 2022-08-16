@@ -3,18 +3,46 @@
 {% load static %}
 
 <div id="detail-section">
-
-    <div class="title-sy">영상제목</div>
-    <video src="" controls></video>
-    <div class="info">조회수 17만회 | 좋아요 7만개 | 2022.07.30</div>
-    <button style="background: #4366E3;margin-left: 1254px; margin-top: 1117px;">좋아요</button>
-    <button style=" background: #FF5656;margin-left: 1360px; margin-top: 1117px;">싫어요</button>
-    <hr style="border: 1px solid rgba(255, 255, 255, 0.3); 
-                width: 980px;height: 0px; padding-left: 478px; margin-top: 1293px;">
-    <hr style="border: 2px solid rgba(255, 255, 255, 0.3); 
-    width: 980px;height: 0px; padding-left: 470px; margin-top: 1413px;">
-    <div class="comment">댓글 30개</div>
-
-
+    <section>
+        <div>
+            <div class="title-sy">영상제목</div>
+            <video src="" controls></video>
+            <div class="videoinfo">
+                <div class="info-sy">조회수 17만회 | 좋아요 7만개 | 2022.07.30</div>
+                <button id="good">좋아요</button>
+                <button id="hate">싫어요</button>
+            </div>
+            <!-- 사용자 정보 -->
+            <div class="userinfo">
+                <div class="box-sy">
+                    <img src="" class="userimg-sy">
+                </div>
+                <div id="nf">
+                    <div class="nf-name">계정이름</div>
+                    <div>팔로워 : 1.9만명</div>
+                </div>
+            <hr style="border: 1px solid rgba(255, 255, 255, 0.3); 
+                width: 980px;height: 0px; margin-bottom: 71px;">   
+            </div>      
+        </div>
+        
+    <!-- 댓글기능 -->
+        <div class="comment-sy">
+            <table style="color: #FFFFFF;"> 
+                <tr>
+                    <th><div class="userinfo">
+                            <div class="box-sy">
+                                <img src="" class="userimg-sy">
+                        </div>
+                    </th>
+                    <th>계정이름 </th><th>댓글추가.... </th>
+                </tr>
+            </table>
+            <hr style="border: 2px solid #FFFFFF;
+                width: 980px;height: 0px; margin-top: 10px;">
+        </div>
+        <div class="com-count">댓글 30개</div>
+        <div class="com-puls">더 읽기+</div>
+    </section>
 </div>
 {% endblock %}

@@ -13,12 +13,12 @@ class PostForm(forms.ModelForm):
         super(PostForm, self).__init__(*args, **kwargs)
 
         self.fields['title'].widget.attrs = {
-            'class': 'input1', 
+            'class': 'input-title', 
             'placeholder': "제목 입력(4-100)",
             # 'id':'title',
         }
         self.fields['body'].widget.attrs = {
-            'class': 'input2', 
+            'class': 'input-intro', 
             'placeholder': "내용 작성",
             # 'id': 'content',
             'rows':5,
@@ -37,7 +37,7 @@ class PostForm(forms.ModelForm):
             # 'style':"color:black;"
         }
         self.fields['genreName'].widget.attrs = {
-            # 'class': 'form-control', 
+            'class': 'form-control', 
             'placeholder': "장르 선택",
             'id': 'id_gerneName',
             'style': 'color:black;' # 알아서 색 맞춰 수정하기
