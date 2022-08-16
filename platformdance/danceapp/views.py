@@ -187,12 +187,14 @@ def genre_post(request):
     posts = Post.objects.filter(genreName=int(genre_id)).order_by('-likes_count')
     likes_top = Post.objects.filter(genreName=int(genre_id)).order_by('-likes_count')
     # likes_ten = Post.objects.filter(genreName='1').order_by('-likes_count')[:5] # 장르 중 택5
+    hits_toplists = Post.objects.all().order_by('-hits')
     comment_form = CommentForm()
     context = {
         'genre':genre,
         'posts':posts,
         'comment_form':comment_form,
         'likes_top':likes_top,
+        'hits_toplists':hits_toplists,
     }
     return render(request, 'genre_post.html', context)
 
@@ -202,12 +204,14 @@ def genre_course(request):
     genre = Genre.objects.get(id=int(genre_id))
     courses = Course.objects.filter(genreName=genre).order_by('-uploadDate')
     likes_top_ten = Course.objects.all().order_by('-likes_count') # 모든 포스트 중 택5 -> 딕셔너리 형태
+    hits_toplists = Course.objects.all().order_by('-hits')
     comment_form = CommentForm()
     context = {
         'genre':genre,
         'courses':courses,
         'comment_form':comment_form,
         'likes_top_ten':likes_top_ten,
+        'hits_toplists':hits_toplists,
     }
     return render(request, 'genre_course.html', context)
 

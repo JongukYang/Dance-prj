@@ -29,6 +29,26 @@
 </table>
 
 <hr>
+<table style="border: 1px solid white;">
+    {% for hits_toplist in hits_toplists %}
+    <tr>
+        <td>hits : {{ hits_toplist.hits }}</td>
+        <td>USER : {{ hits_toplist.userId }}<a href="{% url 'post_detail' hits_toplist.id %}"><br>
+            TITLE : {{ hits_toplist.title }}</a></td>
+        <td>BODY : {{ hits_toplist.body }}</td>
+        <td>GENRE : {{ hits_toplist.genreName }}</td>
+        <td>
+            <!-- 썸네일 받아오기 -->
+            {% if hits_toplist.photo %}
+            {{ hits_toplist.photo.url }}
+            <img src="{{ hits_toplist.photo.url }}" alt="" width="30%">
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr>
 
 <!-- 장르 영상 출력 -->
 <h2>전체 {{ genre.name }} 영상</h2>

@@ -11,11 +11,10 @@
 </head>
 
 <body>
-
     <div class="logo">
         CHOO:OOM
     </div>
-
+    
     <form action="{% url 'postcreate' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
     <section>
