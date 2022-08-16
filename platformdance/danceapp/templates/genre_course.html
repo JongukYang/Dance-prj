@@ -2,16 +2,40 @@
 {% block content %}
 {% load static %}
 <!--이미지 슬라이더 -->
+<div></div>
 <div id="image-slider">
     <img src="{% static 'img/white_arrow_left.png' %}" class="prev" />
     <div class="carousel-wrapper">
         <div class="carousel">
-            {% for course in courses %}
+            <a href="course_detail/1" class="carousel-a"><img src="{% static 'img/tumbnail/hiphop.jpeg' %}"
+                alt=""></a>
+            <a href="course_detail/2" class="carousel-a"><img src="{% static 'img/tumbnail/locking.jpeg' %}"
+                alt="">
+            </a>
+            <a href="course_detail/3" class="carousel-a"><img src="{% static 'img/tumbnail/waacking.jpeg' %}"
+                alt="">
+            </a>
+            <a href="course_detail/4" class="carousel-a"><img src="{% static 'img/tumbnail/Bboying.jpg' %}"
+                alt="">
+            </a>
+            <a href="course_detail/5" class="carousel-a"><img src="{% static 'img/tumbnail/house.png' %}"
+                alt="">
+            </a>
+            <a href="course_detail/6" class="carousel-a"><img src="{% static 'img/tumbnail/crump.jpeg' %}"
+                alt="">
+            </a>
+            <a href="course_detail/7" class="carousel-a"><img src="{% static 'img/tumbnail/poping.jpeg' %}"
+                alt="">
+            </a>
+            <a href="course_detail/8" class="carousel-a"><img src="{% static 'img/tumbnail/choregraphy.jpeg' %}"
+                alt="">
+            </a>
+            <!-- {% for course in courses %}
             {% if course.photo %}
             <a href="{% url 'course_detail' course.id %}" class="carousel-a"><img src="{{ course.photo.url }}"
                     alt=""></a>
             {% endif %}
-            {% endfor %}
+            {% endfor %} -->
         </div>
     </div>
     <img src="{% static 'img/white_arrow_right.png' %}" class="next" />
@@ -156,7 +180,7 @@
 
     prevButton.addEventListener('click', () => {
         if (index === 0) {
-            index = 2;
+            index = 7;
         } else {
             index -= 1;
         }
@@ -164,7 +188,7 @@
     });
 
     nextButton.addEventListener('click', () => {
-        if (index === 2) {
+        if (index === 7) {
             index = 0;
         } else {
             index += 1;
