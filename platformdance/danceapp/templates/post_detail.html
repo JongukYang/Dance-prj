@@ -5,43 +5,90 @@
 <div id="detail-section">
     <section>
         <div>
-            <div class="title-sy">영상제목</div>
-            <video src="" controls></video>
+            <div class="title-sy">{{ post.title }}</div>
+
+            <!-- <video src="" controls></video> -->
+            {% if post.video %}
+            <video src="{{ post.video.url }}" controls></video>
+            {% else %}
+            <h3>영상이 없습니다</h3>
+            {% endif %}
+
             <div class="videoinfo">
-                <div class="info-sy">조회수 17만회 | 좋아요 7만개 | 2022.07.30</div>
-                <button id="good">좋아요</button>
-                <button id="hate">싫어요</button>
+                <div class="info-sy">조회수 {{ post.hits }} | 좋아요 {{ post.likes_count }} | {{ post.uploadDate }}</div>
+                <!-- <button id="good">좋아요</button> -->
+                <!-- <button id="hate">싫어요</button> -->
+                {% if request.user.is_authenticated %}
+                <form action="{% url 'likes' post.id %}" method="">
+                    {% csrf_token %}
+                    {% if request.user in post.likes_user.all %}
+                    <button type="submit" id="hate" value="dislike">좋아요 해제</button>
+                    {% else %}
+                    <button type="submit" id="good" value="like">좋아요</button>
+                    {% endif %}
+                </form>
+                {% endif %}
             </div>
             <!-- 사용자 정보 -->
             <div class="userinfo">
                 <div class="box-sy">
-                    <img src="" class="userimg-sy">
+                    {% if post.userId.profilephoto %}
+                    <img src="{{ post.userId.profilephoto.url }}" class="userimg-sy">
+                    {% else %}
+                    <h6>#none</h6>
+                    {% endif %}
                 </div>
                 <div id="nf">
-                    <div class="nf-name">계정이름</div>
+                    <div class="nf-name">{{ post.userId.username }}</div>
                     <div>팔로워 : 1.9만명</div>
                 </div>
-            <hr style="border: 1px solid rgba(255, 255, 255, 0.3); 
-                width: 980px;height: 0px; margin-bottom: 71px;">   
-            </div>      
+                <hr style="border: 1px solid rgba(255, 255, 255, 0.3); 
+                width: 980px;height: 0px; margin-bottom: 71px;">
+            </div>
         </div>
-        
-    <!-- 댓글기능 -->
+
+        <!-- 댓글기능 -->
         <div class="comment-sy">
-            <table style="color: #FFFFFF;"> 
+            <table style="color: #FFFFFF;">
                 <tr>
-                    <th><div class="userinfo">
+                    <th>
+                        <div class="userinfo">
                             <div class="box-sy">
-                                <img src="" class="userimg-sy">
+                                {% if post.userId.profilephoto %}
+                                <img src="{{ request.user.profilephoto.url }}" class="userimg-sy">
+                                {% else %}
+                                <h6>#none</h6>
+                                {% endif %}
+                            </div>
                         </div>
                     </th>
-                    <th>계정이름 </th><th>댓글추가.... </th>
+                    <th>{{ request.user.username }}</th>
+                    <th>댓글추가.... </th>
                 </tr>
             </table>
             <hr style="border: 2px solid #FFFFFF;
                 width: 980px;height: 0px; margin-top: 10px;">
         </div>
-        <div class="com-count">댓글 30개</div>
+        <div class="com-count">
+            <!-- 댓글 30개 -->
+            {% if request.user.is_authenticated %}
+            <form method="POST" action="{% url 'new_comment' post.id %}">
+                {% csrf_token %}
+                {{ comment_form }}
+                <input type="submit" value="댓글 입력">
+            </form>
+            {% endif %}
+
+            {% for comment in post.comment_set.all %}
+            {{ comment.userId }} - {{ comment }}
+            {% if request.user == comment.userId %}
+            <form action="{% url 'delete_comment' comment.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" name="delete_comment" value="삭제">
+            </form>
+            {% endif %}
+            {% endfor %}
+        </div>
         <div class="com-puls">더 읽기+</div>
     </section>
 </div>
