@@ -131,6 +131,7 @@ li a{
     height:606px;
     background-color: #646262;
     margin-bottom: 33px;
+    background-image: url("../img/mainbackground.png");
 }
 
 #detail-section{
