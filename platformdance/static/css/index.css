@@ -135,6 +135,16 @@ li a{
     background-image: url("../img/mainbackground.png");
 }
 
+#genre-banner-section {
+    height:606px;
+    width:100%;
+    margin-bottom: 33px;
+    margin-top: 40px;
+    background-image: url("../img/bboybanner.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
 #detail-section{
     font-size:32px;
     font-weight:600;

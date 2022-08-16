@@ -41,6 +41,21 @@
     <img src="{% static 'img/white_arrow_right.png' %}" class="next" />
 </div>
 
+<!-- 여기에 힙합 등 장르 소개 들어감 -->
+<div id="genre-banner-section">
+    <!-- <img src="../static/img/bboybanner.png" alt=""> -->
+</div>
+<div style="display:flex; align-items: cneter;">
+    <span style="font-size:30px;font-weight:500;color:white;margin-left:360px;">장르 이름</span>
+    <pre style="font-size:20px;display:inline-block;margin-left:209px; color:white;">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Quae asperiores maiores, repellat, veritatis voluptatum 
+        doloremque voluptates earum quod, ea non ex similique facilis 
+        sapiente deleniti aliquid labore nulla. Nesciunt, ipsam.
+    </pre>
+</div>
+<!-- 장르 소개 끝 -->
+
 <div style="margin-left:400px;margin-top:183px;">
     <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=1">Hip-Hop</a></div>
     <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=2">Locking</a></div>
@@ -120,7 +135,6 @@
         classNameText.innerText = "B-Boyibg";
         genreClass.style.display = "block"
         document.querySelectorAll('#dance-class').forEach(item => {
-            
             if (item.innerText === "B-Boyibg") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
@@ -204,7 +218,6 @@
         }
         carousel.style.transform = `translate3d(-${600 * index}px, 0, 0)`;
     });
-
 
 </script>
 {% endblock %}
