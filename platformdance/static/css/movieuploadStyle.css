@@ -69,7 +69,7 @@ section{
     color: #333333;
 }
 .image{
-    margin-bottom: 64px;
+    margin-bottom: 128px;
 
     width: 126px;
     height: 28px;
@@ -81,7 +81,7 @@ section{
     color: #FFFFFF;
 }
 .video{
-    margin-bottom: 64px;
+    margin-bottom: 128px;
 
     width: 63px;
     height: 28px;
