@@ -439,6 +439,7 @@ video{
 .com-name{
     display: inline-block;
     margin-left: 14px;
+    padding-bottom: 10px;
 
     width: 64px;
     height: 20px;
