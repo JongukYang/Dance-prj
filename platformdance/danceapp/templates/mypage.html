@@ -133,35 +133,64 @@
     &nbsp;&nbsp;
     <img src="{% static 'img/orange_arrow.png' %}" />
 </div>
-<table>
+<table style="margin: 0;">
     <tr id="show-current-classes">
         {% for regcourse in myregcourses %}
-        <td>Class Title : {{ regcourse.title }}</td>
+        <!-- <td>Class Title : {{ regcourse.title }}</td> -->
         {% if regcourse.photo %}
-        <td><img src="{{regcourse.photo.url}}" /></td>
+        <td>
+            <a href="{% url 'course_detail' regcourse.id %}">
+               <img src="{{regcourse.photo.url}}" style="width:300px; height:284px;margin-right: 20px;" />
+            </a>
+        </td>
+        {% else %}
+        <img src="{% static 'img/default_profile_img.png' %}" alt="">
         {% endif %}
         {% endfor %}
         <!-- <td>Class Body : {{ regcourse.body }}</td> -->
     </tr>
 </table>
+
+<!-- 내가 올린 영상 출력  수정해야함 또는 새로 작성 필요-->
+<!-- <div id="current-class">
+    <span>Liked Video</span>
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+</div>
+<div style="margin-left:370px;display:inline-block">
+    {% for post in myposts %}
+    {% if forloop.counter < 4 %}
+    {% if post.photo %}
+     <a href="{% url 'post_detail' post.id %}">
+        <img src="{{ post.photo.url }}"style="width:300px; height:284px;margin-right: 20px;" />
+    </a>
+    {% else %}
+    <img src="{% static 'img/default_profile_img.png' %}" alt="">
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+</div> -->
+
+
+<!-- 좋아요 누른 영상 가져오기 -->
 <div id="current-class">
     <span>Liked Video</span>
     &nbsp;&nbsp;
     <img src="{% static 'img/orange_arrow.png' %}" />
 </div>
-<!-- 내가 올린 영상 출력 -->
 <div style="margin-left:370px;display:inline-block">
-    {% for post in myposts %}
+    {% for post in mylikedvideos %}
+    {% if forloop.counter < 6 %}
     {% if post.photo %}
-    {% if forloop.counter < 4 %}
-     <a href="{% url 'post_detail' post.id %}"><img src="{{post.photo.url}}"
-            style="width:300px; height:284px;margin-right: 20px;" />
+     <a href="{% url 'post_detail' post.id %}">
+        <img src="{{ post.photo.url }}" style="width:300px; height:284px;margin-right: 20px;" />
     </a>
+    {% else %}
+    <img src="{% static 'img/default_profile_img.png' %}" alt="">
     {% endif %}
     {% endif %}
     {% endfor %}
 </div>
-
 
 
 <div id="current-class">
@@ -175,12 +204,13 @@
         <div class="carousel">
             {% for course in mycourses %}
             {% if forloop.counter < 4 %} 
+            {% if course.photo %}
             <a class="carousel-a" href="{% url 'course_detail' course.id %}">
-                {% if course.photo %}
-                <img src="{{course.photo.url}}" alt="">
-                {% else %}
-                <img src="{% static 'img/default_profile_img.png' %}" alt="">
-                {% endif %}
+                <img src="{{ course.photo.url }}" alt="">
+            </a>
+            {% else %}
+            <img src="{% static 'img/default_profile_img.png' %}" alt="">
+            {% endif %}
             </a>
             {% endif %}
             {% endfor %}
