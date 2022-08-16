@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/test.css' %}">
+</head>
+
+<body>
+    <div class="mainbox">
+        <div class="table-row">
+            <div class="title-box">
+                <header>
+                    <a href="{% url 'index' %}">CHOO:OOM</a>
+                </header>
+            </div>
+            <main class="rounded" style="background-color : white;">
+                <section class="section-box">
+                    <h1 style="color: black;">클래스 등록</h1>
+                    <hr class="mt-4">
+                    <div class="container" style="margin-top: 10px; background-color: white;">
+                        <form action="{% url 'coursecreate' %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="title" style="color: black; font-size:large;">제목</label>
+                                {{ form.title }}
+                            </div>
+                            <div class="form-group">
+                                <label for="content" style="color: black; font-size: large;">내용</label>
+                                {{ form.body }}
+                            </div>
+                            <div class="container" style="padding-top:50px;">
+                                <hr class="mt-4">
+                                <div class="row">
+                                    <div class="col-6 col-sm-3">
+                                        <label for="id_photo" style="color: black; font-size: large;">사진</label>
+                                    </div>
+                                    <div class="col-6 col-sm-3">
+                                        {{ form.photo }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 col-sm-3">
+                                        <label for="id_video" style="color: black; font-size: large;">비디오</label>
+                                    </div>
+                                    <div class="col-6 col-sm-3">
+                                        {{ form.video }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 col-sm-3">
+                                        <label for="id_genreName" style="color: black; font-size: large;">장르</label>
+                                    </div>
+                                    <div class="col-6 col-sm-3">
+                                        {{ form.genreName }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 col-sm-3">
+                                        <label for="id_startDate" style="color: black; font-size: large;">강의 시작일</label>
+                                    </div>
+                                    <div class="col-6 col-sm-3">
+                                        {{ form.startDate }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 col-sm-3">
+                                        <label for="id_location" style="color: black; font-size: large;">위치</label>
+                                    </div>
+                                    <div class="col-6 col-sm-3">
+                                        {{ form.location }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 col-sm-3">
+                                        <label for="id_maxRegCount" style="color: black; font-size: large;">최대 수강 인원</label>
+                                    </div>
+                                    <div class="col-6 col-sm-3">
+                                        {{ form.maxRegCount }}
+                                    </div>
+                                </div>
+                                <hr class="mt-4">
+                                <div class="d-grid gap-2 col-6 mx-auto" style="padding-top: 10px; text-align: center;">
+                                    <input type="submit" class="btn btn-primary btn-lg" value="등록하기">
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+            </main>
+        </div>
+        </section>
+
+    </div>
+
+</body>
+
+</html>

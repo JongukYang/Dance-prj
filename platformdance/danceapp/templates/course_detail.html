@@ -1,15 +1,133 @@
-genreName: {{ course.genreName.name }}
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- <link rel="stylesheet" href="{% static 'css/classdetail.css' %}"> -->
+<!-- 여기부터 클래스 디테일 -->
+<p id="class-name" style="margin-left:360px;font-size:40px; color:white;font-weight: 600;margin-bottom: 60px;">
+    클래스 제목
+</p>
 
-<div>
-    <h2>클래스 소개</h2>
-    <img style="width: 30%;" src="{{ course.photo.url }}" alt=""><br>
-    <a> title: {{ course.title }}</a><br>
-    <a> body: {{ course.body }}</a><br>
+<div id="course-detail-banner-section">
 </div>
-<div>
-    <h2>댄서 소개</h2>
-    <img style="width: 30%;" src="{{ course.userId.profilephoto }}" alt=""><br>
-    <a>댄서 이름: {{ course.userId.nickname}}</a><br>
-    <a>댄스 스킬: {{ course.userId.danceSkill}}</a><br>
-    <a>댄서 전화번호: {{ course.userId.phoneNum}}</a>
+
+<div id="table">
+    <table border="1">
+        <th>Date/Time</th>
+        <tr>
+            <td>날짜</td>
+        </tr>
+        <tr>
+            <td>2022.11.07</td>
+        </tr>
+        <tr>
+            <td>시간</td>
+        </tr>
+        <tr>
+            <td>오후 5시~오후 10시</td>
+        </tr>
+    </table>
 </div>
+
+<div id="detail-section">
+    <br><br><br><br>
+    The Dancer
+
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+    <br><br>
+</div>
+
+<div id="slider-section">
+    <img src="{% static 'img/white_arrow_left.png' %}" />
+    <span style="color:white;font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
+    <img src="{% static 'img/white_arrow_right.png' %}" />
+</div>
+
+<div id="dancer-section">
+    <img src="image/clASS/효진초이(원트).jpeg">
+</div>
+
+<div id="dancer-table">
+    <table border="1">
+        <th>Yujin Choi</th>
+        <tr>
+            <td>댄서의 경력</td>
+        </tr>
+        <tr>
+            <td>등등</td>
+        </tr>
+        <tr>
+            <td>등등</td>
+        </tr>
+        <tr>
+            <td>등등</td>
+        </tr>
+    </table>
+</div>
+
+<div id="news-event-section">
+    <div style="margin-bottom: 10px; font-size:32px; ">
+        <br><br><br><br><br><br><br><br><br>Place
+        &nbsp;&nbsp;
+        <img src="{% static 'img/orange_arrow.png' %}" />
+    </div>
+
+    <div style="font-size:20px; color:#717171;">
+        <!--CHOO:OOM의 새로운 소식, 지금 바로 확인해보세요-->
+        <span style="float:right; margin-right:360px;">
+            <img src="{% static 'img/black_arrow_left.png' %}" />
+            <span style="font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
+            <img src="{% static 'img/black_arrow_right.png' %}" />
+        </span>
+    </div>
+
+
+</div>
+<div id="place-section">
+    <img src="image/clASS/효진초이(원트).jpeg">
+</div>
+
+<div id="place-table">
+    <table border="1">
+        <th></th>
+        <tr>
+            <td>장소</td>
+        </tr>
+        <tr>
+            <td>연습실</td>
+        </tr>
+        <tr>
+            <td>위치</td>
+        </tr>
+        <tr>
+            <td>서울 마포구</td>
+        </tr>
+    </table>
+
+</div>
+<script>
+    const className = document.querySelector('#class-name');
+    const classId = new URL(location).pathname.split("/")[2];
+    if(classId === "1"){
+        className.innerText="Hip Hop"
+    }else if(classId === "2"){
+        className.innerText="Locking"
+    }else if(classId === "3"){
+        className.innerText="Waacking"
+    }else if(classId === "4"){
+        className.innerText="B-Boying"
+    }else if(classId === "5"){
+        className.innerText="House"
+    }
+    else if(classId === "6"){
+        className.innerText="Crump"
+    }
+    else if(classId === "7"){
+        className.innerText="Poping"
+    }
+    else if(classId === "8"){
+        className.innerText="Choregraphy"
+    }
+    
+</script>
+{% endblock %}

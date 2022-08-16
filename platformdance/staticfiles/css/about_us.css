@@ -1,0 +1,44 @@
+@import url('http://fonts.cdnfonts.com/css/dm-serif-display');
+
+    #aboutUs-section { 
+        background-color: black;
+        color: white;
+        font-family: 'DM Serif Display';
+        font-style: normal;
+        text-align: center;
+        margin:0 auto;
+    }
+
+    #aboutUs-title{ /* Who we are 문구 */
+        font-size:40px;
+        text-align: left;
+        margin:214px 0 125px 370px;
+    }
+
+    #aboutUs-contents { /* 내용 부분 */
+        margin-top:77px;
+        margin-bottom:223px;
+        font-family: 'Gothic A1';
+        font-size:24px;
+    }
+
+    .aboutUs-detail-content{ /* 세부 내용 */
+        width:1000px;
+        padding:0;
+        margin:0 auto;
+        text-align: center;
+        line-height: 170%;
+        text-align: center;
+        letter-spacing: -0.02em;
+    }   
+
+    .updown-line { /* 세로 줄 */
+        border-left: 1px solid white;
+        border-width: thin;
+        text-align: center;
+        margin:0 auto;
+        margin-top:33px;
+        margin-bottom:34px;
+        width: 0.1px;
+        height: 171px;
+    }

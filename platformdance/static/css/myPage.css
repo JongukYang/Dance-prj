@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gothic+A1&display=swap');
+
+*{
+    font-family: 'Gothic A1', sans-serif;
+}
+
+#show-profile{
+    background-color: white;
+    width:100%;
+    height:40vh;
+    padding-top:19px;
+    padding-left:370px;
+    padding-right:370px;
+    vertical-align: middle;
+}
+#show-profile > p{
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 55px;
+    color:black;
+    width: 170px;
+    height: 55px;
+}
+#show-profile > div{
+    width:100%;
+}
+
+#show-profile > div > img{
+    display:inline-block;
+    width:200px;
+    height:200px;
+    border-radius: 15px;
+    object-fit: contain;
+    vertical-align: top;
+}
+#usernameAndEmail{
+    display:inline-block;
+    margin-left: 21px;
+}
+#username{
+    font-size:36px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+#user-email{
+    font-weight: 500;
+    font-size: 16px;
+    margin-top: 30px;
+    margin-bottom:50px;
+}
+#button-group{
+    display:inline;
+    vertical-align: bottom;
+    margin-left:300px;
+    position: relative;
+}
+
+#button-group > button{
+    width:157px;
+    height:45px;
+    border-radius: 10px;
+}
+
+#video-upload-btn{
+    background: #282828;
+    color:white
+}
+
+#enroll-class{
+    border: 1px solid #282828;
+    color:black;
+    margin-left:23px;
+}
+
+#section-head{
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 50px;
+    color:white;
+    margin-left:370px;
+}
+
+hr{
+    border: 3px solid rgba(255, 255, 255, 0.7);
+    margin-left:370px;
+    margin-right: 370px;
+}
+
+span{
+    color:white;
+}
+td > img{
+    width:180px;
+    height:180px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+tr{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+}
+td{
+    padding-top: 30px;
+    padding-bottom: 50px;
+    color:white
+}
+
+#current-class{
+    margin-left:370px;
+    font-size: 32px;
+    margin-top:80px;
+    margin-bottom:80px;
+
+}
+
+#show-current-classes{
+    display:inline-block;
+    margin-left:370px;
+}
+
+#show-current-classes > td > img{
+    width:279px;
+    height:444px;
+}

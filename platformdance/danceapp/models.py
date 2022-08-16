@@ -1,3 +1,4 @@
+from cProfile import label
 from django.db import models
 # from django.contrib.auth.models import User
 from accounts.models import userProfile
@@ -25,17 +26,10 @@ class Post(models.Model):
     genreName = models.ForeignKey(Genre, null=True, on_delete=models.CASCADE) # 장르
     likes_user = models.ManyToManyField(userProfile, related_name='likes', blank=True) # 좋아요 누른 사람
     likes_count = models.PositiveIntegerField(default=0) # 좋아요 개수
+    hits = models.PositiveIntegerField(default=0) # 조회수
 
     def __str__(self):
         return self.title
-
-# class LikePost(models.Model):
-#     user = models.ForeignKey(userProfile, on_delete=models.CASCADE, related_name="liked_users")
-#     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="liked_posts")
-
-#     def __str__(self):
-#         return f"{self.user} liked {self.post}"
-
 
 # 강좌 클래스 모델 만들기
 class Course(models.Model):
@@ -53,10 +47,10 @@ class Course(models.Model):
     register_user = models.ManyToManyField(userProfile, related_name='register_user', blank=True)
     register_count = models.PositiveIntegerField(default=0) 
     # 최대 인원 수, 위치, 클래스 날짜 및 시간, 끝나는 시간
-    maxRegCount = models.IntegerField(default=0, null=False) 
-    startDate = models.DateField(auto_now=False, auto_now_add=False)
-    # 강좌 위치
-    location = models.CharField(max_length=50, null=True)
+    maxRegCount = models.IntegerField(default=0, null=False) # 최대 인원 수
+    startDate = models.DateField(auto_now=False, auto_now_add=False) # 사적 시간
+    location = models.CharField(max_length=50, null=True) # 강좌 위치
+    hits = models.PositiveIntegerField(default=0) # 조회수
 
     def __str__(self):
         return self.title
@@ -65,7 +59,7 @@ class Course(models.Model):
 class Comment(models.Model):
     # comment_id 는 pk로서 존재함
     userId = models.ForeignKey(userProfile, on_delete=models.CASCADE)
-    comment = models.TextField(100)
+    comment = models.TextField('', max_length=100)
     date = models.DateTimeField(auto_now_add=True)
     post = models.ForeignKey(Post, null=True, blank=True, on_delete=models.CASCADE)
     

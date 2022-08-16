@@ -1,21 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+<link rel="stylesheet" href="{% static 'css/myPage.css' %}">
 <!-- main -->
 <style>
-    table {
-        border: 1px solid black;
-    }
-
-    td,
-    th {
-        border: 1px solid black;
-    }
-
-    th {
-        text-align: center;
-    }
-
     .main1 {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -24,88 +12,227 @@
         justify-items: start;
         width: 100%;
     }
-</style>
 
-<h1>mypage.html</h1>
+    /* * {
+        color: #ebebeb;
+    } */
+</style>
+<!-- <div class="container" id="main-container"> -->
+
+
+<!-- 반복 시작 -->
+{% for my in myprofile %}
+<div id="show-profile">
+    <p>MY PAGE</p>
+    <div>
+        {% if my.profilephoto %}
+        <span>{{myprofilephoto.url}}</span>
+        <img src="{{ my.profilephoto.url }}" alt="asdasdadas"  >
+        {% else %}
+        <span>{{myprofilephoto.url}}</span>
+        <img src="{% static 'img/default_profile_img.png' %}" >
+        {% endif %}
+        <div id="usernameAndEmail">
+            <div id="username">
+                {{my.username}}
+            </div>
+            <div id="user-role">
+                {{my.danceSkill}}
+            </div>
+            <div id="user-email">
+                {% if my.email %}
+                {{my.eamil}}
+                {% else %}
+                sample@sample.com
+                {% endif%}
+            </div>
+
+        </div>
+        <div id="button-group">
+            <button id="video-upload-btn">
+                <a href="{% url 'postcreate' %}" style="color:white;text-decoration:none">영상 업로드</a>
+            </button>
+            <button id="enroll-class">
+                <a href="{% url 'coursecreate' %}" style="color:black;text-decoration:none">클래스 업로드</a>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="section-head" style="margin-top:116px;">
+    기본 정보
+</div>
 <hr>
-<!-- 유저 모델 기본 프로필 -->
-<h2>유저 모델 기본 프로필</h2>
 <table>
-    <tr>
-        <th>프사</th>
-        <th>이름</th>
-        <th>춤실력</th>
-        <th>메일주소</th>
-    </tr>
-    <!-- 반복 시작 -->
-    {% for my in myprofile %}
-    <tr>
-        <td>{{ my.profilephoto }}</td>
-        <td>{{ my.nickname }}</td>
-        <td>{{ my.danceSkill }}</td>
-        <td>{{ my.email }}</td>
-    </tr>
-    {% endfor %}
+    <form action="{% url 'modifyprofileimg' request.user.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <tr>
+            <td style="width:200px"><span>사진</span></td>
+            <td style="width:600px">
+                <div>
+                {% if my.profilephoto %}
+                <img src="{{ my.profilephoto.url }}" alt="" id="profile-image" style="border-radius:50%;width:200px;height:200px">
+                {% else %}
+                <img src="{% static 'img/default_profile_img.png' %}" id="profile-image" alt="" style="width:200px;height:200px">
+                {% endif %}
+                </div>
+            </td>
+            <td>
+                <!-- <form action="{% url 'modifyprofileimg' request.user.id %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="profileimg" id="" value="modify">
+                    <input type="submit" name="" id="">
+                </form> -->
+                <input id="choose-profile-picture" style="display:block" type="file" name="profileimg" value="사진 변경" />
+                <input type="submit" id="profile-save-btn" value="저장" stlye="display:none" />
+            </td>
+            <!-- <td>{{ my.nickname }}</td>
+            <td>{{ my.danceSkill }}</td>
+            <td>{{ my.email }}</td> -->
+        </tr>
+        <tr>
+            <td><span>아이디</span></td>
+            <td>{{my.username}}</td>
+        </tr>
+        <tr>
+            <td><span>비밀번호</span></td>
+            <td>********</td>
+            <td><input type="button" id="change-password" value="비밀번호 변경" /></td>
+        </tr>
+        <tr>
+            <td><span>이름</span></td>
+            <td>{{my.nickname}}</td>
+            <td><input type="button" id="change-name" value="이름 수정" /></td>
+        </tr>
+    </form>
+
     <!-- 반복 끝 -->
 </table>
 
+<div id="section-head" style="margin-top:116px">
+    선택 정보
+</div>
 <hr>
+<table>
+    <tr>
+        <td style="width:200px"><span>인스타그램</span></td>
+        <td style="width:600px"><span>sik29401</span></td>
+        <td><input type="button" id="change-instargram" value="수정" /></td>
+    </tr>
+    <tr>
+        <td><span>경력</span></td>
+        <td><textarea rows="5" cols="40"></textarea> </td>
+        <td><input type="button" value="수정" /></td>
+    </tr>
+    </form>
+    <!-- 반복 끝 -->
+</table>
+<!-- 현재 수강중인 클래스 -->
+<div id="current-class">
+    <span>Current Class</span>
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+</div>
+<table>
+    <tr id="show-current-classes">
+        {% for regcourse in myregcourses %}
+        <td>Class Title : {{ regcourse.title }}</td>
+        {% if regcourse.photo %}
+        <td><img src="{{regcourse.photo.url}}" /></td>
+        {% endif %}
+        {% endfor %}
+        <!-- <td>Class Body : {{ regcourse.body }}</td> -->
+    </tr>
+</table>
+<div id="current-class">
+    <span>Liked Video</span>
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+</div>
 <!-- 내가 올린 영상 출력 -->
-<h2>내가 올린 영상</h2>
-<table>
-    <!-- 게시글 반복 시작 -->
-    <tr>
-        <th>게시글 제목</th>
-        <th>사진</th>
-        <th>설명</th>
-        <th>좋아요 개수</th>
-        <th>좋아요 누를 사람</th>
-    </tr>
-    {% for post in posts %}
-    <tr>
-        <td>{{ post.title }}</td>
-        <td>{{ post.body }}</td>
-        <td>{{ post.photo }}</td>
-        <td>{{ post.likes_count }}</td>
-        <td>
-            {% for i in post.likes_user.all %}
-            {{ i.username }},
-            {% endfor %}
-        </td>
-    </tr>
+<div style="margin-left:370px;display:inline-block">
+    {% for post in myposts %}
+    {% if post.photo %}
+    {% if forloop.counter < 4 %}
+     <a href="{% url 'post_detail' post.id %}"><img src="{{post.photo.url}}"
+            style="width:300px; height:284px;margin-right: 20px;" />
+    </a>
+    {% endif %}
+    {% endif %}
     {% endfor %}
-    <!-- 게시글 반복 끝 -->
-</table>
-<hr>
+</div>
 
-<!-- 내가 좋아요한 영상 출력 -->
-<h2>내가 좋아요한 영상</h2>
-<table>
-    <!-- 게시글 반복 시작 -->
-    <tr>
-        <th>게시글 제목</th>
-        <th>사진</th>
-        <th>설명</th>
-        <th>좋아요 개수</th>
-        <th>좋아요 누를 사람</th>
-    </tr>
-    {% for likedvideo in mylikedvideo %}
-    <tr>
-        <td>{{ likedvideo.title }}</td>
-        <td>{{ likedvideo.body }}</td>
-        <td>{{ likedvideo.photo }}</td>
-        <td>{{ likedvideo.likes_count }}</td>
-        <td>
-            <!-- 좋아요 누른 사람 출력 -->
-            {% for i in likedvideo.likes_user.all %}
-            {{ forloop.counter }}-{{ i.username }}
-            <!-- forloop 마지막이 아니라면 , 찍기 -->
-            {% if not forloop.last %},{% endif %}
+
+
+<div id="current-class">
+    <span>My Class</span>
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+</div>
+<div id="image-slider">
+    <img src="{% static 'img/white_arrow_left.png' %}" class="prev" />
+    <div class="carousel-wrapper">
+        <div class="carousel">
+            {% for course in mycourses %}
+            {% if forloop.counter < 4 %} 
+            <a class="carousel-a" href="{% url 'course_detail' course.id %}">
+                {% if course.photo %}
+                <img src="{{course.photo.url}}" alt="">
+                {% else %}
+                <img src="{% static 'img/default_profile_img.png' %}" alt="">
+                {% endif %}
+            </a>
+            {% endif %}
             {% endfor %}
-        </td>
-    </tr>
-    {% endfor %}
-    <!-- 게시글 반복 끝 -->
-</table>
+        </div>
+    </div>
+    <img src="{% static 'img/white_arrow_right.png' %}" class="next" />
+</div>
 
+<script>
+    const chooseProfilePicture = document.querySelector("#choose-profile-picture")
+    const profileSaveBtn = document.querySelector('#profile-save-btn');
+    const profileImage= document.querySelector('#profile-image');
+    profileSaveBtn.style.display = "none";
+    console.log(profileImage.src);
+    chooseProfilePicture.addEventListener('change', () => {
+        if(chooseProfilePicture.files && chooseProfilePicture.files[0]){
+            let reader = new FileReader();
+            reader.onload = function(e){
+                profileImage.setAttribute("src",e.target.result);
+                profileImage.style.width="200px";
+                profileImage.style.height="200px";
+                profileImage.style.borderRadius="50%";
+                profileSaveBtn.style.display = "block";
+            }
+            reader.readAsDataURL(event.target.files[0]);
+            
+        }
+    })
+
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    const carousel = document.querySelector('.carousel');
+    let index = 0;
+
+    prevButton.addEventListener('click', () => {
+        if (index === 0) {
+            index = 2;
+        } else {
+            index -= 1;
+        }
+        carousel.style.transform = `translate3d(-${600 * index}px, 0, 0)`;
+    });
+
+    nextButton.addEventListener('click', () => {
+        if (index === 2) {
+            index = 0;
+        } else {
+            index += 1;
+        }
+        carousel.style.transform = `translate3d(-${600 * index}px, 0, 0)`;
+    });
+
+</script>
+{% endfor %}
 {% endblock %}

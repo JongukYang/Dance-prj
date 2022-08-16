@@ -1,161 +1,146 @@
+{% extends 'base.html' %}
+{% block content %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<p style="margin-left:360px; font-size: 24px; color:white;margin-top: 40px; margin-bottom:4px;">
+    We live discover
+</p>
+<p style="margin-left:360px;font-size:40px;color:#FF7A00;font-weight: 600;margin-bottom: 60px;">
+    Untold Originals
+</p>
+<div id="banner-section">
+</div>
+<div style="display:flex; align-items: cneter;">
+    <span style="font-size:30px;font-weight:500;color:white;margin-left:360px;">Who we are</span>
+    <pre style="font-size:20px;display:inline-block;margin-left:209px; color:white;">
+        낯선 것에서 찾아낸 공감대를 사랑하고 그 과정에서 기쁨을 느끼는 CHOO:OOM은
+        우리만의 독창적인 것, Untold Originals를찾아 오늘도 끝없는 여정을 이어갑니다.
+    </pre>
+</div>
 
-<body>
-    <h1>Index.html Page</h1>
 
-
-    
-    {% if request.user.is_authenticated %}
-    <h1>현재 userId : {{request.user}}</h1>
-    <h4><a href="{% url 'logout' %}">Logout</a></h4>
-    {% else %}
-    <h4><a href="{% url 'login' %}">Login</a></h4>
+<div id="detail-section">
+    Featured Contents
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+</div>
+<div id="slider-section">
+    <!-- Pagination -->
+    {% if posts.has_previous %}
+    <!-- <a href="?page=1">첫 페이지</a> -->
+    <a href="?page={{posts.previous_page_number}}"><img src="{% static 'img/white_arrow_left.png' %}" /></a>
     {% endif %}
-    <h4><a href="{% url 'login' %}">Login</a></h4>
-    <h4><a href="{% url 'signup' %}">SignUp</a></h4>
 
-    <h1>파일 업로드</h1>
-    <h4><a href="{% url 'postcreate' %}">PostCreate</a></h4>
+    <span style="color:white;font-size: 20px;"> {{ posts.number }} </span>
+    <span style="color:white;font-size: 20px;"> / </span>
+    <span style="color:white;font-size: 20px;"> {{ posts.paginator.num_pages }} </span>
 
-    <h1>원하는 장르 포스트만 보기</h1>
-    <h4><a href="{% url 'genre_post' %}?genre_id=1">힙합 포스트 보기</a></h4>
-    <h4><a href="{% url 'genre_post' %}?genre_id=2">락킹 포스트 보기</a></h4>
-    <h4><a href="{% url 'genre_post' %}?genre_id=3">왁킹 포스트 보기</a></h4>
-    <h4><a href="{% url 'genre_post' %}?genre_id=4">비보잉 포스트 보기</a></h4>
-    <h4><a href="{% url 'genre_post' %}?genre_id=5">하우스 포스트 보기</a></h4>
-    <h4><a href="{% url 'genre_post' %}?genre_id=6">크럼프 포스트 보기</a></h4>
-    <h4><a href="{% url 'genre_post' %}?genre_id=7">팝핑 포스트 보기</a></h4>
-    <h4><a href="{% url 'genre_post' %}?genre_id=8">코레오그레피 포스트 보기</a></h4>
+    {% if posts.has_next %}
+    <a href="?page={{posts.next_page_number}}"><img src="{% static 'img/white_arrow_right.png' %}" /></a>
+    <!-- <a href="?page={{posts.paginator.num_pages}}">마지막 페이지</a> -->
+    {% endif %}
+<!-- 
+    <img src="{% static 'img/white_arrow_left.png' %}" />
+    <span style="color:white;font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
+    <img src="{% static 'img/white_arrow_right.png' %}" /> -->
+</div>
 
-    <hr>
-    <h1>start</h1>
-    <hr>
-        순위 1 : {{ rank1.title }}
-    <hr>
-    <table border="1">
-        {% for like_top_ten in likes_top_ten %}
-        <tr>
-            <td>{{ like_top_ten.userId }}출력 : {{ like_top_ten }}</td>
-            <td>{{ like_top_ten.body }}</td>
-            <td>{{ like_top_ten.genreName }}</td>
-            <td>
-                {% if like_top_ten.photo %}
-                {{ like_top_ten.photo.url }}
-                <img src="{{ like_top_ten.photo.url }}" alt="" width="30%">
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-    <h1>End</h1>
+<div id="detail-class-section">
+    {% for post in posts %}
+    {% if post.photo %}
+    <a href="{% url 'post_detail' post.id %}" id="detail-class-section-a">
+        <img src="{{ post.photo.url }}"alt="ㅁㄴㅇㅁㄴㅇ">
+    </a>
+    <!-- 장고 주석 처리 -->
+    {% comment %}
+    {% else %}
+    <img src="#" alt="NO_Img">
+    {% endcomment %}
+    <!-- 장고 주석 처리 끝 -->
+    {% endif %}
+    {% endfor %}
+    <!-- <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" />
+    <img src="{% static 'img/sample_jpark.png' %}" /> -->
+</div>
+<hr style="border:3px solid white;">
 
-    <div>
-        <table border="1">
-            <tr>
-                <th>userId</th>
-                <th>userId_id</th>
-                <th>title</th>
-                <th>body</th>
-                <th>uploadDate</th>
-                <th>updateDate</th>
-                <th>img</th>
-                <th>video</th>
-                <th>수정</th>
-                <th>삭제</th>
-                <th>댓글</th>
-                <th>likes</th>
-                <th>장르</th>
-            </tr>
-            {% for post in posts %}
-            <tr>
-                <td><a href="{% url 'user_post_detail' post.userId_id %}">{{ post.userId }}</a></td>
-                <td>{{ post.userId_id }}</td>
-                <td><a href="{% url 'post' post.id %}">{{ post.title }}</a></td>
-                <td>{{ post.body }}</td>
-                <td>{{ post.uploadDate }}</td>
-                <td>{{ post.updateDate }}</td>
-                <td>
-                    {% if post.photo %}
-                    {{ post.photo }} <br>
-                    <img style="width: 30%;" src="{{ post.photo.url }}" alt="">
-                    {% endif %}
-                </td>
-                <td>
-                    {% if post.video %}
-                    {{ post.video }} <br>
-                    <!-- <video width="30%" src="{{ post.video.url }}" controls></video> -->
-                    {% endif %}
-                </td>
-                <td>
-                    {% if request.user.is_authenticated %}
-                    {% if post.userId == request.user %}
-                    <form action="{% url 'modify_post' post.id %}" method="POST">
-                        {% csrf_token %}
-                        <input type="submit" name="modify_post" value="수정">
-                    </form>
-                    {% endif %}
-                    {% endif %}
-                </td>
-                <td>
-                    {% if request.user.is_authenticated %}
-                    {% if post.userId == request.user %}
-                    <form action="{% url 'delete_post' post.id %}" method="POST">
-                        {% csrf_token %}
-                        <input type="submit" name="delete_post" value="삭제">
-                    </form>
-                    {% endif %}
-                    {% endif %}
-                </td>
-
-                <td>
-                    {% if request.user.is_authenticated %}
-                    <form method="POST" action="{% url 'new_comment' post.id %}">
-                        {% csrf_token %}
-                        {{ comment_form.as_p }}
-                        <input type="submit" value="댓글 입력">
-                    </form>
-                    {% endif %}
-                    {% for comment in post.comment_set.all %}
-                    {{ comment.userId }} - {{ comment }}
-                    {% if request.user == comment.userId %}
-                    <form action="{% url 'delete_comment' comment.id %}" method="POST">
-                        {% csrf_token %}
-                        <input type="submit" name="delete_comment" value="삭제">
-                    </form>
-                    {% endif %}
-                    <br>
-                    {% endfor %}
-                </td>
-                <td>
-                    <form action="{% url 'likes' post.id %}" method="">
-                        {% csrf_token %}
-                        <p>
-                            좋아요 수 : {{ post.likes_count }}
-                        </p>
-                        {% if request.user in post.likes_user.all %}
-                        <input type="submit" value="dislike">
-                        {% else %}
-                        <input type="submit" value="like">
-                        {% endif %}
-                    </form>
-                </td>
-                <td>
-                    <p>장르 : {{ post.genreName.id }}</p>
-                    <p>장르 ID : {{ post.genreName.name }}</p>
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
+<div id="news-event-section">
+    <div style="margin-bottom:24px;font-size:32px;margin-left:360px">
+        NEWS & EVENT
+        &nbsp;&nbsp;
+        <img src="{% static 'img/orange_arrow.png' %}" />
     </div>
-</body>
+    <div style="font-size:20px;color:#717171;margin-left:360px">
+        CHOO:OOM의 새로운 소식, 지금 바로 확인해보세요
+        <span style="float:right;margin-right:360px;">
+            <img src="{% static 'img/black_arrow_left.png' %}" />
+            <span style="font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
+            <img src="{% static 'img/black_arrow_right.png' %}" />
+        </span>
+    </div>
+    <table>
+        <tbody>
+            <tr>
+                <td rowspan="4" style="width: 600px; height: 650px;">
+                    <!-- <img style="width:784px; height:650px" src="{% static 'img/sample_chungha.png' %}" /> -->
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
+                </td>
+                <td>
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
+                </td>
 
-</html>
+            </tr>
+            <tr>
+                <td>
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
+
+                </td>
+                <td>
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
+                </td>
+                <td>
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

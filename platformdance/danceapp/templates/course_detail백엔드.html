@@ -1,0 +1,28 @@
+<h1>클래스 세부 정보</h1>
+
+<h2>genreName: {{ course.genreName.name }}</h2>
+
+<div>
+    <h2>클래스 소개</h2>
+    <img style="width: 30%;" src="{{ course.photo.url }}" alt=""><br>
+    <a> title: {{ course.title }}</a><br>
+    <a> body: {{ course.body }}</a><br>
+</div>
+
+<div>
+    <h2>댄서 소개</h2>
+    <img style="width: 30%;" src="{{ course.userId.profilephoto }}" alt=""><br>
+    <a>댄서 이름: {{ course.userId.nickname}}</a><br>
+    <a>댄스 스킬: {{ course.userId.danceSkill}}</a><br>
+    <a>댄서 전화번호: {{ course.userId.phoneNum}}</a>
+</div>
+
+<div>
+    <h2>장소</h2>
+    <a>위치: {{ course.location }}</a>
+</div>
+
+<form action="{% url 'regCourse' course.id%}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="신청하기">
+</form>

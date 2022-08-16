@@ -1,106 +1,210 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<!-- main -->
-<h1>{{ genre.name }} Class</h1>
-<a href="{% url 'genre_post' %}?genre_id={{genre.id}}">{{ genre.name}} 게시글</a>
-<table border="1">
-    <tr>
-        <th>userid</th>
-        <th>userId_id</th>
-        <th>title</th>
-        <th>body</th>
-        <th>uploadDate</th>
-        <th>updateDate</th>
-        <th>img</th>
-        <th>video</th>
-        <th>수정</th>
-        <th>삭제</th>
-        <th>댓글</th>
-        <th>좋아요</th>
-        <th>장르</th>
-    </tr>
-    {% for course in courses %}
-    {% if course.genreName.name == genre.name %}
-    <tr>
-        <td>몰라</td>
-        <td>{{ course.userId_id }}</td>
-        <td><a href="{% url 'course_detail' course.id %}">{{ course.title }}</a></td>
-        <td>{{ course.body }}</td>
-        <td>{{ course.uploadDate }}</td>
-        <td>{{ course.updateDate }}</td>
-        <td>
+<!--이미지 슬라이더 -->
+<div></div>
+<div id="image-slider">
+    <img src="{% static 'img/white_arrow_left.png' %}" class="prev" />
+    <div class="carousel-wrapper">
+        <div class="carousel">
+            <a href="course_detail/1" class="carousel-a"><img src="{% static 'img/tumbnail/hiphop.jpeg' %}"
+                alt=""></a>
+            <a href="course_detail/2" class="carousel-a"><img src="{% static 'img/tumbnail/locking.jpeg' %}"
+                alt="">
+            </a>
+            <a href="course_detail/3" class="carousel-a"><img src="{% static 'img/tumbnail/waacking.jpeg' %}"
+                alt="">
+            </a>
+            <a href="course_detail/4" class="carousel-a"><img src="{% static 'img/tumbnail/Bboying.jpg' %}"
+                alt="">
+            </a>
+            <a href="course_detail/5" class="carousel-a"><img src="{% static 'img/tumbnail/house.png' %}"
+                alt="">
+            </a>
+            <a href="course_detail/6" class="carousel-a"><img src="{% static 'img/tumbnail/crump.jpeg' %}"
+                alt="">
+            </a>
+            <a href="course_detail/7" class="carousel-a"><img src="{% static 'img/tumbnail/poping.jpeg' %}"
+                alt="">
+            </a>
+            <a href="course_detail/8" class="carousel-a"><img src="{% static 'img/tumbnail/choregraphy.jpeg' %}"
+                alt="">
+            </a>
+            <!-- {% for course in courses %}
             {% if course.photo %}
-            {{ course.photo }} <br>
-            <img style="width: 30%;" src="{{ course.photo.url }}" alt="">
+            <a href="{% url 'course_detail' course.id %}" class="carousel-a"><img src="{{ course.photo.url }}"
+                    alt=""></a>
             {% endif %}
-        </td>
-        <td>
-            {% if course.video %}
-            {{ course.video }} <br>
-            <!-- <video width="30%" src="{{ post.video.url }}" controls></video> -->
-            {% endif %}
-        </td>
+            {% endfor %} -->
+        </div>
+    </div>
+    <img src="{% static 'img/white_arrow_right.png' %}" class="next" />
+</div>
 
-        <td>
-            {% if request.user.is_authenticated %}
-            {% if course.userId == request.user %}
+<div style="margin-left:400px;margin-top:183px;">
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=1">Hip-Hop</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=2">Locking</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=3">House</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=4">B-Boying</a></div>
+    <br />
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=5">Waacking</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=6">krump</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=7">Popping</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=8">Choreography</a></div>
+</div>
+<div id="genre-class">
+    <div id="class-name-section">
+        <span id="class-name"></span>
+        &nbsp;&nbsp;
+        <img src="{% static 'img/orange_arrow.png' %}" />
+    </div>
+    <div id="slider-section">
+        <img src="{% static 'img/white_arrow_left.png' %}" />
+        <span style="color:white;font-size: 20px;">&nbsp; 1 / 6 &nbsp;</span>
+        <img src="{% static 'img/white_arrow_right.png' %}" />
+    </div>
 
-                {% csrf_token %}
-                <input type="submit" name="modify_post" value="수정">
-            </form>
-            {% endif %}
-            {% endif %}
-        </td>
+    <div id="detail-class-section">
+        {% for course in courses %}
+        {% if course.photo %}
+        <a href="{% url 'course_detail' course.id %}" id="detail-class-section-a"><img src="{{ course.photo.url }}"
+                alt=""></a>
+        {% endif %}
+        {% endfor %}
+
+    </div>
+</div>
 
 
-        <td>
-            {% if request.user.is_authenticated %}
-            {% if course.userId == request.user %}
+<script type="text/javascript">
+    const classNameText = document.getElementById("class-name")
+    let name = new URL(location).searchParams.get("genre_id");
+    const genreClass = document.querySelector("#genre-class");
+    console.log(typeof (name));
+    if (name === "1") {
+        classNameText.innerText = "Hip-Hop";
+        genreClass.style.display = "block"
+        document.querySelectorAll('#dance-class').forEach(item => {
+            console.log(item.children[0].style)
+            if (item.innerText === "Hip-Hop") {
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.children[0].style.color = "white";
+                item.children[0].style.textDecoration = "none";
+            }
+        })
+    } else if (name === "2") {
+        classNameText.innerText = "Locking";
+        genreClass.style.display = "block"
+        document.querySelectorAll('#dance-class').forEach(item => {
+            if (item.innerText === "Locking") {
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.children[0].style.color = "white";
+                item.children[0].style.textDecoration = "none";
+            }
+        })
+    }
+    else if (name === "3") {
+        classNameText.innerText = "Waacking";
+        genreClass.style.display = "block"
+        document.querySelectorAll('#dance-class').forEach(item => {
+            if (item.innerText === "Waacking") {
+                item.style.border = "1px solid white";
+                item.children[0].style.color = "white";
+                item.children[0].style.textDecoration = "none";
+            }
+        })
+    }
+    else if (name === "4") {
+        classNameText.innerText = "B-Boyibg";
+        genreClass.style.display = "block"
+        document.querySelectorAll('#dance-class').forEach(item => {
+            
+            if (item.innerText === "B-Boyibg") {
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.children[0].style.color = "white";
+                item.children[0].style.textDecoration = "none";
+            }
+        })
+    }
+    else if (name === "5") {
+        classNameText.innerText = "House";
+        genreClass.style.display = "block"
+        document.querySelectorAll('#dance-class').forEach(item => {
+            if (item.innerText === "House") {
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.children[0].style.color = "white";
+                item.children[0].style.textDecoration = "none";
+            }
+        })
+    }
+    else if (name === "6") {
+        classNameText.innerText = "Crump";
+        genreClass.style.display = "block"
+        document.querySelectorAll('#dance-class').forEach(item => {
+            if (item.innerText === "Crump") {
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.children[0].style.color = "white";
+                item.children[0].style.textDecoration = "none";
+            }
+        })
+    }
+    else if (name === "7") {
+        classNameText.innerText = "Popping";
+        genreClass.style.display = "block"
+        document.querySelectorAll('#dance-class').forEach(item => {
+            if (item.innerText === "Popping") {
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.children[0].style.color = "white";
+                item.children[0].style.textDecoration = "none";
+            }
+        })
+    }
+    else if (name === "8") {
+        classNameText.innerText = "Choreography";
+        genreClass.style.display = "block"
+        document.querySelectorAll('#dance-class').forEach(item => {
+            if (item.innerText === "Choreography") {
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.children[0].style.color = "white";
+                item.children[0].style.textDecoration = "none";
+            }
+        })
+    }
+    else {
 
-                {% csrf_token %}
-                <input type="submit" name="delete_post" value="삭제">
-            </form>
-            {% endif %}
-            {% endif %}
-        </td>
+        genreClass.style.display = "none"
+    }
+    // 이미지 슬라이더 스크립트
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    const carousel = document.querySelector('.carousel');
+    let index = 0;
 
-        <!-- <td>
-            {% if request.user.is_authenticated %}
+    prevButton.addEventListener('click', () => {
+        if (index === 0) {
+            index = 7;
+        } else {
+            index -= 1;
+        }
+        carousel.style.transform = `translate3d(-${600 * index}px, 0, 0)`;
+    });
 
-                {% csrf_token %}
-                {{ comment_form.as_p }}
-                <input type="submit" value="댓글 입력">
-            </form>
-            {% endif %}
-            {% for comment in course.comment_set.all %}
-            {{ comment.userId }} - {{ comment }}
-            {% if request.user == comment.userId %}
-            <form action="{% url 'delete_comment' comment.id %}" method="POST">
-                {% csrf_token %}
-                <input type="submit" name="delete_comment" value="삭제">
-            </form>
-            {% endif %}
-            <br>
-            {% endfor %}
-        </td> -->
-        <td>
-            <form action="{% url 'course_likes' course.id %}" method="">
-                {% csrf_token %}
-                <p>
-                    좋아요 수 : {{ course.likes_count }}
-                </p>
-                {% if request.user in course.likes_user.all %}
-                <input type="submit" value="dislike">
-                {% else %}
-                <input type="submit" value="like">
-                {% endif %}
-            </form>
-        </td>
-        <td>장르 : {{course.genreName}}</td>
-    </tr>
-    {% endif %}
-    {% endfor %}
-</table>
+    nextButton.addEventListener('click', () => {
+        if (index === 7) {
+            index = 0;
+        } else {
+            index += 1;
+        }
+        carousel.style.transform = `translate3d(-${600 * index}px, 0, 0)`;
+    });
 
+
+</script>
 {% endblock %}

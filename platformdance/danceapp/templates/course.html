@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<p style="margin-left:360px;font-size:40px; color:white;font-weight: 600;margin-bottom: 60px;">
+    장르 소개
+</p>
+<div id="banner-section">
+</div>
+<div style="display:flex; align-items: cneter;">
+    <span style="font-size:30px;font-weight:500;color:white;margin-left:360px;">Definition</span>
+    <p style="font-size:20px;display:inline-block;margin-left:209px; color:white;margin-right:370px">
+            1970년대 후반 뉴욕 브롱스 남쪽 빈민가에 거주하는 미국 흑인과 남미 히스패닉계 청소년들에 의해 형성된 새로운 문화운동 전반을 가르키는 말이다. 
+            이에 힙합을 '미국에서 독자적으로 만들어진 유일한 문화'라고 말하기도 한다.
+    </p>
+</div>
+
+<div id="detail-section" style="margin-bottom:24px; font-size:32px; margin-left: 350px;">
+    Best 10 class
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+</div>
+
+<div id="slider-section">
+    <img src="{% static 'img/white_arrow_left.png' %}" />
+    <span style="color:white;font-size: 20px;">&nbsp; 1 / 6 &nbsp;</span>
+    <img src="{% static 'img/white_arrow_right.png' %}" />
+</div>
+
+<div id="detail-class-section">
+    <img src="{% static 'img/image/class/가비.jpeg' %}">
+    <img src="{% static 'img/image/class/우영.jpeg' %}" >
+    <img src="{% static 'img/image/class/리정.jpg' %}">
+    <img src="{% static 'img/image/class/박진영.jpeg' %}">
+</div>
+
+<div id="news-event-section">
+
+    <div style="margin-bottom:24px; font-size:32px; margin-left: 350px; ">
+        Class
+        &nbsp;&nbsp;
+        <img src="{% static 'img/orange_arrow.png' %}" />
+    </div>
+
+    <div style="font-size:20px;color:#717171;margin-left:360px;margin-bottom: 100px;">
+        <!--CHOO:OOM의 새로운 소식, 지금 바로 확인해보세요-->
+        <span style="float:right;margin-right:360px;">
+            <img src="{% static 'img/black_arrow_left.png' %}" />
+            <span style="font-size: 20px;">&nbsp; 1 / 6 &nbsp;</span>
+            <img src="{% static 'img/black_arrow_right.png' %}" />
+        </span>
+    </div>
+
+    <div id="detail-class-section">
+        <img src="{% static 'img/image/class/백진(비보이).jpeg' %}"alt="이미지">
+        <img src="{% static 'img/image/class/유준선.jpeg' %}">
+        <img src="{% static 'img/image/class/누군가.jpeg' %}">
+        <img src="{% static 'img/image/class/오천.png' %}">
+    </div>
+</div>
+<!--
+            <table>
+            <tbody>
+                <tr>
+                    <td rowspan="4">
+                        <img style="width:784px; height:650px"src="{% static 'img/sample_chungha.png' %}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="{% static 'img/sample_chungha.png' %}" />
+                    </td>
+                    <td>
+                        <img src="{% static 'img/sample_chungha.png' %}" />
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        <img src="{% static 'img/sample_chungha.png' %}" />
+
+                    </td>
+                    <td>
+                        <img src="{% static 'img/sample_chungha.png' %}" /> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <img src="{% static 'img/sample_chungha.png' %}" />
+
+                </td>
+                <td>
+                    <img src="{% static 'img/sample_chungha.png' %}" /> 
+                </td>
+            </tr>
+        </tbody>
+        </table>
+        -->
+
+</div>
+{% endblock %}
