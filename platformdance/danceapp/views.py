@@ -203,12 +203,18 @@ def genre_course(request):
     genre_id = request.GET.get('genre_id', None)
     genre = Genre.objects.get(id=int(genre_id))
     courses = Course.objects.filter(genreName=genre).order_by('-uploadDate')
+    # paginator - lhs
+    paginator = Paginator(courses, 4)
+    pagnum = request.GET.get('page')
+    course_set =  paginator.get_page(pagnum)
+    # end
     likes_top_ten = Course.objects.all().order_by('-likes_count') # 모든 포스트 중 택5 -> 딕셔너리 형태
     hits_toplists = Course.objects.all().order_by('-hits')
     comment_form = CommentForm()
     context = {
         'genre':genre,
         'courses':courses,
+        'course_set' : course_set,
         'comment_form':comment_form,
         'likes_top_ten':likes_top_ten,
         'hits_toplists':hits_toplists,
@@ -242,7 +248,9 @@ def course_detail(request, course_id):
 
 # 클래스 신청하기
 def regCourse(request, course_id):
-   if request.user.is_authenticated:    
+    if not request.user.is_authenticated:
+        return redirect('login')
+    elif request.user.is_authenticated:    
        course = get_object_or_404(Course, pk=course_id)
        if request.user in course.register_user.all():
     #    if course.register_user.filter(pk=request.user.pk).exists():
@@ -254,7 +262,7 @@ def regCourse(request, course_id):
            course.register_count += 1
            course.save()
    # 현재 내가 있는 페이지로 redirect 
-   return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 # 마이페이지 정보 전달
 def mypage(request, user_id):

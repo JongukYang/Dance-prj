@@ -79,6 +79,7 @@
 <div id="apply">
     <form action="{% url 'regCourse' course.id %}" method="POST">
         {% csrf_token %}
+        <!-- 로그인 안한 유저 신청 안되게 -->
         {% if request.user in course.register_user.all %}
         <input type="submit" value="신청취소">
         {% else %}

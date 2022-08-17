@@ -41,21 +41,6 @@
     <img src="{% static 'img/white_arrow_right.png' %}" class="next" />
 </div>
 
-<!-- 여기에 힙합 등 장르 소개 들어감 -->
-<div id="genre-banner-section">
-    <!-- <img src="../static/img/bboybanner.png" alt=""> -->
-</div>
-<div style="display:flex; align-items: cneter;">
-    <span style="font-size:30px;font-weight:500;color:white;margin-left:360px;">장르 이름</span>
-    <pre style="font-size:20px;display:inline-block;margin-left:209px; color:white;">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Quae asperiores maiores, repellat, veritatis voluptatum 
-        doloremque voluptates earum quod, ea non ex similique facilis 
-        sapiente deleniti aliquid labore nulla. Nesciunt, ipsam.
-    </pre>
-</div>
-<!-- 장르 소개 끝 -->
-
 <div style="margin-left:400px;margin-top:183px;">
     <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=1">Hip-Hop</a></div>
     <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=2">Locking</a></div>
@@ -74,13 +59,22 @@
         <img src="{% static 'img/orange_arrow.png' %}" />
     </div>
     <div id="slider-section">
-        <img src="{% static 'img/white_arrow_left.png' %}" />
-        <span style="color:white;font-size: 20px;">&nbsp; 1 / 6 &nbsp;</span>
-        <img src="{% static 'img/white_arrow_right.png' %}" />
+        <!-- paginator 구현 - lhs (버튼 위치가 이상해졌습니다.. 확인해보시고 이상하면 지우겠습니다..)-->
+        {% if course_set.has_previous %}
+        <a href="?genre_id={{genre.id}}&page={{ course_set.previous_page_number }}">
+            <img src="{% static 'img/white_arrow_left.png' %}"/>
+        </a>
+        {% endif %}
+        <span style="color:white;font-size: 20px;">&nbsp; {{ course_set.number }} / {{ course_set.paginator.num_pages }} &nbsp;</span>
+        {% if course_set.has_next %}
+        <a href="?genre_id={{genre.id}}&page={{ course_set.next_page_number }}">
+            <img src="{% static 'img/white_arrow_right.png' %}"/>
+        </a>
+        {% endif %}
     </div>
 
     <div id="detail-class-section">
-        {% for course in courses %}
+        {% for course in course_set %}
         {% if course.photo %}
         <a href="{% url 'course_detail' course.id %}" id="detail-class-section-a"><img src="{{ course.photo.url }}"
                 alt=""></a>
@@ -100,12 +94,10 @@
         classNameText.innerText = "Hip-Hop";
         genreClass.style.display = "block"
         document.querySelectorAll('#dance-class').forEach(item => {
-            console.log(item.children[0].style)
             if (item.innerText === "Hip-Hop") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
-                item.children[0].style.color = "white";
-                item.children[0].style.textDecoration = "none";
+                item.style.color = "white";
             }
         })
     } else if (name === "2") {
@@ -115,8 +107,7 @@
             if (item.innerText === "Locking") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
-                item.children[0].style.color = "white";
-                item.children[0].style.textDecoration = "none";
+                item.style.color = "white";
             }
         })
     }
@@ -126,8 +117,8 @@
         document.querySelectorAll('#dance-class').forEach(item => {
             if (item.innerText === "Waacking") {
                 item.style.border = "1px solid white";
-                item.children[0].style.color = "white";
-                item.children[0].style.textDecoration = "none";
+                item.style.backgroundColor = "black";
+                item.style.color = "white";
             }
         })
     }
@@ -138,8 +129,7 @@
             if (item.innerText === "B-Boyibg") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
-                item.children[0].style.color = "white";
-                item.children[0].style.textDecoration = "none";
+                item.style.color = "white";
             }
         })
     }
@@ -150,8 +140,7 @@
             if (item.innerText === "House") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
-                item.children[0].style.color = "white";
-                item.children[0].style.textDecoration = "none";
+                item.style.color = "white";
             }
         })
     }
@@ -162,8 +151,7 @@
             if (item.innerText === "Crump") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
-                item.children[0].style.color = "white";
-                item.children[0].style.textDecoration = "none";
+                item.style.color = "white";
             }
         })
     }
@@ -174,8 +162,7 @@
             if (item.innerText === "Popping") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
-                item.children[0].style.color = "white";
-                item.children[0].style.textDecoration = "none";
+                item.style.color = "white";
             }
         })
     }
@@ -186,8 +173,7 @@
             if (item.innerText === "Choreography") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
-                item.children[0].style.color = "white";
-                item.children[0].style.textDecoration = "none";
+                item.style.color = "white";
             }
         })
     }
@@ -218,6 +204,13 @@
         }
         carousel.style.transform = `translate3d(-${600 * index}px, 0, 0)`;
     });
+
+    //클래스 선택 스크립트
+    // const className = document.querySelectorAll('#dance-class').forEach((item)=>{
+    //     item.addEventListener('click',()=>{
+    //         document.location.href= `/classes?name=${item.innerText}`
+    //     })
+    // })
 
 </script>
 {% endblock %}

@@ -16,6 +16,7 @@ admin.site.register(Post, PostAdmin)
 # 클래스 게시글
 class CourseAdmin(admin.ModelAdmin):
     list_display = ('id', 'userId', 'userId_id', 'title', 'body', 'genreName','hits', 'likes_count', 'startDate', 'register_count','maxRegCount', 'location', 'uploadDate', 'updateDate')
+    list_filter = ('genreName', )
 admin.site.register(Course, CourseAdmin)
 
 # 댓글
