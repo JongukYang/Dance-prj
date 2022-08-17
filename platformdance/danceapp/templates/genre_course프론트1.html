@@ -1,37 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<div id="class-section">
-    <span style="color:white;font-size:24px;margin-left:360px">Class</span>
-    <ul>
-        <li id="dance-class2" style="margin-left:100px"><a href="{% url 'genre_course' %}?genre_id=1">Hip Hop</a></li>
-        <li id="dance-class2"><a href="{% url 'genre_course' %}?genre_id=2">Locking</a></li>
-        <li id="dance-class2"><a href="{% url 'genre_course' %}?genre_id=3">Waacking</a></li>
-        <li id="dance-class2"><a href="{% url 'genre_course' %}?genre_id=4">B-Boying</a></li>
-        <li id="dance-class2"><a href="{% url 'genre_course' %}?genre_id=5">House</a></li>
-        <li id="dance-class2"><a href="{% url 'genre_course' %}?genre_id=6">Krump</a></li>
-        <li id="dance-class2"><a href="{% url 'genre_course' %}?genre_id=7">Popping</a></li>
-        <li id="dance-class2"><a href="{% url 'genre_course' %}?genre_id=8">Choreography</a></li>
-    </ul>
-</div>
-
-<!-- 여기에 힙합 등 장르 소개 들어감 -->
-<div id="genre-banner-section">
-    <!-- <img src="../static/img/bboybanner.png" alt=""> -->
-</div>
-<div style="display:flex; align-items: cneter;">
-    <span style="font-size:30px;font-weight:500;color:white;margin-left:360px;">장르 이름</span>
-    <pre style="font-size:20px;display:inline-block;margin-left:209px; color:white;">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Quae asperiores maiores, repellat, veritatis voluptatum 
-        doloremque voluptates earum quod, ea non ex similique facilis 
-        sapiente deleniti aliquid labore nulla. Nesciunt, ipsam.
-    </pre>
-</div>
-<!-- 장르 소개 끝 -->
-
 <!--이미지 슬라이더 -->
-<div id="detail-class-section" style="text-align: center;"><h2 style="color: white;">Best 10 Class</h2></div>
+<div></div>
 <div id="image-slider">
     <img src="{% static 'img/white_arrow_left.png' %}" class="prev" />
     <div class="carousel-wrapper">
@@ -70,9 +41,35 @@
     <img src="{% static 'img/white_arrow_right.png' %}" class="next" />
 </div>
 
+<!-- 여기에 힙합 등 장르 소개 들어감 -->
+<div id="genre-banner-section">
+    <!-- <img src="../static/img/bboybanner.png" alt=""> -->
+</div>
+<div style="display:flex; align-items: cneter;">
+    <span style="font-size:30px;font-weight:500;color:white;margin-left:360px;">장르 이름</span>
+    <pre style="font-size:20px;display:inline-block;margin-left:209px; color:white;">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Quae asperiores maiores, repellat, veritatis voluptatum 
+        doloremque voluptates earum quod, ea non ex similique facilis 
+        sapiente deleniti aliquid labore nulla. Nesciunt, ipsam.
+    </pre>
+</div>
+<!-- 장르 소개 끝 -->
+
+<div style="margin-left:400px;margin-top:183px;">
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=1">Hip-Hop</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=2">Locking</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=3">Waacking</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=4">B-Boying</a></div>
+    <br />
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=5">House</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=6">Crump</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=7">Popping</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=8">Choreography</a></div>
+</div>
 <div id="genre-class">
     <div id="class-name-section">
-        <span id="class-name"  style="margin-top: 40px;"></span>
+        <span id="class-name"></span>
         &nbsp;&nbsp;
         <img src="{% static 'img/orange_arrow.png' %}" />
     </div>
@@ -102,23 +99,23 @@
     if (name === "1") {
         classNameText.innerText = "Hip-Hop";
         genreClass.style.display = "block"
-        document.querySelectorAll('#dance-class2').forEach(item => {
+        document.querySelectorAll('#dance-class').forEach(item => {
             console.log(item.children[0].style)
             if (item.innerText === "Hip-Hop") {
-                // item.style.border = "1px solid white";
-                // item.style.backgroundColor = "black";
-                // item.children[0].style.color = "white";
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.children[0].style.color = "white";
                 item.children[0].style.textDecoration = "none";
             }
         })
     } else if (name === "2") {
         classNameText.innerText = "Locking";
         genreClass.style.display = "block"
-        document.querySelectorAll('#dance-class2').forEach(item => {
+        document.querySelectorAll('#dance-class').forEach(item => {
             if (item.innerText === "Locking") {
-                // item.style.border = "1px solid white";
-                // item.style.backgroundColor = "black";
-                // item.children[0].style.color = "white";
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.children[0].style.color = "white";
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -126,22 +123,24 @@
     else if (name === "3") {
         classNameText.innerText = "Waacking";
         genreClass.style.display = "block"
-        document.querySelectorAll('#dance-class2').forEach(item => {
+        document.querySelectorAll('#dance-class').forEach(item => {
+            console.log(item.innerText);
             if (item.innerText === "Waacking") {
-                // item.style.border = "1px solid white";
-                // item.children[0].style.color = "white";
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.children[0].style.color = "white";
                 item.children[0].style.textDecoration = "none";
             }
         })
     }
     else if (name === "4") {
-        classNameText.innerText = "B-Boyibg";
+        classNameText.innerText = "B-Boying";
         genreClass.style.display = "block"
-        document.querySelectorAll('#dance-class2').forEach(item => {
-            if (item.innerText === "B-Boyibg") {
-                // item.style.border = "1px solid white";
-                // item.style.backgroundColor = "black";
-                // item.children[0].style.color = "white";
+        document.querySelectorAll('#dance-class').forEach(item => {
+            if (item.innerText === "B-Boying") {
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.children[0].style.color = "white";
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -149,11 +148,11 @@
     else if (name === "5") {
         classNameText.innerText = "House";
         genreClass.style.display = "block"
-        document.querySelectorAll('#dance-class2').forEach(item => {
+        document.querySelectorAll('#dance-class').forEach(item => {
             if (item.innerText === "House") {
-                // item.style.border = "1px solid white";
-                // item.style.backgroundColor = "black";
-                // item.children[0].style.color = "white";
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.children[0].style.color = "white";
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -161,11 +160,11 @@
     else if (name === "6") {
         classNameText.innerText = "Crump";
         genreClass.style.display = "block"
-        document.querySelectorAll('#dance-class2').forEach(item => {
+        document.querySelectorAll('#dance-class').forEach(item => {
             if (item.innerText === "Crump") {
-                // item.style.border = "1px solid white";
-                // item.style.backgroundColor = "black";
-                // item.children[0].style.color = "white";
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.children[0].style.color = "white";
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -173,11 +172,11 @@
     else if (name === "7") {
         classNameText.innerText = "Popping";
         genreClass.style.display = "block"
-        document.querySelectorAll('#dance-class2').forEach(item => {
+        document.querySelectorAll('#dance-class').forEach(item => {
             if (item.innerText === "Popping") {
-                // item.style.border = "1px solid white";
-                // item.style.backgroundColor = "black";
-                // item.children[0].style.color = "white";
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.children[0].style.color = "white";
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -185,11 +184,11 @@
     else if (name === "8") {
         classNameText.innerText = "Choreography";
         genreClass.style.display = "block"
-        document.querySelectorAll('#dance-class2').forEach(item => {
+        document.querySelectorAll('#dance-class').forEach(item => {
             if (item.innerText === "Choreography") {
-                // item.style.border = "1px solid white";
-                // item.style.backgroundColor = "black";
-                // item.children[0].style.color = "white";
+                item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
+                item.children[0].style.color = "white";
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -221,7 +220,6 @@
         }
         carousel.style.transform = `translate3d(-${600 * index}px, 0, 0)`;
     });
-
 
 </script>
 {% endblock %}

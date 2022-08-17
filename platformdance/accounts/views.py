@@ -44,7 +44,9 @@ def signup(request):
             return redirect('index')      
     return render(request, 'signup.html')
 
-
+def forgot_password(request):
+    return render(request, 'forgot_password.html')
+    
 # def signup(request):
 #     if request.method == 'POST':
 #         if request.POST['password'] == request.POST['repeat']:
