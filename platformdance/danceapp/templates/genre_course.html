@@ -21,12 +21,12 @@
 </div>
 <div style="display:flex; align-items: cneter;">
     <span id="genre_name" style="font-size:30px;font-weight:500;color:white;margin-left:360px;">장르 이름</span>
-    <pre id="genre_comment" style="font-size:20px;display:inline-block;margin-left:209px; color:white;">
+    <p id="genre_comment" style="font-size:20px;display:inline-block;margin-left:209px; color:white;">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
         Quae asperiores maiores, repellat, veritatis voluptatum 
         doloremque voluptates earum quod, ea non ex similique facilis 
         sapiente deleniti aliquid labore nulla. Nesciunt, ipsam.
-    </pre>
+    </p>
 </div>
 <!-- 장르 소개 끝 -->
 
@@ -38,7 +38,8 @@
     <img src="{% static 'img/white_arrow_left.png' %}" class="prev" />
     <div class="carousel-wrapper">
         <div class="carousel">
-            <a href="course_detail/1" class="carousel-a"><img src="{% static 'img/tumbnail/hiphop.jpeg' %}" alt=""></a>
+            <a href="course_detail/1" class="carousel-a"><img src="{% static 'img/tumbnail/hiphop.jpeg' %}" alt="">
+            </a>
             <a href="course_detail/2" class="carousel-a"><img src="{% static 'img/tumbnail/locking.jpeg' %}" alt="">
             </a>
             <a href="course_detail/3" class="carousel-a"><img src="{% static 'img/tumbnail/waacking.jpeg' %}" alt="">
@@ -95,6 +96,7 @@
     const danceClassList = document.querySelectorAll('#dance-class2');
     const genre_name = document.querySelector('#genre_name');
     const genre_comment = document.querySelector('#genre_comment');
+    const genre_banner_section = document.querySelector('#genre-banner-section');
     if (name === "1") {
         classNameText.innerText = "Hip Hop";
         genreClass.style.display = "block"
@@ -106,7 +108,8 @@
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
-                genre_comment.innerText = "힙합 코멘트"
+                genre_comment.innerText = "힙합(Hip-Hop)은 1970년대 후반 뉴욕 브롱스 남쪽 빈민가에 거주하는 미국 흑인과 남미 히스패닉계 청소년들에 의해 형성된 새로운 문화운동 전반을 가리키는 말이다. 이에 힙합을 '미국에서 독자적으로 만들어진 유일한 문화'라고 평하기도 한다."
+                genre_banner_section.style.backgroundImage = "url('{% static 'img/class_tumbnail/Hiphop.jpeg' %}')";
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -120,7 +123,8 @@
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
-                genre_comment.innerText = "락킹 코멘트"
+                genre_comment.innerText = "락킹(Locking)은 스트릿댄스의 한 장르로 펑키한 것이 특징이다. 락킹은 1970년대 초에 돈 캠벨(Don Campbell, 1951년 1월 7일)이 LA의 나이트 클럽에서 만든 락이라 불리는 즉흥적인 스텝 형태의 예술이다."
+                genre_banner_section.style.backgroundImage = "url('{% static 'img/class_tumbnail/Locking.jpeg' %}')";
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -134,7 +138,8 @@
             if (item.innerText === "Waacking") {
                 // item.style.border = "1px solid white";
                 // item.children[0].style.color = "white";
-                genre_comment.innerText = "왁킹 코멘트"
+                genre_comment.innerText = "왁킹(Waacking)은 1970년대 디스코 유행동안 로스앤젤레스의 게이 클럽에서 만들어진 클럽댄스의 한 형태이다. 왁킹 스타일은 일반적으로 70년대 디스코 음악에 최적화되어 있으며 주로 회전하는 팔 동작과 포즈, 풍부한 표현력에 중점을 둔다는 점 등이 다른 장르와 구별되는 특징이다."
+                genre_banner_section.style.backgroundImage = "url('{% static 'img/class_tumbnail/Waacking.jpeg' %}')";
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -145,11 +150,12 @@
         danceClassList[3].childNodes[0].style.color = "white";
         genre_name.innerText = "B-Boying"
         document.querySelectorAll('#dance-class2').forEach(item => {
-            if (item.innerText === "B-Boyibg") {
+            if (item.innerText === "B-Boying") {
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
-                genre_comment.innerText = "비보잉 코멘트"
+                genre_comment.innerText = "비보잉(B-Boying) 또는 브레이킹(Breaking)이라고 불리는 이 장르는 1970년대에 미국 뉴욕에서 탄생한 스트릿댄스의 한 장르이자 힙합의 4대 요소 중 하나이다. 비보잉은 크게 톱록(toprock), 다운록(downrock), 파워 무브(power moves), 프리즈(freezes) 등 4개 동작으로 나뉜다. "
+                genre_banner_section.style.backgroundImage = "url('{% static 'img/class_tumbnail/Bboying.jpeg' %}')";
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -164,7 +170,8 @@
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
-                genre_comment.innerText = "하우스 코멘트"
+                genre_comment.innerText = "하우스(House)는 스트릿댄스 중 힙합과 더불어 가장 클럽 지향적인 장르이다. 이름처럼 하우스 음악, 박자에 맞춰 추는 것이 일반적이다. 장르로서의 확립은 뉴욕 지역 댄서들의 영향을 크게 받았다. 하반신 스탭의 비율이 높기 때문에 상체의 활용이 어렵지만 동시에 개인 표현의 영역이 크다는 특징을 가지고 있다.  "
+                genre_banner_section.style.backgroundImage = "url('{% static 'img/class_tumbnail/House.jpeg' %}')";
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -175,11 +182,12 @@
         danceClassList[5].childNodes[0].style.color = "white";
         genre_name.innerText = "Krump"
         document.querySelectorAll('#dance-class2').forEach(item => {
-            if (item.innerText === "Crump") {
+            if (item.innerText === "Krump") {
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
-                genre_comment.innerText = "크럼프 코멘트"
+                genre_comment.innerText = "크럼프(Krump)는 Kingdom Radically Uprised Mighty Praise의 약자로 자유롭고 격렬하며 역동적인 움직임이 특징인 춤이다. 가슴을 튕기는 체스트 팝(Chest Pop), 팔을 휘두르는 암 스윙(Arm Swing), 발을 구르는 스텀프(Stomp) 등의 기술로 이루어지며 그 외에 부가적인 요소로서 모자와 신발, 옷 등 도구를 이용하는 트릭을 선보이기도 한다."
+                genre_banner_section.style.backgroundImage = "url('{% static 'img/class_tumbnail/Krump.jpeg' %}')";
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -194,7 +202,8 @@
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
-                genre_comment.innerText = "파핑 코멘트"
+                genre_comment.innerText = "팝핑(Popping) 또는 팝핀(Poppin')은 1970년대 말 미국 서부에서 부갈루 샘(Boogaloo Sam)에 의해 처음 유래된 춤의 장르이다. 근육의 빠른 수축과 이완을 이용해 힘을 조절하면서 움직이는 ‘팝’이라는 테크닉을 사용하는 것이 가장 큰 특징이다."
+                genre_banner_section.style.backgroundImage = "url('{% static 'img/class_tumbnail/Poping.jpeg' %}')";
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -209,7 +218,8 @@
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
-                genre_comment.innerText = "코멘트"
+                genre_comment.innerText = "‘코레오그래피(choreography)’는 ‘choreia(춤)’와 ‘graphia(쓰다)’의 합성어이다. 음악의 다양한 소리, 질감, 리듬, 멜로디 등에 맞추어 노래에 가장 들어맞는 춤을 칭하며 누구든지 코레오그래퍼 안무가가 될 수 있다."
+                genre_banner_section.style.backgroundImage = "url('{% static 'img/class_tumbnail/Choreography.jpeg' %}')";
                 item.children[0].style.textDecoration = "none";
             }
         })
