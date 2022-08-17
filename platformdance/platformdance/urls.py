@@ -60,9 +60,6 @@ urlpatterns = [
     # 게시글 수정
     path('modify_post/<int:post_id>', views.modify_post, name='modify_post'),
 
-    # 클래스 전체 보기
-    path('course', views.course, name='course'),
-
     # 장르별 영상 포스트 보기 / # 장르별 클래스 보기
     path('genre_post', views.genre_post, name='genre_post'),
     path('genre_course', views.genre_course, name='genre_course'),
