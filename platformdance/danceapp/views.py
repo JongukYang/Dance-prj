@@ -296,9 +296,6 @@ def modifyprofileimg(request, user_id):
     else:
         return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
-def course(request):
-    return render(request, 'course.html')
-
 def aboutus(request):
     return render(request, 'about_us.html')
 
