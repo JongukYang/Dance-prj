@@ -17,7 +17,7 @@
             <p class="sign_in">Please Sign In</p>
             <form action="{% url 'login' %}" method="POST">
                 {% csrf_token %}
-                <input type="text" name="username" class="" placeholder="Id" required> Email address
+                <input type="text" name="username" class="" placeholder="Id" required>
                 <!-- <input type="email" placeholder="Email address" required> -->
                 <!--Email address-->
                 <input type="password" name="password" placeholder="Password" required>
@@ -39,7 +39,7 @@
                         width="30" height="30"></a>
             </p>
             </p>
-            <a href="../forgot_password/forgot_password.html" target="blank" class="forgot_password">Forgot
+            <a href="{% url 'forgot_password' %}" target="blank" class="forgot_password">Forgot
                 Password?</a>
             <!--비밀번호 찾기-->
             <p style="padding: 10px; display: inline-block; color:white;">|</p>
@@ -50,17 +50,6 @@
             2022 Key. All Rights Reserved | Design By 서연이는 19살
         </footer>
     </div>
-
-    {% if messages %}
-	<ul class="messages">
-    	{% for message in messages %}
-        	<li>
-            	[{{ message.tags }}] {{ message.message }}
-            </li>
-        {% endfor %}
-    </ul>
-{% endif %}
-
 </body>
 
 </html>
