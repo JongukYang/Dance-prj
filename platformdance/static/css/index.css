@@ -110,6 +110,14 @@
 
 
 #banner-section {
+    background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.3) 75%,
+    rgba(0, 0, 0, 0.7) 100%
+    ), 
+    url("../img/mainbackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -119,9 +127,9 @@
     height: 45rem;
     width: 100%;
     margin-bottom: 2rem;
-    background-size: cover;
-    background-image: url("../img/mainbackground.png");
+    
 }
+
 
 #main-title-intro span {
     /* border: 1px solid green; */
@@ -177,14 +185,6 @@ li a {
     width: 40%;
 }
 
-#banner-section {
-    display: inline-flex;
-    height: 45rem;
-    width: 100%;
-    margin-bottom: 2rem;
-    background-size: cover;
-    background-image: url("../img/mainbackground.png");
-}
 
 #genre-banner-section {
     height: 606px;
