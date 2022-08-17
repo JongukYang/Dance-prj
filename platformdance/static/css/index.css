@@ -32,6 +32,8 @@
     color:white;
     display:inline-block;
 }
+
+
 #searchBar::placeholder{
     color:#FFFFFF;
     opacity: 50%;
@@ -213,11 +215,8 @@ td{
     margin:0px 10px 20px 10px;
 }
 
-td:hover{
-    opacity: 30%;
-}
 
-td:hover >img{
+#news-table> tr > td >img :hover{
     background-color: black;
     opacity: 30%;
 }

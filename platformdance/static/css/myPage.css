@@ -27,12 +27,12 @@
     width:100%;
 }
 
-#show-profile > div > img{
+#show-profile > div  img{
+    border:1px solid balck;
     display:inline-block;
     width:200px;
     height:200px;
-    border-radius: 15px;
-    object-fit: contain;
+    border-radius: 70%;
     vertical-align: top;
 }
 #usernameAndEmail{
@@ -96,7 +96,6 @@ td > img{
     width:180px;
     height:180px;
     object-fit: contain;
-    border-radius: 50%;
 }
 
 tr{
@@ -119,10 +118,10 @@ td{
 
 #show-current-classes{
     display:inline-block;
-    margin-left:370px;
 }
 
 #show-current-classes > td > img{
     width:279px;
     height:444px;
+    border-radius: 0%;
 }

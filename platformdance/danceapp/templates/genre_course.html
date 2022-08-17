@@ -44,11 +44,11 @@
 <div style="margin-left:400px;margin-top:183px;">
     <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=1">Hip-Hop</a></div>
     <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=2">Locking</a></div>
-    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=3">House</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=3">Waacking</a></div>
     <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=4">B-Boying</a></div>
     <br />
-    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=5">Waacking</a></div>
-    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=6">krump</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=5">House</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=6">Crump</a></div>
     <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=7">Popping</a></div>
     <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=8">Choreography</a></div>
 </div>
@@ -109,19 +109,21 @@
         classNameText.innerText = "Waacking";
         genreClass.style.display = "block"
         document.querySelectorAll('#dance-class').forEach(item => {
+            console.log(item.innerText);
             if (item.innerText === "Waacking") {
                 item.style.border = "1px solid white";
+                item.style.backgroundColor = "black";
                 item.children[0].style.color = "white";
                 item.children[0].style.textDecoration = "none";
             }
         })
     }
     else if (name === "4") {
-        classNameText.innerText = "B-Boyibg";
+        classNameText.innerText = "B-Boying";
         genreClass.style.display = "block"
         document.querySelectorAll('#dance-class').forEach(item => {
             
-            if (item.innerText === "B-Boyibg") {
+            if (item.innerText === "B-Boying") {
                 item.style.border = "1px solid white";
                 item.style.backgroundColor = "black";
                 item.children[0].style.color = "white";
