@@ -149,6 +149,7 @@
 </table>
 
 <!-- 내가 올린 영상 출력  수정해야함 또는 새로 작성 필요-->
+{% comment %}
 <!-- <div id="current-class">
     <span>Liked Video</span>
     &nbsp;&nbsp;
@@ -170,7 +171,10 @@
     &nbsp;&nbsp;
     <img src="{% static 'img/orange_arrow.png' %}" />
 </div>
-<-- 내가 올린 영상 출력 -->
+ -->
+{% endcomment %}
+
+<!-- 내가 올린 영상 출력 -->
 <div style="margin-left:370px;display:inline-block">
     {% for post in myposts %}
     {% if post.photo %}
