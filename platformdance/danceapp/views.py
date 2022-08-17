@@ -5,6 +5,7 @@ from .forms import PostForm, CommentForm, CourseForm, PostModifyForm
 from .models import Post, Comment, Genre, Course
 from accounts.models import userProfile
 from django.core.paginator import Paginator
+from django.contrib import messages
 
 # 페이지네이션, 객체들 목록을 끊어서 보여주는 것
 # from django.core.paginator import Paginator
@@ -69,6 +70,7 @@ def postcreate(request):
             unfinished = form.save(commit=False)
             unfinished.userId = request.user
             unfinished.save()
+            messages.add_message(request, messages.SUCCESS, '새 글이 성공적으로 등록 되었습니다.')
             return redirect('index')
     # request method()가 Get일 경우 form 입력 html 띄우기
     else:
@@ -272,6 +274,9 @@ def mypage(request, user_id):
             'myregcourses':myregcourses,
         }
         return render(request, 'mypage.html', context)
+    else:
+
+        return redirect('login')
 
 # 마이페이지 프로필 사진 추가
 def modifyprofileimg(request, user_id):

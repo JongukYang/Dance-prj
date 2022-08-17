@@ -2,6 +2,17 @@
 {% block content %}
 {% load static %}
 
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li>
+        [{{ message.tags }}] {{ message.message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
 <p style="margin-left:360px; font-size: 24px; color:white;margin-top: 40px; margin-bottom:4px;">
     We live discover
 </p>
@@ -27,7 +38,7 @@
     <img src="{% static 'img/orange_arrow.png' %}" />
 </div>
 <div id="slider-section">
-    {% comment %} 
+    {% comment %}
     <!-- Pagination -->
     {% if posts.has_previous %}
     <!-- <a href="?page=1">첫 페이지</a> -->
@@ -42,7 +53,7 @@
     <a href="?page={{posts.next_page_number}}"><img src="{% static 'img/white_arrow_right.png' %}" /></a>
     <!-- <a href="?page={{posts.paginator.num_pages}}">마지막 페이지</a> -->
     {% endif %}
-    {% endcomment %} 
+    {% endcomment %}
 
 
     <img src="{% static 'img/white_arrow_left.png' %}" />
@@ -54,7 +65,7 @@
     {% for post in posts %}
     {% if post.photo %}
     <a href="{% url 'post_detail' post.id %}" id="detail-class-section-a">
-        <img src="{{ post.photo.url }}"alt="ㅁㄴㅇㅁㄴㅇ">
+        <img src="{{ post.photo.url }}" alt="ㅁㄴㅇㅁㄴㅇ">
     </a>
     <!-- 장고 주석 처리 -->
     {% comment %}
@@ -95,22 +106,19 @@
                 <td rowspan="4" style="width: 600px; height: 650px;">
                     <!-- <img style="width:784px; height:650px" src="{% static 'img/sample_chungha.png' %}" /> -->
                     <div style="height:100%;width:100%;">
-                        <img style="height:100%;"
-                            src="{% static 'img/sample_chungha.png' %}" />
+                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
                     <div style="height:100%;width:100%;">
-                        <img style="height:100%;"
-                            src="{% static 'img/sample_chungha.png' %}" />
+                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
                     </div>
                 </td>
                 <td>
                     <div style="height:100%;width:100%;">
-                        <img style="height:100%;"
-                            src="{% static 'img/sample_chungha.png' %}" />
+                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
                     </div>
                 </td>
 
@@ -118,29 +126,25 @@
             <tr>
                 <td>
                     <div style="height:100%;width:100%;">
-                        <img style="height:100%;"
-                            src="{% static 'img/sample_chungha.png' %}" />
+                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
                     </div>
 
                 </td>
                 <td>
                     <div style="height:100%;width:100%;">
-                        <img style="height:100%;"
-                            src="{% static 'img/sample_chungha.png' %}" />
+                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
                     <div style="height:100%;width:100%;">
-                        <img style="height:100%;"
-                            src="{% static 'img/sample_chungha.png' %}" />
+                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
                     </div>
                 </td>
                 <td>
                     <div style="height:100%;width:100%;">
-                        <img style="height:100%;"
-                            src="{% static 'img/sample_chungha.png' %}" />
+                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
                     </div>
                 </td>
             </tr>
