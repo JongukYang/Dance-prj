@@ -26,9 +26,9 @@
         <input type="text" id="searchBar" placeholder="Search artist, classes" />
         {% if request.user.is_authenticated %}
         <span>
-            <a id="sign" href="{% url 'logout' %}">Log Out</a>
+            <a id="sign" href="{% url 'logout' %}" onclick="logoutAlert()">Log Out</a>
             {% else %}
-            <a id="sign" href="{% url 'login' %}">Log In</a>
+            <a id="sign" href="{% url 'login' %}" >Log In</a>
             {% endif %}
         </span>
         {% if request.user.is_authenticated %}
@@ -148,8 +148,11 @@
         <span> and the thrill</span>
         <div> that comes with it. </div>
     </div>
-
-    <script src="{% static 'js/base.js' %}"></script>
+    <script>
+        function logoutAlert() {
+            confirm("로그아웃 하시겠습니까?")
+        }
+    </script>
 </body>
 
 </html>
