@@ -26,9 +26,11 @@
     <p>MY PAGE</p>
     <div>
         {% if my.profilephoto %}
-        <img src="{{ my.profilephoto.url }}" alt="">
+        <span>{{myprofilephoto.url}}</span>
+        <img src="{{ my.profilephoto.url }}" alt="asdasdadas"  >
         {% else %}
-        <img src="{% static 'img/default_profile_img.png' %}" alt="">
+        <span>{{myprofilephoto.url}}</span>
+        <img src="{% static 'img/default_profile_img.png' %}" >
         {% endif %}
         <div id="usernameAndEmail">
             <div id="username">
@@ -48,10 +50,10 @@
         </div>
         <div id="button-group">
             <button id="video-upload-btn">
-                <a href="{% url 'postcreate' %}">영상 업로드</a>
+                <a href="{% url 'postcreate' %}" style="color:white;text-decoration:none">영상 업로드</a>
             </button>
             <button id="enroll-class">
-                <a href="{% url 'coursecreate' %}">클래스 업로드</a>
+                <a href="{% url 'coursecreate' %}" style="color:black;text-decoration:none">클래스 업로드</a>
             </button>
         </div>
     </div>
@@ -67,12 +69,13 @@
         <tr>
             <td style="width:200px"><span>사진</span></td>
             <td style="width:600px">
+                <div>
                 {% if my.profilephoto %}
-                <img src="{{ my.profilephoto.url }}" alt="">
+                <img src="{{ my.profilephoto.url }}" alt="" id="profile-image" style="border-radius:50%;width:200px;height:200px">
                 {% else %}
-                <img src="{% static 'img/default_profile_img.png' %}" alt="">
+                <img src="{% static 'img/default_profile_img.png' %}" id="profile-image" alt="" style="width:200px;height:200px">
                 {% endif %}
-
+                </div>
             </td>
             <td>
                 <!-- <form action="{% url 'modifyprofileimg' request.user.id %}" method="POST" enctype="multipart/form-data">
@@ -130,35 +133,64 @@
     &nbsp;&nbsp;
     <img src="{% static 'img/orange_arrow.png' %}" />
 </div>
-<table>
+<table style="margin: 0;">
     <tr id="show-current-classes">
         {% for regcourse in myregcourses %}
-        <td>Class Title : {{ regcourse.title }}</td>
+        <!-- <td>Class Title : {{ regcourse.title }}</td> -->
         {% if regcourse.photo %}
-        <td><img src="{{regcourse.photo.url}}" /></td>
+        <td>
+            <a href="{% url 'course_detail' regcourse.id %}">
+               <img src="{{regcourse.photo.url}}" style="width:300px; height:284px;margin-right: 20px;" />
+            </a>
+        </td>
+        {% else %}
+        <img src="{% static 'img/default_profile_img.png' %}" alt="">
         {% endif %}
         {% endfor %}
         <!-- <td>Class Body : {{ regcourse.body }}</td> -->
     </tr>
 </table>
+
+<!-- 내가 올린 영상 출력  수정해야함 또는 새로 작성 필요-->
+<!-- <div id="current-class">
+    <span>Liked Video</span>
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+</div>
+<div style="margin-left:370px;display:inline-block">
+    {% for post in myposts %}
+    {% if forloop.counter < 4 %}
+    {% if post.photo %}
+     <a href="{% url 'post_detail' post.id %}">
+        <img src="{{ post.photo.url }}"style="width:300px; height:284px;margin-right: 20px;" />
+    </a>
+    {% else %}
+    <img src="{% static 'img/default_profile_img.png' %}" alt="">
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+</div> -->
+
+
+<!-- 좋아요 누른 영상 가져오기 -->
 <div id="current-class">
     <span>Liked Video</span>
     &nbsp;&nbsp;
     <img src="{% static 'img/orange_arrow.png' %}" />
 </div>
-<!-- 내가 올린 영상 출력 -->
 <div style="margin-left:370px;display:inline-block">
-    {% for post in myposts %}
+    {% for post in mylikedvideos %}
+    {% if forloop.counter < 6 %}
     {% if post.photo %}
-    {% if forloop.counter < 4 %}
-     <a href="{% url 'post_detail' post.id %}"><img src="{{post.photo.url}}"
-            style="width:300px; height:284px;margin-right: 20px;" />
+     <a href="{% url 'post_detail' post.id %}">
+        <img src="{{ post.photo.url }}" style="width:300px; height:284px;margin-right: 20px;" />
     </a>
+    {% else %}
+    <img src="{% static 'img/default_profile_img.png' %}" alt="">
     {% endif %}
     {% endif %}
     {% endfor %}
 </div>
-
 
 
 <div id="current-class">
@@ -172,12 +204,13 @@
         <div class="carousel">
             {% for course in mycourses %}
             {% if forloop.counter < 4 %} 
+            {% if course.photo %}
             <a class="carousel-a" href="{% url 'course_detail' course.id %}">
-                {% if course.photo %}
-                <img src="{{course.photo.url}}" alt="">
-                {% else %}
-                <img src="{% static 'img/default_profile_img.png' %}" alt="">
-                {% endif %}
+                <img src="{{ course.photo.url }}" alt="">
+            </a>
+            {% else %}
+            <img src="{% static 'img/default_profile_img.png' %}" alt="">
+            {% endif %}
             </a>
             {% endif %}
             {% endfor %}
@@ -189,9 +222,22 @@
 <script>
     const chooseProfilePicture = document.querySelector("#choose-profile-picture")
     const profileSaveBtn = document.querySelector('#profile-save-btn');
+    const profileImage= document.querySelector('#profile-image');
     profileSaveBtn.style.display = "none";
-    chooseProfilePicture.addEventListener('click', () => {
-        profileSaveBtn.style.display = "block";
+    console.log(profileImage.src);
+    chooseProfilePicture.addEventListener('change', () => {
+        if(chooseProfilePicture.files && chooseProfilePicture.files[0]){
+            let reader = new FileReader();
+            reader.onload = function(e){
+                profileImage.setAttribute("src",e.target.result);
+                profileImage.style.width="200px";
+                profileImage.style.height="200px";
+                profileImage.style.borderRadius="50%";
+                profileSaveBtn.style.display = "block";
+            }
+            reader.readAsDataURL(event.target.files[0]);
+            
+        }
     })
 
     const prevButton = document.querySelector('.prev');

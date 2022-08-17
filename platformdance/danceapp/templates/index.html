@@ -2,30 +2,16 @@
 {% block content %}
 {% load static %}
 
-<!-- 주석입니다  -->
-{% comment %}
-<h6 style="color: #ebebeb;">{{ likes_top_ten_val }}</h6>
-<hr>
-<h6 style="color: #ebebeb;">
-    {% for l in likes_top_ten_val %}
-    {% if forloop.counter == 8 %}
-    [{{ forloop.counter }}] : {{ l }} <br><br>
-    {% endif %}
-    {% endfor %}
-</h6>
-<hr>
-{% endcomment %}
-
-
 <p style="margin-left:360px; font-size: 24px; color:white;margin-top: 40px; margin-bottom:4px;">
     We live discover
 </p>
 <p style="margin-left:360px;font-size:40px;color:#FF7A00;font-weight: 600;margin-bottom: 60px;">
     Untold Originals
 </p>
+
 <div id="banner-section">
-    <img src="{% static 'img/image/video/2.jpeg' %}" alt="">
 </div>
+
 <div style="display:flex; align-items: cneter;">
     <span style="font-size:30px;font-weight:500;color:white;margin-left:360px;">Who we are</span>
     <pre style="font-size:20px;display:inline-block;margin-left:209px; color:white;">
@@ -41,6 +27,7 @@
     <img src="{% static 'img/orange_arrow.png' %}" />
 </div>
 <div id="slider-section">
+    {% comment %} 
     <!-- Pagination -->
     {% if posts.has_previous %}
     <!-- <a href="?page=1">첫 페이지</a> -->
@@ -55,17 +42,20 @@
     <a href="?page={{posts.next_page_number}}"><img src="{% static 'img/white_arrow_right.png' %}" /></a>
     <!-- <a href="?page={{posts.paginator.num_pages}}">마지막 페이지</a> -->
     {% endif %}
-<!-- 
+    {% endcomment %} 
+
+
     <img src="{% static 'img/white_arrow_left.png' %}" />
     <span style="color:white;font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
-    <img src="{% static 'img/white_arrow_right.png' %}" /> -->
+    <img src="{% static 'img/white_arrow_right.png' %}" />
 </div>
 
 <div id="detail-class-section">
     {% for post in posts %}
     {% if post.photo %}
-    <a href="{% url 'post_detail' post.id %}" id="detail-class-section-a"><img src="{{ post.photo.url }}"
-        alt=""></a>
+    <a href="{% url 'post_detail' post.id %}" id="detail-class-section-a">
+        <img src="{{ post.photo.url }}"alt="ㅁㄴㅇㅁㄴㅇ">
+    </a>
     <!-- 장고 주석 처리 -->
     {% comment %}
     {% else %}
@@ -83,29 +73,8 @@
     <img src="{% static 'img/sample_jpark.png' %}" />
     <img src="{% static 'img/sample_jpark.png' %}" /> -->
 </div>
-<hr style="border:3px solid white;">
-<div id="detail-class-section">
-    {% for course in courses %}
-    {% if course.photo %}
-    <a href="{% url 'course_detail' course.id %}" id="detail-class-section-a"><img src="{{ course.photo.url }}"
-        alt=""></a>
-    <!-- 장고 주석 처리 -->
-    {% comment %}
-    {% else %}
-    <img src="#" alt="NO_Img">
-    {% endcomment %}
-    <!-- 장고 주석 처리 끝 -->
-    {% endif %}
-    {% endfor %}
-    <!-- <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" /> -->
-</div>
+
+
 <div id="news-event-section">
     <div style="margin-bottom:24px;font-size:32px;margin-left:360px">
         NEWS & EVENT
@@ -123,37 +92,56 @@
     <table>
         <tbody>
             <tr>
-                <td rowspan="4" style="width: 784px; height: 650px;">
+                <td rowspan="4" style="width: 600px; height: 650px;">
                     <!-- <img style="width:784px; height:650px" src="{% static 'img/sample_chungha.png' %}" /> -->
-                    <img style="width:fit-content; height: auto; object-fit: contain;"
-                        src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <img src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
                 </td>
                 <td>
-                    <img src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
                 </td>
 
             </tr>
             <tr>
                 <td>
-                    <img src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
 
                 </td>
                 <td>
-                    <img src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <img src="{% static 'img/sample_chungha.png' %}" />
-
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
                 </td>
                 <td>
-                    <img src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:100%;width:100%;">
+                        <img style="height:100%;"
+                            src="{% static 'img/sample_chungha.png' %}" />
+                    </div>
                 </td>
             </tr>
         </tbody>

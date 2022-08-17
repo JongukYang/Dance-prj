@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gothic+A1&display=swap');
 
-* {
-    font-family : 'Montserrat';
-    /* color: white; */
+*{
+    font-family: 'Gothic A1', sans-serif;
 }
 #body {
      background-color: black; 
@@ -13,6 +12,8 @@
     height:40px;
     display:inline-block;
 }
+
+
 
 #login{
     display:inline-block;
@@ -129,8 +130,19 @@ li a{
 
 #banner-section{
     height:606px;
-    background-color: #646262;
+    width:100%;
     margin-bottom: 33px;
+    background-image: url("../img/mainbackground.png");
+}
+
+#genre-banner-section {
+    height:606px;
+    width:100%;
+    margin-bottom: 33px;
+    margin-top: 40px;
+    background-image: url("../img/bboybanner.png");
+    background-repeat: no-repeat;
+    background-size:cover;
 }
 
 #detail-section{
@@ -156,12 +168,12 @@ li a{
 
 #detail-class-section{
     display:inline-block;
-    margin-left:360px;
+    margin-left:300px;
     margin-right:300px;
 }
 
 #detail-class-section > img{
-    width:320px;
+    width:300px;
     height:444px;
     margin-right: 20px ;
     margin-bottom: 26px;
@@ -171,10 +183,13 @@ li a{
 #detail-class-section > img:hover{
     background-color: black;
     opacity: 30%;
+    cursor: pointer;
+   
 }
 
+
 #detail-class-section-a > img{
-    width:320px;
+    width:300px;
     height:444px;
     margin-right: 20px ;
     margin-bottom: 26px;
@@ -201,11 +216,15 @@ table{
 
 table{
     border-collapse: collapse;
-    background-color: black;
 }
 
 td{
+    cursor: pointer;
     margin:0px 10px 20px 10px;
+}
+
+td:hover{
+    opacity: 30%;
 }
 
 td:hover >img{
@@ -287,12 +306,17 @@ td:hover >img{
     display: inline-block;
     padding-top: 15px;
     text-align: center;
-    color:black;
     border-radius: 21px;
     margin-right: 71px;
     font-weight: 600;
     margin-bottom: 57px;
     cursor: pointer;
+    text-decoration: none;
+}
+
+#dance-class > a{
+    color:black;
+    text-decoration: none;
 }
 
 #class-name{
@@ -305,6 +329,7 @@ td:hover >img{
 }
 
 /* post_detail css */
+
 .title-sy{
     margin-bottom: 75px;
 
@@ -325,7 +350,8 @@ video{
     margin-top: 34px;
 }
 
-.box-sy {
+.box-sy1 {
+    display: inline-block;
     width: 72px;
     height: 72px; 
     border-radius: 70%;
@@ -333,6 +359,9 @@ video{
 }
 
 #nf{
+    display: inline-block;
+    margin-left: 30px;
+
     font-family: 'Gothic A1';
     font-style: normal;
     font-weight: 700;
@@ -342,7 +371,7 @@ video{
 }
 
 .nf-name{
-    margin-bottom: 16px;
+    margin-bottom: 30px;
 }
 
 .userimg-sy {
@@ -352,7 +381,7 @@ video{
 }
 
 .info-sy{
-    display: inline;
+    
     font-family: 'Gothic A1';
     font-style: normal;
     font-weight: 700;
@@ -361,8 +390,9 @@ video{
     color: #FFFFFF;
 }
 
-#good{
-    background: #4366E3;
+#hate{
+    float: left;
+    background: #FF5656;
     margin-left: 497px;
     width: 90px;
     height: 35px;
@@ -375,7 +405,8 @@ video{
     color: #FFFFFF;
 }
 
-#hate{
+#good{
+    float: left;
     background: #FF5656;
     margin-left: 16px;
     width: 90px;
@@ -393,17 +424,48 @@ video{
     margin-top: 38px;
 }
 
-.comment-sy{
+.com-box{
     margin-top: 80px;
 }
 
-#table-sy{
-    border-spacing: 30px;
+.box-sy2 {
+    display: inline-block;
+    width: 38px;
+    height: 38px; 
+    border-radius: 70%;
+    overflow: hidden;
 }
 
+.com-name{
+    display: inline-block;
+    margin-left: 14px;
+    padding-bottom: 10px;
+
+    width: 64px;
+    height: 20px;
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+.com-foll{
+    display: inline-block;
+    margin-left: 46px;
+
+    width: 95px;
+    height: 20px;
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
 .com-count{
-    width: 89px;
-    height: 25px;
+    margin-top: 80px;
 
     font-family: 'Gothic A1';
     font-style: normal;
@@ -414,8 +476,7 @@ video{
 }
 
 .com-puls{
-    width: 64px;
-    height: 20px;
+    margin-top: 33px;
 
     font-family: 'Gothic A1';
     font-style: normal;
@@ -423,4 +484,20 @@ video{
     font-size: 16px;
     line-height: 20px;
     color: #FFFFFF;
+}
+/*  */
+
+#course-detail-banner-section{
+    width:978px;
+    height:601px;
+    margin: auto auto;
+    background-image: url("../img/image/video/1.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+
+#table{
+    color:white;
+    cursor:default;
 }

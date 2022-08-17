@@ -3,107 +3,107 @@
 {% load static %}
 <!-- <link rel="stylesheet" href="{% static 'css/classdetail.css' %}"> -->
 <!-- 여기부터 클래스 디테일 -->
-<p style="margin-left:360px;font-size:40px; color:white;font-weight: 600;margin-bottom: 60px;">
-    클래스 제목
+<p style="margin-left:360px;font-size:35px; color:white;font-weight: 600;margin-bottom: 60px;margin-top:50px;">
+    {{ course.title }}
 </p>
 
-<div id="banner-section">
-    <img src="{{ course.photo.url }}" alt="">
+<div id="datetime-section" style="margin-left: 550px; float:left; width: 400px; height:300px; background-color: #646262;
+    margin-bottom: 33px;">
+    <!-- <img src="image/video/1.jpg" > -->
+    {% if course.photo %}
+    <img src="{{ course.photo.url }}" alt="" width="50%">
+    {% else %}
+    <h4>No Course Photo</h4>
+    {% endif %}
 </div>
 
-<div id="table">
-    <table border="1">
-        <th>Date/Time</th>
-        <tr>
-            <td>날짜</td>
-        </tr>
-        <tr>
-            <td>2022.11.07</td>
-        </tr>
-        <tr>
-            <td>시간</td>
-        </tr>
-        <tr>
-            <td>오후 5시~오후 10시</td>
-        </tr>
-    </table>
+<div id="dancer" style="color:white; float:right;">
+    <h1>Date/Time</h1><br>
+    <h3>날짜</h3>
+    <p>{{ course.startDate }}</p><br>
+    <h3>시간</h3>
+    <!-- coursecreate.html에 시간을 입력받는 폼도 필요 -->
+    <p>오후 5시~오후 10시</p>
 </div>
 
-<div id="detail-section">
-    <br><br><br><br>
-    The Dancer
 
-    &nbsp;&nbsp;
+<div id="detail-section" style="margin-top:500px">
+    The Dancer &nbsp;&nbsp;
     <img src="{% static 'img/orange_arrow.png' %}" />
     <br><br>
 </div>
 
-<div id="slider-section">
-    <img src="{% static 'img/white_arrow_left.png' %}" />
-    <span style="color:white;font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
-    <img src="{% static 'img/white_arrow_right.png' %}" />
+<div id="dancer-section" style="margin-left: 550px; float:left; width: 400px;    height:300px;    background-color: #646262;
+    margin-bottom: 33px;">
+    <!-- <img src="image/clASS/효진초이(원트).jpeg"> -->
+    {% if course.userId.profilephoto %}
+    <img src="{{ course.userId.profilephoto.url }}" width="50%">
+    {% else %}
+    <h4>No ProfileImage</h4>
+    {% endif %}
 </div>
 
-<div id="dancer-section">
-    <img src="image/clASS/효진초이(원트).jpeg">
+<div id="dancer" style="color:white; float:right">
+    <h3>{{ course.userId.username }}</h3>
+    <p>{{ course.userId.danceSkill }}</p>
+    <p>등등</p>
+    <p>등등</p>
 </div>
 
-<div id="dancer-table">
-    <table border="1">
-        <th>Yujin Choi</th>
-        <tr>
-            <td>댄서의 경력</td>
-        </tr>
-        <tr>
-            <td>등등</td>
-        </tr>
-        <tr>
-            <td>등등</td>
-        </tr>
-        <tr>
-            <td>등등</td>
-        </tr>
-    </table>
-</div>
-
-<div id="news-event-section">
+<div id="detail-section" style="margin-top:500px">
     <div style="margin-bottom: 10px; font-size:32px; ">
-        <br><br><br><br><br><br><br><br><br>Place
+        Place
         &nbsp;&nbsp;
         <img src="{% static 'img/orange_arrow.png' %}" />
     </div>
-
-    <div style="font-size:20px; color:#717171;">
-        <!--CHOO:OOM의 새로운 소식, 지금 바로 확인해보세요-->
-        <span style="float:right; margin-right:360px;">
-            <img src="{% static 'img/black_arrow_left.png' %}" />
-            <span style="font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
-            <img src="{% static 'img/black_arrow_right.png' %}" />
-        </span>
-    </div>
-
-
-</div>
-<div id="place-section">
-    <img src="image/clASS/효진초이(원트).jpeg">
 </div>
 
-<div id="place-table">
-    <table border="1">
-        <th></th>
-        <tr>
-            <td>장소</td>
-        </tr>
-        <tr>
-            <td>연습실</td>
-        </tr>
-        <tr>
-            <td>위치</td>
-        </tr>
-        <tr>
-            <td>서울 마포구</td>
-        </tr>
-    </table>
+<div id="place" style="margin-left: 550px;   float:left; width: 400px;    height:300px;    background-color: #646262;
+    margin-bottom: 33px;">
+    <!-- <img src="image/clASS/효진초이(원트).jpeg"> -->
+    <!-- 이부분은 google map 또는 kakao map 정보를 받아와야함 아래는 더미 파일 -->
+    {% if course.userId.profilephoto %}
+    <img src="{{ course.userId.profilephoto.url }}" width="50%">
+    {% else %}
+    <h4>No Location Data</h4>
+    {% endif %}
+</div>
 
+<div id="place-section" style="color:white; float:right">
+    <h3>장소</h3>
+    <p>{{ course.location }}</p><br>
+    <h3>위치</h3>
+    <p>{{ course.location }}</p>
+</div>
+
+<div id="apply">
+    <form action="{% url 'regCourse' course.id %}" method="POST">
+        {% csrf_token %}
+        {% if request.user in course.register_user.all %}
+        <input type="submit" value="신청취소">
+        {% else %}
+        <input type="submit" value="신청하기">
+        {% endif %}
+    </form>
+    <style>
+        #apply input[type="submit"] {
+            width: 700px;
+            height: 80px;
+            border: 1px solid #FB646B;
+            margin-top: 80px;
+            margin-left: 700px;
+            border-radius: 20px;
+            font: bold 35px 'arial';
+            background-color: #FB646B;
+            color: white;
+            outline: none;
+            cursor: pointer;
+        }
+
+        #apply input[type="submit"]:hover {
+            background-color: pink;
+            border: 1px solid pink;
+        }
+    </style>
 </div>
 {% endblock %}

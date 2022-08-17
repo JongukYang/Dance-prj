@@ -19,9 +19,10 @@
         crossorigin="anonymous"></script>
 </head>
 
+
 <body id="body">
     <div id="header-section">
-        <a href="{% url 'index' %}"><img class="logo" src="{% static 'img/logo.png' %}" /></a>
+        <a href="{% url 'index' %}"><img class="logo" src="{% static 'img/mainlogo.png' %}" /></a>
         <input type="text" id="searchBar" placeholder="Search artist, classes" />
         {% if request.user.is_authenticated %}
         <span>
