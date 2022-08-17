@@ -31,7 +31,6 @@ urlpatterns = [
     path('aboutus/', views.aboutus, name='aboutus'),
     #뉴스 페이지
     path('news',views.news,name="news"),
-    
     # 마이페이지
     path('mypage/<int:user_id>', views.mypage, name='mypage'),
     # user 프로필 이미지 수정
