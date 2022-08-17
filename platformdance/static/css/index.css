@@ -313,6 +313,10 @@ td{
     text-decoration: none;
 }
 
+#dance-class2 > a:hover{
+    color:white;
+}
+
 #dance-class > a{
     color:black;
     text-decoration: none;
