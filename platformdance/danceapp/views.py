@@ -301,3 +301,6 @@ def course(request):
 
 def aboutus(request):
     return render(request, 'about_us.html')
+
+def news(request):
+    return render(request, 'news.html')

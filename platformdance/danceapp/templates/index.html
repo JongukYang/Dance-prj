@@ -84,60 +84,59 @@
         CHOO:OOM의 새로운 소식, 지금 바로 확인해보세요
         <span style="float:right;margin-right:360px;">
             <img src="{% static 'img/black_arrow_left.png' %}" />
-            <span style="font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
+            <span style="font-size: 20px;">&nbsp; 1 / 6 &nbsp;</span>
             <img src="{% static 'img/black_arrow_right.png' %}" />
         </span>
     </div>
     <table id="news-table">
         <tbody>
-            <tr>
+            <tr id="main_news">
                 <td rowspan="4" style="width: 600px; height: 650px;">
                     <!-- <img style="width:784px; height:650px" src="{% static 'img/sample_chungha.png' %}" /> -->
-                    <div style="height:100%;width:100%;">
+                    <div style="height:100%;width:100%;" >
                         <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div style="height:100%;width:100%;">
-                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:200px;width:200px;background-color: lightgray;">
                     </div>
                 </td>
                 <td>
-                    <div style="height:100%;width:100%;">
-                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:200px;width:200px;background-color: lightgray;">
                     </div>
                 </td>
 
             </tr>
             <tr>
                 <td>
-                    <div style="height:100%;width:100%;">
-                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:200px;width:200px;background-color: lightgray;">
                     </div>
 
                 </td>
                 <td>
-                    <div style="height:100%;width:100%;">
-                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:200px;width:200px;background-color: lightgray;">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div style="height:100%;width:100%;">
-                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:200px;width:200px;background-color: lightgray;">
                     </div>
                 </td>
                 <td>
-                    <div style="height:100%;width:100%;">
-                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:200px;width:200px;background-color: lightgray;">
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
-
+<script>
+    const news_main = document.querySelector('#main_news');
+    news_main.addEventListener('click',()=>{
+        location.href="/news"
+    })
+</script>
 {% endblock %}
