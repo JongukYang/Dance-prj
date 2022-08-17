@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gothic+A1&display=swap');
 
 * {
+    font-family: 'Gothic A1';
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
 body {
+    overflow-x: hidden;
+    overflow-y: scroll;
     background-image: linear-gradient(
         rgba(0, 0, 0, 0.7),
         rgba(0, 0, 0, 0.7)
@@ -17,84 +20,59 @@ body {
 
 .container {
     margin: auto;
-    width: 579px;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
+    width: 579;
+    height: 100vh;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
 
 header {
+    margin-top: 30px;
     font-size: 45px;
-    font-weight: bold;
-    color: white;
-}
-
-.find_password {
-    font-size: 15px;
-    color :white;
-}
-
-.find_password2 {
-    margin-top: 25px;
-    font-style: initial;
-    font-weight: normal;
-    font-size: 13px;
-    padding: 5px;
     color: white;
 }
 
 header a {
     text-decoration: none;
+    color: white;
+}
+
+.inform {
+    text-align: left;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 10px;
 }
 
 section {
-    width: 100%;
+    width: 579px;
     margin: 10px auto 40px;
 }
 
-.sign_in {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    color:white;
-}
-
-section a {
-    text-decoration: none;
-}
-
 section input[placeholder] {
-    font-size: 23px;
+    font-size: 20px;
     padding-left: 30px;
     width: 100%;
     height: 70px;
-    border: .5px solid #ddd;
+    border: 1px rgba(255, 255, 255, 0.6); 
+    background-color: rgba(255, 255, 255, 0.6);
     outline: none;
     transition: box-shadow.5s;
 }
 
-section input[placeholder]::placeholder {
-    font-size: 23px;
-}
-
-section input:nth-of-type(1) {
-    background-color: rgba(255, 255, 255, 0.6);
-    border: rgba(255, 255, 255, 0.6);
+section input {
     border-radius: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 section input[type="submit"] {
-    display: block;
     width: 100%;
-    height: 50px;
+    height: 80px;
     border: 1px solid #FF5656;
     margin-top: 1rem;
     padding: .3rem;
-    border-radius: 10px;
-    font-size: 20px;
+    font-size: 30px;
     background-color: #FF5656;
     color: white;
     outline: none;
@@ -102,17 +80,35 @@ section input[type="submit"] {
     cursor: pointer;
 }
 
+.Date {
+    display: flex;
+    flex-direction: row;
+    width: 579px;
+}
+
 section input[type="submit"]:hover {
+    margin-top: 20px;
     background-color: lightcoral;
     border: 1px solid lightcoral;
 }
 
-.forgot_id {
-    font-size: 13px;
-    color: white;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    text-decoration-color: white;
+select {
+    width: 100%;
+    height: 70px;
+    border: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.6);
+    color: gray;
+    text-align: center;
+    font-size: 23px;
+    border-radius: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin-bottom: 25px;
+}
+
+select::-ms-expand {
+    display: none;
 }
 
 footer {
