@@ -20,8 +20,8 @@
     <!-- <img src="../static/img/bboybanner.png" alt=""> -->
 </div>
 <div style="display:flex; align-items: cneter;">
-    <span style="font-size:30px;font-weight:500;color:white;margin-left:360px;">장르 이름</span>
-    <pre style="font-size:20px;display:inline-block;margin-left:209px; color:white;">
+    <span id="genre_name" style="font-size:30px;font-weight:500;color:white;margin-left:360px;">장르 이름</span>
+    <pre  id="genre_comment" style="font-size:20px;display:inline-block;margin-left:209px; color:white;">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
         Quae asperiores maiores, repellat, veritatis voluptatum 
         doloremque voluptates earum quod, ea non ex similique facilis 
@@ -98,27 +98,35 @@
     const classNameText = document.getElementById("class-name")
     let name = new URL(location).searchParams.get("genre_id");
     const genreClass = document.querySelector("#genre-class");
-    console.log(typeof (name));
+    const danceClassList = document.querySelectorAll('#dance-class2');
+    const genre_name = document.querySelector('#genre_name');
+    const genre_comment = document.querySelector('#genre_comment');
     if (name === "1") {
-        classNameText.innerText = "Hip-Hop";
+        classNameText.innerText = "Hip Hop";
         genreClass.style.display = "block"
+        danceClassList[0].childNodes[0].style.color="white";
+        genre_name.innerText = "Hip Hop"
         document.querySelectorAll('#dance-class2').forEach(item => {
             console.log(item.children[0].style)
-            if (item.innerText === "Hip-Hop") {
+            if (item.innerText === "Hip Hop") {
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
+                genre_comment.innerText = "힙합 코멘트"
                 item.children[0].style.textDecoration = "none";
             }
         })
     } else if (name === "2") {
         classNameText.innerText = "Locking";
-        genreClass.style.display = "block"
+        genreClass.style.display = "block";
+        danceClassList[1].childNodes[0].style.color="white";
+        genre_name.innerText = "Locking"
         document.querySelectorAll('#dance-class2').forEach(item => {
             if (item.innerText === "Locking") {
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
+                genre_comment.innerText = "락킹 코멘트"
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -126,10 +134,13 @@
     else if (name === "3") {
         classNameText.innerText = "Waacking";
         genreClass.style.display = "block"
+        danceClassList[2].childNodes[0].style.color="white";
+        genre_name.innerText = "Waacking"
         document.querySelectorAll('#dance-class2').forEach(item => {
             if (item.innerText === "Waacking") {
                 // item.style.border = "1px solid white";
                 // item.children[0].style.color = "white";
+                genre_comment.innerText = "왁킹 코멘트"
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -137,11 +148,14 @@
     else if (name === "4") {
         classNameText.innerText = "B-Boyibg";
         genreClass.style.display = "block"
+        danceClassList[3].childNodes[0].style.color="white";
+        genre_name.innerText = "B-Boying"
         document.querySelectorAll('#dance-class2').forEach(item => {
             if (item.innerText === "B-Boyibg") {
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
+                genre_comment.innerText = "비보잉 코멘트"
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -149,23 +163,29 @@
     else if (name === "5") {
         classNameText.innerText = "House";
         genreClass.style.display = "block"
+        danceClassList[4].childNodes[0].style.color="white";
+        genre_name.innerText = "House"
         document.querySelectorAll('#dance-class2').forEach(item => {
             if (item.innerText === "House") {
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
+                genre_comment.innerText = "하우스 코멘트"
                 item.children[0].style.textDecoration = "none";
             }
         })
     }
     else if (name === "6") {
-        classNameText.innerText = "Crump";
+        classNameText.innerText = "Krump";
         genreClass.style.display = "block"
+        danceClassList[5].childNodes[0].style.color="white";
+        genre_name.innerText = "Krump"
         document.querySelectorAll('#dance-class2').forEach(item => {
             if (item.innerText === "Crump") {
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
+                genre_comment.innerText = "크럼프 코멘트"
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -173,11 +193,14 @@
     else if (name === "7") {
         classNameText.innerText = "Popping";
         genreClass.style.display = "block"
+        danceClassList[6].childNodes[0].style.color="white";
+        genre_name.innerText = "Poping"
         document.querySelectorAll('#dance-class2').forEach(item => {
             if (item.innerText === "Popping") {
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
+                genre_comment.innerText = "파핑 코멘트"
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -185,11 +208,14 @@
     else if (name === "8") {
         classNameText.innerText = "Choreography";
         genreClass.style.display = "block"
+        danceClassList[7].childNodes[0].style.color="white";
+        genre_name.innerText = "Choregrahpy"
         document.querySelectorAll('#dance-class2').forEach(item => {
             if (item.innerText === "Choreography") {
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
+                genre_comment.innerText = "코멘트"
                 item.children[0].style.textDecoration = "none";
             }
         })
@@ -221,6 +247,7 @@
         }
         carousel.style.transform = `translate3d(-${600 * index}px, 0, 0)`;
     });
+
 
 </script>
 {% endblock %}
