@@ -50,16 +50,7 @@
         </a>
         {% endif %}
     </div>
-    <script type="text/javascript">
-        var a = "{{request.user.is_authenticated}}"
-        const myPageBtn = document.getElementById('my-page');
-
-        myPageBtn.addEventListener('click', () => {
-            if (a === 'True') {
-                document.location.href = "{% url 'signup' %}"
-            }
-        })
-    </script>
+   
 
     <!-- 메인 컨테이너는 남겨놔야 css 충돌이 없을려나? -->
     <div class="container" id="main-container">
