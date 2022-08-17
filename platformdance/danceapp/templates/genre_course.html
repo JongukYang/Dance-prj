@@ -95,6 +95,7 @@
     const danceClassList = document.querySelectorAll('#dance-class2');
     const genre_name = document.querySelector('#genre_name');
     const genre_comment = document.querySelector('#genre_comment');
+    const genre_banner_section = document.querySelector('#genre-banner-section');
     if (name === "1") {
         classNameText.innerText = "Hip Hop";
         genreClass.style.display = "block"
@@ -106,7 +107,8 @@
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
-                genre_comment.innerText = "힙합 코멘트"
+                genre_comment.innerText = "힙합(Hip-Hop)은 1970년대 후반 뉴욕 브롱스 남쪽 빈민가에 거주하는 미국 흑인과 남미 히스패닉계 청소년들에 의해 형성된 새로운 문화운동 전반을 가리키는 말이다. 이에 힙합을 '미국에서 독자적으로 만들어진 유일한 문화'라고 평하기도 한다."
+                genre_banner_section.style.backgroundImage = "url('{% static 'img/class_tumbnail/Hiphop.jpeg' %}')";
                 item.children[0].style.textDecoration = "none";
             }
         })
