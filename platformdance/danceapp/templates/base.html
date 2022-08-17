@@ -26,12 +26,20 @@
         <input type="text" id="searchBar" placeholder="Search artist, classes" />
         {% if request.user.is_authenticated %}
         <span>
-            <a id="sign" href="{% url 'logout' %}" onclick="logoutAlert()">Log Out</a>
+            <a id="sign" href="#" onclick="logoutAlert()">Log Out</a>
             {% else %}
             <a id="sign" href="{% url 'login' %}">Log In</a>
             {% endif %}
         </span>
         {% if request.user.is_authenticated %}
+        <script>
+            function logoutAlert() {
+                val = confirm("로그아웃 하시겠습니까?");
+                if (val == true) {
+                    location.href = "{% url 'logout' %}"
+                }
+            }
+        </script>
         <span>
             <span></span>
             {% else %}
@@ -50,7 +58,6 @@
         </a>
         {% endif %}
     </div>
-   
 
     <!-- 메인 컨테이너는 남겨놔야 css 충돌이 없을려나? -->
     <div class="container" id="main-container">
@@ -321,17 +328,6 @@
         </div>
     </footer>
 
-    <!-- <div id="comment-section">
-        <p> We love to find the familiar </p>
-        <p style="display:inline-block">within the unfamiliar</p>
-        <span> and the thrill</span>
-        <div> that comes with it. </div>
-    </div> -->
-    <script>
-        function logoutAlert() {
-            confirm("로그아웃 하시겠습니까?")
-        }
-    </script>
 </body>
 
 </html>
