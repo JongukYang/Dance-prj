@@ -50,6 +50,17 @@
             2022 Key. All Rights Reserved | Design By 서연이는 19살
         </footer>
     </div>
+
+    {% if messages %}
+	<ul class="messages">
+    	{% for message in messages %}
+        	<li>
+            	[{{ message.tags }}] {{ message.message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
 </body>
 
 </html>
