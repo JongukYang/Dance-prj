@@ -26,12 +26,20 @@
         <input type="text" id="searchBar" placeholder="Search artist, classes" />
         {% if request.user.is_authenticated %}
         <span>
-            <a id="sign" href="{% url 'logout' %}" onclick="logoutAlert()">Log Out</a>
+            <a id="sign" href="#" onclick="logoutAlert()">Log Out</a>
             {% else %}
             <a id="sign" href="{% url 'login' %}">Log In</a>
             {% endif %}
         </span>
         {% if request.user.is_authenticated %}
+        <script>
+            function logoutAlert() {
+                val = confirm("로그아웃 하시겠습니까?");
+                if (val == true) {
+                    location.href = "{% url 'logout' %}"
+                }
+            }
+        </script>
         <span>
             <span></span>
             {% else %}
@@ -51,12 +59,12 @@
         {% endif %}
     </div>
     <script type="text/javascript">
-        var a = "{{request.user.is_authenticated}}"
+        var a = "{{ request.user.is_authenticated }}"
         const myPageBtn = document.getElementById('my-page');
 
         myPageBtn.addEventListener('click', () => {
-            if (a === 'True') {
-                document.location.href = "{% url 'signup' %}"
+            if (a === true) {
+                location.href = "{% url 'mypage' request.user.id %}"
             }
         })
     </script>
@@ -330,17 +338,6 @@
         </div>
     </footer>
 
-    <!-- <div id="comment-section">
-        <p> We love to find the familiar </p>
-        <p style="display:inline-block">within the unfamiliar</p>
-        <span> and the thrill</span>
-        <div> that comes with it. </div>
-    </div> -->
-    <script>
-        function logoutAlert() {
-            confirm("로그아웃 하시겠습니까?")
-        }
-    </script>
 </body>
 
 </html>
