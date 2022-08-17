@@ -5,6 +5,7 @@ from .forms import PostForm, CommentForm, CourseForm, PostModifyForm
 from .models import Post, Comment, Genre, Course
 from accounts.models import userProfile
 from django.core.paginator import Paginator
+from django.contrib import messages
 
 # 페이지네이션, 객체들 목록을 끊어서 보여주는 것
 # from django.core.paginator import Paginator
@@ -13,9 +14,9 @@ def index(request):
     # paginator는 삭제 예정
     # 업로드된 영상 게시글
     posts = Post.objects.all().order_by('-uploadDate')
-    paginator = Paginator(posts, 8)
-    pagenum = request.GET.get('page') # url 부분 ex) @@@?page=1 -> {page:1}
-    posts = paginator.get_page(pagenum)
+    # paginator = Paginator(posts, 8)
+    # pagenum = request.GET.get('page') # url 부분 ex) @@@?page=1 -> {page:1}
+    # posts = paginator.get_page(pagenum)
     # 업로드된 클래스 게시글
     courses = Course.objects.all().order_by('-uploadDate')
     # 좋아요 많은 순서대로 만들기
@@ -69,6 +70,7 @@ def postcreate(request):
             unfinished = form.save(commit=False)
             unfinished.userId = request.user
             unfinished.save()
+            messages.add_message(request, messages.SUCCESS, '새 글이 성공적으로 등록 되었습니다.')
             return redirect('index')
     # request method()가 Get일 경우 form 입력 html 띄우기
     else:
@@ -259,11 +261,11 @@ def regCourse(request, course_id):
 # 마이페이지 정보 전달
 def mypage(request, user_id):
     if request.user.is_authenticated:
-        myposts = Post.objects.filter(userId=user_id).order_by('-uploadDate')
-        mycourses = Post.objects.filter(userId=user_id).order_by('-uploadDate')
+        myposts = Post.objects.filter(userId_id=user_id).order_by('-uploadDate')
+        mycourses = Course.objects.filter(userId=user_id).order_by('-uploadDate')
         myprofile = userProfile.objects.filter(id=user_id)
         mylikedvideos = Post.objects.filter(likes_user=user_id).order_by('-uploadDate')
-        myregcourses = Course.objects.filter(register_user=user_id)
+        myregcourses = Course.objects.filter(register_user=user_id).order_by('-uploadDate')
         context = {
             'myposts':myposts,
             'mycourses':mycourses,
@@ -272,6 +274,9 @@ def mypage(request, user_id):
             'myregcourses':myregcourses,
         }
         return render(request, 'mypage.html', context)
+    else:
+
+        return redirect('login')
 
 # 마이페이지 프로필 사진 추가
 def modifyprofileimg(request, user_id):

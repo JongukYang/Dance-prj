@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+<script>
+    function gclick(){
+        document.getElementById("good").style.backgroundColor="rgba(255, 86, 86, 0.6)";
+        document.getElementById("good").style.color="rgba(255, 255, 255, 0.6)";
+        document.getElementById("good").style.opacity="0.6";
+    }
+</script>
 
 <div id="detail-section">
     <section>
@@ -24,14 +31,14 @@
                     {% if request.user in post.likes_user.all %}
                     <button type="submit" id="hate" value="dislike">좋아요 해제</button>
                     {% else %}
-                    <button type="submit" id="good" value="like">좋아요</button>
+                    <button type="submit" id="good" onclick="gclick()" value="like">좋아요</button>
                     {% endif %}
                 </form>
                 {% endif %}
             </div>
             <!-- 사용자 정보 -->
             <div class="userinfo">
-                <div class="box-sy">
+                <div class="box-sy1">
                     {% if post.userId.profilephoto %}
                     <img src="{{ post.userId.profilephoto.url }}" class="userimg-sy">
                     {% else %}
@@ -48,37 +55,32 @@
         </div>
 
         <!-- 댓글기능 -->
-        <div class="comment-sy">
-            <table style="color: #FFFFFF;">
-                <tr>
-                    <th>
-                        <div class="userinfo">
-                            <div class="box-sy">
-                                {% if post.userId.profilephoto %}
-                                <img src="{{ request.user.profilephoto.url }}" class="userimg-sy">
-                                {% else %}
-                                <h6>#none</h6>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </th>
-                    <th>{{ request.user.username }}</th>
-                    <th>댓글추가.... </th>
-                </tr>
-            </table>
+        <div>
+            <div class="com-box">
+                <div class="box-sy2">
+                    {% if post.userId.profilephoto %}
+                    <img src="{{ request.user.profilephoto.url }}" class="userimg-sy">
+                    {% else %}
+                    <h6>#none</h6>
+                    {% endif %}
+                </div>
+                    <div class="com-name">{{ request.user.username }}</div>
+                    <div class="com-foll">
+                        <!-- 댓글 달기 -->
+                        {% if request.user.is_authenticated %}
+                        <form method="POST" action="{% url 'new_comment' post.id %}">
+                            {% csrf_token %}
+                            {{ comment_form }}
+                            <input type="submit" value="댓글 입력" style="float: right;">
+                        </form>
+                        {% endif %}
+                    </div>
+            </div> 
             <hr style="border: 2px solid #FFFFFF;
                 width: 980px;height: 0px; margin-top: 10px;">
         </div>
         <div class="com-count">
             <!-- 댓글 30개 -->
-            {% if request.user.is_authenticated %}
-            <form method="POST" action="{% url 'new_comment' post.id %}">
-                {% csrf_token %}
-                {{ comment_form }}
-                <input type="submit" value="댓글 입력">
-            </form>
-            {% endif %}
-
             {% for comment in post.comment_set.all %}
             {{ comment.userId }} - {{ comment }}
             {% if request.user == comment.userId %}

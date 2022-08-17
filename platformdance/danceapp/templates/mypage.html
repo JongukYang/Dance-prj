@@ -135,7 +135,7 @@
     &nbsp;&nbsp;
     <img src="{% static 'img/orange_arrow.png' %}" />
 </div>
-<table>
+<table style="margin: 0;">
     <tr id="show-current-classes">
         {% for regcourse in myregcourses %}
         {% if regcourse.photo %}
@@ -147,21 +147,20 @@
         <!-- <td>Class Body : {{ regcourse.body }}</td> -->
     </tr>
 </table>
-<div id="current-class">
+
+<!-- 내가 올린 영상 출력  수정해야함 또는 새로 작성 필요-->
+<!-- <div id="current-class">
     <span>Liked Video</span>
     &nbsp;&nbsp;
     <img src="{% static 'img/orange_arrow.png' %}" />
 </div>
-<!-- 내가 올린 영상 출력 -->
 <div style="margin-left:370px;display:inline-block">
     {% for post in myposts %}
-    {% if post.photo %}
     {% if forloop.counter < 4 %}
      <a href="{% url 'post_detail' post.id %}">
         <img src="{{post.photo.url}}"
             style="width:300px; height:284px;margin-right: 20px;" alt="없음" />
     </a>
-    {% endif %}
     {% endif %}
     {% endfor %}
 </div>
@@ -171,14 +170,39 @@
     &nbsp;&nbsp;
     <img src="{% static 'img/orange_arrow.png' %}" />
 </div>
-<!-- 내가 올린 영상 출력 -->
+<-- 내가 올린 영상 출력 -->
 <div style="margin-left:370px;display:inline-block">
     {% for post in myposts %}
     {% if post.photo %}
     {% if forloop.counter < 4 %}
      <a href="{% url 'post_detail' post.id %}"><img src="{{post.photo.url}}"
             style="width:300px; height:284px;margin-right: 20px;" />
+
     </a>
+    {% else %}
+    <img src="{% static 'img/default_profile_img.png' %}" alt="">
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+</div>
+
+
+
+<!-- 좋아요 누른 영상 가져오기 -->
+<div id="current-class">
+    <span>Liked Video</span>
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+</div>
+<div style="margin-left:370px;display:inline-block">
+    {% for post in mylikedvideos %}
+    {% if forloop.counter < 6 %}
+    {% if post.photo %}
+     <a href="{% url 'post_detail' post.id %}">
+        <img src="{{ post.photo.url }}" style="width:300px; height:284px;margin-right: 20px;" />
+    </a>
+    {% else %}
+    <img src="{% static 'img/default_profile_img.png' %}" alt="">
     {% endif %}
     {% endif %}
     {% endfor %}
@@ -234,9 +258,9 @@
     const nextButton = document.querySelector('.next');
     const carousel = document.querySelector('.carousel');
     let index = 0;
-
+    
     prevButton.addEventListener('click', () => {
-        if (index === 0) {
+        if (index === idx-1) {
             index = idx-1;
         } else {
             index -= 1;

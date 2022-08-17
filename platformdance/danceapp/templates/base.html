@@ -19,13 +19,14 @@
         crossorigin="anonymous"></script>
 </head>
 
+
 <body id="body">
     <div id="header-section">
-        <a href="{% url 'index' %}"><img class="logo" src="{% static 'img/logo.png' %}" /></a>
+        <a href="{% url 'index' %}"><img class="logo" src="{% static 'img/mainlogo.png' %}" /></a>
         <input type="text" id="searchBar" placeholder="Search artist, classes" />
         {% if request.user.is_authenticated %}
         <span>
-            <a id="sign" href="{% url 'logout' %}">Log Out</a>
+            <a id="sign" href="{% url 'logout' %}" onclick="logoutAlert()">Log Out</a>
             {% else %}
             <a id="sign" href="{% url 'login' %}">Log In</a>
             {% endif %}
@@ -140,15 +141,206 @@
 
     <!-- 변동 영역 끝 -->
 
-    <!-- footer 영역이 될 것 같음 -->
-    <div id="comment-section">
+    <!-- footer -->
+    <style>
+        footer {
+            background-color: black;
+            color: white;
+        }
+
+        footer a {
+            text-decoration: none;
+            /* 기본 밑줄을 제거합니다 */
+            color: white;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+            /* 마우스 커서가 올라갔을 때 밑줄을 생성합니다*/
+        }
+
+        #footer-slogan {
+            text-align: center;
+            background-color: #121212;
+            margin-bottom: 83px;
+        }
+
+        #footer-slogan hr {
+            margin: 0;
+            opacity: 0.5;
+        }
+
+        #footer-contents {
+            width: 1180px;
+            margin: 0 auto;
+        }
+
+        #footer-up-div p {
+            display: inline-block;
+            margin-right: 14px;
+            font-family: 'Gothic A1';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 20px;
+            line-height: 25px;
+        }
+
+        #footer-up-div span {
+            font-family: 'Times New Roman';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 14px;
+        }
+
+        #footer-up-div ul,
+        #footer-aside-left ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        #footer-up-div ul li {
+            display: inline-block;
+            /* li 수평정렬하는 방법 */
+            margin-right: 25px;
+            font-family: 'Gothic A1';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        #footer-down-div {
+            display: flex;
+            font-family: 'Gothic A1';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 20px;
+            margin-top: 60px;
+            padding: 0;
+        }
+
+        #footer-aside-left {
+            flex: 1;
+        }
+
+        #footer-aside-left ul li {
+            display: inline-block;
+            /* li 수평정렬하는 방법 */
+            font-family: 'Gothic A1';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 10px;
+            line-height: 12px;
+        }
+
+        .aside-left-content {
+            margin-top: 19px;
+        }
+
+        .aside-left-content ul li {
+            margin-right: 60px;
+        }
+
+        #footer-content-version {
+            margin-top: 55px;
+            margin-bottom: 32px;
+            font-family: 'Gothic A1';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 8px;
+            line-height: 10px;
+        }
+
+        #footer-aside-right {
+            padding-left: 290px;
+            flex: 1;
+        }
+
+        #footer-aside-right img {
+            margin-top: 39px;
+            margin-right: 50px;
+            width: 24px;
+            height: 25px;
+        }
+
+        #footer-logo {
+            text-align: center;
+        }
+    </style>
+
+    <footer>
+        <div id="footer-slogan">
+            <hr>
+            <img src="{% static 'img/footer/footer_slogan.png' %}" width="1200" alt="">
+            <hr>
+        </div>
+        <div id="footer-contents">
+            <div id="footer-up-div">
+                <p>CHOO:OOM</p><span>CHOO:OOM Changes Life</span>
+                <ul>
+                    <li><a href="#">개인정보취급방침</a></li>
+                    <li><a href="#">브랜드 제휴</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Q&A</a></li>
+                    <li><a href="#">채용</a></li>
+                </ul>
+            </div>
+            <div id="footer-down-div">
+                <div id="footer-aside-left">
+                    <p>주식회사 멋사</p>
+                    <div class="aside-left-content">
+                        <ul>
+                            <li><a href="#">대표: 김정한</a></li>
+                            <li><a href="#">개인정보관리책임자: 양종욱</a></li>
+                            <li><a href="#">사업자번호:022-92-187657</a></li>
+                        </ul>
+                    </div>
+                    <div class="aside-left-content">
+                        <ul>
+                            <li style="margin-right:40px;"><a href="#">통신판매업 신고번호: 2022-서울성북구-012767</a></li>
+                            <li><a href="#">ADDRESS:서울특별시 성북구 삼선교로 16길 116</a></li>
+                        </ul>
+                    </div>
+                    <div class="aside-left-content">
+                        <ul>
+                            <li><a href="#">TEL:02-6409-9888</a></li>
+                            <li><a href="#">E-Mail:Info@Choom.Kr</a></li>
+                            <li><a href="#">GIT-Hub:Hansunglion777</a></li>
+                        </ul>
+                    </div>
+                    <div id="footer-content-version">
+                        <p>V2.0.22</p>
+                        <p>2022 CHOO:OOM ALL Rights Reserved</p>
+                    </div>
+                </div>
+                <div id="footer-aside-right">
+                    <p>최신 소식 받기</p>
+                    <img src="{% static 'img/footer/instar.png' %}" alt="">
+                    <img src="{% static 'img/footer/kakao.png' %}" alt="">
+                    <img src="{% static 'img/footer/youtube.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+        <div id="footer-logo">
+            <img src="{% static 'img/footer/footer_logo.png' %}" alt="">
+        </div>
+    </footer>
+
+    <!-- <div id="comment-section">
         <p> We love to find the familiar </p>
         <p style="display:inline-block">within the unfamiliar</p>
         <span> and the thrill</span>
         <div> that comes with it. </div>
-    </div>
-
-    <script src="{% static 'js/base.js' %}"></script>
+    </div> -->
+    <script>
+        function logoutAlert() {
+            confirm("로그아웃 하시겠습니까?")
+        }
+    </script>
 </body>
 
 </html>

@@ -4,6 +4,8 @@ from django.contrib import auth
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 # from django.contrib.auth.models import User
 from .models import userProfile
+from django.contrib import messages
+from django.http import HttpResponse
 
 def login(request):
     if request.method == 'POST':
@@ -16,9 +18,10 @@ def login(request):
         # nickname=_nickname
         )
         print(_id, _pass, user)
-
         if user is not None:
             auth.login(request, user)
+            messages.add_message(request, messages.SUCCESS, 'Login Success')
+            # return HttpResponse('사용자명이 이미 존재합니다.')
             return redirect('index')
 
     return render(request, 'login.html')
