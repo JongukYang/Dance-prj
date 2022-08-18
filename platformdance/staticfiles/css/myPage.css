@@ -109,3 +109,12 @@ td{
     padding-bottom: 50px;
     color:white
 }
+
+#career{
+    width:200px;
+}
+#career_list{
+    color:white;
+    font-size: 32px;
+    margin-bottom: 50px;
+}
