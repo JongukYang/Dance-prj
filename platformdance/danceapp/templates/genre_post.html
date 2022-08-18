@@ -110,6 +110,7 @@
         align-items: center;
         margin-top: 181px;
         margin-bottom: 141px;
+
     }
 
     #divGenre {
@@ -127,11 +128,13 @@
     #secVideos .divVideos {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: 15%;
     }
 
     #secVideos .divVideo {
-        margin-right: 19px;
-        margin-bottom: 108px;
+        margin-right: 1rem;
+        margin-bottom: 2rem;
         font-family: 'Gothic A1', sans-serif;
     }
 
@@ -197,17 +200,27 @@
 
     <section id="secButtons">
         <div>
-            <button class="classButton">Hip-Hop</button>
-            <button class="classButton">Locking</button>
-            <button class="classButton">House</button>
-            <button class="classButton">B-Boying</button>
+            <!-- 여기 a 태그 넣어서 css 깨짐 이것만 수정 부탁해 -->
+            <button class="classButton"><a href="{% url 'genre_post' %}?genre_id=1"
+                    class="carousel-a">Hip-Hop</a></button>
+            <button class="classButton"><a href="{% url 'genre_post' %}?genre_id=2"
+                    class="carousel-a">Locking</a></button>
+            <button class="classButton"><a href="{% url 'genre_post' %}?genre_id=3"
+                    class="carousel-a">House</a></button>
+            <button class="classButton"><a href="{% url 'genre_post' %}?genre_id=4"
+                    class="carousel-a">B-Boying</a></button>
         </div>
         <div>
-            <button class="classButton">Waacking</button>
-            <button class="classButton">Krump</buttono>
-                <button class="classButton">Popping</button>
-                <button class="classButton">Choreography</button>
+            <button class="classButton"><a href="{% url 'genre_post' %}?genre_id=5"
+                    class="carousel-a">Waacking</a></button>
+            <button class="classButton"><a href="{% url 'genre_post' %}?genre_id=6"
+                    class="carousel-a">Krump</a></button>
+            <button class="classButton"><a href="{% url 'genre_post' %}?genre_id=7"
+                    class="carousel-a">Popping</a></button>
+            <button class="classButton"><a href="{% url 'genre_post' %}?genre_id=8"
+                    class="carousel-a">Choreography</a></button>
         </div>
+        <!-- 여기까지 수정 요소 -->
     </section>
 
     <section id="secVideos" style="display:none;">
@@ -225,8 +238,10 @@
                 <a href="{% url 'post_detail' post.id %}">
                     <img class="videoThumbnail" src="{{ post.photo.url }}">
                 </a>
-                <a href="{% url 'post_detail' post.id %}"><p class="videoInfo">{{ post.title }}</p>
-                <p class="videoViewNumber">조회수 {{ post.hits }}</p></a>
+                <a href="{% url 'post_detail' post.id %}">
+                    <p class="videoInfo">{{ post.title }}</p>
+                    <p class="videoViewNumber">조회수 {{ post.hits }}</p>
+                </a>
                 {% else %}
                 <!-- 이미지 없음 -->
                 {% endif %}

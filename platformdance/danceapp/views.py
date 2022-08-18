@@ -185,8 +185,7 @@ def post_datail(request, post_id):
 def genre_post(request):
     genre_id = request.GET.get('genre_id', None)
     genre = Genre.objects.get(id=int(genre_id))
-    # posts = Post.objects.filter().order_by('-uploadDate')
-    posts = Post.objects.filter(genreName=int(genre_id)).order_by('-likes_count')
+    posts = Post.objects.filter(genreName=genre).order_by('-uploadDate')
     likes_top = Post.objects.filter(genreName=int(genre_id)).order_by('-likes_count')
     # likes_ten = Post.objects.filter(genreName='1').order_by('-likes_count')[:5] # 장르 중 택5
     hits_toplists = Post.objects.all().order_by('-hits')
