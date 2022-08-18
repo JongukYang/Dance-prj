@@ -108,6 +108,8 @@
         {% if course.photo %}
         <a href="{% url 'course_detail' course.id %}" id="detail-class-section-a">
             <img src="{{ course.photo.url }}" alt=""></a>
+        {% else %}
+        <!-- 이미지없음 -->
         {% endif %}
         {% endfor %}
 
