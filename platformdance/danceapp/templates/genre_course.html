@@ -80,28 +80,27 @@
         <span id="class-name" ></span>
         &nbsp;&nbsp;
         <img src="{% static 'img/orange_arrow.png' %}" />
-
-    </div>
-    <div id="slider-section">
-        <!-- paginator 구현 - lhs (버튼 위치가 이상해졌습니다.. 확인해보시고 이상하면 지우겠습니다..)-->
-        {% if course_set.has_previous %}
-        <a href="?genre_id={{genre.id}}&page={{ course_set.previous_page_number }}">
-            <img src="{% static 'img/white_arrow_left.png' %}"/>
-        </a>
-        {% endif %}
-        <span style="color:white;font-size: 20px;">&nbsp; {{ course_set.number }} / {{ course_set.paginator.num_pages }} &nbsp;</span>
-        {% if course_set.has_next %}
-        <a href="?genre_id={{genre.id}}&page={{ course_set.next_page_number }}">
-            <img src="{% static 'img/white_arrow_right.png' %}"/>
-        </a>
-        {% endif %}
-
         <div id="slider-section">
-            <img src="{% static 'img/white_arrow_left.png' %}" />
-            <span style="color:white;font-size: 20px;">&nbsp; 1 / 6 &nbsp;</span>
-            <img src="{% static 'img/white_arrow_right.png' %}" />
+            <!-- paginator 구현 - lhs (버튼 위치가 이상해졌습니다.. 확인해보시고 이상하면 지우겠습니다..)-->
+            {% if course_set.has_previous %}
+            <a href="?genre_id={{genre.id}}&page={{ course_set.previous_page_number }}">
+                <img src="{% static 'img/white_arrow_left.png' %}"/>
+            </a>
+            {% endif %}
+            <span style="color:white;font-size: 20px;">&nbsp; {{ course_set.number }} / {{ course_set.paginator.num_pages }} &nbsp;</span>
+            {% if course_set.has_next %}
+            <a href="?genre_id={{genre.id}}&page={{ course_set.next_page_number }}">
+                <img src="{% static 'img/white_arrow_right.png' %}"/>
+            </a>
+            {% endif %}
+    
+            <div id="slider-section">
+                <img src="{% static 'img/white_arrow_left.png' %}" />
+                <span style="color:white;font-size: 20px;">&nbsp; 1 / 6 &nbsp;</span>
+                <img src="{% static 'img/white_arrow_right.png' %}" />
+            </div>
+    
         </div>
-
     </div>
 
     <div id="detail-class-section">
