@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 <script>
-    var enrollPerson =0;
+    var enrollPerson = 0;
 </script>
 <link rel="stylesheet" href="{% static 'css/course_detail.css' %}">
 <!-- <link rel="stylesheet" href="{% static 'css/classdetail.css' %}"> -->
@@ -24,9 +24,15 @@
     <h3>장르</h3>
     <p>힙합</p>
     <h3>소개</h3>
-    <p>`Aomg의 수장이자 댄서 박재범, 본인만의 독보적인 춤 세계를 구축하다' 뮤지션 박재범의 음악적 영감의 원천과 루트, 작업기를 함께 따라가 보며 자신만의 기준과 정체성을 가지고 독보적인 음악을 만들어낼 방법에 대한 이야기를 듣는다.</p>
+    <p>
+        {{ course.body }}
+    </p>
+    <!-- <p>`Aomg의 수장이자 댄서 박재범, 본인만의 독보적인 춤 세계를 구축하다'
+        뮤지션 박재범의 음악적 영감의 원천과 루트, 작업기를 함께 따라가 보며
+        자신만의 기준과 정체성을 가지고 독보적인 음악을 만들어낼 방법에 대한 이야기를 듣는다.
+    </p> -->
     <hr>
-    <br/>
+    <br />
     <h3>선생님</h3>
     <p>{{ course.userId.username }} </p>
     <h3>경력</h3>
@@ -43,15 +49,16 @@
     <p>오후 5시 - 오후 10시</p><br>
     <h3>경력</h3>
     <p>{{ course.userId.danceSkill }}</dpv><br>
-    <!-- coursecreate.html에 시간을 입력받는 폼도 필요 -->
+        <!-- coursecreate.html에 시간을 입력받는 폼도 필요 -->
     <h3>수강 시간</h3>
     <p>오후 5시~오후 10시</p><br>
     <h3>수강 장소</h3>
     <p>{{ course.location }}</p><br>
 </div>
+
 {% for user in course.register_user.all %}
 <script>
-    enrollPerson+=1;
+    enrollPerson += 1;
 </script>
 {% endfor %}
 
@@ -59,7 +66,7 @@
     <form action="{% url 'regCourse' course.id %}" method="POST">
         {% csrf_token %}
         <div id="enroll_person"></div>
-        <div >
+        <div>
             {% if request.user in course.register_user.all %}
             <input type="submit" id="submitBtn" value="신청취소">
             {% else %}
