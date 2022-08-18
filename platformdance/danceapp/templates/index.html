@@ -33,9 +33,17 @@
     &nbsp;&nbsp;
     <img src="{% static 'img/orange_arrow.png' %}" />
     <div id="slider-section">
-        <img src="{% static 'img/white_arrow_left.png' %}" />
-        <span style="color:white;font-size: 1.3rem;">&nbsp; 3 / 6 &nbsp;</span>
-        <img src="{% static 'img/white_arrow_right.png' %}" />
+        {% if posts.has_previous %}
+        <a href="?page={{ posts.previous_page_number }}">
+            <img src="{% static 'img/white_arrow_left.png' %}" />
+        </a> 
+        {% endif %}
+        <span style="color:white;font-size: 1.3rem;">&nbsp; {{ posts.number }} / {{ posts.paginator.num_pages }} &nbsp;</span>
+        {% if posts.has_next %}
+        <a href="?page={{ posts.next_page_number }}">
+            <img src="{% static 'img/white_arrow_right.png' %}" />
+        </a>
+        {% endif %}
     </div>
 </div>
 

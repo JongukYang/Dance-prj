@@ -62,20 +62,42 @@
     <img src="{% static 'img/white_arrow_right.png' %}" class="next" />
 </div>
 
+<div style="margin-left:400px;margin-top:183px;">
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=1">Hip-Hop</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=2">Locking</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=3">House</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=4">B-Boying</a></div>
+    <br />
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=5">Waacking</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=6">krump</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=7">Popping</a></div>
+    <div id="dance-class"><a href="{% url 'genre_course' %}?genre_id=8">Choreography</a></div>
+</div>
+
+
 <div id="genre-class">
     <div id="class-name-section">
         <span id="class-name" ></span>
         &nbsp;&nbsp;
         <img src="{% static 'img/orange_arrow.png' %}" />
         <div id="slider-section">
-            <img src="{% static 'img/white_arrow_left.png' %}" />
-            <span style="color:white;font-size: 20px;">&nbsp; 1 / 6 &nbsp;</span>
-            <img src="{% static 'img/white_arrow_right.png' %}" />
+            <!-- paginator 구현 - lhs (버튼 위치가 이상해졌습니다.. 확인해보시고 이상하면 지우겠습니다..)-->
+            {% if course_set.has_previous %}
+            <a href="?genre_id={{genre.id}}&page={{ course_set.previous_page_number }}">
+                <img src="{% static 'img/white_arrow_left.png' %}"/>
+            </a>
+            {% endif %}
+            <span style="color:white;font-size: 20px;">&nbsp; {{ course_set.number }} / {{ course_set.paginator.num_pages }} &nbsp;</span>
+            {% if course_set.has_next %}
+            <a href="?genre_id={{genre.id}}&page={{ course_set.next_page_number }}">
+                <img src="{% static 'img/white_arrow_right.png' %}"/>
+            </a>
+            {% endif %}
         </div>
     </div>
 
     <div id="detail-class-section">
-        {% for course in courses %}
+        {% for course in course_set %}
         {% if course.photo %}
         <a href="{% url 'course_detail' course.id %}" id="detail-class-section-a">
             <img src="{{ course.photo.url }}" alt=""></a>
