@@ -16,6 +16,3 @@ class userProfile(AbstractUser):
 
     def __str__(self):
         return self.username
-
-
-# return HttpResponse('사용자명이 이미 존재합니다.')

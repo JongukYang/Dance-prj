@@ -26,12 +26,20 @@
         <input type="text" id="searchBar" placeholder="Search artist, classes" />
         {% if request.user.is_authenticated %}
         <span>
-            <a id="sign" href="{% url 'logout' %}">Log Out</a>
+            <a id="sign" href="#" onclick="logoutConfirm()">Log Out</a>
             {% else %}
             <a id="sign" href="{% url 'login' %}">Log In</a>
             {% endif %}
         </span>
         {% if request.user.is_authenticated %}
+        <script>
+            function logoutConfirm() {
+                val = confirm("로그아웃 하시겠습니까?");
+                if (val == true) {
+                    location.href = "{% url 'logout' %}"
+                }
+            }
+        </script>
         <span>
             <span></span>
             {% else %}
@@ -50,18 +58,8 @@
         </a>
         {% endif %}
     </div>
-    <script type="text/javascript">
-        var a = "{{request.user.is_authenticated}}"
-        const myPageBtn = document.getElementById('my-page');
 
-        myPageBtn.addEventListener('click', () => {
-            if (a === 'True') {
-                document.location.href = "{% url 'signup' %}"
-            }
-        })
-    </script>
-
-    <!-- 메인 컨테이너는 남겨놔야 css 충돌이 없을려나? -->
+    <!-- 메인 컨테이너 네비게이션바-->
     <div class="container" id="main-container">
 
         <!-- header 네비게이션바 -->
@@ -83,7 +81,7 @@
                                 <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=3">Waacking</a></li>
                                 <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=4">B-Boying</a></li>
                                 <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=5">House</a></li>
-                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=6">Crump</a></li>
+                                <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=6">Krump</a></li>
                                 <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=7">Popping</a></li>
                                 <li><a class="dropdown-item" href="{% url 'genre_post' %}?genre_id=8">Choreography</a>
                                 </li>
@@ -95,7 +93,6 @@
                                 Class
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{% url 'course' %}">@@ 장르 소개</a></li>
                                 <li><a class="dropdown-item" href="{% url 'genre_course' %}?genre_id=1">Hip-Hop</a></li>
                                 <li><a class="dropdown-item" href="{% url 'genre_course' %}?genre_id=2">Locking</a></li>
                                 <li><a class="dropdown-item" href="{% url 'genre_course' %}?genre_id=3">Waacking</a>
@@ -141,15 +138,67 @@
 
     <!-- 변동 영역 끝 -->
 
-    <!-- footer 영역이 될 것 같음 -->
-    <div id="comment-section">
-        <p> We love to find the familiar </p>
-        <p style="display:inline-block">within the unfamiliar</p>
-        <span> and the thrill</span>
-        <div> that comes with it. </div>
-    </div>
+    <!-- footer -->
+    <footer>
+        <div id="footer-slogan">
+            <hr>
+            <img src="{% static 'img/footer/footer_slogan.png' %}" width="1200" alt="">
+            <hr>
+        </div>
+        <div id="footer-contents">
+            <div id="footer-up-div">
+                <p>CHOO:OOM</p><span>CHOO:OOM Changes Life</span><br>
+                <ul>
+                    <li><a href="#">개인정보취급방침</a></li>
+                    <li><a href="#">브랜드 제휴</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Q&A</a></li>
+                    <li><a href="#">채용</a></li>
+                </ul>
+            </div>
+            <div id="footer-down-div">
+                <div id="footer-aside-left">
+                    <p>주식회사 멋사</p>
+                    <div class="aside-left-content">
+                        <ul>
+                            <li><a href="#">대표: 김정한</a></li>
+                            <li><a href="#">개인정보관리책임자: 양종욱</a></li>
+                            <li><a href="#">사업자번호:022-92-187657</a></li>
+                        </ul>
+                    </div>
+                    <div class="aside-left-content">
+                        <ul>
+                            <li style="margin-right:40px;"><a href="#">통신판매업 신고번호: 2022-서울성북구-012767</a></li>
+                            <li><a href="#">ADDRESS:서울특별시 성북구 삼선교로 16길 116</a></li>
+                        </ul>
+                    </div>
+                    <div class="aside-left-content">
+                        <ul>
+                            <li><a href="#">TEL:02-6409-9888</a></li>
+                            <li><a href="#">E-Mail:Info@Choom.Kr</a></li>
+                            <li><a href="#">GIT-Hub:Hansunglion777</a></li>
+                        </ul>
+                    </div>
+                    <div id="footer-content-version">
+                        <p>V2.0.22</p>
+                        <p>2022 CHOO:OOM ALL Rights Reserved</p>
+                    </div>
+                </div>
+                <div id="footer-aside-right">
+                    <p>최신 소식 받기</p>
+                    <img src="{% static 'img/footer/instar.png' %}" alt="">
+                    <img src="{% static 'img/footer/kakao.png' %}" alt="">
+                    <img src="{% static 'img/footer/youtube.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+        <div id="footer-logo">
+            <img src="{% static 'img/footer/footer_logo.png' %}" alt="">
+        </div>
+    </footer>
 
-    <script src="{% static 'js/base.js' %}"></script>
 </body>
 
 </html>

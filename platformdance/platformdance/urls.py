@@ -29,7 +29,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     # about us
     path('aboutus/', views.aboutus, name='aboutus'),
-
+    #뉴스 페이지
+    path('news',views.news,name="news"),
     # 마이페이지
     path('mypage/<int:user_id>', views.mypage, name='mypage'),
     # user 프로필 이미지 수정
@@ -58,9 +59,6 @@ urlpatterns = [
     
     # 게시글 수정
     path('modify_post/<int:post_id>', views.modify_post, name='modify_post'),
-
-    # 클래스 전체 보기
-    path('course', views.course, name='course'),
 
     # 장르별 영상 포스트 보기 / # 장르별 클래스 보기
     path('genre_post', views.genre_post, name='genre_post'),

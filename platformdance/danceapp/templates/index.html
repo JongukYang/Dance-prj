@@ -2,33 +2,29 @@
 {% block content %}
 {% load static %}
 
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li>
-        [{{ message.tags }}] {{ message.message }}
-    </li>
-    {% endfor %}
-</ul>
-{% endif %}
 
-
-<p style="margin-left:360px; font-size: 24px; color:white;margin-top: 40px; margin-bottom:4px;">
-    We live discover
-</p>
-<p style="margin-left:360px;font-size:40px;color:#FF7A00;font-weight: 600;margin-bottom: 60px;">
-    Untold Originals
-</p>
-
-<div id="banner-section">
+<div id="logobanner-section">
+    <img src="{% static 'img/maindanceword.png' %}" alt="">
 </div>
 
-<div style="display:flex; align-items: cneter;">
-    <span style="font-size:30px;font-weight:500;color:white;margin-left:360px;">Who we are</span>
-    <pre style="font-size:20px;display:inline-block;margin-left:209px; color:white;">
+<!-- <div id="banner-section">
+
+</div> -->
+
+<div id="main-title-intro">
+    <div id="banner-section">
+        <span>Who we are</span>
+        <p>
+            낯선 것에서 찾아낸 공감대를 사랑하고 그 과정에서 기쁨을 느끼는 CHOO:OOM은
+            우리만의 독창적인 것, Untold Originals를찾아 오늘도 끝없는 여정을 이어갑니다.
+        </p>
+
+    </div>
+    <!-- <span>Who we are</span>
+    <p>
         낯선 것에서 찾아낸 공감대를 사랑하고 그 과정에서 기쁨을 느끼는 CHOO:OOM은
         우리만의 독창적인 것, Untold Originals를찾아 오늘도 끝없는 여정을 이어갑니다.
-    </pre>
+    </p> -->
 </div>
 
 
@@ -36,29 +32,11 @@
     Featured Contents
     &nbsp;&nbsp;
     <img src="{% static 'img/orange_arrow.png' %}" />
-</div>
-<div id="slider-section">
-    {% comment %}
-    <!-- Pagination -->
-    {% if posts.has_previous %}
-    <!-- <a href="?page=1">첫 페이지</a> -->
-    <a href="?page={{posts.previous_page_number}}"><img src="{% static 'img/white_arrow_left.png' %}" /></a>
-    {% endif %}
-
-    <span style="color:white;font-size: 20px;"> {{ posts.number }} </span>
-    <span style="color:white;font-size: 20px;"> / </span>
-    <span style="color:white;font-size: 20px;"> {{ posts.paginator.num_pages }} </span>
-
-    {% if posts.has_next %}
-    <a href="?page={{posts.next_page_number}}"><img src="{% static 'img/white_arrow_right.png' %}" /></a>
-    <!-- <a href="?page={{posts.paginator.num_pages}}">마지막 페이지</a> -->
-    {% endif %}
-    {% endcomment %}
-
-
-    <img src="{% static 'img/white_arrow_left.png' %}" />
-    <span style="color:white;font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
-    <img src="{% static 'img/white_arrow_right.png' %}" />
+    <div id="slider-section">
+        <img src="{% static 'img/white_arrow_left.png' %}" />
+        <span style="color:white;font-size: 1.3rem;">&nbsp; 3 / 6 &nbsp;</span>
+        <img src="{% static 'img/white_arrow_right.png' %}" />
+    </div>
 </div>
 
 <div id="detail-class-section">
@@ -75,34 +53,26 @@
     <!-- 장고 주석 처리 끝 -->
     {% endif %}
     {% endfor %}
-    <!-- <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" />
-    <img src="{% static 'img/sample_jpark.png' %}" /> -->
 </div>
 
 
 <div id="news-event-section">
-    <div style="margin-bottom:24px;font-size:32px;margin-left:360px">
+    <div id="news-event-section-div">
         NEWS & EVENT
         &nbsp;&nbsp;
         <img src="{% static 'img/orange_arrow.png' %}" />
-    </div>
-    <div style="font-size:20px;color:#717171;margin-left:360px">
-        CHOO:OOM의 새로운 소식, 지금 바로 확인해보세요
-        <span style="float:right;margin-right:360px;">
+        <div id="slider-section-news">
             <img src="{% static 'img/black_arrow_left.png' %}" />
-            <span style="font-size: 20px;">&nbsp; 3 / 6 &nbsp;</span>
+            <span style="color:black;font-size: 1.3rem;">&nbsp; 3 / 6 &nbsp;</span>
             <img src="{% static 'img/black_arrow_right.png' %}" />
-        </span>
+        </div>
     </div>
-    <table>
+    <div style="font-size:1.2rem; color:#717171; margin-left:20%">
+        CHOO:OOM의 새로운 소식, 지금 바로 확인해보세요
+    </div>
+    <table id="news-table">
         <tbody>
-            <tr>
+            <tr id="main_news">
                 <td rowspan="4" style="width: 600px; height: 650px;">
                     <!-- <img style="width:784px; height:650px" src="{% static 'img/sample_chungha.png' %}" /> -->
                     <div style="height:100%;width:100%;">
@@ -112,44 +82,43 @@
             </tr>
             <tr>
                 <td>
-                    <div style="height:100%;width:100%;">
-                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:200px;width:200px;background-color: lightgray;">
                     </div>
                 </td>
                 <td>
-                    <div style="height:100%;width:100%;">
-                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:200px;width:200px;background-color: lightgray;">
                     </div>
                 </td>
 
             </tr>
             <tr>
                 <td>
-                    <div style="height:100%;width:100%;">
-                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:200px;width:200px;background-color: lightgray;">
                     </div>
 
                 </td>
                 <td>
-                    <div style="height:100%;width:100%;">
-                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:200px;width:200px;background-color: lightgray;">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div style="height:100%;width:100%;">
-                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:200px;width:200px;background-color: lightgray;">
                     </div>
                 </td>
                 <td>
-                    <div style="height:100%;width:100%;">
-                        <img style="height:100%;" src="{% static 'img/sample_chungha.png' %}" />
+                    <div style="height:200px;width:200px;background-color: lightgray;">
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
-
+<script>
+    const news_main = document.querySelector('#main_news');
+    news_main.addEventListener('click', () => {
+        location.href = "/news"
+    })
+</script>
 {% endblock %}

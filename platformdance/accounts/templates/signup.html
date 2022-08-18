@@ -34,7 +34,17 @@
                     <input type="text" placeholder="DD" style="float: right; margin-left: 25px;">
                 </p>
                 <p class="inform">What's your Dance Level?</p>
-                <input type="submit" value="Join">
+                <select>
+                    <option name="user_level" value="High">High</option>
+                    <option name="user_level" value="Normal">Noraml</option>
+                    <option name="user_level" value="Low">Low</option>
+                </select>
+                <input type="submit" value="Join" onclick="signupAlert()">
+                <script>
+                    function signupAlert() {
+                        alert("회원가입 하시겠습니까?")
+                    }
+                </script>
             </section>
         </form>
         <footer>
