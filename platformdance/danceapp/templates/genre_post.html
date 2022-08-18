@@ -225,11 +225,11 @@
                 <a href="{% url 'post_detail' post.id %}">
                     <img class="videoThumbnail" src="{{ post.photo.url }}">
                 </a>
+                <a href="{% url 'post_detail' post.id %}"><p class="videoInfo">{{ post.title }}</p>
+                <p class="videoViewNumber">조회수 {{ post.hits }}</p></a>
                 {% else %}
                 <!-- 이미지 없음 -->
                 {% endif %}
-                <a href="{% url 'post_detail' post.id %}"><p class="videoInfo">{{ post.title }}</p>
-                <p class="videoViewNumber">조회수 {{ post.hits }}</p></a>
             </div>
             {% endfor %}
         </div>
