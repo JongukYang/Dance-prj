@@ -135,12 +135,15 @@
     &nbsp;&nbsp;
     <img src="{% static 'img/orange_arrow.png' %}" />
 </div>
-<table style="margin: 0;">
+<table style="margin: 0 20% 0 20%;">
     <tr id="show-current-classes">
         {% for regcourse in myregcourses %}
         {% if regcourse.photo %}
         <td>
-            <img src="{{regcourse.photo.url}}"  />
+            <a  href="{% url  'course_detail' regcourse.id%}"  style="width:300px; height:284px;margin-right: 20px;">
+                <img src="{{regcourse.photo.url}}"  style="width:300px; height:284px;margin-right: 20px;"/>
+            </a>
+            
         </td>
         {% endif %}
         {% endfor %}
@@ -175,6 +178,12 @@
 {% endcomment %}
 
 <!-- 내가 올린 영상 출력 -->
+<div id="current-class">
+    <span>My Video</span>
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+</div>
+
 <div style="margin-left:370px;display:inline-block">
     {% for post in myposts %}
     {% if post.photo %}

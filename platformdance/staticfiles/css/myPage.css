@@ -93,6 +93,13 @@ td > img{
     border-radius: 50%;
 }
 
+td > a > img{
+    width:180px;
+    height:180px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
 tr{
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 
