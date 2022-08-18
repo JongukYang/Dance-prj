@@ -93,13 +93,6 @@
                 <img src="{% static 'img/white_arrow_right.png' %}"/>
             </a>
             {% endif %}
-    
-            <div id="slider-section">
-                <img src="{% static 'img/white_arrow_left.png' %}" />
-                <span style="color:white;font-size: 20px;">&nbsp; 1 / 6 &nbsp;</span>
-                <img src="{% static 'img/white_arrow_right.png' %}" />
-            </div>
-    
         </div>
     </div>
 
@@ -128,13 +121,6 @@
     if (name === "1") {
         classNameText.innerText = "Hip Hop";
         genreClass.style.display = "block"
-
-        document.querySelectorAll('#dance-class').forEach(item => {
-            if (item.innerText === "Hip-Hop") {
-                item.style.border = "1px solid white";
-                item.style.backgroundColor = "black";
-                item.style.color = "white";
-
         danceClassList[0].childNodes[0].style.color = "white";
         genre_name.innerText = "Hip Hop"
         document.querySelectorAll('#dance-class2').forEach(item => {
@@ -155,9 +141,6 @@
         genre_name.innerText = "Locking"
         document.querySelectorAll('#dance-class2').forEach(item => {
             if (item.innerText === "Locking") {
-                item.style.border = "1px solid white";
-                item.style.backgroundColor = "black";
-                item.style.color = "white";
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
@@ -174,9 +157,6 @@
         genre_name.innerText = "Waacking"
         document.querySelectorAll('#dance-class2').forEach(item => {
             if (item.innerText === "Waacking") {
-                item.style.border = "1px solid white";
-                item.style.backgroundColor = "black";
-                item.style.color = "white";
                 // item.style.border = "1px solid white";
                 // item.children[0].style.color = "white";
                 genre_comment.innerText = "왁킹(Waacking)은 1970년대 디스코 유행동안 로스앤젤레스의 게이 클럽에서 만들어진 클럽댄스의 한 형태이다. 왁킹 스타일은 일반적으로 70년대 디스코 음악에 최적화되어 있으며 주로 회전하는 팔 동작과 포즈, 풍부한 표현력에 중점을 둔다는 점 등이 다른 장르와 구별되는 특징이다."
@@ -188,11 +168,6 @@
     else if (name === "4") {
         classNameText.innerText = "B-Boyibg";
         genreClass.style.display = "block"
-        document.querySelectorAll('#dance-class').forEach(item => {
-            if (item.innerText === "B-Boyibg") {
-                item.style.border = "1px solid white";
-                item.style.backgroundColor = "black";
-                item.style.color = "white";
         danceClassList[3].childNodes[0].style.color = "white";
         genre_name.innerText = "B-Boying"
         document.querySelectorAll('#dance-class2').forEach(item => {
@@ -213,29 +188,18 @@
         genre_name.innerText = "House"
         document.querySelectorAll('#dance-class2').forEach(item => {
             if (item.innerText === "House") {
-                item.style.border = "1px solid white";
-                item.style.backgroundColor = "black";
-                item.style.color = "white";
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
                 genre_comment.innerText = "하우스(House)는 스트릿댄스 중 힙합과 더불어 가장 클럽 지향적인 장르이다. 이름처럼 하우스 음악, 박자에 맞춰 추는 것이 일반적이다. 장르로서의 확립은 뉴욕 지역 댄서들의 영향을 크게 받았다. 하반신 스탭의 비율이 높기 때문에 상체의 활용이 어렵지만 동시에 개인 표현의 영역이 크다는 특징을 가지고 있다.  "
                 genre_banner_section.style.backgroundImage = "url('{% static 'img/class_tumbnail/House.jpeg' %}')";
                 item.children[0].style.textDecoration = "none";
-
             }
         })
     }
     else if (name === "6") {
         classNameText.innerText = "Krump";
         genreClass.style.display = "block"
-
-        document.querySelectorAll('#dance-class').forEach(item => {
-            if (item.innerText === "Crump") {
-                item.style.border = "1px solid white";
-                item.style.backgroundColor = "black";
-                item.style.color = "white";
-
         danceClassList[5].childNodes[0].style.color = "white";
         genre_name.innerText = "Krump"
         document.querySelectorAll('#dance-class2').forEach(item => {
@@ -246,7 +210,6 @@
                 genre_comment.innerText = "크럼프(Krump)는 Kingdom Radically Uprised Mighty Praise의 약자로 자유롭고 격렬하며 역동적인 움직임이 특징인 춤이다. 가슴을 튕기는 체스트 팝(Chest Pop), 팔을 휘두르는 암 스윙(Arm Swing), 발을 구르는 스텀프(Stomp) 등의 기술로 이루어지며 그 외에 부가적인 요소로서 모자와 신발, 옷 등 도구를 이용하는 트릭을 선보이기도 한다."
                 genre_banner_section.style.backgroundImage = "url('{% static 'img/class_tumbnail/Krump.jpeg' %}')";
                 item.children[0].style.textDecoration = "none";
-
             }
         })
     }
@@ -257,11 +220,6 @@
         genre_name.innerText = "Poping"
         document.querySelectorAll('#dance-class2').forEach(item => {
             if (item.innerText === "Popping") {
-
-                item.style.border = "1px solid white";
-                item.style.backgroundColor = "black";
-                item.style.color = "white";
-
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
@@ -278,16 +236,12 @@
         genre_name.innerText = "Choregrahpy"
         document.querySelectorAll('#dance-class2').forEach(item => {
             if (item.innerText === "Choreography") {
-                item.style.border = "1px solid white";
-                item.style.backgroundColor = "black";
-                item.style.color = "white";
                 // item.style.border = "1px solid white";
                 // item.style.backgroundColor = "black";
                 // item.children[0].style.color = "white";
                 genre_comment.innerText = "‘코레오그래피(choreography)’는 ‘choreia(춤)’와 ‘graphia(쓰다)’의 합성어이다. 음악의 다양한 소리, 질감, 리듬, 멜로디 등에 맞추어 노래에 가장 들어맞는 춤을 칭하며 누구든지 코레오그래퍼 안무가가 될 수 있다."
                 genre_banner_section.style.backgroundImage = "url('{% static 'img/class_tumbnail/Choreography.jpeg' %}')";
                 item.children[0].style.textDecoration = "none";
-
             }
         })
     }
@@ -317,14 +271,6 @@
         }
         carousel.style.transform = `translate3d(-${600 * index}px, 0, 0)`;
     });
-
-
-    //클래스 선택 스크립트
-    // const className = document.querySelectorAll('#dance-class').forEach((item)=>{
-    //     item.addEventListener('click',()=>{
-    //         document.location.href= `/classes?name=${item.innerText}`
-    //     })
-    // })
 
 
 </script>

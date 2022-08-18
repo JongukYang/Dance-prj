@@ -34,7 +34,7 @@
     <img src="{% static 'img/orange_arrow.png' %}" />
     <div id="slider-section">
         {% if posts.has_previous %}
-        <a href="?page={{ .previous_page_number }}">
+        <a href="?page={{ posts.previous_page_number }}">
             <img src="{% static 'img/white_arrow_left.png' %}" />
         </a> 
         {% endif %}
