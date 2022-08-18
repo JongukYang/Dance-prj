@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- main -->
+<div class="container" id="main-container">
+<h1>{{ genre.name }} Page</h1>
+<h3>{{ genre.name }} 게시글</h3>
+<a href="{% url 'genre_course' %}?genre_id={{genre.id}}">{{ genre.name}} 클래스</a>
+
+<hr>
+<!-- 실시간 top10 장르 영상 출력 -->
+<h2>실시간 Top10 {{ genre.name }} 영상</h2>
+<table border="1">
+    {% for like_top in likes_top %}
+    <tr>
+        <td>USER : {{ like_top.userId }}<a href="{% url 'post_detail' like_top.id %}"><br>
+            TITLE : {{ like_top.title }}</a></td>
+        <td>BODY : {{ like_top.body }}</td>
+        <td>GENRE : {{ like_top.genreName }}</td>
+        <td>
+            <!-- 썸네일 받아오기 -->
+            {% if like_top.photo %}
+            {{ like_top.photo.url }}
+            <img src="{{ like_top.photo.url }}" alt="" width="30%">
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr>
+<table style="border: 1px solid white;">
+    {% for hits_toplist in hits_toplists %}
+    <tr>
+        <td>hits : {{ hits_toplist.hits }}</td>
+        <td>USER : {{ hits_toplist.userId }}<a href="{% url 'post_detail' hits_toplist.id %}"><br>
+            TITLE : {{ hits_toplist.title }}</a></td>
+        <td>BODY : {{ hits_toplist.body }}</td>
+        <td>GENRE : {{ hits_toplist.genreName }}</td>
+        <td>
+            <!-- 썸네일 받아오기 -->
+            {% if hits_toplist.photo %}
+            {{ hits_toplist.photo.url }}
+            <img src="{{ hits_toplist.photo.url }}" alt="" width="30%">
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr>
+
+<!-- 장르 영상 출력 -->
+<h2>전체 {{ genre.name }} 영상</h2>
+<style>
+    table {
+        border: 1px solid black;
+    }
+
+    td,
+    th {
+        border: 1px solid black;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    .main1 {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1rem;
+        grid-auto-rows: minmax(10em, auto);
+        justify-items: start;
+        width: 100%;
+    }
+    *{
+        color: #ebebeb;
+    }
+</style>
+<div class="main1">
+    {% for post in posts %}
+    {% if post.genreName.name == genre.name %}
+    <div>
+        <table>
+            <tr>
+                <!-- 섬네일 -->
+                <td rowspan="4">{{ post.photo }}</td>
+                <!-- 제목 -->
+                <td colspan="3"><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></td>
+            </tr>
+            <tr>
+                <!-- 내용 -->
+                <td colspan="3">{{ post.body }}</td>
+            </tr>
+            <tr>
+                <!-- 장르, 작성자, 좋아요 수 -->
+                <td>{{ post.genreName.name }}</td>
+                <td>{{ post.userId.nickname }}</td>
+                <td>
+                    <form action="{% url 'likes' post.id %}" method="POST">
+                        {% csrf_token %}
+                        좋아요 수 : {{ post.likes_count }}
+                        {% if request.user.is_authenticated %}
+                        {% if request.user in post.likes_user.all %}
+                        <input type="submit" value="dislike">
+                        {% else %}
+                        <input type="submit" value="like">
+                        {% endif %}
+                        {% endif %}
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <!-- 게시일 -->
+                <td colspan="3">{{ post.uploadDate }}</td>
+            </tr>
+
+        </table>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

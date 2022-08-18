@@ -1,125 +1,318 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<!-- main -->
-<div class="container" id="main-container">
-<h1>{{ genre.name }} Page</h1>
-<h3>{{ genre.name }} 게시글</h3>
-<a href="{% url 'genre_course' %}?genre_id={{genre.id}}">{{ genre.name}} 클래스</a>
-
-<hr>
-<!-- 실시간 top10 장르 영상 출력 -->
-<h2>실시간 Top10 {{ genre.name }} 영상</h2>
-<table border="1">
-    {% for like_top in likes_top %}
-    <tr>
-        <td>USER : {{ like_top.userId }}<a href="{% url 'post_detail' like_top.id %}"><br>
-            TITLE : {{ like_top.title }}</a></td>
-        <td>BODY : {{ like_top.body }}</td>
-        <td>GENRE : {{ like_top.genreName }}</td>
-        <td>
-            <!-- 썸네일 받아오기 -->
-            {% if like_top.photo %}
-            {{ like_top.photo.url }}
-            <img src="{{ like_top.photo.url }}" alt="" width="30%">
-            {% endif %}
-        </td>
-    </tr>
-    {% endfor %}
-</table>
-
-<hr>
-<table style="border: 1px solid white;">
-    {% for hits_toplist in hits_toplists %}
-    <tr>
-        <td>hits : {{ hits_toplist.hits }}</td>
-        <td>USER : {{ hits_toplist.userId }}<a href="{% url 'post_detail' hits_toplist.id %}"><br>
-            TITLE : {{ hits_toplist.title }}</a></td>
-        <td>BODY : {{ hits_toplist.body }}</td>
-        <td>GENRE : {{ hits_toplist.genreName }}</td>
-        <td>
-            <!-- 썸네일 받아오기 -->
-            {% if hits_toplist.photo %}
-            {{ hits_toplist.photo.url }}
-            <img src="{{ hits_toplist.photo.url }}" alt="" width="30%">
-            {% endif %}
-        </td>
-    </tr>
-    {% endfor %}
-</table>
-
-<hr>
-
-<!-- 장르 영상 출력 -->
-<h2>전체 {{ genre.name }} 영상</h2>
 <style>
-    table {
-        border: 1px solid black;
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gothic+A1:wght@700;900&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        background-color: black;
     }
 
-    td,
-    th {
-        border: 1px solid black;
+    body {
+        display: flex;
+        flex-direction: column;
+        color: white;
+        flex-wrap: nowrap;
     }
 
-    th {
+    #secBestVideo {
+        margin-top: 180px;
+        display: flex;
+        flex-direction: column;
         text-align: center;
+        align-items: center;
     }
 
-    .main1 {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 1rem;
-        grid-auto-rows: minmax(10em, auto);
-        justify-items: start;
-        width: 100%;
+    #secBestVideo p {
+        width: 236px;
+        font-family: 'DM Serif Display', serif;
+        font-size: 40px;
+        color: white;
     }
-    *{
-        color: #ebebeb;
+
+    /* 이미지 슬라이더 css */
+    .carousel-wrapper {
+        width: 623px;
+        height: 500px;
+        overflow: hidden;
+        display: inline-block;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+    .carousel-wrapper>.carousel {
+        display: flex;
+        transform: translate3d(0, 0, 0);
+        transition: transform 0.2s;
+    }
+
+    .carousel-wrapper>.carousel>.carousel-a>img {
+        width: 623px;
+        height: 454px;
+        border-radius: 20px;
+    }
+
+    #image-slider {
+        margin-top: 61px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .prev {
+        width: 23px;
+        height: 43px;
+        cursor: pointer;
+    }
+
+    .next {
+        width: 23px;
+        height: 43px;
+        cursor: pointer;
+    }
+
+
+    #secButtons {
+        margin-top: 10rem;
+    }
+
+    #secButtons div {
+        display: flex;
+        flex-wrap: nowrap;
+        text-align: center;
+        justify-content: center;
+        margin-bottom: 57px;
+    }
+
+    .classButton {
+        width: 242px;
+        height: 71px;
+        background-color: white;
+        border-radius: 21px;
+        color: black;
+        font-family: 'DM Serif Display', serif;
+        font-size: 32px;
+        margin-right: 70px;
+    }
+
+    .genre-active {
+        background-color: rgb(0, 0, 0);
+        color: white;
+        border: 2px solid rgb(255, 255, 255);
+    }
+
+    #secVideos {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 181px;
+        margin-bottom: 141px;
+    }
+
+    #divGenre {
+        width: 1200px;
+        margin-bottom: 56px;
+    }
+
+    #divGenre #genreName {
+        color: white;
+        margin-right: 36px;
+        font-size: 32px;
+        font-family: 'DM Serif Display', serif;
+    }
+
+    #secVideos .divVideos {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #secVideos .divVideo {
+        margin-right: 19px;
+        margin-bottom: 108px;
+        font-family: 'Gothic A1', sans-serif;
+    }
+
+    .divVideo .videoThumbnail {
+        width: 381px;
+        height: 284px;
+    }
+
+    .divVideo .videoInfo {
+        color: #F6F6F6;
+        font-size: 20px;
+        margin-top: 34px;
+    }
+
+    .divVideo .videoViewNumber {
+        color: #868686;
+        font-size: 16px;
+        margin-top: 18px;
+    }
+
+    #showMore {
+        width: 441px;
+        height: 115px;
+        background-color: #FF5656;
+        border-radius: 30px;
+        color: white;
+        font-size: 36px;
+        font-family: 'Gothic A1', sans-serif;
+        margin-top: 149px;
+        margin-bottom: 370px;
+    }
+
+    #showMore img {
+        width: 28px;
+        height: 28px;
+        background-color: hsla(0, 0%, 100%, 0);
+        margin-right: 14px;
     }
 </style>
-<div class="main1">
-    {% for post in posts %}
-    {% if post.genreName.name == genre.name %}
-    <div>
-        <table>
-            <tr>
-                <!-- 섬네일 -->
-                <td rowspan="4">{{ post.photo }}</td>
-                <!-- 제목 -->
-                <td colspan="3"><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></td>
-            </tr>
-            <tr>
-                <!-- 내용 -->
-                <td colspan="3">{{ post.body }}</td>
-            </tr>
-            <tr>
-                <!-- 장르, 작성자, 좋아요 수 -->
-                <td>{{ post.genreName.name }}</td>
-                <td>{{ post.userId.nickname }}</td>
-                <td>
-                    <form action="{% url 'likes' post.id %}" method="POST">
-                        {% csrf_token %}
-                        좋아요 수 : {{ post.likes_count }}
-                        {% if request.user.is_authenticated %}
-                        {% if request.user in post.likes_user.all %}
-                        <input type="submit" value="dislike">
-                        {% else %}
-                        <input type="submit" value="like">
-                        {% endif %}
-                        {% endif %}
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <!-- 게시일 -->
-                <td colspan="3">{{ post.uploadDate }}</td>
-            </tr>
+</head>
 
-        </table>
-    </div>
-    {% endif %}
-    {% endfor %}
-</div>
-</div>
+<body>
+    <section id="secBestVideo">
+        <p>Best 10 Video</p>
+        <!-- 이미지 슬라이더 -->
+        <div id="image-slider">
+            <img src="{% static 'img/white_arrow_left.png' %}" class="prev" />
+            <div class="carousel-wrapper">
+                <div class="carousel">
+                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/hiphop.jpeg' %}" alt=""></a>
+                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/locking.jpeg' %}" alt=""></a>
+                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/waacking.jpeg' %}" alt=""></a>
+                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/Bboying.jpg' %}" alt=""></a>
+                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/house.png' %}" alt=""></a>
+                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/crump.jpeg' %}" alt=""></a>
+                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/poping.jpeg' %}" alt=""></a>
+                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/choregraphy.jpeg' %}" alt=""></a>
+                </div>
+            </div>
+            <img src="{% static 'img/white_arrow_right.png' %}" class="next" />
+        </div>
+    </section>
+
+    <section id="secButtons">
+        <div>
+            <button class="classButton">Hip-Hop</button>
+            <button class="classButton">Locking</button>
+            <button class="classButton">House</button>
+            <button class="classButton">B-Boying</button>
+        </div>
+        <div>
+            <button class="classButton">Waacking</button>
+            <button class="classButton">Krump</buttono>
+                <button class="classButton">Popping</button>
+                <button class="classButton">Choreography</button>
+        </div>
+    </section>
+
+    <section id="secVideos" style="display:none;">
+        <div id="divGenre">
+            <span id="genreName">genre name</span>
+            <a href=""><img src="{% static 'img/orange_arrow.png' %}" /></a>
+            <div id="blank"></div>
+        </div>
+
+        <div class="divVideos">
+            <!-- 포문 시작 -->
+            {% for post in posts %}
+            <div class="divVideo" id="divVideo1">
+                {% if post.photo %}
+                <a href="{% url 'post_detail' post.id %}">
+                    <img class="videoThumbnail" src="{{ post.photo.url }}">
+                </a>
+                {% else %}
+                <!-- 이미지 없음 -->
+                {% endif %}
+                <a href="{% url 'post_detail' post.id %}"><p class="videoInfo">{{ post.title }}</p>
+                <p class="videoViewNumber">조회수 {{ post.hits }}</p></a>
+            </div>
+            {% endfor %}
+        </div>
+        <button id="showMore"><img src="{% static '/img/plus.png' %}">Show more</button>
+    </section>
+
+</body>
+
+<script type="text/javascript">
+    function loadVideoFile(input) {
+        var file = input.files[0];
+    }
+
+    // 버튼 클릭 장르별 비디오 나오게
+    var currentGenre; // 선택한 장르
+    var genre = document.querySelectorAll('#secButtons button');
+
+    var genreName = document.getElementById('genreName'); // 장르 이름
+    var orangeArrow = document.querySelector('#divGenre a');
+    var link = orangeArrow.href; // 오렌지색 화살표 링크
+    console.log(link.tagName)
+
+    let secVideos = document.getElementById('secVideos');
+
+    function changeGenre() {
+        secVideos.style.display = 'flex';
+        genreName.innerText = currentGenre.innerText;
+        link = "#"
+    }
+
+    function inactive(elem) {
+        elem.classList.remove('genre-active');
+    }
+    function active(elem) {
+        elem.classList.add('genre-active');
+        console.log(elem);
+        currentGenre = elem;
+        changeGenre();
+    }
+
+    function clickHandler(e) {
+        if (currentGenre)
+            inactive(currentGenre);
+        active(e.target);
+        window.scrollTo({ top: document.body.scrollHeight / 2.7, behavior: 'smooth' });
+    }
+
+    for (let i = 0; i < genre.length; i++) {
+        genre[i].addEventListener('click', clickHandler);
+    }
+
+
+    // 이미지 슬라이더 스크립트
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    const carousel = document.querySelector('.carousel');
+    const maxIndex = 7;
+    let index = 0;
+
+    prevButton.addEventListener('click', () => {
+        if (index === 0) {
+            index = 7;
+        } else {
+            index -= 1;
+        }
+        carousel.style.transform = `translate3d(-${623 * index}px, 0, 0)`;
+    });
+
+    nextButton.addEventListener('click', () => {
+        if (index === 7) {
+            index = 0;
+        } else {
+            index += 1;
+        }
+        carousel.style.transform = `translate3d(-${623 * index}px, 0, 0)`;
+    });
+
+    //클래스 선택 스크립트
+    // const className = document.querySelectorAll('#btnVideoGenre').forEach((item)=>{
+    //     item.addEventListener('click',()=>{
+    //         document.location.href= `/classes?name=${item.innerText}`
+    //     })
+    // })
+
+</script>
 {% endblock %}
