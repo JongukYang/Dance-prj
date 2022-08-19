@@ -205,6 +205,15 @@ li a {
     margin-bottom: 2rem;
 }
 
+#detail-section-post {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 3rem;
+    color: white;
+    margin-left: 20%;
+    margin-bottom: 2rem;
+}
+
 #slider-section {
     float: right;
     margin-right: 15%;

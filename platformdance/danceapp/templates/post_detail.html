@@ -3,7 +3,7 @@
 {% load static %}
 
 
-<div id="detail-section">
+<div id="detail-section-post">
     <section>
         <div>
             <div class="title-sy">{{ post.title }}</div>
@@ -82,6 +82,7 @@
                             flex-shrink: 0;
                             flex-grow: 1;
                         }
+
                         .comment-submit-ju {
                             background-color: white;
                             flex-grow: 0;
@@ -100,15 +101,34 @@
                 width: 980px;height: 0px; margin-top: 10px;">
         </div>
         <div class="com-count">
-            <!-- 댓글 30개 -->
+            <!-- 포스트에 달린 댓글 전체 포문 -->
             {% for comment in post.comment_set.all %}
-            {{ comment.userId }} - {{ comment }}
-            {% if request.user == comment.userId %}
-            <form action="{% url 'delete_comment' comment.id %}" method="POST">
+            <!-- 출력부분 -->
+            <div class="box-sy2">
+                {% if post.userId.profilephoto %}
+                <img src="{{ request.user.profilephoto.url }}" class="userimg-sy">
+                {% else %}
+                <h6>#none</h6>
+                {% endif %}
+            </div>
+            &nbsp;&nbsp;{{ comment.userId }} - {{ comment }}
+            <!-- 유저 인증 -->
+            {% if request.user.id == comment.userId.id %}
+            <style>
+                #comment-delete-ju {
+                    display: inline-block;
+                    float: right;
+                    margin-right: 470px;
+                }
+            </style>
+            <form id="comment-delete-ju" action="{% url 'delete_comment' comment.id %}" method="POST">
                 {% csrf_token %}
                 <input type="submit" name="delete_comment" value="삭제">
             </form>
             {% endif %}
+            <br>
+            <hr style="width: 70%;">
+            <br>
             {% endfor %}
         </div>
         <div class="com-puls">더 읽기+</div>
