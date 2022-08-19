@@ -49,6 +49,7 @@ class Course(models.Model):
     # 최대 인원 수, 위치, 클래스 날짜 및 시간, 끝나는 시간
     maxRegCount = models.IntegerField(default=0, null=False) # 최대 인원 수
     startDate = models.DateField(auto_now=False, auto_now_add=False) # 사적 시간
+    courseTime = models.CharField(null=True, blank=True, max_length=50) # 강의 시간
     location = models.CharField(max_length=50, null=True) # 강좌 위치
     hits = models.PositiveIntegerField(default=0) # 조회수
 

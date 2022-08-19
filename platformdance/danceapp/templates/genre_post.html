@@ -7,14 +7,18 @@
     * {
         margin: 0;
         padding: 0;
-        background-color: black;
     }
 
     body {
+        background-color: black;
         display: flex;
         flex-direction: column;
         color: white;
         flex-wrap: nowrap;
+    }
+    a{
+        text-decoration: none;
+        background-color: #ffffff00;
     }
 
     #secBestVideo {
@@ -30,6 +34,7 @@
         font-family: 'DM Serif Display', serif;
         font-size: 40px;
         color: white;
+        margin-bottom: 61px;
     }
 
     /* 이미지 슬라이더 css */
@@ -55,11 +60,14 @@
     }
 
     #image-slider {
+        margin: 0 auto;
+        /*
         margin-top: 61px;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        */
     }
 
     .prev {
@@ -100,8 +108,6 @@
         padding-top: 10px;
         width: 242px;
         height: 71px;
-        text-decoration: none;
-        background-color: #ffffff00;
         color: black;
         font-family: 'DM Serif Display', serif;
         font-size: 32px;
@@ -135,10 +141,11 @@
     }
 
     #secVideos .divVideos {
+        width: 64%;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        margin-left: 15%;
+        /*justify-content: space-between;*/
     }
 
     #secVideos .divVideo_all{
@@ -201,14 +208,14 @@
             <img src="{% static 'img/white_arrow_left.png' %}" class="prev" />
             <div class="carousel-wrapper">
                 <div class="carousel">
-                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/hiphop.jpeg' %}" alt=""></a>
-                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/locking.jpeg' %}" alt=""></a>
-                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/waacking.jpeg' %}" alt=""></a>
-                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/Bboying.jpg' %}" alt=""></a>
-                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/house.png' %}" alt=""></a>
-                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/crump.jpeg' %}" alt=""></a>
-                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/poping.jpeg' %}" alt=""></a>
-                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/choregraphy.jpeg' %}" alt=""></a>
+                    <a href="{% url 'post_detail' hits_toplists.0.id %}" class="carousel-a"><img src="{{ hits_toplists.0.photo.url }}" alt=""></a>
+                    <a href="{% url 'post_detail' hits_toplists.1.id %}" class="carousel-a"><img src="{{ hits_toplists.1.photo.url }}" alt=""></a>
+                    <a href="{% url 'post_detail' hits_toplists.2.id %}" class="carousel-a"><img src="{{ hits_toplists.2.photo.url }}" alt=""></a>
+                    <a href="{% url 'post_detail' hits_toplists.3.id %}" class="carousel-a"><img src="{{ hits_toplists.3.photo.url }}" alt=""></a>
+                    <a href="{% url 'post_detail' hits_toplists.4.id %}" class="carousel-a"><img src="{{ hits_toplists.4.photo.url }}" alt=""></a>
+                    <a href="{% url 'post_detail' hits_toplists.5.id %}" class="carousel-a"><img src="{{ hits_toplists.5.photo.url }}" alt=""></a>
+                    <a href="{% url 'post_detail' hits_toplists.6.id %}" class="carousel-a"><img src="{{ hits_toplists.6.photo.url }}" alt=""></a>
+                    <a href="{% url 'post_detail' hits_toplists.7.id %}" class="carousel-a"><img src="{{ hits_toplists.7.photo.url }}" alt=""></a>
                 </div>
             </div>
             <img src="{% static 'img/white_arrow_right.png' %}" class="next" />
@@ -264,6 +271,7 @@
         <div class="divVideos">
             <!-- 포문 시작 -->
             {% for post in posts %}
+<<<<<<< HEAD
                 {% if forloop.counter < 7 %}
                 <div class="divVideo" id="divVideo1">
                     {% if post.photo %}
@@ -280,6 +288,21 @@
                     <!-- 이미지 없음 -->
                     {% endif %}
                 </div>
+=======
+            <div class="divVideo">
+                {% if post.photo %}
+                <a href="{% url 'post_detail' post.id %}">
+                    <img class="videoThumbnail" src="{{ post.photo.url }}">
+                </a>
+                <a href="{% url 'post_detail' post.id %}">
+                    <p class="videoInfo">{{ post.title }}</p>
+                    <p class="videoViewNumber">조회수 {{ post.hits }}</p>
+                </a>
+                {% else %}
+                <!-- 이미지 없음 -->
+                {% endif %}
+            </div>
+>>>>>>> ac34be510f93cc5561366943cd2b6f4e9ff1e96e
             {% endfor %}
         </div>
         <button id="showMore"><img src="{% static '/img/plus.png' %}">Show more</button>
