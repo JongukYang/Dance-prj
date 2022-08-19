@@ -28,7 +28,7 @@
         <span>
             <a id="sign" href="#" onclick="logoutConfirm()">Log Out</a>
             {% else %}
-            <a id="sign" href="{% url 'login' %}">Log In</a>
+            <a id="sign" href="{% url 'login' %}?next={{request.get_full_path}}">Log In</a>
             {% endif %}
         </span>
         {% if request.user.is_authenticated %}
