@@ -271,7 +271,6 @@
         <div class="divVideos">
             <!-- 포문 시작 -->
             {% for post in posts %}
-<<<<<<< HEAD
                 {% if forloop.counter < 7 %}
                 <div class="divVideo" id="divVideo1">
                     {% if post.photo %}
@@ -288,21 +287,6 @@
                     <!-- 이미지 없음 -->
                     {% endif %}
                 </div>
-=======
-            <div class="divVideo">
-                {% if post.photo %}
-                <a href="{% url 'post_detail' post.id %}">
-                    <img class="videoThumbnail" src="{{ post.photo.url }}">
-                </a>
-                <a href="{% url 'post_detail' post.id %}">
-                    <p class="videoInfo">{{ post.title }}</p>
-                    <p class="videoViewNumber">조회수 {{ post.hits }}</p>
-                </a>
-                {% else %}
-                <!-- 이미지 없음 -->
-                {% endif %}
-            </div>
->>>>>>> ac34be510f93cc5561366943cd2b6f4e9ff1e96e
             {% endfor %}
         </div>
         <button id="showMore"><img src="{% static '/img/plus.png' %}">Show more</button>

@@ -100,12 +100,10 @@
         <tr>
             <td><span>비밀번호</span></td>
             <td>********</td>
-            <td><input type="button" id="change-password" value="비밀번호 변경" /></td>
         </tr>
         <tr>
             <td><span>이름</span></td>
             <td>{{my.nickname}}</td>
-            <td><input type="button" id="change-name" value="이름 수정" /></td>
         </tr>
     </form>
 
@@ -120,7 +118,6 @@
     <tr>
         <td style="width:200px"><span>인스타그램</span></td>
         <td style="width:600px"><span>sik29401</span></td>
-        <td><input type="button" id="change-instargram" value="수정" /></td>
     </tr>
     <tr>
         
@@ -137,13 +134,35 @@
     </form>
     <!-- 반복 끝 -->
 </table>
+
+<div id="saveBtnDiv">
+    <input id="saveBtn" type="button" value="저장하기"/>
+</div>
+
 <!-- 현재 수강중인 클래스 -->
 <div id="current-class">
     <span>Current Class</span>
     &nbsp;&nbsp;
-    <img src="{% static 'img/orange_arrow.png' %}" />
+    <img id="class_arrow" src="{% static 'img/orange_arrow.png' %}" />
 </div>
-<table style="margin: 0 20% 0 20%;">
+
+<table id="full_class" style="margin: 0 20% 0 20%;display:none">
+    <tr id="show-current-classes">
+        {% for regcourse in myregcourses %}
+        {% if regcourse.photo %}
+        <td>
+            <a  href="{% url  'course_detail' regcourse.id%}"  style="width:300px; height:284px;margin-right: 20px;">
+                <img src="{{regcourse.photo.url}}"  style="width:300px; height:284px;margin-right: 20px;"/>
+            </a>
+            
+        </td>
+        {% endif %}
+        {% endfor %}
+        <!-- <td>Class Body : {{ regcourse.body }}</td> -->
+    </tr>
+</table>
+
+<table id="short_class" style="margin: 0 20% 0 20%;">
     <tr id="show-current-classes">
         {% for regcourse in myregcourses %}
         {% if regcourse.photo %}
@@ -189,10 +208,25 @@
 <div id="current-class">
     <span>My Video</span>
     &nbsp;&nbsp;
-    <img src="{% static 'img/orange_arrow.png' %}" />
+    <img id="myVideo_arrow" src="{% static 'img/orange_arrow.png' %}" />
 </div>
 
-<div style="margin-left:370px;display:inline-block">
+<div id="full_myVideo" style="margin-left:370px;display:none">
+    {% for post in myposts %}
+    {% if post.photo %}
+    {% if forloop.counter < 4 %}
+     <a href="{% url 'post_detail' post.id %}"><img src="{{post.photo.url}}"
+            style="width:300px; height:284px;margin-right: 20px;" />
+
+    </a>
+    {% else %}
+    <img src="{% static 'img/default_profile_img.png' %}" alt="">
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+</div>
+
+<div id="short_myVideo" style="margin-left:370px;display:inline-block">
     {% for post in myposts %}
     {% if post.photo %}
     {% if forloop.counter < 4 %}
@@ -213,11 +247,24 @@
 <div id="current-class">
     <span>Liked Video</span>
     &nbsp;&nbsp;
-    <img src="{% static 'img/orange_arrow.png' %}" />
+    <img id="my_liked_vide_arrow" src="{% static 'img/orange_arrow.png' %}" />
 </div>
-<div style="margin-left:370px;display:inline-block">
+
+<div id = "full_myliked_video" style="margin-left:370px;display:inline-block;display:none">
     {% for post in mylikedvideos %}
-    {% if forloop.counter < 6 %}
+    {% if post.photo %}
+     <a href="{% url 'post_detail' post.id %}">
+        <img src="{{ post.photo.url }}" style="width:300px; height:284px;margin-right: 20px;" />
+    </a>
+    {% else %}
+    <img src="{% static 'img/default_profile_img.png' %}" alt="">
+    {% endif %}
+    {% endfor %}
+</div>
+
+<div  id = "short_myliked_video" style="margin-left:370px;display:inline-block">
+    {% for post in mylikedvideos %}
+    {% if forloop.counter < 5 %}
     {% if post.photo %}
      <a href="{% url 'post_detail' post.id %}">
         <img src="{{ post.photo.url }}" style="width:300px; height:284px;margin-right: 20px;" />
@@ -231,8 +278,6 @@
 
 <div id="current-class">
     <span>My Class</span>
-    &nbsp;&nbsp;
-    <img src="{% static 'img/orange_arrow.png' %}" />
 </div>
 <div id="image-slider">
     <img src="{% static 'img/white_arrow_left.png' %}" class="prev" />
@@ -302,11 +347,60 @@
     const career_content = document.querySelector('#career');
     const career_list = document.querySelector('#career_list');
     career_upload.addEventListener('click',()=>{
-        career_arr.push(career_content.value);
-        career_list.innerText += "- "+career_content.value+"\n"
-        career_content.value="";
-        console.log(career_arr);
-            
+        if(career_content.value !== ""){
+            career_arr.push(career_content.value);
+            career_list.innerText += "- "+career_content.value+"\n"
+            career_content.value="";
+            console.log(career_arr);
+        }else{
+            alert('경력을 정확히 입력해주세요.');
+        }
+    
+    })
+
+    const class_arrow = document.querySelector("#class_arrow")
+    const full_class= document.querySelector('#full_class');
+    const short_class = document.querySelector('#short_class');
+    class_arrow.addEventListener('click',()=>{
+        if(full_class.style.display==="none"){
+            console.log("click");
+            short_class.style.display="none";
+            full_class.style.display="inline-block";
+        }else{
+            full_class.style.display="none";
+            short_class.style.display="inline-block";
+        }
+       
+    })
+
+    const myVideo_arrow = document.querySelector("#myVideo_arrow")
+    const full_myVideo = document.querySelector('#full_myVideo');
+    const short_myVideo = document.querySelector('#short_myVideo');
+    myVideo_arrow.addEventListener('click',()=>{
+        if(full_myVideo.style.display==="none"){
+            console.log("click");
+            short_myVideo.style.display="none";
+            full_myVideo.style.display="inline-block";
+        }else{
+            full_myVideo.style.display="none";
+            short_myVideo.style.display="inline-block";
+        }
+       
+    })
+
+    const my_liked_vide_arrow = document.querySelector("#my_liked_vide_arrow")
+    const full_myliked_video = document.querySelector('#full_myliked_video');
+    const short_myliked_video = document.querySelector('#short_myliked_video');
+    my_liked_vide_arrow.addEventListener('click',()=>{
+        if(full_myliked_video.style.display==="none"){
+            console.log("click");
+            short_myliked_video.style.display="none";
+            full_myliked_video.style.display="inline-block";
+        }else{
+            full_myliked_video.style.display="none";
+            short_myliked_video.style.display="inline-block";
+        }
+       
     })
 </script>
 {% endfor %}
