@@ -21,6 +21,7 @@
 
 <script>
     var idx=0;
+    var career_arr=[];
 </script>
 <!-- 반복 시작 -->
 {% for my in myprofile %}
@@ -122,9 +123,16 @@
         <td><input type="button" id="change-instargram" value="수정" /></td>
     </tr>
     <tr>
+        
         <td><span>경력</span></td>
-        <td><textarea rows="5" cols="40"></textarea> </td>
-        <td><input type="button" value="수정" /></td>
+        <td>
+            <div id="career_list" style="margin-bottom:50px;">
+
+            </div>
+            <input id="career" type="text" placeholder="경력을 입력해주세요"></textarea>
+        
+        </td>
+        <td><input type="button" id="career_upload" value="업로드" /></td>
     </tr>
     </form>
     <!-- 반복 끝 -->
@@ -135,12 +143,15 @@
     &nbsp;&nbsp;
     <img src="{% static 'img/orange_arrow.png' %}" />
 </div>
-<table style="margin: 0;">
+<table style="margin: 0 20% 0 20%;">
     <tr id="show-current-classes">
         {% for regcourse in myregcourses %}
         {% if regcourse.photo %}
         <td>
-            <img src="{{regcourse.photo.url}}"  />
+            <a  href="{% url  'course_detail' regcourse.id%}"  style="width:300px; height:284px;margin-right: 20px;">
+                <img src="{{regcourse.photo.url}}"  style="width:300px; height:284px;margin-right: 20px;"/>
+            </a>
+            
         </td>
         {% endif %}
         {% endfor %}
@@ -175,6 +186,12 @@
 {% endcomment %}
 
 <!-- 내가 올린 영상 출력 -->
+<div id="current-class">
+    <span>My Video</span>
+    &nbsp;&nbsp;
+    <img src="{% static 'img/orange_arrow.png' %}" />
+</div>
+
 <div style="margin-left:370px;display:inline-block">
     {% for post in myposts %}
     {% if post.photo %}
@@ -280,7 +297,17 @@
         }
         carousel.style.transform = `translate3d(-${600 * index}px, 0, 0)`;
     });
-
+    //경력 업로드 부분
+    const career_upload = document.querySelector('#career_upload')
+    const career_content = document.querySelector('#career');
+    const career_list = document.querySelector('#career_list');
+    career_upload.addEventListener('click',()=>{
+        career_arr.push(career_content.value);
+        career_list.innerText += "- "+career_content.value+"\n"
+        career_content.value="";
+        console.log(career_arr);
+            
+    })
 </script>
 {% endfor %}
 {% endblock %}
