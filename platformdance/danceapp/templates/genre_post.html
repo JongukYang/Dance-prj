@@ -201,6 +201,19 @@
 </head>
 
 <body>
+    <div id="class-section">
+        <span style="color:white;font-size:24px;margin-left:360px">Video</span>
+        <ul>
+            <li id="dance-class2" style="margin-left:100px"><a href="{% url 'genre_post' %}?genre_id=1">Hip Hop</a></li>
+            <li id="dance-class2"><a href="{% url 'genre_post' %}?genre_id=2">Locking</a></li>
+            <li id="dance-class2"><a href="{% url 'genre_post' %}?genre_id=3">Waacking</a></li>
+            <li id="dance-class2"><a href="{% url 'genre_post' %}?genre_id=4">B-Boying</a></li>
+            <li id="dance-class2"><a href="{% url 'genre_post' %}?genre_id=5">House</a></li>
+            <li id="dance-class2"><a href="{% url 'genre_post' %}?genre_id=6">Krump</a></li>
+            <li id="dance-class2"><a href="{% url 'genre_post' %}?genre_id=7">Popping</a></li>
+            <li id="dance-class2"><a href="{% url 'genre_post' %}?genre_id=8">Choreography</a></li>
+        </ul>
+    </div>
     <section id="secBestVideo">
         <p>Best 10 Video</p>
         <!-- 이미지 슬라이더 -->
@@ -301,6 +314,7 @@
     var genreName = document.getElementById('genreName'); // 장르 이름
     var orangeArrow = document.querySelector('#divGenre a');
     var link = orangeArrow.href; // 오렌지색 화살표 링크
+    const danceClassList = document.querySelectorAll('#dance-class2');
 
     function changeGenre(){
         var currentText = currentGenre.querySelector("a");
@@ -308,6 +322,7 @@
         currentText.style.color = "white";
         currentGenre.style.border = "2px solid #ffffff";
         secVideos.style.display = 'flex';
+        danceClassList[name-1].childNodes[0].style.color = "white";
     }
     if (name === "1") {
         genreName.innerText = "Hip Hop";
