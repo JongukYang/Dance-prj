@@ -33,8 +33,10 @@ urlpatterns = [
     path('news',views.news,name="news"),
     # 마이페이지
     path('mypage/<int:user_id>', views.mypage, name='mypage'),
-    # user 프로필 이미지 수정
+    # user 프로필 수정
     path('modifyprofileimg/<int:user_id>', views.modifyprofileimg, name='modifyprofileimg'),
+    # path('modifySelectiveData/<int:user_id>', views.modifySelectiveData, name='modifySelectiveData'),
+
     # 게시글 생성 (영상 업로드)
     path('postcreate/', views.postcreate, name='postcreate'),
     # 게시글 생성 (클래스 업로드)

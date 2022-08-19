@@ -111,7 +111,7 @@
 
     <!-- 반복 끝 -->
 </table>
-
+<!-- <form action="{% url 'modifySelectiveData' request.user.id %}" method="POST"> -->
 <div id="section-head" style="margin-top:116px">
     선택 정보
 </div>
@@ -127,16 +127,16 @@
         <td><span>경력</span></td>
         <td>
             <div id="career_list" style="margin-bottom:50px;">
-
             </div>
-            <input id="career" type="text" placeholder="경력을 입력해주세요"></textarea>
-        
+            <input id="career" name="career" type="text" placeholder="경력을 입력해주세요"></textarea>
         </td>
-        <td><input type="button" id="career_upload" value="업로드" /></td>
+        <td><input type="submit" id="career_upload" value="업로드" /></td>
     </tr>
     </form>
     <!-- 반복 끝 -->
 </table>
+<!-- </form> -->
+
 <!-- 현재 수강중인 클래스 -->
 <div id="current-class">
     <span>Current Register Class</span>
@@ -158,32 +158,6 @@
         <!-- <td>Class Body : {{ regcourse.body }}</td> -->
     </tr>
 </table>
-
-<!-- 내가 올린 영상 출력  수정해야함 또는 새로 작성 필요-->
-{% comment %}
-<!-- <div id="current-class">
-    <span>Liked Video</span>
-    &nbsp;&nbsp;
-    <img src="{% static 'img/orange_arrow.png' %}" />
-</div>
-<div style="margin-left:370px;display:inline-block">
-    {% for post in myposts %}
-    {% if forloop.counter < 4 %}
-     <a href="{% url 'post_detail' post.id %}">
-        <img src="{{post.photo.url}}"
-            style="width:300px; height:284px;margin-right: 20px;" alt="없음" />
-    </a>
-    {% endif %}
-    {% endfor %}
-</div>
-
-<div id="current-class">
-    <span>My Video</span>
-    &nbsp;&nbsp;
-    <img src="{% static 'img/orange_arrow.png' %}" />
-</div>
- -->
-{% endcomment %}
 
 <!-- 내가 올린 영상 출력 -->
 <div id="current-class">
