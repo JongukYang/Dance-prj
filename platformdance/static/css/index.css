@@ -601,6 +601,7 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+    color:white;
     /* 마우스 커서가 올라갔을 때 밑줄을 생성합니다*/
 }
 
@@ -668,7 +669,7 @@ footer a:hover {
 }
 
 #footer-aside-left {
-    flex: 1;
+    flex: 6;
 }
 
 #footer-aside-left ul li {
@@ -686,7 +687,7 @@ footer a:hover {
 }
 
 .aside-left-content ul li {
-    margin-right: 60px;
+    /* margin-right: 0px; */
 }
 
 #footer-content-version {
@@ -700,7 +701,6 @@ footer a:hover {
 }
 
 #footer-aside-right {
-    padding-left: 290px;
     flex: 1;
 }
 

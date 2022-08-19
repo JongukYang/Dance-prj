@@ -11,6 +11,8 @@ def login(request):
     if request.method == 'POST':
         _id = request.POST["username"]
         _pass = request.POST["password"]
+        # 이전 경로
+        next = request.POST["next"]
         # _nickname=request.POST["nickname"]
         user = auth.authenticate(request, 
         username=_id, 
@@ -22,9 +24,10 @@ def login(request):
             auth.login(request, user)
             messages.add_message(request, messages.SUCCESS, 'Login Success')
             # return HttpResponse('사용자명이 이미 존재합니다.')
-            return redirect('index')
+            return redirect(next)
 
-    return render(request, 'login.html')
+    next = request.GET['next']
+    return render(request, 'login.html', {"next" : next})
 
 
 def logout(request):
