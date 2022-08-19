@@ -15,23 +15,54 @@
             <h3>영상이 없습니다</h3>
             {% endif %}
 
+            <style>
+                .videoinfo{
+                    display: flex;
+                    flex-direction: row;
+                }
+                .info-sy{
+                    flex-basis: auto;
+                    flex-shrink: 0;
+                    flex-grow: 1;
+                }
+                .likeBtn{
+                    flex-grow: 0;
+                    margin-right: 400px;
+                    background-image: url('../static/img/good.png');
+                    background-size: cover;
+                }
+                .dislikeBtn{
+                    flex-grow: 0;
+                    margin-right: 400px;
+                    background-image: url('../static/img/goodb.png');
+                    background-size: contain;
+                }
+
+            </style>
             <div class="videoinfo">
                 <div class="info-sy">조회수 {{ post.hits }} | 좋아요 {{ post.likes_count }} | {{ post.uploadDate }}</div>
-                <!-- <button id="good">좋아요</button> -->
-                <!-- <button id="hate">싫어요</button> -->
                 {% if request.user.is_authenticated %}
-                <form action="{% url 'likes' post.id %}" method="">
+                <form action="{% url 'likes' post.id %}" method="POST">
                     {% csrf_token %}
-
                     {% if request.user in post.likes_user.all %}
-                    <button type="submit" id="hate" value="dislike">
-                        <img id="likeBtn" src="{% static 'img/good.png' %}" alt="이미지없음">
-                    </button>
+                    <!-- <script>
+                        let isClick = false;
+                        var likeBtn = document.getElementById("likeBtn");
+                        likeBtn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            if (isClick == false) {
+                                document.getElementsByClassName("likeBtn").src = "{% static 'img/good.png' %}";
+                                isClick = true;
+                            }
+                            else {
+                                document.getElementsByClassName("likeBtn").src = "{% static 'img/goodb.png' %}";
+                                isClick = false;
+                            }
+                        })
+                    </script> -->
+                    <input type="submit" class="dislikeBtn" id="hate" value="dislike">
                     {% else %}
-                    <button type="submit" id="hate" value="dislike">
-                        <img id="likeBtn" src="{% static 'img/good.png' %}" width="90" height="30" alt="이미지없음">
-                    </button>
-
+                    <input type="submit" class="likeBtn" id="hate" value="like">
                     {% endif %}
                 </form>
                 {% endif %}
@@ -136,22 +167,6 @@
         <div class="com-puls">더 읽기+</div>
     </section>
 </div>
-<script>
 
-    let isClick = false;
-    var likeBtn = document.getElementById("likeBtn");
-    likeBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        if (isClick == false) {
-            document.getElementById("likeBtn").src = "{% static 'img/good.png' %}";
-            isClick = true;
-        }
-        else {
-            document.getElementById("likeBtn").src = "{% static 'img/goodb.png' %}";
-            isClick = false;
-        }
-    })
-
-</script>
 
 {% endblock %}
