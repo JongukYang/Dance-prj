@@ -22,16 +22,16 @@
                 {% if request.user.is_authenticated %}
                 <form action="{% url 'likes' post.id %}" method="">
                     {% csrf_token %}
-                    
+
                     {% if request.user in post.likes_user.all %}
-                     <button type="submit" id="hate" value="dislike">
+                    <button type="submit" id="hate" value="dislike">
                         <img id="likeBtn" src="{% static 'img/good.png' %}" alt="이미지없음">
                     </button>
                     {% else %}
                     <button type="submit" id="hate" value="dislike">
                         <img id="likeBtn" src="{% static 'img/good.png' %}" width="90" height="30" alt="이미지없음">
                     </button>
-                
+
                     {% endif %}
                 </form>
                 {% endif %}
@@ -64,33 +64,38 @@
                     <h6>#none</h6>
                     {% endif %}
                 </div>
-                    <div class="com-name">{{ request.user.username }}</div>
-                    <div class="com-foll">
-                        <!-- 댓글 달기 -->
-                        {% if request.user.is_authenticated %}
-                        <form method="POST" action="{% url 'new_comment' post.id %}">
-                            {% csrf_token %}
-                            <style>
-                                #comm{
-                                    background-color: black;
-                                    border-color: black;
-                                    color: #FFFFFF;
-                                    display: inline;
-                                }
-                            </style>
-                            {{ comment_form }}
-                            <input type="submit" class="iip" value="댓글 입력" style="float: right;">
-                            <style>
-                                input{
-                                    background-color: white;
-                                    display: inline-block;
-                                }
-                            </style>
-            
-                        </form>
-                        {% endif %}
-                    </div>
-            </div> 
+                <div class="com-name">{{ request.user.username }}</div>
+                <div class="com-foll">
+                    <!-- 댓글 달기 -->
+                    {% if request.user.is_authenticated %}
+                    <style>
+                        #comment-form-ju {
+                            display: flex;
+                            flex-direction: row;
+                        }
+
+                        #comm {
+                            background-color: black;
+                            border-color: black;
+                            color: #FFFFFF;
+                            flex-basis: auto;
+                            flex-shrink: 0;
+                            flex-grow: 1;
+                        }
+                        .comment-submit-ju {
+                            background-color: white;
+                            flex-grow: 0;
+                            /* float: inline-end; */
+                        }
+                    </style>
+                    <form id="comment-form-ju" method="POST" action="{% url 'new_comment' post.id %}">
+                        {% csrf_token %}
+                        {{ comment_form }}
+                        <input type="submit" class="comment-submit-ju" value="댓글 입력">
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
             <hr style="border: 2px solid #FFFFFF;
                 width: 980px;height: 0px; margin-top: 10px;">
         </div>
@@ -110,12 +115,12 @@
     </section>
 </div>
 <script>
-   
+
     let isClick = false;
     var likeBtn = document.getElementById("likeBtn");
-    likeBtn.addEventListener('click', function(e){
+    likeBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        if (isClick == false){
+        if (isClick == false) {
             document.getElementById("likeBtn").src = "{% static 'img/good.png' %}";
             isClick = true;
         }

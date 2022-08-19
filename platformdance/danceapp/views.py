@@ -303,6 +303,12 @@ def modifyprofileimg(request, user_id):
     else:
         return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
+# def modifySelectiveData(request, user_id):
+#     if request.method == 'POST':
+#         user = userProfile.objects.get(id=user_id)
+#         user.career = request.POST["career"]
+#         user.save()
+
 def aboutus(request):
     return render(request, 'about_us.html')
 

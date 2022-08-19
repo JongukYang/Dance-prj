@@ -37,12 +37,14 @@
         <div class="carousel">
             <a href="{% url 'course_detail' hits_toplists.0.id %}" class="carousel-a"><img src="{{ hits_toplists.0.photo.url }}" alt=""></a>
             <a href="{% url 'course_detail' hits_toplists.1.id %}" class="carousel-a"><img src="{{ hits_toplists.1.photo.url }}" alt=""></a>
+            {% comment %}
             <a href="{% url 'course_detail' hits_toplists.2.id %}" class="carousel-a"><img src="{{ hits_toplists.2.photo.url }}" alt=""></a>
             <a href="{% url 'course_detail' hits_toplists.3.id %}" class="carousel-a"><img src="{{ hits_toplists.3.photo.url }}" alt=""></a>
             <a href="{% url 'course_detail' hits_toplists.4.id %}" class="carousel-a"><img src="{{ hits_toplists.4.photo.url }}" alt=""></a>
             <a href="{% url 'course_detail' hits_toplists.5.id %}" class="carousel-a"><img src="{{ hits_toplists.5.photo.url }}" alt=""></a>
             <a href="{% url 'course_detail' hits_toplists.6.id %}" class="carousel-a"><img src="{{ hits_toplists.6.photo.url }}" alt=""></a>
             <a href="{% url 'course_detail' hits_toplists.7.id %}" class="carousel-a"><img src="{{ hits_toplists.7.photo.url }}" alt=""></a>
+            {% endcomment %}
         </div>
     </div>
     <img src="{% static 'img/white_arrow_right.png' %}" class="next" />
