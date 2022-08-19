@@ -22,7 +22,7 @@
 
 <div id="class_date">
     <h3>장르</h3>
-    <p>힙합</p>
+    <p>{{ course.genreName }}</p>
     <h3>소개</h3>
     <p>
         {{ course.body }}
@@ -35,23 +35,14 @@
     <br />
     <h3>선생님</h3>
     <p>{{ course.userId.username }} </p>
-    <h3>경력</h3>
-    <pre>
-- '2016 백상예술대상' 드라마 작품상, 연출상, 극본상 등 8개 부문 수상
-- '2016 대한민국 국회대상' 콘텐츠 드라마 부문 수상
-- 'KOREA UHD Award 2015' 드라마/TV영화 부문 작품상 수상
-- '2016 APAN Star Awards' 연출상, 남녀신인상 수상
-    </pre>
     <h3>Date/Time</h3>
     <h3>날짜</h3>
     <p>{{ course.startDate }}</p><br>
     <h3>시간</h3>
     <p>오후 5시 - 오후 10시</p><br>
     <h3>경력</h3>
-    <p>{{ course.userId.danceSkill }}</dpv><br>
+    <p>{{ course.userId.danceSkill }}</dpv><br><br/>
         <!-- coursecreate.html에 시간을 입력받는 폼도 필요 -->
-    <h3>수강 시간</h3>
-    <p>오후 5시~오후 10시</p><br>
     <h3>수강 장소</h3>
     <p>{{ course.location }}</p><br>
 </div>
@@ -69,8 +60,10 @@
         <div>
             {% if request.user in course.register_user.all %}
             <input type="submit" id="submitBtn" value="신청취소">
-            {% else %}
+            {% elif request.user.is_authenticated %}
             <input type="submit" id="submitBtn" value="신청하기">
+            {% else %}
+            <a href="{% url 'login' %}?next={{request.get_full_path}}"><input type="button" id="submitBtn" value="신청하기"></a>
             {% endif %}
         </div>
     </form>

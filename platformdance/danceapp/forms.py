@@ -54,10 +54,9 @@ class CommentForm(forms.ModelForm):
         super(CommentForm, self).__init__(*args, **kwargs)
 
         self.fields['comment'].widget.attrs = {
-            'id': 'comm', 
+            'class': 'form-control', 
             'placeholder': "댓글 입력",
             'rows':1,
-            'cols':90,
         }
 
 
@@ -113,7 +112,7 @@ class CourseForm(forms.ModelForm):
         }
         self.fields['courseTime'].widget.attrs = {
             'class': 'form-control', 
-            'placeholder': "00:00 ~ 00:00",
+            'placeholder': "시간 입력",
             'id': 'id_courseTime',
             # 'style': 'color:black;' # 알아서 색 맞춰 수정하기
         }
