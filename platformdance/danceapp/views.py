@@ -240,8 +240,10 @@ def course_likes(request, course_id):
 
 # 클래스 상세보기
 def course_detail(request, course_id):
-    course = get_object_or_404(Course, pk=course_id)
+    course = get_object_or_404(Course, id=course_id)
     course.hits += 1 # 조회수
+    course.save()
+
     context = {
         'course': course,
     }

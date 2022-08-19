@@ -193,14 +193,14 @@
             <img src="{% static 'img/white_arrow_left.png' %}" class="prev" />
             <div class="carousel-wrapper">
                 <div class="carousel">
-                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/hiphop.jpeg' %}" alt=""></a>
-                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/locking.jpeg' %}" alt=""></a>
-                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/waacking.jpeg' %}" alt=""></a>
-                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/Bboying.jpg' %}" alt=""></a>
-                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/house.png' %}" alt=""></a>
-                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/crump.jpeg' %}" alt=""></a>
-                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/poping.jpeg' %}" alt=""></a>
-                    <a href="#" class="carousel-a"><img src="{% static 'img/tumbnail/choregraphy.jpeg' %}" alt=""></a>
+                    <a href="{% url 'post_detail' hits_toplists.0.id %}" class="carousel-a"><img src="{{ hits_toplists.0.photo.url }}" alt=""></a>
+                    <a href="{% url 'post_detail' hits_toplists.1.id %}" class="carousel-a"><img src="{{ hits_toplists.1.photo.url }}" alt=""></a>
+                    <a href="{% url 'post_detail' hits_toplists.2.id %}" class="carousel-a"><img src="{{ hits_toplists.2.photo.url }}" alt=""></a>
+                    <a href="{% url 'post_detail' hits_toplists.3.id %}" class="carousel-a"><img src="{{ hits_toplists.3.photo.url }}" alt=""></a>
+                    <a href="{% url 'post_detail' hits_toplists.4.id %}" class="carousel-a"><img src="{{ hits_toplists.4.photo.url }}" alt=""></a>
+                    <a href="{% url 'post_detail' hits_toplists.5.id %}" class="carousel-a"><img src="{{ hits_toplists.5.photo.url }}" alt=""></a>
+                    <a href="{% url 'post_detail' hits_toplists.6.id %}" class="carousel-a"><img src="{{ hits_toplists.6.photo.url }}" alt=""></a>
+                    <a href="{% url 'post_detail' hits_toplists.7.id %}" class="carousel-a"><img src="{{ hits_toplists.7.photo.url }}" alt=""></a>
                 </div>
             </div>
             <img src="{% static 'img/white_arrow_right.png' %}" class="next" />
