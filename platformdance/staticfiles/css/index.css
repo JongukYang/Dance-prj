@@ -361,32 +361,11 @@ video{
     color: #FFFFFF;
 }
 
-#good{
-    background: #4366E3;
-    margin-left: 497px;
-    width: 90px;
-    height: 35px;
-    border-radius: 6px;
-    font-family: 'Gothic A1';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
-    color: #FFFFFF;
-}
-
 #hate{
-    background: #FF5656;
     margin-left: 16px;
     width: 90px;
     height: 35px;
     border-radius: 6px;
-    font-family: 'Gothic A1';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
-    color: #FFFFFF;
 }
 
 .userinfo{
