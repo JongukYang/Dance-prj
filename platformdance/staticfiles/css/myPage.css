@@ -93,6 +93,13 @@ td > img{
     border-radius: 50%;
 }
 
+td > a > img{
+    width:180px;
+    height:180px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
 tr{
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 
@@ -101,4 +108,13 @@ td{
     padding-top: 30px;
     padding-bottom: 50px;
     color:white
+}
+
+#career{
+    width:200px;
+}
+#career_list{
+    color:white;
+    font-size: 32px;
+    margin-bottom: 50px;
 }

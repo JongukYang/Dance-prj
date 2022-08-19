@@ -249,9 +249,7 @@ def course_detail(request, course_id):
 
 # 클래스 신청하기
 def regCourse(request, course_id):
-    if not request.user.is_authenticated:
-        return redirect('login')
-    elif request.user.is_authenticated:    
+    if request.user.is_authenticated:    
        course = get_object_or_404(Course, pk=course_id)
        if request.user in course.register_user.all():
     #    if course.register_user.filter(pk=request.user.pk).exists():
