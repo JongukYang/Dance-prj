@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+<script>
+    var idx=0;
+</script>
 <div id="class-section">
     <span style="color:white;font-size:24px;margin-left:360px">Class</span>
     <ul>
@@ -35,15 +38,15 @@
     <img src="{% static 'img/white_arrow_left.png' %}" class="prev" />
     <div class="carousel-wrapper">
         <div class="carousel">
-            <a href="{% url 'course_detail' hits_toplists.0.id %}" class="carousel-a"><img src="{{ hits_toplists.0.photo.url }}" alt=""></a>
-            <a href="{% url 'course_detail' hits_toplists.1.id %}" class="carousel-a"><img src="{{ hits_toplists.1.photo.url }}" alt=""></a>
+            <a href="{% url 'course_detail' hits_toplists.0.id %}" class="carousel-a"><img src="{{ hits_toplists.0.photo.url }}" alt="0"></a>
+            <a href="{% url 'course_detail' hits_toplists.1.id %}" class="carousel-a"><img src="{{ hits_toplists.1.photo.url }}" alt="1"></a>
             {% comment %}
-            <a href="{% url 'course_detail' hits_toplists.2.id %}" class="carousel-a"><img src="{{ hits_toplists.2.photo.url }}" alt=""></a>
-            <a href="{% url 'course_detail' hits_toplists.3.id %}" class="carousel-a"><img src="{{ hits_toplists.3.photo.url }}" alt=""></a>
-            <a href="{% url 'course_detail' hits_toplists.4.id %}" class="carousel-a"><img src="{{ hits_toplists.4.photo.url }}" alt=""></a>
-            <a href="{% url 'course_detail' hits_toplists.5.id %}" class="carousel-a"><img src="{{ hits_toplists.5.photo.url }}" alt=""></a>
-            <a href="{% url 'course_detail' hits_toplists.6.id %}" class="carousel-a"><img src="{{ hits_toplists.6.photo.url }}" alt=""></a>
-            <a href="{% url 'course_detail' hits_toplists.7.id %}" class="carousel-a"><img src="{{ hits_toplists.7.photo.url }}" alt=""></a>
+            <a href="{% url 'course_detail' hits_toplists.2.id %}" class="carousel-a"><img src="{{ hits_toplists.2.photo.url }}" alt="2"></a>
+            <a href="{% url 'course_detail' hits_toplists.3.id %}" class="carousel-a"><img src="{{ hits_toplists.3.photo.url }}" alt="3"></a>
+            <a href="{% url 'course_detail' hits_toplists.4.id %}" class="carousel-a"><img src="{{ hits_toplists.4.photo.url }}" alt="4"></a>
+            <a href="{% url 'course_detail' hits_toplists.5.id %}" class="carousel-a"><img src="{{ hits_toplists.5.photo.url }}" alt="5"></a>
+            <a href="{% url 'course_detail' hits_toplists.6.id %}" class="carousel-a"><img src="{{ hits_toplists.6.photo.url }}" alt="6"></a>
+            <a href="{% url 'course_detail' hits_toplists.7.id %}" class="carousel-a"><img src="{{ hits_toplists.7.photo.url }}" alt="7"></a>
             {% endcomment %}
         </div>
     </div>
@@ -141,10 +144,10 @@
         })
     }
     else if (name === "4") {
-        classNameText.innerText = "B-Boyibg";
+        classNameText.innerText = "B-Boying";
         genreClass.style.display = "block"
         danceClassList[3].childNodes[0].style.color = "white";
-        genre_name.innerText = "B-Boying"
+        genre_name.innerText = "Bboying"
         document.querySelectorAll('#dance-class2').forEach(item => {
             if (item.innerText === "B-Boying") {
                 // item.style.border = "1px solid white";
@@ -231,7 +234,7 @@
 
     prevButton.addEventListener('click', () => {
         if (index === 0) {
-            index = 7;
+            index = 1;
         } else {
             index -= 1;
         }
@@ -239,7 +242,7 @@
     });
 
     nextButton.addEventListener('click', () => {
-        if (index === 7) {
+        if (index === 1) {
             index = 0;
         } else {
             index += 1;
