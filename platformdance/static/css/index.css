@@ -293,6 +293,10 @@ td {
     margin: 10px 10px 10px 10px;
 }
 
+#news-table >tbody> tr> td >div{
+    margin-left:20px;
+}
+
 
 #news-table>tr>td>img :hover {
     background-color: black;

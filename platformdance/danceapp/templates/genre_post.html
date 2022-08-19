@@ -141,6 +141,14 @@
         margin-left: 15%;
     }
 
+    #secVideos .divVideo_all{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: 15%;
+        display:none;
+    }
+
     #secVideos .divVideo {
         margin-right: 1rem;
         margin-bottom: 2rem;
@@ -231,22 +239,47 @@
             <div id="blank"></div>
         </div>
 
+
+        <div class="divVideo_all">
+            <!-- 포문 시작 -->
+            {% for post in posts %}
+                <div class="divVideo" id="divVideo1">
+                    {% if post.photo %}
+                    <a href="{% url 'post_detail' post.id %}">
+                        <img class="videoThumbnail" src="{{ post.photo.url }}">
+                    </a>
+                    <a href="{% url 'post_detail' post.id %}">
+                        <p class="videoInfo">{{ post.title }}</p>
+                        <p class="videoViewNumber">조회수 {{ post.hits }}</p>
+                    </a>
+                    
+                    {% else %}
+                    <!-- 이미지 없음 -->
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+
         <div class="divVideos">
             <!-- 포문 시작 -->
             {% for post in posts %}
-            <div class="divVideo" id="divVideo1">
-                {% if post.photo %}
-                <a href="{% url 'post_detail' post.id %}">
-                    <img class="videoThumbnail" src="{{ post.photo.url }}">
-                </a>
-                <a href="{% url 'post_detail' post.id %}">
-                    <p class="videoInfo">{{ post.title }}</p>
-                    <p class="videoViewNumber">조회수 {{ post.hits }}</p>
-                </a>
-                {% else %}
-                <!-- 이미지 없음 -->
-                {% endif %}
-            </div>
+                {% if forloop.counter < 7 %}
+                <div class="divVideo" id="divVideo1">
+                    {% if post.photo %}
+                    <a href="{% url 'post_detail' post.id %}">
+                        <img class="videoThumbnail" src="{{ post.photo.url }}">
+                    </a>
+                    <a href="{% url 'post_detail' post.id %}">
+                        <p class="videoInfo">{{ post.title }}</p>
+                        <p class="videoViewNumber">조회수 {{ post.hits }}</p>
+                    </a>
+                    
+                    {% else %}
+                    {% endif %}
+                    <!-- 이미지 없음 -->
+                    {% endif %}
+                </div>
             {% endfor %}
         </div>
         <button id="showMore"><img src="{% static '/img/plus.png' %}">Show more</button>
@@ -379,5 +412,17 @@
         }
         carousel.style.transform = `translate3d(-${623 * index}px, 0, 0)`;
     });
+
+    //더보기 버튼
+    const showMore = document.querySelector('#showMore');
+    const divVideos = document.querySelector('.divVideos');
+    const divVideo_all = document.querySelector('.divVideo_all');
+    
+    showMore.addEventListener('click',()=>{
+        console.log(divVideos);
+        divVideos.style.display="none";
+        divVideo_all.style.display="flex";
+        showMore.style.display="none";
+    })
 </script>
 {% endblock %}

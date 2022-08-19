@@ -33,17 +33,9 @@
     &nbsp;&nbsp;
     <img src="{% static 'img/orange_arrow.png' %}" />
     <div id="slider-section">
-        {% if posts.has_previous %}
-        <a href="?page={{ posts.previous_page_number }}">
-            <img src="{% static 'img/white_arrow_left.png' %}" />
-        </a> 
-        {% endif %}
-        <span style="color:white;font-size: 1.3rem;">&nbsp; {{ posts.number }} / {{ posts.paginator.num_pages }} &nbsp;</span>
-        {% if posts.has_next %}
-        <a href="?page={{ posts.next_page_number }}">
-            <img src="{% static 'img/white_arrow_right.png' %}" />
-        </a>
-        {% endif %}
+        <img src="{% static 'img/white_arrow_left.png' %}" />
+        <span style="color:white;font-size: 1.3rem;">&nbsp; 3 / 6 &nbsp;</span>
+        <img src="{% static 'img/white_arrow_right.png' %}" />
     </div>
 </div>
 
@@ -71,7 +63,7 @@
         <img src="{% static 'img/orange_arrow.png' %}" />
         <div id="slider-section-news">
             <img src="{% static 'img/black_arrow_left.png' %}" />
-            <span style="color:black;font-size: 1.3rem;">&nbsp; 3 / 6 &nbsp;</span>
+            <span style="color:black;font-size: 1.3rem;">&nbsp; 1 / 6 &nbsp;</span>
             <img src="{% static 'img/black_arrow_right.png' %}" />
         </div>
     </div>
@@ -90,33 +82,33 @@
             </tr>
             <tr>
                 <td>
-                    <div style="height:200px;width:200px;background-color: lightgray;">
+                    <div style="height:200px;width:240px;background-color: lightgray;">
                     </div>
                 </td>
                 <td>
-                    <div style="height:200px;width:200px;background-color: lightgray;">
+                    <div style="height:200px;width:240px;background-color: lightgray;">
                     </div>
                 </td>
 
             </tr>
             <tr>
                 <td>
-                    <div style="height:200px;width:200px;background-color: lightgray;">
+                    <div style="height:200px;width:240px;background-color: lightgray;">
                     </div>
 
                 </td>
                 <td>
-                    <div style="height:200px;width:200px;background-color: lightgray;">
+                    <div style="height:200px;width:240px;background-color: lightgray;">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div style="height:200px;width:200px;background-color: lightgray;">
+                    <div style="height:200px;width:240px;background-color: lightgray;">
                     </div>
                 </td>
                 <td>
-                    <div style="height:200px;width:200px;background-color: lightgray;">
+                    <div style="height:200px;width:240px;background-color: lightgray;">
                     </div>
                 </td>
             </tr>
@@ -128,5 +120,7 @@
     news_main.addEventListener('click', () => {
         location.href = "/news"
     })
+    const table = document.getElementById("table");
+    table.appendChild("")
 </script>
 {% endblock %}
