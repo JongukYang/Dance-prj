@@ -1,18 +1,31 @@
-@import url('http://fonts.cdnfonts.com/css/dm-serif-display');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gothic+A1:wght@700;900&display=swap');
+
+body{
+    font-family: 'DM Serif Display';
+}
 
     #aboutUs-section { 
         background-color: black;
         color: white;
-        font-family: 'DM Serif Display';
+        font-family: 'DM Serif Display', serif;
         font-style: normal;
         text-align: center;
         margin:0 auto;
     }
 
+    #aboutUs-section p, #aboutUs-section span { 
+        
+        font-family: 'DM Serif Display', serif;
+        font-style: normal;
+      
+    }
+
     #aboutUs-title{ /* Who we are 문구 */
         font-size:40px;
+        font-family: 'DM Serif Display', serif;
+        font-style: normal;
         text-align: left;
-        margin:214px 0 125px 370px;
+        margin:10px 0 125px 370px;
     }
 
     #aboutUs-contents { /* 내용 부분 */
@@ -30,6 +43,7 @@
         line-height: 170%;
         text-align: center;
         letter-spacing: -0.02em;
+        font-size: 24px;
     }   
 
     .updown-line { /* 세로 줄 */

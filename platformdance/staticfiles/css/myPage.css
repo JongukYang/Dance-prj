@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gothic+A1&display=swap');
+
+*{
+    font-family: 'Gothic A1', sans-serif;
+}
+
 #show-profile{
     background-color: white;
     width:100%;
@@ -21,12 +27,12 @@
     width:100%;
 }
 
-#show-profile > div > img{
+#show-profile > div  img{
+    border:1px solid balck;
     display:inline-block;
     width:200px;
     height:200px;
-    border-radius: 15px;
-    object-fit: contain;
+    border-radius: 70%;
     vertical-align: top;
 }
 #usernameAndEmail{
@@ -40,10 +46,15 @@
 }
 
 #user-email{
-    font-weight: 500;
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 17px;
     margin-top: 30px;
     margin-bottom:50px;
+}
+
+#user-role{
+    font-size: 17px;
+    font-weight: 600;
 }
 #button-group{
     display:inline;
@@ -90,14 +101,6 @@ td > img{
     width:180px;
     height:180px;
     object-fit: contain;
-    border-radius: 50%;
-}
-
-td > a > img{
-    width:180px;
-    height:180px;
-    object-fit: contain;
-    border-radius: 50%;
 }
 
 tr{
@@ -110,11 +113,50 @@ td{
     color:white
 }
 
-#career{
-    width:200px;
-}
-#career_list{
-    color:white;
+#current-class{
+    margin-left:370px;
     font-size: 32px;
-    margin-bottom: 50px;
+    margin-top:80px;
+    margin-bottom:80px;
+
+}
+
+#show-current-classes{
+    display:inline-block;
+}
+
+#show-current-classes > td > img{
+    width:279px;
+    height:444px;
+    border-radius: 0%;
+}
+#saveBtnDiv{
+    width:100%;
+    text-align: center;
+    align-items: center;
+}
+
+#saveBtn{
+    margin-top:3%;
+    border-radius: 15px;
+    color:white;
+    font-weight: 500;
+    font-size: 26px;
+    background-color: #FF5656;
+    width:200px;
+    height:50px;
+}
+
+#career_upload{
+    width:90px;
+    height: 40px;
+    border-radius: 15px;
+    color:white;
+    font-size: 15px;
+    font-weight: 700;
+    background-color: #FF5656;
+}
+
+#current-class > img{
+    cursor: pointer;
 }
