@@ -66,7 +66,7 @@ class CourseForm(forms.ModelForm):
         model = Course
         # fields = '__all__'
         # fields = ['title', 'body', 'photo', 'video', 'genreName', 'startDate', 'maxRegCount', 'location']
-        fields = ['title', 'body', 'photo', 'genreName', 'startDate', 'location']
+        fields = ['title', 'body', 'photo', 'genreName', 'startDate', 'location', 'courseTime']
 
         widgets = {
             'startDate': forms.DateInput(format=('%Y/%m/%d'), 
@@ -108,6 +108,12 @@ class CourseForm(forms.ModelForm):
             'class': 'form-control', 
             'placeholder': "위치 입력",
             'id': 'id_location',
+            # 'style': 'color:black;' # 알아서 색 맞춰 수정하기
+        }
+        self.fields['courseTime'].widget.attrs = {
+            'class': 'form-control', 
+            'placeholder': "00:00 ~ 00:00",
+            'id': 'id_courseTime',
             # 'style': 'color:black;' # 알아서 색 맞춰 수정하기
         }
         # self.fields['maxRegCount'].widget.attrs = {
