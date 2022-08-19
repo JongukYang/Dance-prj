@@ -69,8 +69,10 @@
         <div>
             {% if request.user in course.register_user.all %}
             <input type="submit" id="submitBtn" value="신청취소">
-            {% else %}
+            {% elif request.user.is_authenticated %}
             <input type="submit" id="submitBtn" value="신청하기">
+            {% else %}
+            <a href="{% url 'login' %}?next={{request.get_full_path}}"><input type="button" id="submitBtn" value="신청하기"></a>
             {% endif %}
         </div>
     </form>
