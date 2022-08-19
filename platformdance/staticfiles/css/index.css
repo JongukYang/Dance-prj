@@ -366,6 +366,7 @@ video{
     width: 90px;
     height: 35px;
     border-radius: 6px;
+    background-color: rgba(255, 86, 86, 0.6);;
 }
 
 .userinfo{

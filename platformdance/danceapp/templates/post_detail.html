@@ -25,13 +25,13 @@
                     
                     {% if request.user in post.likes_user.all %}
                      <button type="submit" id="hate" value="dislike">
-                        <img src="{% static 'img/good.png' %}" alt="이미지없음">
+                        <img id="likeBtn" src="{% static 'img/good.png' %}" alt="이미지없음">
                     </button>
                     {% else %}
-
-                     <button type="submit" id="hate" value="like">
-                        <img src="{% static 'img/goodb.png' %}" alt="이미지없음">
+                    <button type="submit" id="hate" value="dislike">
+                        <img id="likeBtn" src="{% static 'img/good.png' %}" width="90" height="30" alt="이미지없음">
                     </button>
+                
                     {% endif %}
                 </form>
                 {% endif %}
@@ -110,18 +110,21 @@
     </section>
 </div>
 <script>
+   
     let isClick = false;
-    var ch=document.getElementById("hate");
-    ch.addEventListener('click',(e)=>{
+    var likeBtn = document.getElementById("likeBtn");
+    likeBtn.addEventListener('click', function(e){
         e.preventDefault();
-        ch.childNodes[1].src="{% static 'img/goodb.png' %}"
-        if(ch.value==="like"){
-            ch.value="dislike";
+        if (isClick == false){
+            document.getElementById("likeBtn").src = "{% static 'img/good.png' %}";
+            isClick = true;
         }
-        else{
-            ch.value="like";
+        else {
+            document.getElementById("likeBtn").src = "{% static 'img/goodb.png' %}";
+            isClick = false;
         }
-    });
+    })
+
 </script>
 
 {% endblock %}
