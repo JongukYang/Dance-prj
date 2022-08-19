@@ -92,7 +92,8 @@
                     <form id="comment-form-ju" method="POST" action="{% url 'new_comment' post.id %}">
                         {% csrf_token %}
                         {{ comment_form }}
-                        <input type="submit" class="comment-submit-ju" value="댓글 입력">
+                        <input type="submit" class="comment-submit-ju" value="댓글 입력"
+                        style="background-color: gray; color: black; border-radius: 6px; border-color: black;line-height: 20px;">
                     </form>
                     {% endif %}
                 </div>
@@ -123,7 +124,8 @@
             </style>
             <form id="comment-delete-ju" action="{% url 'delete_comment' comment.id %}" method="POST">
                 {% csrf_token %}
-                <input type="submit" name="delete_comment" value="삭제">
+                <input type="submit" name="delete_comment" value="삭제"
+                style="background-color: gray; color: black; border-radius: 6px; border-color: black;line-height: 20px;">
             </form>
             {% endif %}
             <br>
