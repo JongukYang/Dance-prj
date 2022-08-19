@@ -16,6 +16,10 @@
         color: white;
         flex-wrap: nowrap;
     }
+    a{
+        text-decoration: none;
+        background-color: #ffffff00;
+    }
 
     #secBestVideo {
         margin-top: 3rem;
@@ -30,6 +34,7 @@
         font-family: 'DM Serif Display', serif;
         font-size: 40px;
         color: white;
+        margin-bottom: 61px;
     }
 
     /* 이미지 슬라이더 css */
@@ -55,11 +60,14 @@
     }
 
     #image-slider {
+        margin: 0 auto;
+        /*
         margin-top: 61px;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        */
     }
 
     .prev {
@@ -100,8 +108,6 @@
         padding-top: 10px;
         width: 242px;
         height: 71px;
-        text-decoration: none;
-        background-color: #ffffff00;
         color: black;
         font-family: 'DM Serif Display', serif;
         font-size: 32px;
@@ -135,14 +141,14 @@
     }
 
     #secVideos .divVideos {
+        width: 62%;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        margin-left: 15%;
+        justify-content: space-between;
     }
 
     #secVideos .divVideo {
-        margin-right: 1rem;
         margin-bottom: 2rem;
         font-family: 'Gothic A1', sans-serif;
     }
@@ -234,7 +240,7 @@
         <div class="divVideos">
             <!-- 포문 시작 -->
             {% for post in posts %}
-            <div class="divVideo" id="divVideo1">
+            <div class="divVideo">
                 {% if post.photo %}
                 <a href="{% url 'post_detail' post.id %}">
                     <img class="videoThumbnail" src="{{ post.photo.url }}">
