@@ -2,3 +2,5 @@
 .DS_Store
 platformdance/media/video
  platformdance/platformdance/secretkey.py
+platformdance/secrets.py
+platformdance/db.sqlite3
