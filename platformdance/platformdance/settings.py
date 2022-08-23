@@ -42,7 +42,7 @@ SECRET_KEY = get_secret("SECRET_KEY")
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', '.herokuapp.com']
 
 DATETIME_INPUT_FORMATS = ['%d-%m-%Y']
 
