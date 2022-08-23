@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-from .secretkey import S_SECRET_KEY
+import platformdance
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,18 +22,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = 'django-insecure-5y7!ai6_jd#2_t1ki5n*5d6r*z78x)tt&aptp@=7g^1%cg*!ed'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
+# DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
 DATETIME_INPUT_FORMATS = ['%d-%m-%Y']
 
-
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
-
 
 # Application definition
 
@@ -56,7 +55,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+
+
+# Activate Django-Heroku
+platformdance.settings(locals())
 
 ROOT_URLCONF = 'platformdance.urls'
 

@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- main -->
+<h1>{{ genre.name }} Class</h1>
+<a href="{% url 'genre_post' %}?genre_id={{genre.id}}">{{ genre.name}} 게시글</a>
+<table border="1">
+    <tr>
+        <th>userid</th>
+        <th>userId_id</th>
+        <th>title</th>
+        <th>body</th>
+        <th>uploadDate</th>
+        <th>updateDate</th>
+        <th>img</th>
+        <th>video</th>
+        <th>수정</th>
+        <th>삭제</th>
+        <th>좋아요</th>
+        <th>장르</th>
+        <th>신청하기</th>
+        <th>수강생</th>
+    </tr>
+    {% for course in courses %}
+    {% if course.genreName.name == genre.name %}
+    <tr>
+        <td>{{ course.userId }}</td>
+        <td>{{ course.userId_id }}</td>
+        <td><a href="{% url 'course_detail' course.id %}">{{ course.title }}</a></td>
+        <td>{{ course.body }}</td>
+        <td>{{ course.uploadDate }}</td>
+        <td>{{ course.updateDate }}</td>
+        <td>
+            {% if course.photo %}
+            {{ course.photo }} <br>
+            <img style="width: 30%;" src="{{ course.photo.url }}" alt="">
+            {% endif %}
+        </td>
+        <td>
+            {% if course.video %}
+            {{ course.video }} <br>
+            <!-- <video width="30%" src="{{ post.video.url }}" controls></video> -->
+            {% endif %}
+        </td>
+
+        <td>
+            {% if request.user.is_authenticated %}
+            {% if course.userId == request.user %}
+
+                {% csrf_token %}
+                <input type="submit" name="modify_post" value="수정">
+            </form>
+            {% endif %}
+            {% endif %}
+        </td>
+
+
+        <td>
+            {% if request.user.is_authenticated %}
+            {% if course.userId == request.user %}
+
+                {% csrf_token %}
+                <input type="submit" name="delete_post" value="삭제">
+            </form>
+            {% endif %}
+            {% endif %}
+        </td>
+        
+        <!-- <td>
+            {% if request.user.is_authenticated %}
+
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <input type="submit" value="댓글 입력">
+            </form>
+            {% endif %}
+            {% for comment in course.comment_set.all %}
+            {{ comment.userId }} - {{ comment }}
+            {% if request.user == comment.userId %}
+            <form action="{% url 'delete_comment' comment.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" name="delete_comment" value="삭제">
+            </form>
+            {% endif %}
+            <br>
+            {% endfor %}
+        </td> -->
+        <td>
+            <form action="{% url 'course_likes' course.id %}" method="">
+                {% csrf_token %}
+                <p>
+                    좋아요 수 : {{ course.likes_count }}
+                </p>
+                {% if request.user in course.likes_user.all %}
+                <input type="submit" value="dislike">
+                {% else %}
+                <input type="submit" value="like">
+                {% endif %}
+            </form>
+        </td>
+        <td>장르 : {{course.genreName}}</td>
+        <td>
+            <form action="{% url 'regCourse' course.id %}" method="POST">
+                {% csrf_token %}
+                {% if request.user in course.register_user.all %}
+                <input type="submit" value="신청취소">
+                {% else %}
+                <input type="submit" value="신청하기">
+                {% endif %}
+            </form>
+        </td>
+        <td>
+            {% for regUser in course.register_user.all %}
+                {{ regUser.nickname}}
+                {% if not forloop.last %},{% endif %}
+           {% endfor %}
+        </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+</table>
+
+{% endblock %}
