@@ -1,2 +1,2 @@
-* linguist-vendored
-*.python linguist-vendored=false
+platformdance/** linguist-documentation=false
+platformdance/** linguist-vendored=false
