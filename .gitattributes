@@ -1,2 +1,3 @@
 platformdance/** linguist-documentation=false
 platformdance/** linguist-vendored=false
+*.python linguist-detectable=true
