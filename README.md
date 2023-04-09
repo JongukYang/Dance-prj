@@ -1,6 +1,9 @@
-# Dance-prj
-CHOO:OOM
-옷은 무신사, 배달은 배달의 민족, 그리고 “춤”은?     CHOO:OOM 에서 모든 “춤”에 관한 정보들을 확인하고 공유하세요~!                                                                  -CHOO:OOM이란?-
+# CHOO:OOM
+
+옷은 무신사, 배달은 배달의 민족, 그리고 “춤”은?     
+CHOO:OOM 에서 모든 “춤”에 관한 정보들을 확인하고 공유하세요~!
+
+-CHOO:OOM이란?-
 1. 문제 정의 & 가설 😂 :
 문제 정의 : 현재 “스트릿 우먼 파이터” 같은 프로그램으로 인해 댄서들과 춤이 사람들의 관심을 많이 받고 있다. 하지만 그에 비해 댄서들이 본인의 가치를 증명할 플랫폼이 없으며 사람들도 어디서, 어떻게 춤을 배워야 하는지에 대해 알지 못한다.
 가설 : 오직 “춤” 만을 공유하는 플랫폼을 따로 개설해준다면?
@@ -20,7 +23,6 @@ CHOO:OOM
 
 ![image](https://user-images.githubusercontent.com/73643657/230773368-4dc1b953-0294-47a3-8f60-a8bf35335ace.png)
 ![image](https://user-images.githubusercontent.com/73643657/230773395-e1f30d63-296d-40cc-b17e-5f2f23216ec7.png)
-
-
+![image](https://user-images.githubusercontent.com/73643657/230773505-f819619f-1f91-4442-9abf-a8d673e22369.png)
 ![image](https://user-images.githubusercontent.com/73643657/230773412-6ac23716-58dd-4700-9376-fa056aefb7e9.png)
 ![image](https://user-images.githubusercontent.com/73643657/230773424-43a51bff-f7e2-4c27-9818-a81013b9938b.png)
